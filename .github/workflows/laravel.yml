@@ -26,6 +26,8 @@ jobs:
       run: npm install
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
+    - name: boot vite
+      run: npm run dev
     - name: Create Database
       run: |
         mkdir -p database
