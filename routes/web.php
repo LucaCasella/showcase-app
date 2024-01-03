@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
 
 Route::get('/dashboard', function () {
@@ -29,3 +29,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/matrimoni', function () {
+    return view('matrimoni');
+});
+
+Route::get('/sessioni', function () {
+    return view('sessioni');
+});
+
+Route::get('/reportage', function () {
+    return view('reportage');
+});
