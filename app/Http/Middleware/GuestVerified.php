@@ -16,8 +16,11 @@ class GuestVerified
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($request->session()->has('middlewarePass') && strlen($request->session()->get('middlewarePass')) === 6) {
+
+        if ($request->session()->has('guest-verified') && $request->session()->get('guest-verified')) {
+
             return $next($request);
+
         }
 
         return redirect('/')->with('error', 'Accesso non autorizzato');
