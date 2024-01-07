@@ -1,5 +1,5 @@
-<?php
-@section('content')
+
+
     <div class="container">
         <h1>Prezzi e Piani</h1>
 
@@ -26,4 +26,4 @@
             </div>
         </div>
     </div>
-@endsection
+
