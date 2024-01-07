@@ -12,7 +12,6 @@ class GuestFormController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
-        $passThroughMiddleware = 000000;
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -26,8 +25,7 @@ class GuestFormController extends Controller
             'phone' => $request->phone
         ])->save;
 
-
-        session(['middlewarePass' => $passThroughMiddleware]);
+        $request->session()->put(['guest-verified' => true]);
 
         return redirect('/price');
     }
