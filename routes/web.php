@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuestFormController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowPriceController;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +37,6 @@ Route::middleware('guestVerified')->group(function (){
     Route::get('/price', [ShowPriceController::class, 'show'])->name('price-page');
 });
 
+Route::get('/logs', [LogController::class, 'showLogs']);
 
 require __DIR__.'/auth.php';
