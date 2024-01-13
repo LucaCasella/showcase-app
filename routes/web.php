@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Public Routes
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,3 +31,10 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+
+//Localization Routes
+
+Route::get('locale/{lange}',[\App\Http\Controllers\LocalizationController::class,'setLang']);
+
