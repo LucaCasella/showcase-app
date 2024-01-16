@@ -17,8 +17,28 @@ use Illuminate\Support\Facades\Route;
 //Public Routes
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
+
+Route::get('/weddings', function () {
+    return view('weddings');
+});
+
+Route::get('/sessions', function () {
+    return view('sessions');
+});
+
+Route::get('/reportage', function () {
+    return view('reportage');
+});
+
+Route::get('/contacts', function () {
+    return view('contacts');
+});
+
+
+
+//Admin Routes
 
 Route::get('/dashboard', function () {
     return view('dashboard');
