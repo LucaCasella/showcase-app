@@ -58,12 +58,14 @@ jobs:
       - name: Debug
         run: |
           pwd
+          ls -al /home/runner/work/showcase-app/showcase-app/
+          ls -al /home/runner/work/showcase-app/showcase-app/public/
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server:  ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: /home/runner/work/showcase-app/showcase-app/public/
+          local-dir: ./public/
           server-dir: /www.anastasiakabakova.com/
           exclude: "*.git*"
