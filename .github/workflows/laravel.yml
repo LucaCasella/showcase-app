@@ -57,8 +57,7 @@ jobs:
     steps:
       - name: Debug
         run: |
-          ls -al  # Mostra l'elenco dei file nella directory corrente
-          pwd     # Mostra il percorso completo della directory di lavoro
+          pwd
       - name: Upload to FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
