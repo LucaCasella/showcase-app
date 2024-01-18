@@ -62,5 +62,5 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./public/
-          server-dir: /www.anastasiakabakova.com
+          server-dir: /www.anastasiakabakova.com/
           exclude: "*.git*"
