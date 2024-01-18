@@ -79,13 +79,11 @@ jobs:
           run: npm install
         - name: Build Public UI (Blade/Vite)
           run: npm run build
-
         - name: Debug
           run: |
             pwd
            ls -al /home/runner/work/showcase-app/showcase-app/
            ls -al /home/runner/work/showcase-app/showcase-app/public/
-
         - name: Upload to FTP
           uses: SamKirkland/FTP-Deploy-Action@v4.3.4
           with:
