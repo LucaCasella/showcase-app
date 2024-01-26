@@ -66,6 +66,13 @@ jobs:
                 echo "DB_DATABASE=${{ secrets.DB_NAME }}" >> .env
                 echo "DB_USERNAME=${{ secrets.DB_USER }}" >> .env
                 echo "DB_PASSWORD=${{ secrets.DB_PASS }}" >> .env
+        - name: Debug during Deploy
+          run: |
+                echo "Current directory: $(pwd)"
+                ls -al
+                ls -al /home/runner/work/showcase-app/showcase-app/
+                ls -al /home/runner/work/showcase-app/showcase-app/public/
+                cat .env  # Mostra il contenuto del file .env
         - name: Install Dependencies
           run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
         - name: Generate key
