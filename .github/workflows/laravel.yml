@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
     #        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: shivammathur/setup-php@v2
@@ -72,7 +72,7 @@ jobs:
                 ls -al
                 ls -al /home/runner/work/showcase-app/showcase-app/
                 ls -al /home/runner/work/showcase-app/showcase-app/public/
-                cat .env  # Mostra il contenuto del file .env
+                cat .env
         - name: Install Dependencies
           run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
         - name: Generate key
@@ -91,11 +91,6 @@ jobs:
           run: npm install
         - name: Build Public UI (Blade/Vite)
           run: npm run build
-        - name: Debug
-          run: |
-              pwd
-              ls -al /home/runner/work/showcase-app/showcase-app/
-              ls -al /home/runner/work/showcase-app/showcase-app/public/
         - name: Upload to FTP
           uses: SamKirkland/FTP-Deploy-Action@v4.3.4
           with:
