@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuestFormController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShowPriceController;
@@ -25,6 +26,14 @@ Route::get('/backoffice', function () {
     return view('backoffice.dashboard');
 })->middleware(['auth', 'verified'])->name('backoffice');
 
+Route::get('/adm-gallery', function () {
+    return view('backoffice.dashboard');
+})->middleware(['auth', 'verified'])->name('adm-gallery');
+
+Route::get('/adm-pricing', function () {
+    return view('backoffice.dashboard');
+})->middleware(['auth', 'verified'])->name('adm-pricing');
+
 Route::post('/guest-form-submit',[GuestFormController::class, 'store'])->name('guest-form');
 
 Route::middleware('auth')->group(function () {
@@ -40,3 +49,10 @@ Route::middleware('guestVerified')->group(function (){
 Route::get('/logs', [LogController::class, 'showLogs']);
 
 require __DIR__.'/auth.php';
+
+Route::middleware('auth')->group(function () {
+    Route::controller(ImageController::class)->prefix('images')->group(function () {
+        Route::get('','index')->name('images');
+        Route::get('create','create')->name('images.create');
+    });
+});
