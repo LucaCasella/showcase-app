@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('backoffice')" :active="request()->routeIs('backoffice')">
                         {{ __('Backoffice') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('adm-gallery')" :active="request()->routeIs('adm-gallery')">
+                        {{ __('Gallery') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('adm-pricing')" :active="request()->routeIs('adm-pricing')">
+                        {{ __('Pricing') }}
+                    </x-nav-link>
                 </div>
             </div>
 
