@@ -23,5 +23,6 @@
     </head>
     <body class="antialiased">
 
+    <p>Hello world</p>
     </body>
 </html>
