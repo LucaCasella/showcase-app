@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('app');
 });
 
-Route::get('/logs', [LogsController::class, 'showLogs']);
+Route::get('/logs', [LogsController::class, 'showLogs'])->middleware('run-migrations');;
 
-Route::get('/run-migrations-and-seeders')->middleware('run-migrations');
+
