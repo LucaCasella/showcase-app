@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/logs', [LogsController::class, 'showLogs']);
+
+Route::get('/run-migrations-and-seeders')->middleware('run-migrations');
