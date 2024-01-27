@@ -5,7 +5,6 @@
 
         <div class="dropdown">
             <x-language-selector/>
-            <p>Current Language: {{ app()->getLocale() }}</p>
         </div>
 
         <div>
