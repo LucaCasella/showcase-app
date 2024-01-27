@@ -2,11 +2,6 @@
     <div class="container-fluid d-lg-flex justify-content-between align-items-center">
 
         <img class="logo" src="{{asset('assets/logo.jpg')}}" alt="logo">
-
-        <div class="dropdown">
-            <x-language-selector/>
-        </div>
-
         <div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +18,16 @@
                             Servizi
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{url('/matrimoni')}}">Matrimoni</a></li>
-                            <li><a class="dropdown-item" href="{{url('/sessioni')}}">Sessioni Individuali</a></li>
-                            <li><a class="dropdown-item" href="{{url('/reportage')}}">Reportage</a></li>
+                            <li><a class="dropdown-item" href="{{url('/matrimoni')}}">@lang('home.weddings')</a></li>
+                            <li><a class="dropdown-item" href="{{url('/sessioni')}}">@lang('home.sessions')</a></li>
+                            <li><a class="dropdown-item" href="{{url('/reportage')}}">@lang('home.reportage')</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/contacts')}}">Contatti</a>
                     </li>
                 </ul>
+                    <x-language-selector class="language-selector"/>
             </div>
         </div>
 
