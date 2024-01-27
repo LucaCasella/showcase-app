@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,5 +57,5 @@ require __DIR__.'/auth.php';
 
 //Localization Routes
 
-Route::get('locale/{lange}',[\App\Http\Controllers\LocalizationController::class,'setLang']);
+Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 

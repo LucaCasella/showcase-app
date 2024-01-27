@@ -4,14 +4,8 @@
         <img class="logo" src="{{asset('assets/logo.jpg')}}" alt="logo">
 
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                @lang('home.lang')
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="locale/it">Italiano</a></li>
-                <li><a class="dropdown-item" href="locale/en">English</a></li>
-                <li><a class="dropdown-item" href="locale/ru">Russian</a></li>
-            </ul>
+            <x-language-selector/>
+            <p>Current Language: {{ app()->getLocale() }}</p>
         </div>
 
         <div>
