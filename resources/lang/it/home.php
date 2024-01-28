@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'Home',
     'title' => 'Fotografo Matrimoni e Eventi Anastasia Kabakova',
     'lang' => 'Lingua',
     'services' => 'Servizi',

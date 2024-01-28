@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'home' => 'Home',
     'title' => 'Wedding and Event Photographer Anastasia Kabakova',
     'lang' => 'Language',
     'services' => 'Services',
