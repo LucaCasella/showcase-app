@@ -58,4 +58,7 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./
           server-dir: /www.anastasiakabakova.com/
-          exclude: "*.git*"
+          exclude: |
+            .git*
+            node_modules/**
+            vendor/**
