@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id('image_id');
-            $table->foreign('album_id')->references('album_id')->on('albums');
+        Schema::create('albums', function (Blueprint $table) {
+            $table->id('album_id');
             $table->string('name');
-            $table->string('image_path');
-            $table->boolean('cover');
+            $table->boolean('visible')->default('true');
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('album');
     }
 };
