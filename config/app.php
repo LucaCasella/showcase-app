@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Fotografa Matrimoni e Eventi Anastasia Kabakova'),
 
     /*
     |--------------------------------------------------------------------------
