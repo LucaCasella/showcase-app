@@ -14,7 +14,7 @@
 
     <link rel="icon" href="{{asset('favicon.ico')}}">
 
-    @vite(['resources/js/app.js', 'resources/css/app.scss'])
+    @vite(['resources/js/app.js'])
 </head>
 <body class="container">
 <header>
