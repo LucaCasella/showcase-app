@@ -14,7 +14,7 @@ class Image extends Model
     const NAME = 'name';
     const IMAGE_PATH = 'image_path';
     const COVER = 'cover';
-    const CREATED_AT = 'image_path';
+    const CREATED_AT = 'created_path';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
 
@@ -25,7 +25,7 @@ class Image extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
+        Image::NAME,
     ];
 
     protected $hidden = [
