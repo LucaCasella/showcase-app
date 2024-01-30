@@ -24,10 +24,16 @@ class Album extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        Album::NAME,
+        Album::VISIBLE
+    ];
+
+    protected $visible = [
         Album::NAME
     ];
 
     protected $hidden = [
+        Album::ID,
         Album::VISIBLE,
         Album::CREATED_AT,
         Album::UPDATED_AT,

@@ -26,9 +26,15 @@ class Image extends Model
 
     protected $fillable = [
         Image::NAME,
+        Image::COVER
+    ];
+
+    protected $visible = [
+        Image::NAME
     ];
 
     protected $hidden = [
+        Image::ID,
         Image::ALBUM_ID,
         Image::IMAGE_PATH,
         Image::COVER,

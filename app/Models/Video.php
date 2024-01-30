@@ -24,10 +24,15 @@ class Video extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        Video::NAME,
+        Video::NAME
+    ];
+
+    protected $visible = [
+        Video::NAME
     ];
 
     protected $hidden = [
+        Video::ID,
         Video::ALBUM_ID,
         Video::VIDEO_PATH,
         Video::CREATED_AT,
