@@ -33,8 +33,6 @@ jobs:
           echo DB_USERNAME=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASS }} >> .env
           php artisan key:generate --show >> .env
-      - name: Optimize Laravel
-        run: php artisan optimize
       - name: Clear Cache and other Laravel commands
         run: |
               php artisan view:clear || true
