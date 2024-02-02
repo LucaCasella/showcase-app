@@ -19,6 +19,10 @@ jobs:
         with:
           php-version: '8.2'
       - uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
       - name: Create .env file
         run: |
           echo APP_URL=www.anastasiakabakova.com >> .env
@@ -29,10 +33,6 @@ jobs:
           echo DB_USERNAME=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASS }} >> .env
           php artisan key:generate --show >> .env
-      - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
-      - name: Directory Permissions
-        run: chmod -R 777 storage bootstrap/cache
       - name: Optimize Laravel
         run: php artisan optimize
       - name: Clear Cache and other Laravel commands
