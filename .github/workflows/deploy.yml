@@ -21,8 +21,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create .env file
         run: |
-          echo APP_URL=${{ secrets.APP_URL }} >> .env
-          echo DB_CONNECTION=${{ secrets.DB_CONNECTION }} >> .env
+          echo APP_URL= www.anastasiakabakova.com >> .env
+          echo DB_CONNECTION= mysql >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
           echo DB_DATABASE=${{ secrets.DB_NAME }} >> .env
