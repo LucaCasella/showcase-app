@@ -32,7 +32,7 @@ jobs:
           echo DB_DATABASE=${{ secrets.DB_NAME }} >> .env
           echo DB_USERNAME=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASS }} >> .env
-          php artisan key:generate --show >> .env
+          echo APP_KEY=php artisan key:generate >> .env
       - name: Clear Cache and other Laravel commands
         run: |
               php artisan view:clear || true
