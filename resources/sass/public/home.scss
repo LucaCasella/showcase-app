@@ -29,6 +29,11 @@ body {
         flex-direction: row;
     }
 
+    .presentation-picture{
+        width: 400px;
+        height: 620px;
+    }
+
     .language-selector{
         padding: 0.2em;
         font-size: 1em;
@@ -88,6 +93,12 @@ body {
     .presentation {
         display: flex;
         flex-direction: column;
+    }
+
+    .presentation-picture{
+        object-fit: contain;
+        width: 400px;
+        height: 400px;
     }
 
     .language-selector{
