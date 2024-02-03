@@ -15,6 +15,7 @@ body {
 }
 
 
+
 @media screen and (min-width: 1024px) {
     .navbar {
         border-bottom: gray 5px;
@@ -28,6 +29,11 @@ body {
         flex-direction: row;
     }
 
+    .presentation-picture{
+        width: 400px;
+        height: 620px;
+    }
+
     .language-selector{
         padding: 0.2em;
         font-size: 1em;
@@ -36,6 +42,42 @@ body {
         border: none;
         text-transform: uppercase;
         cursor: pointer;
+    }
+
+    .whatsapp-link-container{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        position: fixed;
+        bottom: 1.5em;
+        right: 1.5em;
+        align-items: center;
+        width: 200px;
+    }
+
+
+    .a-tag-whatsapp{
+        display: flex;
+        text-decoration: none;
+        color: black;
+        height: 100%;
+        align-items: center;
+    }
+
+    .a-tag-whatsapp > div{
+        padding: 0.5em 0.5em  0.5em 0.5em;
+        font-size: 1.2em;
+        font-weight: bold;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .whatsapp-icon{
+        object-fit: contain;
+        width: 30%;
+        height: 100%;
+        padding-left: 0.5em;
     }
 
 }
@@ -53,6 +95,12 @@ body {
         flex-direction: column;
     }
 
+    .presentation-picture{
+        object-fit: contain;
+        width: 400px;
+        height: 400px;
+    }
+
     .language-selector{
         padding: 0.2em;
         font-size: 1em;
@@ -61,5 +109,39 @@ body {
         border: none;
         text-transform: uppercase;
         cursor: pointer;
+    }
+
+    .whatsapp-link-container{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        position: fixed;
+        bottom: 1em;
+        right: 1em;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+
+    .a-tag-whatsapp{
+        display: flex;
+        text-decoration: none;
+        color: black;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .a-tag-whatsapp > div{
+        display: none;
+    }
+
+    .whatsapp-icon{
+        object-fit: contain;
+        width: 80%;
+        height: 80%;
     }
 }

@@ -23,7 +23,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/contacts')}}">@lang('home.contacts')</a>
+                        <a class="nav-link" href="#contacts">@lang('home.contacts')</a>
                     </li>
                 </ul>
             </div>
