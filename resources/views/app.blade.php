@@ -73,10 +73,10 @@
         </div>
     </div>
     <div class="customers d-flex justify-content-center">
-        <h2>SCOPRI I MIEI SERVIZI</h2>
+        <h2>@lang('home.find-services')</h2>
     </div>
     <div class="rewiews d-flex justify-content-center">
-        <h2>RECENSIONI</h2>
+        <h2>@lang('home.review')</h2>
     </div>
 </main>
 <footer class="d-flex-column">
