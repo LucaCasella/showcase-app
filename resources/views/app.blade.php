@@ -81,6 +81,7 @@
 </main>
 <footer class="d-flex-column">
     @include('includes.footer')
+<x-link-whatsapp-icon />
 </footer>
 </body>
 </html>
