@@ -14,18 +14,51 @@ body {
     justify-content: center;
 }
 
+.whatsapp-link-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    bottom: 1.5em;
+    right: 1.5em;
+    align-items: center;
+    width: 200px;
+}
+
+
+.a-tag-whatsapp{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    height: 100%;
+    align-items: center;
+}
+
+.a-tag-whatsapp > div{
+    padding: 0.5em 0.5em  0.5em 0.5em;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+
 .whatsapp-link-icon{
+    display: inline;
     width: 200px;
     height: 200px;
     position: fixed;
     bottom: 10px;
     right: 10px;
+    padding-right: 0.5em;
 }
 
 .whatsapp-icon{
     object-fit: contain;
-    width: 2em;
-    height: 2em;
+    width: 30%;
+    height: 100%;
+    padding-left: 0.5em;
 }
 
 
