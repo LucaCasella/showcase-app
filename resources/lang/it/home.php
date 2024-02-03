@@ -10,5 +10,10 @@ return [
     'weddings' => 'Matrimoni',
     'sessions' => 'Sessioni individuali',
     'reportage' => 'Reportage',
-    'contact-me' => 'Contattami'
+    'contact-me' => 'Contattami',
+    'find-services' => 'Scopri i miei servizi',
+    'review' => 'Recensioni',
+    'number-contact' => 'Numero di telefono:',
+    'residence' => 'Residenza:',
+    'vat' => 'Partita IVA:'
 ];

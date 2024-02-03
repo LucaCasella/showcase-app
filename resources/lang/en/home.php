@@ -10,5 +10,10 @@ return [
     'weddings' => 'Weddings',
     'sessions' => 'Individual Shooting',
     'reportage' => 'Reportage',
-    'contact-me' => 'Contact me'
+    'contact-me' => 'Contact me',
+    'find-services' => 'Find my services',
+    'review' => 'Review',
+    'number-contact' => 'Telephone number:',
+    'residence' => 'Residence:',
+    'vat' => 'Vat number:'
 ];
