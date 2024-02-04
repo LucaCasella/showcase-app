@@ -9,16 +9,30 @@ class AlbumController extends Controller
 {
     public function index()
     {
-        $page = 'index';
-        $data = Album::all()->where('visible', '=', 'true');
-        return view('backoffice.adm-gallery', compact('data', 'page'));
+        $albums = Album::query()->get()->toJson();
+        $albumss = json_decode($albums);
+//        dd($albumss);
+        return view('backoffice.index', compact('albumss'));
     }
 
     public function create()
     {
-        $page = 'create';
-        $data = '';
-        return view('backoffice.adm-gallery', compact('data', 'page'));
+        return view('backoffice.create');
+    }
+
+    public function store(Request $request)
+    {
+        //validate the input
+        $request->validate([
+            'title' => 'required',
+            'cover_path' => 'required'
+        ]);
+
+        //create new album
+        Album::create($request->all());
+
+        //redirect the user and send friendly message
+        return redirect()->route('index-album')->with('success', 'Album created successfully');
     }
 
     public function edit($id)
