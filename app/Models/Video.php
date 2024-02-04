@@ -11,7 +11,7 @@ class Video extends Model
 
     const ID = 'video_id';
     const ALBUM_ID = 'album_id';
-    const NAME = 'name';
+    const TITLE = 'title';
     const VIDEO_PATH = 'video_path';
     const CREATED_AT = 'created_path';
     const UPDATED_AT = 'updated_at';
@@ -24,11 +24,11 @@ class Video extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        Video::NAME
+        Video::TITLE
     ];
 
     protected $visible = [
-        Video::NAME
+        Video::TITLE
     ];
 
     protected $hidden = [
