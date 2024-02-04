@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->id('album_id');
-            $table->string('name');
-            $table->boolean('visible')->default('true');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at')->nullable();
-            $table->timestamp('deleted_at')->nullable();
+            $table->string('title');
+            $table->string('cover_path');
+            $table->boolean('visible')->default('1');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
+            $table->timestamp('deleted_at')->useCurrent()->nullable();
         });
     }
 

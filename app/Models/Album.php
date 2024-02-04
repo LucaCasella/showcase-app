@@ -11,7 +11,8 @@ class Album extends Model
     use HasFactory;
 
     const ID = 'album_id';
-    const NAME = 'name';
+    const TITLE = 'title';
+    const COVER_PATH = 'cover_path';
     const VISIBLE = 'visible';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -24,16 +25,18 @@ class Album extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        Album::NAME,
+        Album::TITLE,
+        Album::COVER_PATH,
         Album::VISIBLE
     ];
 
     protected $visible = [
-        Album::NAME
+        Album::ID,
+        Album::TITLE,
+        Album::COVER_PATH
     ];
 
     protected $hidden = [
-        Album::ID,
         Album::VISIBLE,
         Album::CREATED_AT,
         Album::UPDATED_AT,
