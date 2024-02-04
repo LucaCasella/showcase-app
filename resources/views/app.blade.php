@@ -78,6 +78,7 @@
     <div class="rewiews d-flex justify-content-center">
         <h2>@lang('home.review')</h2>
     </div>
+    <x-link-matrimonio-site/>
 </main>
 <footer class="d-flex-column">
     @include('includes.footer')
