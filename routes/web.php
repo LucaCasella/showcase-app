@@ -36,11 +36,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/adm-gallery', [AlbumController::class, 'index'])->name('adm-gallery');
-    Route::get('/show-album/{album_id}', [AlbumController::class, 'show']);
-    Route::post('/add-album', [AlbumController::class, 'create']);
-    Route::post('/update-album/{album_id}', [AlbumController::class, 'edit']);
-    Route::post('/delete-album/{album_id}', [AlbumController::class, 'destroy']);
+    Route::get('/adm-gallery', [AlbumController::class, 'index'])->name('index-album');
+    Route::get('/adm-gallery/create', [AlbumController::class, 'create'])->name('create-album');
+//    Route::get('/show-album/{album_id}', [AlbumController::class, 'show']);
+    Route::post('/adm-gallery/store', [AlbumController::class, 'store'])->name('store-album');
+//    Route::post('/update-album/{album_id}', [AlbumController::class, 'edit']);
+//    Route::post('/delete-album/{album_id}', [AlbumController::class, 'destroy']);
 
     Route::get('/adm-pricing', function () {
         return view('backoffice.adm-pricing');
