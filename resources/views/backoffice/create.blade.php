@@ -1,0 +1,59 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Gallery') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h1>Create a new album</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    @if ($errors->any())
+                        <div class="alert alert-danger mb-5">
+                            <strong>There were some problems with your input.</strong><br><br>
+                            <ul>
+                                @foreach($errors->all() as $errors)
+                                    <li>{{$errors}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{route('store-album')}}" method="post">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <div class="mb-2">
+                                        <strong>Album Title</strong><br>
+                                        <label for="title">
+                                            <input id="title" type="text" name="title" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Title">
+                                        </label>
+                                    </div>
+                                    <div class="mb-2">
+                                        <strong>Album Cover</strong><br>
+                                        <label for="cover_path">
+                                            <input id="cover_path" type="text" name="cover_path" class="rounded-pill" placeholder="load file">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
