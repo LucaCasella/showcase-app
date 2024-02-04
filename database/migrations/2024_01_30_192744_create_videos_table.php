@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id('video_id');
+            $table->unsignedBigInteger('album_id');
             $table->foreign('album_id')->references('album_id')->on('albums');
-            $table->string('name');
+            $table->string('title');
             $table->string('video_path');
             $table->timestamp('created_at');
             $table->timestamp('updated_at')->nullable();
