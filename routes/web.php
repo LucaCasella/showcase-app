@@ -38,10 +38,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/adm-gallery', [AlbumController::class, 'index'])->name('index-album');
     Route::get('/adm-gallery/create', [AlbumController::class, 'create'])->name('create-album');
-//    Route::get('/show-album/{album_id}', [AlbumController::class, 'show']);
     Route::post('/adm-gallery/store', [AlbumController::class, 'store'])->name('store-album');
-//    Route::post('/update-album/{album_id}', [AlbumController::class, 'edit']);
-//    Route::post('/delete-album/{album_id}', [AlbumController::class, 'destroy']);
+    Route::get('/adm-gallery/show', [AlbumController::class, 'show'])->name('show-album');
+    Route::get('/adm-gallery/edit', [AlbumController::class, 'edit'])->name('edit-album');
+    Route::put('/adm-gallery/update', [AlbumController::class, 'update'])->name('update-album');
+    Route::delete('/adm-gallery/destroy', [AlbumController::class, 'destroy'])->name('destroy-album');
 
     Route::get('/adm-pricing', function () {
         return view('backoffice.adm-pricing');
