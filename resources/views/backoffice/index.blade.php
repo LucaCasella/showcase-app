@@ -5,38 +5,49 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="pt-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" href="{{route('create-album')}}">Add new album</a>
+                    <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                       href="{{route('create-album')}}">Add new album</a>
                 </div>
             </div>
         </div>
     </div>
 
     @if ($message = \Illuminate\Support\Facades\Session::get('success'))
-        <div class="alert alert-success">
+        <div
+            class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5 relative block w-full p-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
             <p>{{$message}}</p>
         </div>
     @endif
 
-    @foreach ($albumss as $album)
-{{--        @php--}}
-{{--            dd($albums)--}}
-{{--        @endphp--}}
-        <div>{{$album->title}}</div>
-        <div>{{$album->cover_path}}</div>
-{{--        <div>--}}
-{{--            <form action="{{route('album-destroy', $album->id)}}" method="post">--}}
-{{--                <a class="bg-blue-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" href="{{route('album-show')}}">Info</a>--}}
-{{--                <a class="bg-blue-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" href="{{route('album-show')}}">Edit</a>--}}
-{{--                @csrf--}}
-{{--                @method('DELETE')--}}
-{{--                <butto class="bg-blue-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="submit">Delete</butto>--}}
-{{--            </form>--}}
-{{--        </div>--}}
+    @foreach ($albums as $album)
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between">
+                    <div>
+                        <div>{{$album->title}}</div>
+                        <div>{{$album->cover_path}}</div>
+                    </div>
+                    <div>
+                        <form action="{{route('destroy-album')}}" method="post">
+                            <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                               href="{{route('show-album')}}">Info</a>
+                            <a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                               href="{{route('edit-album')}}">Edit</a>
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                    type="submit">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endforeach
-
 
 </x-app-layout>
