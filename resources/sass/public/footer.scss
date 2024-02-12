@@ -1,0 +1,27 @@
+.footer-container{
+    padding: 2em 0 2em 0;
+    border-bottom: 2px solid #f5f5f5;
+    border-top: 2px solid #f5f5f5;
+}
+
+.footer-container > h6{
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-container > div > p{
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #3e3f3f;
+}
+
+.footer-bottom{
+    padding:2.5em 0 1em 0;
+    text-align: center;
+}
+
+.footer-bottom > a{
+    text-decoration: none;
+    color: lightgray;
+}

@@ -1,81 +1,11 @@
-
-body {
-    font-family: 'Rethink Sans', sans-serif;
-}
-
-.logo {
-    max-height: 100px;
-    max-width: 100px;
-}
-
-.pic-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.link-wedding-site-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2em 0 2em 0;
-}
-.footer-container{
-    padding: 2em 0 2em 0;
-    border-bottom: 2px solid #f5f5f5;
-    border-top: 2px solid #f5f5f5;
-}
-
-.footer-container > h6{
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.footer-container > div > p{
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #3e3f3f;
-}
-
-.footer-bottom{
-    padding:2.5em 0 1em 0;
-    text-align: center;
-}
-
-.footer-bottom > a{
-    text-decoration: none;
-    color: lightgray;
-}
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import 'header';
+@import "main-content";
+@import "footer";
 
 @media screen and (min-width: 1024px) {
-    .navbar {
-        border-bottom: gray 5px;
-    }
 
-    .presentation {
-        padding-top: 36px;
-        padding-bottom: 36px;
-        position: relative;
-        display: flex;
-        flex-direction: row;
-    }
-
-    .presentation-picture{
-        width: 400px;
-        height: 620px;
-    }
-
-    .language-selector{
-        padding: 0.2em;
-        font-size: 1em;
-        background-color: #fff;
-        outline: none;
-        border: none;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-
+    //Whatsapp
     .whatsapp-link-container{
         display: flex;
         justify-content: center;
@@ -86,7 +16,6 @@ body {
         align-items: center;
         width: 200px;
     }
-
 
     .a-tag-whatsapp{
         display: flex;
@@ -114,35 +43,9 @@ body {
 
 }
 
+@media screen and (max-width: 991px) {
 
-
-@media screen and (max-width: 1023px) {
-
-    .navbar {
-        border-bottom: gray 5px;
-    }
-
-    .presentation {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .presentation-picture{
-        object-fit: contain;
-        width: 400px;
-        height: 400px;
-    }
-
-    .language-selector{
-        padding: 0.2em;
-        font-size: 1em;
-        background-color: #fff;
-        outline: none;
-        border: none;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-
+    //Whatsapp
     .whatsapp-link-container{
         display: flex;
         justify-content: center;
@@ -156,7 +59,6 @@ body {
         border-radius: 50%;
         box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
     }
-
 
     .a-tag-whatsapp{
         display: flex;
