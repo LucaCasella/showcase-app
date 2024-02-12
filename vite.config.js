@@ -7,7 +7,7 @@ export default defineConfig({
             input: [
                 'resources/sass/backoffice.scss',
                 'resources/sass/public.scss',
-                'resources/css/app.css',
+                'resources/css/app.scss',
                 'resources/js/app.js',
             ],
             refresh: true,
