@@ -17,23 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('public');
+    return view('pages.home');
 });
 
-Route::get('/weddings', function () {
-    return view('weddings');
+Route::get('/photos', function () {
+    return view('pages.photos');
 });
 
-Route::get('/sessions', function () {
-    return view('sessions');
-});
-
-Route::get('/reportage', function () {
-    return view('reportage');
-});
-
-Route::get('/contacts', function () {
-    return view('contacts');
+Route::get('/videos', function () {
+    return view('pages.videos');
 });
 
 
