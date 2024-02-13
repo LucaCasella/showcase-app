@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg mb-3 mt-3">
     <div class="container-fluid navbar-container">
         <div class="navbar-logo">
-            <img class="logo" src="{{asset('assets/logo.jpg')}}" alt="logo">
+            <a href="{{url('/')}}">
+                <img class="logo" src="{{asset('assets/logo.jpg')}}" alt="logo">
+            </a>
         </div>
         <div class="navbar-toggle">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
