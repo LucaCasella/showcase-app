@@ -63,11 +63,7 @@
             </div>
         </div>
     </div>
-    <div class="services d-flex justify-content-center my-5">
-        <h2>@lang('home.services')</h2>
-    </div>
-    <div class="rewiews d-flex justify-content-center my-5">
-        <h2>@lang('home.review')</h2>
-    </div>
+    @include('includes.services')
+    @include('includes.reviews')
     <x-link-matrimonio-site/>
 @endsection
