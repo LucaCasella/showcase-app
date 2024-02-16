@@ -24,7 +24,7 @@
                         <a class="nav-link" aria-current="page" href="{{url('/videos')}}">@lang('home.videos')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{url('/contacts')}}">@lang('home.contacts')</a>
+                        <a class="nav-link" aria-current="page" href="#contacts">@lang('home.contacts')</a>
                     </li>
                 </ul>
             </div>
