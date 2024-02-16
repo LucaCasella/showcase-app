@@ -28,6 +28,10 @@ Route::get('/videos', function () {
     return view('pages.videos');
 });
 
+Route::get('/our-work', function () {
+    return view('pages.our-work');
+});
+
 
 
 //Admin Routes
