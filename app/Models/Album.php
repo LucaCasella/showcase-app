@@ -48,9 +48,4 @@ class Album extends Model
     {
         return $this->hasMany(Image::class, 'image_id', 'album_id');
     }
-
-    public function video(): HasMany
-    {
-        return $this->hasMany(Video::class, 'video_id', 'album_id');
-    }
 }

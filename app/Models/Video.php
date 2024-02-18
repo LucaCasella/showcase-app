@@ -39,9 +39,4 @@ class Video extends Model
         Video::UPDATED_AT,
         Video::DELETED_AT
     ];
-
-    public function album()
-    {
-        return $this->belongsTo(Album::class, 'album_id', 'video_id');
-    }
 }
