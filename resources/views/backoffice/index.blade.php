@@ -29,7 +29,8 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between">
                     <div>
                         <div>{{$album->title}}</div>
-                        <div>{{$album->cover_path}}</div>
+{{--                        @dd($album->cover_path)--}}
+                        <img class="album-image" src="/storage/app/public/album_covers/{{$album->cover_path}}" alt="{{$album->title}}">
                     </div>
                     <div>
                         <form action="{{route('destroy-album', [$album->album_id])}}" method="post">
