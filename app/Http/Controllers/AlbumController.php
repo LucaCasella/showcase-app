@@ -4,19 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AlbumController extends Controller
 {
     public function index()
     {
-        //retrive all albums
-        $data = Album::query()->get()->toJson();
+        // Retrieve all albums
+        $albums = Album::with('Image')->get();
 
-        //decode to JSON
-        $albums = json_decode($data);
-
-        return view('backoffice.index', compact('albums'));
+        return view('backoffice.index')->with('albums', $albums);
     }
 
     public function create()
@@ -26,58 +22,82 @@ class AlbumController extends Controller
 
     public function store(Request $request)
     {
-        //validate the input
+        // Validate the input
         $request->validate([
             'title' => 'required',
-            'cover_path' => 'required'
+            'cover_path' => 'required|image'
         ]);
 
-        //create new album
-        Album::create($request->all());
+        // Get filename with extension
+        $fileNameWithExt = $request->file('cover_path')->getClientOriginalName();
 
-        //redirect the user and send friendly message
+        // Get just the filename
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+        // Get extension
+        $extension = $request->file('cover_path')->getClientOriginalExtension();
+
+        // Create new filename
+        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+        // Upload image
+        $path = $request->file('cover_path')->storeAs('public/album_covers', $fileNameToStore);
+
+        // Create album
+        $album = new Album;
+        $album->title = $request->input('title');
+        $album->cover_path = $fileNameToStore;
+        $album->save();
+
+        // Redirect the user and send friendly message
         return redirect()->route('index-album')->with('success', 'Album created successfully');
     }
 
-    public function show(Album $album)
+    public function show($album_id)
     {
+        $album = Album::query()->where('album_id', '=', $album_id)->first();
+
         return view('backoffice.show', compact('album'));
     }
 
     public function edit($album_id)
     {
-
+        //retrieve selected album and its cover
         $album = Album::query()->where('album_id', '=', $album_id)->first();
 
-        $albumDecode = json_decode($album);
-
-        return view('backoffice.edit', compact('album'));
+        $currentCover = $album->cover_path;
+//        dd($currentCover);
+        return view('backoffice.edit', compact('album', 'currentCover'));
     }
 
     public function update(Request $request, $album_id)
     {
+        //validate the input
         $request->validate([
             'title' => 'required',
-            'cover_path' => 'required'
+            'cover_path' => 'image|max:1999'
         ]);
 
+        //retrieve selected album
         $album = Album::query()->where('album_id', '=', $album_id)->first();
 
+        //update the attributes
         $album->title = $request->title;
         $album->cover_path = $request->cover_path;
         $album->updated_at = now();
+
+        //save updates
         $album->save();
-
-
-        //update the album
-//        Album::update($request->all());
 
         //redirect the user and send friendly message
         return redirect()->route('index-album')->with('success', 'Album updated successfully');
     }
 
-    public function destroy(Album $album)
+    public function destroy($album_id)
     {
+        //retrieve selected album
+        $album = Album::query()->where('album_id', '=', $album_id)->first();
+
         //delete the album
         $album->delete();
 
