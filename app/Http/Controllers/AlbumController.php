@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlbumController extends Controller
 {
@@ -43,21 +44,33 @@ class AlbumController extends Controller
         return view('backoffice.show', compact('album'));
     }
 
-    public function edit(Album $album)
+    public function edit($album_id)
     {
+
+        $album = Album::query()->where('album_id', '=', $album_id)->first();
+
+        $albumDecode = json_decode($album);
+
         return view('backoffice.edit', compact('album'));
     }
 
-    public function update(Request $request, Album $album)
+    public function update(Request $request, $album_id)
     {
-        //validate the input
         $request->validate([
             'title' => 'required',
             'cover_path' => 'required'
         ]);
 
+        $album = Album::query()->where('album_id', '=', $album_id)->first();
+
+        $album->title = $request->title;
+        $album->cover_path = $request->cover_path;
+        $album->updated_at = now();
+        $album->save();
+
+
         //update the album
-        $album->update($request->all());
+//        Album::update($request->all());
 
         //redirect the user and send friendly message
         return redirect()->route('index-album')->with('success', 'Album updated successfully');
