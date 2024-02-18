@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <form action="{{route('store-album')}}" method="post">
+                    <form action="{{route('store-album')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -45,7 +45,7 @@
                                     <div class="mb-2">
                                         <strong>Album Cover</strong><br>
                                         <label for="cover_path">
-                                            <input id="cover_path" type="text" name="cover_path" class="rounded-pill" placeholder="load file">
+                                            <input id="cover_path" type="file" name="cover_path" class="rounded-pill" placeholder="load file">
                                         </label>
                                     </div>
                                 </div>

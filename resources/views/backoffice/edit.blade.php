@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <form action="{{route('update-album', $album->album_id)}}" method="post">
+                    <form action="{{route('update-album', $album->album_id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -46,7 +46,7 @@
                                     <div class="mb-2">
                                         <strong>Edit Album Cover</strong><br>
                                         <label for="cover_path">
-                                            <input id="cover_path" type="text" name="cover_path" value="{{$album->cover_path}}" class="rounded-pill" placeholder="load file">
+                                            <input id="cover_path" type="file" name="cover_path" value="{{$album->cover_path}}" class="rounded-pill" placeholder="load file">
                                         </label>
                                     </div>
                                 </div>
