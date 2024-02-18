@@ -27,7 +27,8 @@ class Album extends Model
     protected $fillable = [
         Album::TITLE,
         Album::COVER_PATH,
-        Album::VISIBLE
+        Album::VISIBLE,
+        Album::UPDATED_AT
     ];
 
     protected $visible = [
