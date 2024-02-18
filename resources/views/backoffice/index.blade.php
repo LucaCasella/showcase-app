@@ -32,11 +32,11 @@
                         <div>{{$album->cover_path}}</div>
                     </div>
                     <div>
-                        <form action="{{route('destroy-album')}}" method="post">
+                        <form action="{{route('destroy-album', [$album->album_id])}}" method="post">
                             <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                href="{{route('show-album')}}">Info</a>
                             <a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-                               href="{{route('edit-album')}}">Edit</a>
+                               href="{{route('edit-album', [$album->album_id])}}">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"

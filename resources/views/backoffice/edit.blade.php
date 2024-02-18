@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    <form action="{{route('update-album')}}" method="post">
+                    <form action="{{route('update-album', $album->album_id)}}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="row">
