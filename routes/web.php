@@ -5,7 +5,7 @@ use App\Http\Controllers\GuestFormController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ShowPriceController;
+use App\Http\Controllers\PriceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,13 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-gallery/update/{album_id}', [AlbumController::class, 'update'])->name('update-album');
     Route::delete('/adm-gallery/destroy/{album_id}', [AlbumController::class, 'destroy'])->name('destroy-album');
 
-    Route::get('/adm-pricing', function () {
-        return view('backoffice.adm-pricing');
-    })->name('adm-pricing');
+    Route::get('/adm-gallery/show/{album_id}/image/index', [ImageController::class, 'index'])->name('index-image');
+    Route::get('/adm-gallery/show/{album_id}/image/create', [ImageController::class, 'create'])->name('create-image');
+
+    Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
 });
 
 Route::middleware('guestVerified')->group(function (){
-    Route::get('/price', [ShowPriceController::class, 'show'])->name('price-page');
+    Route::get('/price', [PriceController::class, 'show'])->name('price-page');
 });
 
 Route::get('/logs', [LogController::class, 'showLogs']);
