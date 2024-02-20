@@ -30,7 +30,7 @@
                     <div>
                         <div>{{$album->title}}</div>
 {{--                        @dd($album->cover_path)--}}
-                        <img class="album-image" src="/storage/app/public/album_covers/{{$album->cover_path}}" alt="{{$album->title}}">
+                        <img class="album-image" src="storage/album_cover/{{$album->cover_path}}" alt="{{$album->title}}">
                     </div>
                     <div>
                         <form action="{{route('destroy-album', [$album->album_id])}}" method="post">

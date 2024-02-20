@@ -11,13 +11,18 @@ class AlbumController extends Controller
     {
         // Retrieve all albums
         $albums = Album::with('Image')->get();
+//        $data = Album::query()->get()->toJson();
 
-        return view('backoffice.index')->with('albums', $albums);
+//        $albums = json_decode($data);
+
+        return view('backoffice.albums.index')
+//        compact('albums'));
+            ->with('albums', $albums);
     }
 
     public function create()
     {
-        return view('backoffice.create');
+        return view('backoffice.albums.create');
     }
 
     public function store(Request $request)
@@ -67,7 +72,7 @@ class AlbumController extends Controller
 
         $currentCover = $album->cover_path;
 //        dd($currentCover);
-        return view('backoffice.edit', compact('album', 'currentCover'));
+        return view('backoffice.albums.edit', compact('album', 'currentCover'));
     }
 
     public function update(Request $request, $album_id)
