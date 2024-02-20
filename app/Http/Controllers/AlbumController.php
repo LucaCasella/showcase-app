@@ -60,9 +60,12 @@ class AlbumController extends Controller
 
     public function show($album_id)
     {
+//        dd($album_id);
         $album = Album::query()->where('album_id', '=', $album_id)->first();
-
-        return view('backoffice.show', compact('album'));
+//        dd($album);
+        $images = $album->image()->get();
+//        dd($images);
+        return view('backoffice.albums.show')->with(['album' => $album, 'images' => $images]);
     }
 
     public function edit($album_id)
