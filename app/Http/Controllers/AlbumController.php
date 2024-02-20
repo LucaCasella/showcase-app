@@ -80,7 +80,7 @@ class AlbumController extends Controller
         //validate the input
         $request->validate([
             'title' => 'required',
-            'cover_path' => 'image|max:1999'
+            'cover_path' => 'required|image'
         ]);
 
         //retrieve selected album
