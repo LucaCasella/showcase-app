@@ -37,9 +37,8 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="mb-2">
-                                        <label for="image">
-                                            <input id="image" type="file" name="image" class="rounded-pill" placeholder="load file">
-                                        </label>
+                                        <label for="image"></label>
+                                            <input id="image" type="file" multiple name="images[]" class="rounded-pill" placeholder="Choose Files">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">

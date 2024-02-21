@@ -37,16 +37,12 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="mb-2">
-                                        <strong>Album Title</strong><br>
-                                        <label for="title">
+                                        <label for="title"><strong>Album Title</strong></label><br>
                                             <input id="title" type="text" name="title" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Title">
-                                        </label>
                                     </div>
                                     <div class="mb-2">
-                                        <strong>Album Cover</strong><br>
-                                        <label for="cover_path">
-                                            <input id="cover_path" type="file" name="cover_path" class="rounded-pill" placeholder="load file">
-                                        </label>
+                                        <label for="cover_path"><strong>Album Cover</strong></label><br>
+                                            <input id="cover_path" type="file" name="cover_path" class="rounded-pill">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
