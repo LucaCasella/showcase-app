@@ -11,13 +11,8 @@ class AlbumController extends Controller
     {
         // Retrieve all albums
         $albums = Album::with('Image')->get();
-//        $data = Album::query()->get()->toJson();
 
-//        $albums = json_decode($data);
-
-        return view('backoffice.albums.index')
-//        compact('albums'));
-            ->with('albums', $albums);
+        return view('backoffice.albums.index')->with('albums', $albums);
     }
 
     public function create()
@@ -70,46 +65,44 @@ class AlbumController extends Controller
 
     public function edit($album_id)
     {
-        //retrieve selected album and its cover
-        $album = Album::query()->where('album_id', '=', $album_id)->first();
+        // Retrieve selected album
+        $album = Album::find($album_id);
 
-        $currentCover = $album->cover_path;
-//        dd($currentCover);
-        return view('backoffice.albums.edit', compact('album', 'currentCover'));
+        return view('backoffice.albums.edit')->with('album', $album);
     }
 
     public function update(Request $request, $album_id)
     {
-        //validate the input
+        // Validate the input
         $request->validate([
             'title' => 'required',
             'cover_path' => 'required|image'
         ]);
 
-        //retrieve selected album
+        // Retrieve selected album
         $album = Album::query()->where('album_id', '=', $album_id)->first();
 
-        //update the attributes
+        // Update the attributes
         $album->title = $request->title;
         $album->cover_path = $request->cover_path;
         $album->updated_at = now();
 
-        //save updates
+        // Save updates
         $album->save();
 
-        //redirect the user and send friendly message
+        // Redirect the user and send friendly message
         return redirect()->route('index-album')->with('success', 'Album updated successfully');
     }
 
     public function destroy($album_id)
     {
-        //retrieve selected album
+        // Retrieve selected album
         $album = Album::query()->where('album_id', '=', $album_id)->first();
 
-        //delete the album
+        // Delete the album
         $album->delete();
 
-        //redirect the user and display success message
+        // Redirect the user and display success message
         return redirect()->route('index-album')->with('success', 'Album deleted successfully');
     }
 }
