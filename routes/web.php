@@ -44,7 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-gallery/update/{album_id}', [AlbumController::class, 'update'])->name('update-album');
     Route::delete('/adm-gallery/destroy/{album_id}', [AlbumController::class, 'destroy'])->name('destroy-album');
 
-    Route::get('/adm-gallery/show/{album_id}/image/index', [ImageController::class, 'index'])->name('index-image');
     Route::get('/adm-gallery/show/{album_id}/image/create', [ImageController::class, 'create'])->name('create-image');
 
     Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
