@@ -56,7 +56,7 @@ class AlbumController extends Controller
     public function show($album_id)
     {
 //        dd($album_id);
-        $album = Album::query()->where('album_id', '=', $album_id)->first();
+        $album = Album::find($album_id);
 //        dd($album);
         $images = $album->image()->get();
 //        dd($images);
