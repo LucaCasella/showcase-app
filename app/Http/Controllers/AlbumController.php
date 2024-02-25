@@ -80,11 +80,28 @@ class AlbumController extends Controller
         ]);
 
         // Retrieve selected album
-        $album = Album::query()->where('album_id', '=', $album_id)->first();
+        $album = Album::findOrFail($album_id);
 
-        // Update the attributes
+        // Update title
         $album->title = $request->title;
-        $album->cover_path = $request->cover_path;
+
+        // Get filename with extension
+        $fileNameWithExt = $request->file('cover')->getClientOriginalName();
+
+        // Get just the filename
+        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+        // Get extension
+        $extension = $request->file('cover')->getClientOriginalExtension();
+
+        // Create new filename
+        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+
+        // Upload image
+        $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
+
+        // Update cover
+        $album->cover = $fileNameToStore;
         $album->updated_at = now();
 
         // Save updates
