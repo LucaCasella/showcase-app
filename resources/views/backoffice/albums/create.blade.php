@@ -41,8 +41,8 @@
                                             <input id="title" type="text" name="title" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Title">
                                     </div>
                                     <div class="mb-2">
-                                        <label for="cover_path"><strong>Album Cover</strong></label><br>
-                                            <input id="cover_path" type="file" name="cover_path" class="rounded-pill">
+                                        <label for="cover"><strong>Album Cover</strong></label><br>
+                                            <input id="cover" type="file" name="cover" accept=".jpg, .jpeg, .png" class="rounded-pill">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">

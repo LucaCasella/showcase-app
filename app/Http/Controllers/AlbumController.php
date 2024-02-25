@@ -25,28 +25,28 @@ class AlbumController extends Controller
         // Validate the input
         $request->validate([
             'title' => 'required',
-            'cover_path' => 'required|image'
+            'cover' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
         // Get filename with extension
-        $fileNameWithExt = $request->file('cover_path')->getClientOriginalName();
+        $fileNameWithExt = $request->file('cover')->getClientOriginalName();
 
         // Get just the filename
         $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
         // Get extension
-        $extension = $request->file('cover_path')->getClientOriginalExtension();
+        $extension = $request->file('cover')->getClientOriginalExtension();
 
         // Create new filename
         $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
         // Upload image
-        $path = $request->file('cover_path')->storeAs('public/album_covers', $fileNameToStore);
+        $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
 
         // Create album
         $album = new Album;
         $album->title = $request->input('title');
-        $album->cover_path = $fileNameToStore;
+        $album->cover = $fileNameToStore;
         $album->save();
 
         // Redirect the user and send friendly message
@@ -76,7 +76,7 @@ class AlbumController extends Controller
         // Validate the input
         $request->validate([
             'title' => 'required',
-            'cover_path' => 'required|image'
+            'cover' => 'required|image'
         ]);
 
         // Retrieve selected album

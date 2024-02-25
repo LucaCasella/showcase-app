@@ -12,7 +12,7 @@ class Album extends Model
 
     const ID = 'album_id';
     const TITLE = 'title';
-    const COVER_PATH = 'cover_path';
+    const COVER = 'cover';
     const VISIBLE = 'visible';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -26,19 +26,18 @@ class Album extends Model
 
     protected $fillable = [
         Album::TITLE,
-        Album::COVER_PATH,
-        Album::VISIBLE,
-        Album::UPDATED_AT
+        Album::COVER,
+        Album::VISIBLE
     ];
 
     protected $visible = [
-        Album::ID,
         Album::TITLE,
-        Album::COVER_PATH
+        Album::COVER,
+        Album::VISIBLE
     ];
 
     protected $hidden = [
-        Album::VISIBLE,
+        Album::ID,
         Album::CREATED_AT,
         Album::UPDATED_AT,
         Album::DELETED_AT
