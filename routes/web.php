@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GuestFormController;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
@@ -44,7 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-gallery/update/{album_id}', [AlbumController::class, 'update'])->name('update-album');
     Route::delete('/adm-gallery/destroy/{album_id}', [AlbumController::class, 'destroy'])->name('destroy-album');
 
-    Route::get('/adm-gallery/show/{album_id}/image/create', [ImageController::class, 'create'])->name('create-image');
+    Route::get('/adm-gallery/{album_id}/photo/create', [PhotoController::class, 'create'])->name('create-photo');
+    Route::post('/adm-gallery/{album_id}/photo/store', [PhotoController::class, 'store'])->name('store-photo');
 
     Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
 });
@@ -58,7 +59,7 @@ Route::get('/logs', [LogController::class, 'showLogs']);
 require __DIR__.'/auth.php';
 
 Route::middleware('auth')->group(function () {
-    Route::controller(ImageController::class)->prefix('images')->group(function () {
+    Route::controller(PhotoController::class)->prefix('images')->group(function () {
         Route::get('','index')->name('images');
         Route::get('create','create')->name('images.create');
     });

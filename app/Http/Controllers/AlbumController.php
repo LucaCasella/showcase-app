@@ -10,7 +10,7 @@ class AlbumController extends Controller
     public function index()
     {
         // Retrieve all albums
-        $albums = Album::with('Image')->get();
+        $albums = Album::with('Photo')->get();
 
         return view('backoffice.albums.index')->with('albums', $albums);
     }
@@ -56,11 +56,11 @@ class AlbumController extends Controller
     public function show($album_id)
     {
 //        dd($album_id);
-        $album = Album::find($album_id);
+        $album = Album::with('Photo')->find($album_id);
 //        dd($album);
-        $images = $album->image()->get();
-//        dd($images);
-        return view('backoffice.albums.show')->with(['album' => $album, 'images' => $images]);
+        $photos = $album->photo()->get();
+//        dd($photos);
+        return view('backoffice.albums.show')->with(['album' => $album, 'photos' => $photos]);
     }
 
     public function edit($album_id)

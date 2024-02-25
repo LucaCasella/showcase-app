@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
-                    <h1>Add Photos to {{$album->title}} Album</h1>
+                    <h1>Upload Photos to {{$album->title}} Album</h1>
                     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                        href="{{route('index-album')}}">Back</a>
                 </div>
@@ -31,14 +31,15 @@
                         </div>
                     @endif
 
-                    <form action="{{route('store-album')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('store-photo', [$album->album_id])}}" method="post" enctype="multipart/form-data">
                         @csrf
+{{--                        @dd($album)--}}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="mb-2">
-                                        <label for="image"></label>
-                                            <input id="image" type="file" multiple name="images[]" class="rounded-pill" placeholder="Choose Files">
+                                        <label for="photo"></label>
+                                            <input id="photo" type="file" name="photos[]" multiple class="rounded-pill">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">

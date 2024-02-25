@@ -44,8 +44,8 @@ class Album extends Model
         Album::DELETED_AT
     ];
 
-    public function image(): HasMany
+    public function photo(): HasMany
     {
-        return $this->hasMany(Image::class, 'image_id', 'album_id');
+        return $this->hasMany(Photo::class, 'photo_id', 'album_id');
     }
 }
