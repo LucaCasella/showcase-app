@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -113,10 +115,15 @@ class AlbumController extends Controller
     public function destroy($album_id)
     {
         // Retrieve selected album
-        $album = Album::query()->where('album_id', '=', $album_id)->first();
+        $album = Album::findOrFail($album_id);
 
-        // Delete the album
-        $album->delete();
+        // Delete the album and related cover
+        if (Storage::delete('public/album_covers/'.$album->cover)){
+            $album->delete();
+        }
+
+        // Delete photos related to the album deleted
+        Storage::deleteDirectory('public/photos/'.$album->id);
 
         // Redirect the user and display success message
         return redirect()->route('index-album')->with('success', 'Album deleted successfully');
