@@ -25,8 +25,7 @@ class PhotoController extends Controller
     }
 
     public function store(Request $request, $album_id)
-    {
-//        dd($album_id);
+    {;
         // Validate the input
         $request->validate([
             'photos.*' => 'required|image|mimes:jpeg,png,jpg'
@@ -35,22 +34,22 @@ class PhotoController extends Controller
         if ($request->hasFile('photos')) {
 
             $photos = $request->file('photos');
-//            dd($photos);
-            foreach ($photos as $photo) {
-//                dd($photo);
+
+            foreach ($photos as $uploadedPhoto) {
+
                 // Get filename with extension
-                $fileNameWithExt = $photo->getClientOriginalName();
+                $fileNameWithExt = $uploadedPhoto->getClientOriginalName();
 
                 // Get just the filename
                 $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
                 // Get extension
-                $extension = $photo->getClientOriginalExtension();
+                $extension = $uploadedPhoto->getClientOriginalExtension();
 
                 // Create new filename
                 $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-                $path = $photo->storeAs('public/photos/'.$album_id, $fileNameToStore);
+                $path = $uploadedPhoto->storeAs('public/photos/'.$album_id, $fileNameToStore);
 
                 $photo = new Photo();
                 $photo->album_id = $album_id;
