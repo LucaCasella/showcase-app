@@ -19,6 +19,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+
                     @if ($errors->any())
                         <div
                             class="mb-5 relative block w-full p-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
@@ -31,9 +32,8 @@
                         </div>
                     @endif
 
-                    <form action="{{route('store-photo', [$album->album_id])}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('store-photo', [$album->id])}}" method="post" enctype="multipart/form-data">
                         @csrf
-{{--                        @dd($album)--}}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

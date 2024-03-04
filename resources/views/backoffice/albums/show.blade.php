@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
                     <h1><strong>{{$album->title}}</strong></h1>
                     <a class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                       href="{{route('create-photo', [$album->album_id])}}">Add Images</a>
+                       href="{{route('create-photo', [$album->id])}}">Add Images</a>
                     <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                        href="{{route('index-album')}}">Back</a>
                 </div>
@@ -30,9 +30,9 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center">
 
                     @foreach ($photos as $photo)
-                        <img class="photo" src="storage/photos/{{$photo->album_id}}/{{$photo->photo}}" alt="{{$photo->name}}">
+                        <img class="photo" src="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}">
                     @endforeach
-{{--                        @dd($photos)--}}
+
                 </div>
             </div>
         </div>

@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('photos', function (Blueprint $table) {
-            $table->id('photo_id');
+            $table->id();
             $table->unsignedBigInteger('album_id');
-            $table->foreign('album_id')->references('album_id')->on('albums')->onDelete('cascade');
+            $table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
             $table->string('name');
             $table->string('photo');
             $table->boolean('visible')->default(1);

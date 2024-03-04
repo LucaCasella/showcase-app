@@ -9,7 +9,7 @@ class Photo extends Model
 {
     use HasFactory;
 
-    const ID = 'photo_id';
+    const ID = 'id';
     const ALBUM_ID = 'album_id';
     const NAME = 'name';
     const PHOTO = 'photo';
@@ -46,6 +46,6 @@ class Photo extends Model
 
     public function album()
     {
-        return $this->belongsTo(Album::class, 'album_id', 'photo_id');
+        return $this->belongsTo(Album::class);
     }
 }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('albums', function (Blueprint $table) {
-            $table->id('album_id');
+            $table->id();
             $table->string('title');
             $table->string('cover');
             $table->boolean('visible')->default(1);

@@ -10,7 +10,7 @@ class Album extends Model
 {
     use HasFactory;
 
-    const ID = 'album_id';
+    const ID = 'id';
     const TITLE = 'title';
     const COVER = 'cover';
     const VISIBLE = 'visible';
@@ -45,6 +45,6 @@ class Album extends Model
 
     public function photo(): HasMany
     {
-        return $this->hasMany(Photo::class, 'photo_id', 'album_id');
+        return $this->hasMany(Photo::class);
     }
 }
