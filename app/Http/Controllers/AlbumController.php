@@ -55,11 +55,10 @@ class AlbumController extends Controller
 
     public function show($album_id)
     {
-//        dd($album_id);
-        $album = Album::with('Photo')->find($album_id);
-//        dd($album);
-        $photos = $album->photo()->get();
-//        dd($photos);
+        // Retrieve selected album and its photos with relation
+        $album = Album::with('photo')->findOrFail($album_id);
+        $photos = $album->photo;
+
         return view('backoffice.albums.show')->with(['album' => $album, 'photos' => $photos]);
     }
 
