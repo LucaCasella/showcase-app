@@ -6,6 +6,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/adm-gallery/{album_id}/photo/create', [PhotoController::class, 'create'])->name('create-photo');
     Route::post('/adm-gallery/{album_id}/photo/store', [PhotoController::class, 'store'])->name('store-photo');
+
+    Route::get('/adm-videos', [VideoController::class, 'index'])->name('index-video');
+    Route::get('/adm-videos/create', [VideoController::class, 'create'])->name('create-video');
+    Route::post('/adm-videos/store', [VideoController::class, 'store'])->name('store-video');
+    Route::get('/adm-videos/edit/{video_id}', [VideoController::class, 'edit'])->name('edit-video');
+    Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
+    Route::delete('/adm-videos/delete/{video_id}', [VideoController::class, 'delete'])->name('delete-video');
 
     Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
 });
