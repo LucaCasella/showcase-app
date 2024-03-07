@@ -9,11 +9,11 @@ class Video extends Model
 {
     use HasFactory;
 
-    const ID = 'video_id';
-    const ALBUM_ID = 'album_id';
+    const ID = 'id';
     const TITLE = 'title';
-    const VIDEO_PATH = 'video_path';
-    const CREATED_AT = 'created_path';
+    const VIDEO = 'video';
+    const VISIBLE = 'visible';
+    const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
 
@@ -24,17 +24,19 @@ class Video extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        Video::TITLE
+        Video::TITLE,
+        Video::VIDEO,
+        Video::VISIBLE
     ];
 
     protected $visible = [
-        Video::TITLE
+        Video::TITLE,
+        Video::VIDEO,
+        Video::VISIBLE
     ];
 
     protected $hidden = [
         Video::ID,
-        Video::ALBUM_ID,
-        Video::VIDEO_PATH,
         Video::CREATED_AT,
         Video::UPDATED_AT,
         Video::DELETED_AT
