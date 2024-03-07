@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('album_id');
-            $table->foreign('album_id')->references('id')->on('albums');
             $table->string('title');
-            $table->string('video_path');
-            $table->timestamp('created_at');
+            $table->string('video');
+            $table->boolean('visible')->default(1);
+            $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
         });
