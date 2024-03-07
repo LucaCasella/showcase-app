@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('index-album')" :active="request()->routeIs('adm-gallery')">
                         {{ __('Gallery') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index-album')" :active="request()->routeIs('adm-videos')">
+                    <x-nav-link :href="route('index-video')" :active="request()->routeIs('adm-videos')">
                         {{ __('Videos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('index-price')" :active="request()->routeIs('adm-pricing')">
