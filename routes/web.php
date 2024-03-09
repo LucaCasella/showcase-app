@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/adm-videos/store', [VideoController::class, 'store'])->name('store-video');
     Route::get('/adm-videos/edit/{video_id}', [VideoController::class, 'edit'])->name('edit-video');
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
-    Route::delete('/adm-videos/delete/{video_id}', [VideoController::class, 'delete'])->name('delete-video');
+    Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
 
     Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
 });
