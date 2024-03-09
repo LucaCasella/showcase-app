@@ -35,9 +35,9 @@
                         </video>
                     </div>
                     <div>
-                        <form action="{{route('destroy-album', [$video->id])}}" method="post">
+                        <form action="{{route('destroy-video', [$video->id])}}" method="post">
                             <a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-                               href="{{route('edit-album', [$video->id])}}">Edit</a>
+                               href="{{route('edit-video', [$video->id])}}">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
