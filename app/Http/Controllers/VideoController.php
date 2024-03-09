@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
@@ -51,5 +52,51 @@ class VideoController extends Controller
 
         // Redirect the user and send friendly message
         return redirect()->route('index-video')->with('success', 'Video created successfully');
+    }
+
+    public function edit($video_id)
+    {
+        // Retrieve selected video
+        $video = Video::find($video_id);
+
+        return view('backoffice.videos.edit')->with('video', $video);
+    }
+
+    public function update(Request $request, $video_id)
+    {
+        // Validate the input
+        $request->validate([
+            'title' => 'required'
+        ]);
+
+        // Retrieve selected video
+        $video = Video::findOrFail($video_id);
+
+        // Update title
+        $video->title = $request->title;
+        $video->updated_at = now();
+
+        // Save updates
+        $video->save();
+
+        // Redirect the user and send friendly message
+        return redirect()->route('index-video')->with('success', 'Video updated successfully');
+    }
+
+    public function destroy($video_id)
+    {
+        // Retrieve selected video
+        $video = Video::findOrFail($video_id);
+
+        // Delete database record
+        if (Storage::delete('public/videos/'.$video->video)){
+            $video->delete();
+        }
+
+        // Delete file in project storage
+        Storage::delete('public/videos/'.$video->video);
+
+        // Redirect the user and display success message
+        return redirect()->route('index-video')->with('success', 'Video deleted successfully');
     }
 }
