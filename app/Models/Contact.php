@@ -9,15 +9,40 @@ class Contact extends Model
 {
     use HasFactory;
 
+    const ID = 'id';
+    const NAME = 'name';
+    const EMAIL = 'email';
+    const PHONE = 'phone';
+    const REPLIED = 'replied';
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+    const DELETED_AT = 'deleted_at';
+
+    protected $primaryKey = Contact::ID;
+
+    protected $table = 'contacts';
+
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'phone',
+        Contact::NAME,
+        Contact::EMAIL,
+        Contact::PHONE,
+    ];
+
+    protected $visible = [];
+
+    protected $hidden = [
+        Contact::ID,
+        Contact::REPLIED,
+        Contact::CREATED_AT,
+        Contact::UPDATED_AT,
+        Contact::DELETED_AT
     ];
 
     /**
