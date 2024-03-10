@@ -1,0 +1,75 @@
+// ADM-ALBUM INDEX
+
+.adm-gallery-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.album-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.album-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.album-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+.album-title {
+    margin: 0.5rem;
+}
+
+.cover-container {
+    position: relative;
+}
+
+.cover-container::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.album-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+// ADM-ALBUM SHOW - PHOTO
+
+.photos-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.photo-item {
+    position: relative;
+}
+
+.photo-item::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.photo-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
