@@ -1,3 +1,15 @@
+// GENERAL
+
+.logo-link {
+   display: flex;
+   justify-content: center;
+}
+
+.logo {
+    width: 40%;
+    height: 40%;
+}
+
 // ADM-ALBUM INDEX
 
 .adm-gallery-container {
@@ -72,4 +84,47 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+// ADM-VIDEO INDEX
+
+.adm-videos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.video-container {
+    width: 48%;margin-bottom: 20px;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0.5rem;
+}
+
+.video-title {
+    margin: 0.5rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
