@@ -7,6 +7,7 @@ use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\VideoController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/backoffice', function () {
-    return view('backoffice.dashboard');
+    $contacts = Contact::all()->where('privacy_accepted', '=', 1);
+    return view('backoffice.dashboard', ['contacts' => $contacts]);
 })->middleware(['auth', 'verified'])->name('backoffice');
 
 

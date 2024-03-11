@@ -6,29 +6,35 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    hompage backoffice
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    Website visit count:
-                </div>
-                <div class="website-counter"></div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    Information Requests
-                </div>
-                <div class="website-counter"></div>
-            </div>
-        </div>
-    </div>
 
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    Website visits count:
+                </div>
+                <div class="website-counter"></div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100 info-container">
+                    <h1 class="request-title mb-5"><strong>Information Requests</strong></h1>
+                    <div>
+                        @foreach($contacts as $contact)
+                            <div class="contact-info">
+                                <div class="contact-attribute">{{$contact->name}}</div>
+                                <div class="contact-attribute">{{$contact->email}}</div>
+                                <div class="contact-attribute">{{$contact->phone}}</div>
+                                <label>
+                                    <input type="checkbox">
+                                </label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </x-app-layout>
