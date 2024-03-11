@@ -13,6 +13,7 @@ class Contact extends Model
     const NAME = 'name';
     const EMAIL = 'email';
     const PHONE = 'phone';
+    const PRIVACY_ACCEPTED = 'privacy_accepted';
     const REPLIED = 'replied';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -33,6 +34,7 @@ class Contact extends Model
         Contact::NAME,
         Contact::EMAIL,
         Contact::PHONE,
+        Contact::PRIVACY_ACCEPTED
     ];
 
     protected $visible = [];
