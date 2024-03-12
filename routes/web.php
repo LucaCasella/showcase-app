@@ -104,6 +104,6 @@ Route::middleware('auth')->group(function () {
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 
 
-Route::get('/logs', [LogsController::class, 'showLogs']);
+Route::post('/guest-form-submit',[GuestFormController::class, 'store'])->name('guest-form');
 
 

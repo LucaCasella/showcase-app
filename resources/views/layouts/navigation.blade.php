@@ -16,13 +16,13 @@
                     <x-nav-link :href="route('backoffice')" :active="request()->routeIs('backoffice')">
                         {{ __('Backoffice') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index-album')" :active="request()->routeIs('adm-gallery')">
+                    <x-nav-link :href="route('index-album')" :active="request()->routeIs('index-album')">
                         {{ __('Gallery') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index-video')" :active="request()->routeIs('adm-videos')">
+                    <x-nav-link :href="route('index-video')" :active="request()->routeIs('index-video')">
                         {{ __('Videos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index-price')" :active="request()->routeIs('adm-pricing')">
+                    <x-nav-link :href="route('index-price')" :active="request()->routeIs('index-price')">
                         {{ __('Pricing') }}
                     </x-nav-link>
                 </div>
