@@ -9,7 +9,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\VideoController;
 use App\Models\Contact;
-use App\Http\Controllers\LogsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('app');
-});
+})->name('home');
 
 Route::get('/weddings', function () {
     return view('weddings');
@@ -43,27 +42,10 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
+Route::get('/admin-login', function () {
+    return view('welcome');
+})->name('login-admin');
 
-Route::get('/backoffice', function () {
-    $contacts = Contact::all()->where('privacy_accepted', '=', 1);
-    return view('backoffice.dashboard', ['contacts' => $contacts]);
-})->middleware(['auth', 'verified'])->name('backoffice');
-
-Route::get('/weddings', function () {
-    return view('weddings');
-});
-
-Route::get('/sessions', function () {
-    return view('sessions');
-});
-
-Route::get('/reportage', function () {
-    return view('reportage');
-});
-
-Route::get('/contacts', function () {
-    return view('contacts');
-});
 
 
 
@@ -99,6 +81,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
 });
 
+Route::get('/backoffice', function () {
+    $contacts = Contact::all()->where('privacy_accepted', '=', 1);
+    return view('backoffice.dashboard', ['contacts' => $contacts]);
+})->middleware(['auth', 'verified'])->name('backoffice');
+
 Route::middleware('guestVerified')->group(function (){
     Route::get('/price', [PriceController::class, 'show'])->name('price-page');
 });
@@ -121,6 +108,6 @@ Route::middleware('auth')->group(function () {
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 
 
-Route::get('/logs', [LogsController::class, 'showLogs']);
+
 
 
