@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// PUBLIC ROUTES
+
 Route::get('/', function () {
     return view('pages.home');
 });
@@ -38,18 +40,22 @@ Route::get('/our-work', function () {
     return view('pages.our-work');
 });
 
+Route::middleware('guestVerified')->group(function (){
+    Route::get('/price', [PriceController::class, 'show'])->name('price-page');
+});
+
+
+
+// ADMIN ROUTES
+
 Route::get('/admin-login', function () {
     return view('welcome');
 })->name('login-admin');
 
-
-
-
-//Admin Routes
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/backoffice', function () {
+    $contacts = Contact::all()->where('privacy_accepted', '=', 1);
+    return view('backoffice.dashboard', ['contacts' => $contacts]);
+})->middleware(['auth', 'verified'])->name('backoffice');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -73,36 +79,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/adm-videos/edit/{video_id}', [VideoController::class, 'edit'])->name('edit-video');
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
-
-    Route::get('/adm-pricing', [PriceController::class, 'index'])->name('index-price');
-});
-
-Route::get('/backoffice', function () {
-    $contacts = Contact::all()->where('privacy_accepted', '=', 1);
-    return view('backoffice.dashboard', ['contacts' => $contacts]);
-})->middleware(['auth', 'verified'])->name('backoffice');
-
-Route::middleware('guestVerified')->group(function (){
-    Route::get('/price', [PriceController::class, 'show'])->name('price-page');
 });
 
 Route::get('/logs', [LogController::class, 'showLogs']);
 
 require __DIR__.'/auth.php';
 
-Route::middleware('auth')->group(function () {
-    Route::controller(PhotoController::class)->prefix('images')->group(function () {
-        Route::get('','index')->name('images');
-        Route::get('create','create')->name('images.create');
-    });
-});
+//Route::middleware('auth')->group(function () {
+//    Route::controller(PhotoController::class)->prefix('images')->group(function () {
+//        Route::get('','index')->name('images');
+//        Route::get('create','create')->name('images.create');
+//    });
+//});
 
 
 
-//Localization Routes
+// LOCALIZATION ROUTES
 
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
-
 
 Route::post('/guest-form-submit',[GuestFormController::class, 'store'])->name('guest-form');
 
