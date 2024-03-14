@@ -6,10 +6,11 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/js/app.js',
+                'resources/css/app.scss',
+                'resources/css/app.css',
                 'resources/sass/main-backoffice.scss',
                 'resources/sass/main-public.scss',
-                'resources/css/app.css',
-                'resources/js/app.js',
             ],
             refresh: true,
             watch: ['resources/**/*.scss'],
