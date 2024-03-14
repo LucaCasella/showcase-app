@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 <body>
@@ -16,10 +16,6 @@
                     <a href="{{ url('/backoffice') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Back-office</a>
                 @else
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                    {{--                    @if (Route::has('register'))--}}
-                    {{--                        <a href="{{ route('register') }}"--}}
-                    {{--                           class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>--}}
-                    {{--                    @endif--}}
                 @endauth
             </div>
         @endif
