@@ -85,6 +85,9 @@ class AlbumController extends Controller
         // Update title
         $album->title = $request->title;
 
+        // Delete previous cover
+        Storage::delete('public/album_covers/'.$album->cover);
+
         // Get filename with extension
         $fileNameWithExt = $request->file('cover')->getClientOriginalName();
 
