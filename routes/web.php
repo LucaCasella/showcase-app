@@ -6,7 +6,6 @@ use App\Http\Controllers\GuestFormController;
 use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PriceController;
 use App\Http\Controllers\VideoController;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
@@ -38,10 +37,6 @@ Route::get('/videos', function () {
 
 Route::get('/our-work', function () {
     return view('pages.our-work');
-});
-
-Route::middleware('guestVerified')->group(function (){
-    Route::get('/price', [PriceController::class, 'show'])->name('price-page');
 });
 
 
@@ -84,13 +79,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/logs', [LogController::class, 'showLogs']);
 
 require __DIR__.'/auth.php';
-
-//Route::middleware('auth')->group(function () {
-//    Route::controller(PhotoController::class)->prefix('images')->group(function () {
-//        Route::get('','index')->name('images');
-//        Route::get('create','create')->name('images.create');
-//    });
-//});
 
 
 
