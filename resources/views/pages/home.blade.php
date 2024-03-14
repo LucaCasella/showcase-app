@@ -4,7 +4,7 @@
     <div class="container">
         <div class="home-container row row-cols-lg-2 row-cols-1">
             <div class="image-wrapper col">
-                <img class="image" src="{{asset('assets/RA-95.jpg')}}" alt="presentation">
+                <img class="image" src="{{asset('assets/AK.jpg')}}" alt="presentation">
             </div>
             <div class="description-wrapper col">
                 <div class="description p-5">
@@ -38,12 +38,12 @@
                 </div>
             </div>
             <div class="image-wrapper image-revert col">
-                <img class="image" src="{{asset('assets/RA-95.jpg')}}" alt="photos">
+                <img class="image" src="{{asset('assets/photohp.jpg')}}" alt="photos">
             </div>
         </div>
         <div class="home-container row row-cols-lg-2 row-cols-1">
             <div class="image-wrapper col">
-                <img class="image" src="{{asset('assets/RA-95.jpg')}}" alt="videos">
+                <img class="image" src="{{asset('assets/videohp.jpg')}}" alt="videos">
             </div>
             <div class="description-wrapper col">
                 <div class="description p-5">
