@@ -8,7 +8,6 @@ export default defineConfig({
             input: [
                 'resources/js/app.js',
                 'resources/css/app.scss',
-                'resources/sass/app.scss',
                 'resources/css/app.css',
                 'resources/sass/main-backoffice.scss',
                 'resources/sass/main-public.scss',
