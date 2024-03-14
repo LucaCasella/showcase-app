@@ -29,7 +29,7 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="video-info">
-                            <h1 class="video-title">{{$video->title}}</h1>
+                            <h5 class="video-title">{{$video->title}}</h5>
                             <form action="{{route('destroy-video', [$video->id])}}" method="post" class="video-form">
                                 <a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
                                    href="{{route('edit-video', [$video->id])}}">Edit</a>
