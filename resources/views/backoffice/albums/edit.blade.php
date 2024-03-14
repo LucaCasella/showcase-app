@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="cover"><strong>Edit Album Cover</strong></label><br>
-                                        <input id="cover" type="file" name="cover" class="rounded-pill">
+                                        <input id="cover" type="file" name="cover" class="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">

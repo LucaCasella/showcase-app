@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <div class="mb-2">
                                         <label for="photo"></label>
-                                            <input id="photo" type="file" name="photos[]" multiple class="rounded-pill">
+                                            <input id="photo" type="file" name="photos[]" multiple class="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">

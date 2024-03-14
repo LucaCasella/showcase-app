@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="video"><strong>Video File</strong></label><br>
-                                        <input id="video" type="file" name="video" accept=".mp4" class="rounded-pill">
+                                        <input id="video" type="file" name="video" accept=".mp4" class="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
