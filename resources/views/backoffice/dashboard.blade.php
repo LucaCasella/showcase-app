@@ -30,9 +30,8 @@
                             <div class="contact-line">
                                 <div class="contact-attribute">{{$contact->phone}}</div>
                                 <div class="contact-attribute">{{ \Carbon\Carbon::parse($contact->created_at)->format('d/m/Y') }}</div>
-                                <label>
-                                    <input type="checkbox">
-                                </label>
+                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                   href="{{route('update-contact', [$contact->id])}}">Move to replied</a>
                             </div>
                         </div>
                     @endforeach
