@@ -8,7 +8,7 @@
     <link rel="icon" href="{{asset('favicon.ico')}}">
     @vite(['resources/js/app.js'])
 </head>
-<body class="container">
+<body class="container-xxl">
 <header class="sticky-top bg-white">
     @include('includes.header')
 </header>
@@ -19,5 +19,6 @@
     @include('includes.footer')
     <x-link-whatsapp-icon/>
 </footer>
+<script src='https://widgets.sociablekit.com/google-reviews/widget.js' async defer></script>
 </body>
 </html>

@@ -60,4 +60,6 @@
     @include('includes.services')
     @include('includes.reviews')
     <x-link-matrimonio-site/>
+    <x-reviews/>
+    <x-contact-form/>
 @endsection
