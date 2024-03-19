@@ -13,8 +13,11 @@ class Contact extends Model
     const NAME = 'name';
     const EMAIL = 'email';
     const PHONE = 'phone';
+
+    const COMMENT = 'comment';
     const PRIVACY_ACCEPTED = 'privacy_accepted';
     const REPLIED = 'replied';
+    const VISIBLE = 'visible';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -34,14 +37,22 @@ class Contact extends Model
         Contact::NAME,
         Contact::EMAIL,
         Contact::PHONE,
-        Contact::PRIVACY_ACCEPTED
+        Contact::COMMENT,
+        Contact::PRIVACY_ACCEPTED,
+        Contact::VISIBLE
     ];
 
     protected $visible = [];
 
     protected $hidden = [
         Contact::ID,
+        Contact::NAME,
+        Contact::EMAIL,
+        Contact::PHONE,
+        Contact::COMMENT,
+        Contact::PRIVACY_ACCEPTED,
         Contact::REPLIED,
+        Contact::VISIBLE,
         Contact::CREATED_AT,
         Contact::UPDATED_AT,
         Contact::DELETED_AT

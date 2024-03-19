@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->boolean('privacy_accepted')->default(0);
-            $table->boolean('replied')->default(false);
+            $table->string('comment')->nullable();
+            $table->boolean('privacy_accepted')->nullable();
+            $table->boolean('replied')->default(0);
+            $table->boolean('visible')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
