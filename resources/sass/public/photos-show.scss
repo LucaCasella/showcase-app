@@ -1,0 +1,21 @@
+.ph-container {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 10px;
+}
+
+//.ph-wrapper {
+//    position: relative;
+//    width: 100%;
+//    height: 100%;
+//}
+
+.ph-item {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    //width: 100%;
+    //height: 100%;
+    //object-fit: cover;
+}

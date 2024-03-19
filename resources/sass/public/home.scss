@@ -1,6 +1,7 @@
 body {
     font-family: 'Nunito', serif;
     font-weight: 400;
+    font-size: 18px;
 }
 
 .home-container {
@@ -27,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 .description-wrapper {
@@ -43,6 +45,7 @@ body {
     border-style: hidden;
     color: white;
     font-size: larger;
+    text-decoration: none;
 }
 
 h1 {
