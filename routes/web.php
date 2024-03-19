@@ -58,7 +58,7 @@ Route::get('/admin-login', function () {
 })->name('login-admin');
 
 Route::get('/backoffice', function () {
-    $contacts = Contact::all()->where('privacy_accepted', '=', 1);
+    $contacts = Contact::where('privacy_accepted', '=', 1)->orderBy('created_at', 'desc')->get();
     return view('backoffice.dashboard', ['contacts' => $contacts]);
 })->middleware(['auth', 'verified'])->name('backoffice');
 
@@ -84,6 +84,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/adm-videos/edit/{video_id}', [VideoController::class, 'edit'])->name('edit-video');
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
+
+    Route::put('/backoffice/update/{contact_id}', [GuestFormController::class, 'setReplied'])->name('update-contact');
+    Route::delete('/backoffice/destroy/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 });
 
 Route::get('/logs', [LogController::class, 'showLogs']);
