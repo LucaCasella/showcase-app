@@ -7,7 +7,9 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
+use App\Models\Album;
 use App\Models\Contact;
+use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,12 +30,20 @@ Route::get('/', function () {
 });
 
 Route::get('/photos', function () {
-    return view('pages.photos');
-});
+    $albums = Album::where('visible', '=', 1)->get();
+    return view('pages.photos', ['albums' => $albums]);
+})->name('photos');
+
+Route::get('/photos/{id}', function ($album_id) {
+    $album = Album::with('photo')->findOrFail($album_id);
+    $photos = $album->photo;
+    return view('pages.photos-show')->with(['album' => $album, 'photos' => $photos]);
+})->name('photos-show');
 
 Route::get('/videos', function () {
-    return view('pages.videos');
-});
+    $videos = Video::where('visible', '=', 1)->get();
+    return view('pages.videos', ['videos' => $videos]);
+})->name('videos');
 
 Route::get('/our-work', function () {
     return view('pages.our-work');
