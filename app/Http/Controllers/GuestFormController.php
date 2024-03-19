@@ -27,6 +27,6 @@ class GuestFormController extends Controller
 
         $request->session()->put(['guest-verified' => true]);
 
-        return redirect('/price');
+        return redirect('/');
     }
 }

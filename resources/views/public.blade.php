@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
     <title>@lang('home.title')</title>
     <link rel="icon" href="{{asset('favicon.ico')}}">
     @vite(['resources/js/app.js'])
