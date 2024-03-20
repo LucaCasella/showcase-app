@@ -61,8 +61,7 @@
         </div>
     </div>
     @include('includes.services')
-    @include('includes.reviews')
-    <x-link-matrimonio-site/>
     <x-reviews/>
+    <x-link-matrimonio-site/>
     <x-contact-form/>
 @endsection
