@@ -20,18 +20,16 @@
         <div class="home-container row row-cols-lg-2 row-cols-1">
             <div class="description-wrapper description-revert col">
                 <div class="description p-4">
-
                     <h1 class="">@lang('home.photos-title')</h1>
-
                     <div class="lh-lg my-2">
                         @lang('home.photos-description')
                     </div>
                     <div>
-                        <a class="btn-home" href="#contacts">
-                            Scopri i prezzi
+                        <a class="btn-black" href="#contacts">
+                            @lang('home.goto-prices')
                         </a>
-                        <a class="btn-home" href="{{route('photos')}}">
-                            Sfoglia i miei Album
+                        <a class="btn-white" href="{{route('photos')}}">
+                            @lang('home.goto-albums')
                         </a>
                     </div>
                 </div>
@@ -50,9 +48,14 @@
                     <div class="lh-lg my-2">
                         @lang('home.videos-description')
                     </div>
-                    <a class="btn-home" href="{{route('videos')}}">
-                        Scopri di più
-                    </a>
+                    <div>
+                        <a class="btn-black" href="#contacts">
+                            @lang('home.goto-prices')
+                        </a>
+                        <a class="btn-white" href="{{route('videos')}}">
+                            @lang('home.goto-videos')
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

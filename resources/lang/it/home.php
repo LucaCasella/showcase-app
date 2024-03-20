@@ -25,10 +25,18 @@ return [
                                 Per avere una qualità audio eccellente siamo forniti sia di microfoni wireless sia ambientali .
                                 Formazione e componenti tecniche all avanguardia ci consentono di andare incontro a tutte le esigenze dei nostri clienti.
                                 Il nostro punto di forza è l uso del drone che ci permette riprese aree mozzafiato.',
-    'contact-me' => 'Contattami',
+    'goto-prices' => 'Scopri i prezzi',
+    'goto-albums' => 'Sfoglia gli album',
+    'goto-videos' => 'Scopri di più',
     'services' => 'Scopri gli altri servizi',
-    'review' => 'Recensioni',
+    'contact-us' => 'Contattaci',
+    'full-name' => 'Nome completo',
+    'email-address' => 'Indirizzo e-mail',
+    'no-share' => 'Non condivederemo la tua e-mail con nessuno',
+    'leave-comment' => 'Lascia un commento',
+    'submit' => 'Invia',
     'number-contact' => 'Numero di telefono:',
     'residence' => 'Residenza:',
-    'vat' => 'Partita IVA:'
+    'vat' => 'Partita IVA:',
+    'contact-me' => 'Contattami',
 ];
