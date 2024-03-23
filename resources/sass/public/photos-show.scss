@@ -1,20 +1,20 @@
-.ph-container {
+.photos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
 }
 
-.ph-item {
+.photo-item {
     position: relative;
 }
 
-.ph-item::before {
+.photo-item::before {
     content: "";
     display: block;
     padding-top: 100%;
 }
 
-.ph-item img {
+.photo-item img {
     position: absolute;
     top: 0;
     left: 0;
@@ -35,7 +35,7 @@
 
 @media screen and (max-width: 575px) {
 
-    .ph-container {
+    .photo-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;

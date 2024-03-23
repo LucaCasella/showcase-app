@@ -11,11 +11,11 @@
         </div>
         <div class="max-w-10 mx-auto sm:px-6 lg:px-8 mb-5">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="ph-container p-6 text-gray-900 dark:text-gray-100">
+                <div class="photos-container p-6 text-gray-900 dark:text-gray-100">
 
                     @foreach ($photos as $photo)
-                        <div class="ph-item">
-                            <img class="ph" src="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" data-fullimage="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" onclick="showFullImage(this)">
+                        <div class="photo-item">
+                            <img class="photo" src="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" data-fullimage="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" onclick="showFullImage(this)">
                         </div>
                     @endforeach
 
