@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="py-12">
-        <div class="max-w-10 mx-auto sm:px-6 lg:px-8 mb-5">
+        <div class="max-w-10 mx-auto sm:px-6 lg:px-8 mb-2">
             <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between items-center d-flex justify-content-center align-items-center">
                     <h4>{{$album->title}}</h4>
@@ -14,9 +14,9 @@
                 <div class="ph-container p-6 text-gray-900 dark:text-gray-100">
 
                     @foreach ($photos as $photo)
-{{--                        <div class="ph-wrapper">--}}
-                            <img class="ph-item" src="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}">
-{{--                        </div>--}}
+                        <div class="ph-item">
+                            <img class="ph" src="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" data-fullimage="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" onclick="showFullImage(this)">
+                        </div>
                     @endforeach
 
                 </div>
