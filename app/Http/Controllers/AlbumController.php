@@ -26,6 +26,7 @@ class AlbumController extends Controller
         // Validate the input
         $request->validate([
             'title' => 'required',
+            'location' => 'required',
             'cover' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
@@ -47,6 +48,7 @@ class AlbumController extends Controller
         // Create album
         $album = new Album;
         $album->title = $request->input('title');
+        $album->location = $request->input('location');
         $album->cover = $fileNameToStore;
         $album->save();
 
@@ -76,6 +78,7 @@ class AlbumController extends Controller
         // Validate the input
         $request->validate([
             'title' => 'required',
+            'location' => 'required',
             'cover' => 'required|image'
         ]);
 
@@ -84,6 +87,7 @@ class AlbumController extends Controller
 
         // Update title
         $album->title = $request->title;
+        $album->location = $request->location;
 
         // Delete previous cover
         Storage::delete('public/album_covers/'.$album->cover);

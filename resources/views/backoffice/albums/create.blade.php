@@ -41,6 +41,10 @@
                                             <input id="title" type="text" name="title" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Title">
                                     </div>
                                     <div class="mb-2">
+                                        <label for="location"><strong>Album Location</strong></label><br>
+                                            <input id="location" type="text" name="location" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Location">
+                                    </div>
+                                    <div class="mb-2">
                                         <label for="cover"><strong>Album Cover</strong></label><br>
                                             <input id="cover" type="file" name="cover" accept=".jpg, .jpeg, .png" class="">
                                     </div>

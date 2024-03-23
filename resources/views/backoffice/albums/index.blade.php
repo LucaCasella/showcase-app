@@ -30,6 +30,7 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="adm-album-info">
                             <h5 class="adm-album-title">{{$album->title}}</h5>
+                            <h5 class="adm-album-location">{{$album->location}}</h5>
                             <form action="{{route('destroy-album', [$album->id])}}" method="post" class="album-form">
                                 <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                    href="{{route('show-album', [$album->id])}}">Info</a>
