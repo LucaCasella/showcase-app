@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('location');
             $table->string('cover');
             $table->boolean('visible')->default(1);
             $table->timestamp('created_at')->useCurrent();
