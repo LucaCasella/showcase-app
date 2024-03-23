@@ -1,7 +1,10 @@
 body {
-    font-family: 'Nunito', serif;
-    font-weight: 400;
-    font-size: 18px;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+h1 {
+    font-family: 'Times New Roman', cursive;
 }
 
 .home-container {
@@ -38,18 +41,62 @@ body {
     justify-content: space-around;
 }
 
-.btn-home {
-    padding: 10px;
-    background-color: #e3d6cb;
-    border-radius: 20px;
-    border-style: hidden;
+.link-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.link-black, .link-white {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.link-black {
+    padding: 5px;
+    background-color: #000000;
+    border: black solid 2px;
     color: white;
     font-size: larger;
     text-decoration: none;
 }
 
-h1 {
-    font-family: 'Times New Roman', cursive;
+.link-black:hover {
+    background-color: white;
+    color: black;
+}
+
+.link-white {
+    color: black;
+    padding: 5px;
+    background-color: #ffffff;
+    border: black solid 2px;
+    font-size: larger;
+    text-decoration: none;
+}
+
+.link-white:hover {
+    background-color: lightgrey;
+    color: white;
+}
+
+.other-services {
+    text-align: center;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service-title {
+    text-align: center;
+}
+
+.services-container img {
+    width: 200px;
+    margin: 10px;
 }
 
 .link-wedding-site-container{
@@ -84,4 +131,3 @@ h1 {
         order: 2;
     }
 }
-
