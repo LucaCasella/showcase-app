@@ -6,7 +6,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
     <title>@lang('home.title')</title>
     <link rel="icon" href="{{asset('favicon.ico')}}">
     @vite(['resources/js/app.js'])
@@ -23,6 +22,8 @@
     <x-link-whatsapp-icon/>
 </footer>
 <script src='https://widgets.sociablekit.com/google-reviews/widget.js' async defer></script>
+{{--<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>--}}
+{{--<script src="https://www.google.com/recaptcha/api.js" async defer></script>--}}
 <script>
     function showFullImage(img) {
         // Get photo's URL
