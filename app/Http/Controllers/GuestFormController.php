@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class GuestFormController extends Controller
 {
-    public function store(Request $request): RedirectResponse
+    public function store(ContactRequest $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
