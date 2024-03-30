@@ -1,9 +1,3 @@
-.requests-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
 .contacted-by, .replied-to {
     display: flex;
     flex-direction: column;
