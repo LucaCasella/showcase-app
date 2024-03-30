@@ -24,41 +24,5 @@
 <script src='https://widgets.sociablekit.com/google-reviews/widget.js' async defer></script>
 {{--<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>--}}
 {{--<script src="https://www.google.com/recaptcha/api.js" async defer></script>--}}
-<script>
-    function showFullImage(img) {
-        // Get photo's URL
-        var fullImageUrl = img.dataset.fullimage;
-
-        // Create an overlay for the photo in full screen
-        var overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        overlay.style.zIndex = '9999';
-        overlay.style.display = 'flex';
-        overlay.style.justifyContent = 'center';
-        overlay.style.alignItems = 'center';
-
-        // Create tag img for the photo in full sreen
-        var fullImageElement = document.createElement('img');
-        fullImageElement.src = fullImageUrl;
-        fullImageElement.alt = 'Full Size Image';
-        fullImageElement.classList.add('full-image'); // Add CSS class
-
-        // Add the photo to the overlay
-        overlay.appendChild(fullImageElement);
-
-        // Add the overlay to the body
-        document.body.appendChild(overlay);
-
-        // Add an event listener to close the overlay the user click on the photo in full sreen
-        overlay.onclick = function() {
-            document.body.removeChild(overlay);
-        };
-    }
-</script>
 </body>
 </html>
