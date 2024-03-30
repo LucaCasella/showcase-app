@@ -49,6 +49,8 @@ Route::get('/our-work', function () {
     return view('pages.our-work');
 });
 
+Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
+
 
 
 // ADMIN ROUTES
@@ -58,7 +60,9 @@ Route::get('/admin-login', function () {
 })->name('login-admin');
 
 Route::get('/backoffice', function () {
-    $contacts = Contact::where('privacy_accepted', '=', 1)->orderBy('created_at', 'desc')->get();
+    $contacts = Contact::where('privacy_accepted', '=', 1)
+        ->where('visible', '=', 1)
+        ->orderBy('created_at', 'asc')->get();
     return view('backoffice.dashboard', ['contacts' => $contacts]);
 })->middleware(['auth', 'verified'])->name('backoffice');
 
@@ -85,8 +89,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
 
-    Route::put('/backoffice/update/{contact_id}', [GuestFormController::class, 'setReplied'])->name('update-contact');
-    Route::delete('/backoffice/destroy/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
+//    Route::get('/backoffice/{contact_id}', [GuestFormController::class, 'show'])->name('show-contact');
+//    Route::put('/backoffice/{contact_id}', [GuestFormController::class, 'setReplied'])->name('replied-contact');
+//    Route::put('/backoffice/{contact_id}', [GuestFormController::class, 'setVisibility'])->name('hide-contact');
+    Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 });
 
 Route::get('/logs', [LogController::class, 'showLogs']);
@@ -98,7 +104,3 @@ require __DIR__.'/auth.php';
 // LOCALIZATION ROUTES
 
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
-
-Route::post('/guest-form-submit',[GuestFormController::class, 'store'])->name('guest-form');
-
-
