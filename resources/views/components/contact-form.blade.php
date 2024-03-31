@@ -25,8 +25,36 @@
         <div class="mb-2">
             <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" required>
             <label for="privacycheck">@lang('home.privacy-check')</label>
-            <a href="" class="mx-3">@lang('home.privacy-info')</a>
+            <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
         </div>
         <button type="submit" class="btn btn-primary my-2">@lang('home.submit')</button>
     </form>
+
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Informativa sulla Privacy</h3>
+            <p>@lang('home.privacy-content')</p>
+        </div>
+    </div>
 </div>
+<script>
+    // Apri la modal quando viene cliccato il link
+    document.querySelector('.open-modal').addEventListener('click', function() {
+        document.getElementById('privacy-modal').style.display = 'block';
+    });
+
+    // Chiudi la modal quando viene cliccato il pulsante di chiusura
+    document.querySelector('.close-modal').addEventListener('click', function() {
+        document.getElementById('privacy-modal').style.display = 'none';
+    });
+
+    // Chiudi la modal quando viene cliccato al di fuori del contenuto della modal
+    window.addEventListener('click', function(event) {
+        var modal = document.getElementById('privacy-modal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+</script>
