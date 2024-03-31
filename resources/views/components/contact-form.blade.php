@@ -52,7 +52,7 @@
     // Chiudi la modal quando viene cliccato al di fuori del contenuto della modal
     window.addEventListener('click', function(event) {
         var modal = document.getElementById('privacy-modal');
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = 'none';
         }
     });
