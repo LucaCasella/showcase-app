@@ -27,7 +27,17 @@
             <label for="privacycheck">@lang('home.privacy-check')</label>
             <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
         </div>
-        <button type="submit" class="btn btn-primary my-2">@lang('home.submit')</button>
+        <div class="button-and-socials">
+            <button type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
+            <div class="socials">
+                <a href="https://www.facebook.com/ayriika/" target="_blank">
+                    <img src="{{asset('assets/facebook.jpg')}}" alt="">
+                </a>
+                <a href="https://www.instagram.com/ayriika/" target="_blank">
+                    <img src="{{asset('assets/instagram.jpg')}}" alt="">
+                </a>
+            </div>
+        </div>
     </form>
 
     <div id="privacy-modal" class="modal">
@@ -56,5 +66,4 @@
             modal.style.display = 'none';
         }
     });
-
 </script>
