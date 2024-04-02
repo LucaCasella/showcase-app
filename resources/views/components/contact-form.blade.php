@@ -30,9 +30,9 @@
         <div class="button-and-socials">
             <button type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
             <div class="socials">
-                <a href="https://www.facebook.com/ayriika/" target="_blank">
-                    <img src="{{asset('assets/facebook.jpg')}}" alt="">
-                </a>
+{{--                <a href="https://www.facebook.com/ayriika/" target="_blank">--}}
+{{--                    <img src="{{asset('assets/facebook.jpg')}}" alt="">--}}
+{{--                </a>--}}
                 <a href="https://www.instagram.com/ayriika/" target="_blank">
                     <img src="{{asset('assets/instagram.jpg')}}" alt="">
                 </a>
@@ -43,7 +43,7 @@
     <div id="privacy-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h3>Informativa sulla Privacy</h3>
+            <h3>@lang('home.privacy-title')</h3>
             <p>@lang('home.privacy-content')</p>
         </div>
     </div>
