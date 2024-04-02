@@ -37,6 +37,7 @@ return [
     'submit' => 'Invia',
     'privacy-check' => 'Accetto l\'informativa sulla privacy',
     'privacy-info' => 'Visualizza Informativa sulla Privacy',
+    'privacy-title' => 'Informativa sulla Privacy',
     'privacy-content' => 'Ultimo aggiornamento: 31/03/2024<br>
                             Gentile Utente,<br>
                             Grazie per aver visitato Anastasia Kabakova. In questa informativa sulla privacy, spieghiamo quali informazioni raccogliamo, come le utilizziamo e proteggiamo, e le opzioni a tua disposizione riguardo alla tua privacy durante l\'utilizzo del nostro sito.<br>
