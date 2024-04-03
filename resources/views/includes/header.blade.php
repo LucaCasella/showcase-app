@@ -15,9 +15,6 @@
                         <a class="nav-link" aria-current="page" href="{{url('/')}}">@lang('home.home')</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{url('/our-work')}}">@lang('home.our-work')</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{url('/photos')}}">@lang('home.photos')</a>
                     </li>
                     <li class="nav-item">

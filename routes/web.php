@@ -45,10 +45,6 @@ Route::get('/videos', function () {
     return view('pages.videos', ['videos' => $videos]);
 })->name('videos');
 
-Route::get('/our-work', function () {
-    return view('pages.our-work');
-});
-
 Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
 
 
