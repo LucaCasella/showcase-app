@@ -27,7 +27,7 @@ class ContactRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required', 'string', 'max:30'],
-            'comment' => ['string', 'max: 255'],
+//            'comment' => ['string', 'max: 255'],
             'privacycheck' => ['accepted'],
 //            'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule]
         ];
