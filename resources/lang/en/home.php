@@ -3,7 +3,6 @@
 return [
     'title' => 'Wedding and Event Photographer Anastasia Kabakova',
     'home' => 'Home',
-    'our-work' => 'How do we work',
     'photos' => 'Photos',
     'videos' => 'Videos',
     'contacts' => 'Contacts',
@@ -12,24 +11,24 @@ return [
                         Innovation, research and development are the basis of our working method.
                         Our fleets of cameras never reach three years of age, for us it is essential to stay up to date in terms of photographic quality, video and equipment.
                         With us you begin a journey, where each package is tailor-made for the client, attention and care to the demands and needs of the client are firm heads of our way of working.
-                        <br>We have studios in: MODENA - BOLOGNA - IMOLA - FORLI.',
-    'photos-title' => 'Photos',
-    'photos-description' => 'Study and passion for this work have led us to make high level photographs .
-                                It is essential for us to understand with the client the type of product they want to achieve by customizing our style for each type of event.
-                                Each of our shots is returned to the best possible quality on the market.
+                        <br>We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI.</strong>',
+    'photos-title' => 'PHOTOS',
+    'photos-description' => 'Study and passion for this work have led us to make high level photographs.<br>
+                                It is essential for us to understand with the client the type of product they want to achieve by customizing our style for each type of event.<br>
+                                Each of our shots is returned to the best possible quality on the market.<br>
                                 Each first camera shoots with two cameras to save time on changing lenses thus getting more shots.',
-    'videos-title' => 'Videos',
-    'videos-description' => 'Each of our videos is designed to convey unique emotions .
-                                Our cameras allow us to shoot in 4k up to 120fps.
-                                Thanks to the 10-bit 4:2:2 format we can provide a unique color palette that can be customized in post production according to the guidelines of the project we are doing.
-                                To have excellent audio quality we are equipped with both wireless and environmental microphones .
-                                Training and state-of-the-art technical components enable us to meet all our clients needs.
+    'videos-title' => 'VIDEOS',
+    'videos-description' => 'Each of our videos is designed to convey unique emotions.<br>
+                                Our cameras allow us to shoot in 4k up to 120fps.<br>
+                                Thanks to the 10-bit 4:2:2 format we can provide a unique color palette that can be customized in post production according to the guidelines of the project we are doing.<br>
+                                To have excellent audio quality we are equipped with both wireless and environmental microphones .<br>
+                                Training and state-of-the-art technical components enable us to meet all our clients needs.<br>
                                 Our strong point is the use of drone that allows us to shoot breathtaking areas.',
-    'goto-prices' => 'Find out prices',
-    'goto-albums' => 'Browse albums',
-    'goto-videos' => 'Find out more',
+    'goto-prices' => 'PRICES',
+    'goto-albums' => 'PHOTOS',
+    'goto-videos' => 'VIDEOS',
     'services' => 'Learn about other services',
-    'contact-us' => 'Contact us',
+    'discover-prices' => 'DISCOVER OUR PRICES',
     'full-name' => 'Full name',
     'email-address' => 'Email address',
     'no-share' => 'We will not share your email with anyone',
