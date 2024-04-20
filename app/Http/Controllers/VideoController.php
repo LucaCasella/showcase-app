@@ -26,28 +26,13 @@ class VideoController extends Controller
         // Validate the input
         $request->validate([
             'title' => 'required',
-            'video' => 'required|mimes:mp4'
+            'yt_video_id' => 'required',
         ]);
 
-        // Get filename with extension
-        $fileNameWithExt = $request->file('video')->getClientOriginalName();
-
-        // Get just the filename
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-        // Get extension
-        $extension = $request->file('video')->getClientOriginalExtension();
-
-        // Create new filename
-        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-
-        // Upload image
-        $path = $request->file('video')->storeAs('public/videos', $fileNameToStore);
-
-        // Create album
+        // Create the video
         $video = new Video;
         $video->title = $request->input('title');
-        $video->video = $fileNameToStore;
+        $video->yt_video_id = $request->input('yt_video_id');
         $video->save();
 
         // Redirect the user and send friendly message
@@ -66,7 +51,8 @@ class VideoController extends Controller
     {
         // Validate the input
         $request->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'yt_video_id' => 'required',
         ]);
 
         // Retrieve selected video
@@ -74,6 +60,7 @@ class VideoController extends Controller
 
         // Update title
         $video->title = $request->title;
+        $yt_video_id = $request->title;
         $video->updated_at = now();
 
         // Save updates
@@ -85,16 +72,8 @@ class VideoController extends Controller
 
     public function destroy($video_id)
     {
-        // Retrieve selected video
-        $video = Video::findOrFail($video_id);
-
-        // Delete database record
-        if (Storage::delete('public/videos/'.$video->video)){
-            $video->delete();
-        }
-
-        // Delete file in project storage
-        Storage::delete('public/videos/'.$video->video);
+        // Retrieve and delete selected video
+        $video = Video::findOrFail($video_id)->delete();
 
         // Redirect the user and display success message
         return redirect()->route('index-video')->with('success', 'Video deleted successfully');

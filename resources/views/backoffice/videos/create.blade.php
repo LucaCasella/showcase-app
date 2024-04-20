@@ -41,8 +41,10 @@
                                         <input id="title" type="text" name="title" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Title">
                                     </div>
                                     <div class="mb-2">
-                                        <label for="video"><strong>Video File</strong></label><br>
-                                        <input id="video" type="file" name="video" accept=".mp4" class="">
+{{--                                        <label for="video"><strong>Video File</strong></label><br>--}}
+{{--                                        <input id="video" type="file" name="video" accept=".mp4" class="">--}}
+                                        <label for="yt_video_id"><strong>YouTube Video ID</strong></label><br>
+                                        <input id="yt_video_id" type="text" name="yt_video_id">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
