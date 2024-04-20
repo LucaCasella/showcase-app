@@ -36,4 +36,9 @@ return [
         'api_key' => env('GOOGLE_RECAPTCHA_API_KEY'),
         'site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
     ],
+
+//    'recaptcha' => [
+//        'site_key' => env('GOOGLE_RECAPTCHA_SITE_KEY'),
+//        'secret_key' => env('GOOGLE_RECAPTCHA_SECRET_KEY'),
+//    ],
 ];

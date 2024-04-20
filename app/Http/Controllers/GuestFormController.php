@@ -7,15 +7,26 @@ use App\Mail\ContactMail;
 use App\Mail\Notification;
 use App\Models\Contact;
 use App\Rules\ReCaptchaEnterpriseRule;
+use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 
 class GuestFormController extends Controller
 {
-    public function store(ContactRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
+        $validator = Validator::make($request->all(), [
+            'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule]
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
         Contact::create([
             'name' => $request->name,
             'email' => $request->email,

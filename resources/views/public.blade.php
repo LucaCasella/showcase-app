@@ -16,6 +16,7 @@
     @include('includes.header')
 </header>
 <main class="main">
+    @include('includes.recaptcha-response-fail')
     @yield('content')
 </main>
 <footer class="d-flex-column">
@@ -25,7 +26,6 @@
 <script src='https://widgets.sociablekit.com/google-reviews/widget.js' async defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-{{--<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>--}}
-{{--<script src="https://www.google.com/recaptcha/api.js" async defer></script>--}}
+<script src="https://www.google.com/recaptcha/enterprise.js"></script>
 </body>
 </html>

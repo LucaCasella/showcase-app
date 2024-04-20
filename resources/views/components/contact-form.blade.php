@@ -1,5 +1,5 @@
 <div id="contacts" class="contacts">
-    <h2>@lang('home.contact-us')</h2>
+    <h2>@lang('home.discover-prices')</h2>
     <form action="{{ route('guest-form') }}" method="post">
         @csrf
         <div class="mb-2">
@@ -27,18 +27,26 @@
             <label for="privacycheck">@lang('home.privacy-check')</label>
             <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
         </div>
+            <div class="block mt-4">
+                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
+            </div>
+{{--        <div class="g-recaptcha" data-sitekey={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}></div>--}}
         <div class="button-and-socials">
-            <button type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
+            <button id="contact-submit" type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
             <div class="socials">
 {{--                <a href="https://www.facebook.com/ayriika/" target="_blank">--}}
 {{--                    <img src="{{asset('assets/facebook.jpg')}}" alt="">--}}
 {{--                </a>--}}
-                <a href="https://www.instagram.com/ayriika/" target="_blank">
+                <a href="https://www.instagram.com/anastasiakabakova_fotografa/" target="_blank">
                     <img src="{{asset('assets/instagram.jpg')}}" alt="">
                 </a>
             </div>
         </div>
     </form>
+
+    <div>
+        modena forli imola bologna
+    </div>
 
     <div id="privacy-modal" class="modal">
         <div class="modal-content">
