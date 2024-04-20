@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('video');
+            $table->string('yt_video_id');
             $table->boolean('visible')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable();
