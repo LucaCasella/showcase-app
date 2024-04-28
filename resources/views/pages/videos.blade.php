@@ -1,32 +1,16 @@
 @extends('public')
 
 @section('content')
-    <div class="videos-container">
-        @foreach ($videos as $video)
-            <div class="video-wrapper">
-                <div class="video-info">
-                    <h5 class="video-title">{{$video->title}}</h5>
-                </div>
-                <div class="video">
-                    <video class="" width="100%" height="auto" controls controlsList="nodownload">
-                        <source src="storage/videos/{{$video->video}}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        @endforeach
+    <div class="videos-container row" id="videos-container">
     </div>
-    <div id="player">
 
-    </div>
-    <button id="vid-target" value="7EZnVp1Ghow">7EZnVp1Ghow</button>
 @endsection
 <script>
     function loadYouTubeVideo(videoId, playerDivId) {
         // Impostare le opzioni del player
         let options = {
-            width: '640', // larghezza del player
-            height: '360', // altezza del player
+            // width: '640', // larghezza del player
+            // height: '360', // altezza del player
             videoId: videoId, // ID del video da riprodurre
             playerVars: {
                 autoplay: 0, // autoplay
@@ -40,10 +24,12 @@
 
     // Funzione per creare un nuovo div con un ID unico per il video
     function createVideoPlayerContainer(videoId) {
-        let container = document.createElement('div'); // Crea un nuovo elemento div
+        let videosContainer = document.getElementById('videos-container'); // Seleziona l'elemento contenitore
+        let itemContainer = document.createElement('div'); // Crea un nuovo elemento div
+        itemContainer.className = 'col-md-6 mb-4'; // Imposta la larghezza della colonna su schermi medi e grandi
         let uniqueId = 'player_' + videoId; // Genera un ID unico per il video
-        container.setAttribute('id', uniqueId); // Assegna l'ID al div
-        document.body.appendChild(container); // Aggiungi il div al body del documento
+        itemContainer.setAttribute('id', uniqueId); // Assegna l'ID al div
+        videosContainer.appendChild(itemContainer); // Aggiungi il div al div dei video
         return uniqueId;
     }
 
