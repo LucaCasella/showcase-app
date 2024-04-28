@@ -19,9 +19,6 @@
             <textarea class="form-control" id="comment" name="comment"></textarea>
             <label for="comment">@lang('home.leave-comment')</label>
         </div>
-        {{--        <div class="block my-2">--}}
-{{--            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>--}}
-{{--        </div>--}}
         <div class="mb-2">
             <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" required>
             <label for="privacycheck">@lang('home.privacy-check')</label>
@@ -30,24 +27,15 @@
             <div class="block mt-4">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
             </div>
-{{--        <div class="g-recaptcha" data-sitekey={{env('GOOGLE_RECAPTCHA_SITE_KEY')}}></div>--}}
         <div class="button-and-socials">
             <button id="contact-submit" type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
             <div class="socials">
-{{--                <a href="https://www.facebook.com/ayriika/" target="_blank">--}}
-{{--                    <img src="{{asset('assets/facebook.jpg')}}" alt="">--}}
-{{--                </a>--}}
                 <a href="https://www.instagram.com/anastasiakabakova_fotografa/" target="_blank">
                     <img src="{{asset('assets/instagram.jpg')}}" alt="">
                 </a>
             </div>
         </div>
     </form>
-
-    <div>
-        modena forli imola bologna
-    </div>
-
     <div id="privacy-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
