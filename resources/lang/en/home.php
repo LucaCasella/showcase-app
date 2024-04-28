@@ -6,28 +6,42 @@ return [
     'photos' => 'Photos',
     'videos' => 'Videos',
     'contacts' => 'Contacts',
-    'presentation' => 'My name is Anastasia Kabakova, after years of working in the photography industry together with my partner Matteo we decide to open our own studio .
+    'presentation' => strtoupper('My name is Anastasia Kabakova, after years of working in the photography industry together with my partner Matteo we decide to open our own studio .
                         To date we count on a team of photographers and videomakers, formed by the best collaborators with whom we had the pleasure to work .
                         Innovation, research and development are the basis of our working method.
                         Our fleets of cameras never reach three years of age, for us it is essential to stay up to date in terms of photographic quality, video and equipment.
                         With us you begin a journey, where each package is tailor-made for the client, attention and care to the demands and needs of the client are firm heads of our way of working.
-                        <br>We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI.</strong>',
+                        <br>We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI.</strong>'),
     'photos-title' => 'PHOTOS',
-    'photos-description' => 'Study and passion for this work have led us to make high level photographs.<br>
+    'photos-description' => strtoupper('Study and passion for this work have led us to make high level photographs.<br>
                                 It is essential for us to understand with the client the type of product they want to achieve by customizing our style for each type of event.<br>
                                 Each of our shots is returned to the best possible quality on the market.<br>
-                                Each first camera shoots with two cameras to save time on changing lenses thus getting more shots.',
+                                Each first camera shoots with two cameras to save time on changing lenses thus getting more shots.'),
     'videos-title' => 'VIDEOS',
-    'videos-description' => 'Each of our videos is designed to convey unique emotions.<br>
+    'videos-description' => strtoupper('Each of our videos is designed to convey unique emotions.<br>
                                 Our cameras allow us to shoot in 4k up to 120fps.<br>
                                 Thanks to the 10-bit 4:2:2 format we can provide a unique color palette that can be customized in post production according to the guidelines of the project we are doing.<br>
                                 To have excellent audio quality we are equipped with both wireless and environmental microphones .<br>
                                 Training and state-of-the-art technical components enable us to meet all our clients needs.<br>
-                                Our strong point is the use of drone that allows us to shoot breathtaking areas.',
+                                Our strong point is the use of drone that allows us to shoot breathtaking areas.'),
     'goto-prices' => 'PRICES',
     'goto-albums' => 'PHOTOS',
     'goto-videos' => 'VIDEOS',
     'services' => 'Learn about other services',
+    'premarital' => 'PRE/POST MARITAL',
+    'polaroid' => 'POLAROID',
+    'video-projection' => 'VIDEO PROJECTION',
+    'wedding-planner' => 'WEDDING PLANNER',
+    'premarital-desc' => strtoupper('The pre/post wedding service is a couple\'s photo/video service that can be carried out either before or after the wedding.
+                            The pre-wedding service is carried out before the wedding and allows you to get in tune with the lenses and photographers.
+                            The post-wedding is carried out after the wedding, allowing the wedding dresses to be reused and the emotions of the wedding to be received.
+                            Our services are not characterised by static poses but we create dynamic and fun situations that put everyone at ease.'),
+    'polaroid-desc' => strtoupper('The polaroid service is an instant photo printing service, the photos can be hung in exciting places in the venue or given to guests.
+                        This service allows you to break up static moments of the event and entertains both guests and bride and groom, and with the photos you can create a personalised and unique album of memories.'),
+    'video-projection-desc' => strtoupper('The video projection service allows a summary video of the wedding day to be projected during the wedding.
+                                Magical and entertaining moments can be relived beforehand.'),
+    'wedding-planner-desc' => strtoupper('The studio offers a wedding planning and organisation service taking into account the budget and costs of suppliers.
+                                In addition, on the day of the event a professional will ensure that all the planning agreed with the bride and groom is followed.'),
     'discover-prices' => 'DISCOVER OUR PRICES',
     'full-name' => 'Full name',
     'email-address' => 'Email address',
