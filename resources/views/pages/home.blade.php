@@ -65,4 +65,5 @@
     <x-reviews/>
     <x-link-matrimonio-site/>
     <x-contact-form/>
+    <x-google-maps-iframe/>
 @endsection
