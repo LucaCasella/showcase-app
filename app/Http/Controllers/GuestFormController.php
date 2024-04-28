@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactRequest;
 use App\Mail\ContactMail;
 use App\Mail\Notification;
 use App\Models\Contact;
 use App\Rules\ReCaptchaEnterpriseRule;
-use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -41,35 +38,6 @@ class GuestFormController extends Controller
 
         return redirect('/');
     }
-
-//    public function show($contact_id)
-//    {
-//        $contact = Contact::findOrFail($contact_id);
-//
-//        return view('backoffice.contacts.show')->with(['contact' => $contact]);
-//    }
-
-//    public function setReplied($contact_id)
-//    {
-//        $contact = Contact::findOrFail($contact_id);
-//
-//        $contact->replied = !$contact->replied;
-//
-//        $contact->save();
-//
-//        return redirect()->route('backoffice')->with('success', 'Contact updated successfully');
-//    }
-//
-//    public function setVisibility($contact_id)
-//    {
-//        $contact = Contact::findOrFail($contact_id);
-//
-//        $contact->visible = !$contact->visible;
-//
-//        $contact->save();
-//
-//        return redirect()->route('backoffice')->with('success', 'Contact updated successfully');
-//    }
 
     public function destroy($contact_id)
     {
