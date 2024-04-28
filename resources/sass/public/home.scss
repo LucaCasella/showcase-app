@@ -1,6 +1,6 @@
 body {
     font-weight: 200;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 h1 {
@@ -47,9 +47,17 @@ h1 {
     gap: 10px;
 }
 
+.link-container a {
+    flex: 1;
+    text-align: center;
+}
+
 .link-black, .link-white {
+    display: flex;
+    justify-content: center;
     flex-grow: 1;
     min-width: 0;
+    border-radius: 10px;
 }
 
 .link-black {
@@ -78,25 +86,6 @@ h1 {
 .link-white:hover {
     background-color: lightgrey;
     color: white;
-}
-
-.other-services {
-    text-align: center;
-}
-
-.services-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.service-title {
-    text-align: center;
-}
-
-.services-container img {
-    width: 200px;
-    margin: 10px;
 }
 
 .link-wedding-site-container{

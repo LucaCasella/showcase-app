@@ -2,31 +2,19 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 .video-wrapper {
-    width: 100%;
-    margin-bottom: 20px;
-    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 56.25%; /* Imposta l'aspect ratio a 16:9 */
+    height: 0;
+    overflow: hidden;
 }
 
-.video {
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: auto;
-}
-
-
-@media screen and (max-width: 768px) {
-    .video-wrapper {
-        width: calc(50% - 20px);
-    }
-}
-
-
-@media screen and (max-width: 480px) {
-    .video-wrapper {
-        width: 100%;
-    }
 }
