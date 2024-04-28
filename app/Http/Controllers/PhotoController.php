@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class PhotoController extends Controller
 {
-//    public function index($album_id)
-//    {
-//
-//    }
-
     public function create($album_id)
     {
         // Retrieve the album
