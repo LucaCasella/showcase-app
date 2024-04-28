@@ -18,23 +18,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0.5rem;
 }
 
 .adm-video-title {
     margin: 0.5rem;
 }
 
-.adm-video-wrapper {
-    position: relative;
-    padding-top: 56.25%;
-    overflow: hidden;
+.adm-video-form {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.adm-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.adm-video-form a,
+.adm-video-form button {
+    margin: 0.2rem;
 }

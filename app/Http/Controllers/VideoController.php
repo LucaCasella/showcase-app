@@ -60,7 +60,7 @@ class VideoController extends Controller
 
         // Update title
         $video->title = $request->title;
-        $yt_video_id = $request->title;
+        $video->yt_video_id = $request->yt_video_id;
         $video->updated_at = now();
 
         // Save updates

@@ -39,8 +39,12 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="mb-2">
-                                        <label for="title"><strong>Edit Video Title</strong></label><br>
-                                        <input id="title" type="text" name="title" value="{{$video->title}}" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="title">
+                                        <label for="title"><strong>Edit YouTube Video Title</strong></label><br>
+                                        <input id="title" type="text" name="title" value="{{$video->title}}" class="peer h-full w-full border-b border-blue-gray rounded-[7px]">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="yt_video_id"><strong>Edit YouTube Video ID</strong></label><br>
+                                        <input id="yt_video_id" type="text" name="yt_video_id" value="{{$video->yt_video_id}}" class="peer h-full w-full border-b border-blue-gray rounded-[7px]">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
