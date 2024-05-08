@@ -1,7 +1,7 @@
 @extends('public')
 
 @section('content')
-    <div class="container">
+    <div class="container mb-5">
         <div class="home-container row row-cols-lg-2 row-cols-1">
             <div class="image-wrapper col">
                 <img class="image" src="{{asset('assets/AK.jpg')}}" alt="presentation">
