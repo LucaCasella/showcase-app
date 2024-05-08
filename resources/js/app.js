@@ -2,9 +2,9 @@ import './bootstrap';
 
 import Alpine from 'alpinejs';
 
+import '../sass/public.scss';
+import '../sass/backoffice.scss';
 import '../css/app.scss';
-import '../sass/main-backoffice.scss'
-import '../sass/main-public.scss';
 
 window.Alpine = Alpine;
 

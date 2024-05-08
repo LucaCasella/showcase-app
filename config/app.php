@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Fotografa Matrimoni e Eventi Anastasia Kabakova'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'it',
+    'locale' => 'en',
 
     'locales' => [
         'English' => 'en',
