@@ -25,7 +25,7 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: Create .env file
         run: |
-          echo APP_URL=www.anastasiakabakova.com >> .env
+          echo APP_URL=https://www.anastasiakabakova.com >> .env
           echo DB_CONNECTION=mysql >> .env
           echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           echo DB_PORT=${{ secrets.DB_PORT }} >> .env
@@ -33,6 +33,20 @@ jobs:
           echo DB_USERNAME=${{ secrets.DB_USER }} >> .env
           echo DB_PASSWORD=${{ secrets.DB_PASS }} >> .env
           echo APP_KEY=base64:mnCgLVk3fd20KHdbcBF55ODZ/GvyvMdI2dg6IsYfXAE= >> .env
+          echo GOOGLE_RECAPTCHA_API_KEY=${{ secrets.GOOGLE_RECAPTCHA_API_KEY }} >> .env
+          echo GOOGLE_RECAPTCHA_PROJECT_ID=${{ secrets.GOOGLE_RECAPTCHA_PROJECT_ID }} >> .env
+          echo GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }} >> .env
+          echo INSTAGRAM_ACCES_TOKEN=${{ secrets.INSTAGRAM_ACCES_TOKEN }} >> .env
+          echo MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }} >> .env
+          echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
+          echo MAIL_USERNAME=${{ secrets.MAIL_USERNAME }} >> .env
+          echo MAIL_MAILER=smtp >> .env
+          echo MAIL_HOST=smtps.aruba.it >> .env
+          echo MAIL_PORT=465 >> .env
+          echo MAIL_ENCRYPTION=ssl >> .env
+          echo APP_NAME="Fotografa Matrimoni e Eventi Anastasia Kabakova" >> .env
+          echo MAIL_FROM_NAME="${APP_NAME}" >> .env
+
 
       - name: Clear Cache and other Laravel commands
         run: |
