@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\GuestFormController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\LogsController;
+use App\Http\Controllers\VideoController;
+use App\Models\Album;
+use App\Models\Contact;
+use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,49 +23,79 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// PUBLIC ROUTES
+
 Route::get('/', function () {
-    return view('app');
+    return view('pages.home');
 });
 
-Route::get('/weddings', function () {
-    return view('weddings');
-});
+Route::get('/photos', function () {
+    $albums = Album::where('visible', '=', 1)->get();
+    return view('pages.photos', ['albums' => $albums]);
+})->name('photos');
 
-Route::get('/sessions', function () {
-    return view('sessions');
-});
+Route::get('/photos/{id}', function ($album_id) {
+    $album = Album::with('photo')->findOrFail($album_id);
+    $photos = $album->photo;
+    return view('pages.photos-show')->with(['album' => $album, 'photos' => $photos]);
+})->name('photos-show');
 
-Route::get('/reportage', function () {
-    return view('reportage');
-});
+Route::get('/videos', function () {
+    $videos = Video::where('visible', '=', 1)->get();
+    return view('pages.videos', ['videos' => $videos]);
+})->name('videos');
 
-Route::get('/contacts', function () {
-    return view('contacts');
-});
-
+Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
 
 
-//Admin Routes
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// ADMIN ROUTES
+
+Route::get('/admin-login', function () {
+    return view('welcome');
+})->name('login-admin');
+
+Route::get('/backoffice', function () {
+    $contacts = Contact::where('privacy_accepted', '=', 1)
+        ->where('visible', '=', 1)
+        ->orderBy('created_at', 'asc')->get();
+    return view('backoffice.dashboard', ['contacts' => $contacts]);
+})->middleware(['auth', 'verified'])->name('backoffice');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/adm-gallery', [AlbumController::class, 'index'])->name('index-album');
+    Route::get('/adm-gallery/create', [AlbumController::class, 'create'])->name('create-album');
+    Route::post('/adm-gallery/store', [AlbumController::class, 'store'])->name('store-album');
+    Route::get('/adm-gallery/show/{album_id}', [AlbumController::class, 'show'])->name('show-album');
+    Route::get('/adm-gallery/edit/{album_id}', [AlbumController::class, 'edit'])->name('edit-album');
+    Route::put('/adm-gallery/update/{album_id}', [AlbumController::class, 'update'])->name('update-album');
+    Route::delete('/adm-gallery/destroy/{album_id}', [AlbumController::class, 'destroy'])->name('destroy-album');
+
+    Route::get('/adm-gallery/{album_id}/photo/create', [PhotoController::class, 'create'])->name('create-photo');
+    Route::post('/adm-gallery/{album_id}/photo/store', [PhotoController::class, 'store'])->name('store-photo');
+
+    Route::get('/adm-videos', [VideoController::class, 'index'])->name('index-video');
+    Route::get('/adm-videos/create', [VideoController::class, 'create'])->name('create-video');
+    Route::post('/adm-videos/store', [VideoController::class, 'store'])->name('store-video');
+    Route::get('/adm-videos/edit/{video_id}', [VideoController::class, 'edit'])->name('edit-video');
+    Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
+    Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
+
+    Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
+
+//    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info');
 });
+
+Route::get('/logs', [LogController::class, 'showLogs']);
 
 require __DIR__.'/auth.php';
 
 
 
-//Localization Routes
+// LOCALIZATION ROUTES
 
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
-
-
-Route::get('/logs', [LogsController::class, 'showLogs']);
-
-

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/videolist', function () {
+    return Video::all()->pluck('yt_video_id')->toJson();
 });

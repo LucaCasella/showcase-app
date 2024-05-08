@@ -1,0 +1,24 @@
+.adm-photos-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.adm-photo-item {
+    position: relative;
+}
+
+.adm-photo-item::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.adm-photo-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

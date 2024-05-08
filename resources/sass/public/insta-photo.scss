@@ -1,0 +1,34 @@
+#ig-photo-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.instagram-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+}
+
+#ig-photo-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    #ig-photo-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #ig-photo-container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 5px;
+    }
+}

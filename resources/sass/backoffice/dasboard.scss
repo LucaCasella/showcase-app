@@ -1,0 +1,24 @@
+.contacted-by, .replied-to {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.request-title, .replies-title {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 2px solid grey;
+    border-radius: 5px;
+    margin: 0.3rem;
+}
+
+.contact-line {
+    display:flex;
+    justify-content: space-around;
+}
