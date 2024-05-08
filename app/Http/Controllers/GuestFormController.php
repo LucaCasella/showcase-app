@@ -32,7 +32,7 @@ class GuestFormController extends Controller
             'privacy_accepted' => 1
         ])->save;
 
-        Mail::to('mailtrap.club@gmail.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
+        Mail::to('rasoamanuel1@gmail.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
 
         Mail::to($request->input('email'))->send(new ContactMail($request->name));
 
