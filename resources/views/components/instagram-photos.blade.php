@@ -20,7 +20,7 @@
 
             // Cicla su ogni album e aggiorna gli elementi HTML corrispondenti
             latestAlbums.forEach(function(album, index) {
-                fetch('https://graph.instagram.com/' + album.id + '/children?fields=id,media_url,permalink&access_token={{env('INSTAGRAM_ACCESS_TOKEN')}}')
+                fetch('https://graph.instagram.com/' + album.id + '/children?fields=id,media_url,permalink&access_token=IGQWRNcEV5T1pINzBCRlNyLWtQLUdFUkg0SnZAtcWJqWU1JUjR2d011aGxYbjF3X2FXblo3dzZAOZAG5pM1VTR1lIT2xjWXZAhdWJ1XzZAHdXJiRnJ6R0lYX2FZASUhWbm52UmdIelNqSEpKUzJ5c3RSZAHNqNnlTOUt5NXcZD')
                     .then(function(response) {
                         if (!response.ok) {
                             throw new Error('Errore nella richiesta: ' + response.status);
