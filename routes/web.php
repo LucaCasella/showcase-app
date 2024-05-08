@@ -85,9 +85,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
 
-//    Route::get('/backoffice/{contact_id}', [GuestFormController::class, 'show'])->name('show-contact');
-//    Route::put('/backoffice/{contact_id}', [GuestFormController::class, 'setReplied'])->name('replied-contact');
-//    Route::put('/backoffice/{contact_id}', [GuestFormController::class, 'setVisibility'])->name('hide-contact');
     Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 });
 
