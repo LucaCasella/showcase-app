@@ -36,7 +36,7 @@
     // Funzione di inizializzazione
     function init() {
         // Recupera gli ID dei video dal tuo endpoint sul server
-        fetch('{{env('APP_URL')}}/api/videolist')
+        fetch('https://www.anastasiakabakova.com/api/videolist')
             .then(response => response.json())
             .then(videoIds => {
                 // Itera su ciascun ID e carica il video corrispondente
