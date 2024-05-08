@@ -25,7 +25,7 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
       - name: Create .env file
         run: |
-          echo APP_NAME=fotografa >> .env
+          echo APP_NAME=Fotografa >> .env
           echo APP_ENV=production >> .env
           echo APP_KEY=base64:mnCgLVk3fd20KHdbcBF55ODZ/GvyvMdI2dg6IsYfXAE= >> .env
           echo APP_DEBUG=false >> .env
@@ -43,7 +43,7 @@ jobs:
           echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
           echo MAIL_ENCRYPTION=ssl >> .env
           echo MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }} >> .env
-          echo MAIL_FROM_NAME=Fotografa Matrimoni e Eventi Anastasia Kabakova >> .env
+          echo MAIL_FROM_NAME=Fotografa >> .env
           echo GOOGLE_RECAPTCHA_API_KEY=${{ secrets.GOOGLE_RECAPTCHA_API_KEY }} >> .env
           echo GOOGLE_RECAPTCHA_PROJECT_ID=${{ secrets.GOOGLE_RECAPTCHA_PROJECT_ID }} >> .env
           echo GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }} >> .env
