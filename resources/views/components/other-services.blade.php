@@ -5,7 +5,7 @@
     <div class="services-container">
         <div class="service-container">
             <div class="image-container">
-                <img src="immagine1.jpg" alt=@lang('home.premarital')>
+                <img src="{{asset('assets/premarital.jpg')}}" alt=@lang('home.premarital')>
             </div>
             <div class="service-text">
                 <h4 class="service-title">@lang('home.premarital')</h4>
@@ -27,7 +27,7 @@
         </div>
         <div class="service-container">
             <div class="image-container">
-                <img src="immagine3.jpg" alt=@lang('home.video-projection')>
+                <img src="{{asset('assets/video-projection.jpg')}}" alt=@lang('home.video-projection')>
             </div>
             <div class="service-text">
                 <h4 class="service-title">@lang('home.video-projection')</h4>
@@ -38,7 +38,7 @@
         </div>
         <div class="service-container">
             <div class="image-container">
-                <img src="immagine4.jpg" alt=@lang('home.wedding-planner')>
+                <img src="{{asset('assets/wedding-planner.jpg')}}" alt=@lang('home.wedding-planner')>
             </div>
             <div class="service-text">
                 <h4 class="service-title">@lang('home.wedding-planner')</h4>
