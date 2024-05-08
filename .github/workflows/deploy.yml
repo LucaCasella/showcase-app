@@ -55,6 +55,7 @@ jobs:
               php artisan config:clear || true
               php artisan route:clear || true
               php artisan storage:link || true
+              php artisan migrate
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
