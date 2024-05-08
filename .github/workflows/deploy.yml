@@ -45,7 +45,7 @@ jobs:
           echo MAIL_PORT=465 >> .env
           echo MAIL_ENCRYPTION=ssl >> .env
           echo APP_NAME="Fotografa Matrimoni e Eventi Anastasia Kabakova" >> .env
-          echo MAIL_FROM_NAME="${APP_NAME}" >> .env
+          echo MAIL_FROM_NAME="Fotografa Matrimoni e Eventi Anastasia Kabakova" >> .env
 
 
       - name: Clear Cache and other Laravel commands
