@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'admin1' => 'Italiano',
     'text1' => 'Grazie ',
     'text2' => ' per averci contattato!',
     'text3' => 'Non appena possibile ci metteremo in contatto con te per rispondere alle tue esigenze.',

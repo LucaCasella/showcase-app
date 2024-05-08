@@ -6,6 +6,8 @@
         <li>{{$phone}}</li>
         <li>{{$comment}}</li>
     </ul>
+
+    <div>Utente: @lang('contact-email.admin1')</div>
 </div>
 
 
