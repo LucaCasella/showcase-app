@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('index-video')" :active="request()->routeIs('index-video')" class="tab">
                         {{ __('Videos') }}
                     </x-nav-link>
+{{--                    <x-nav-link :href="route('adm-info')" :active="request()->routeIs('adm-info')" class="tab">--}}
+{{--                        {{ __('My Info') }}--}}
+{{--                    </x-nav-link>--}}
                 </div>
             </div>
 

@@ -86,6 +86,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
 
     Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
+
+//    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info');
 });
 
 Route::get('/logs', [LogController::class, 'showLogs']);
