@@ -90,4 +90,5 @@ return [
     'residence' => 'Residenza:',
     'vat' => 'Partita IVA:',
     'contact-me' => 'Contattami',
+    'ciao' => 'ciao'
 ];
