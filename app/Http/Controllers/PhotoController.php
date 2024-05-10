@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\StorageLinkEvent;
 use App\Models\Album;
 use App\Models\Photo;
 use Illuminate\Http\Request;
@@ -51,6 +52,7 @@ class PhotoController extends Controller
                 $photo->name = $fileNameToStore;
                 $photo->photo = $fileNameToStore;
                 $photo->save();
+                event(new StorageLinkEvent());
             }
         }
 
