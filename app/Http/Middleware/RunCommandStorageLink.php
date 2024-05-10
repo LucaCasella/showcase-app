@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
 
 class RunCommandStorageLink
 {
@@ -21,11 +22,15 @@ class RunCommandStorageLink
     {
         try {
 
+            Log::info("Running command storage");
             Artisan::call('storage:link', ['--force' => true]);
+            Log::info("Running command storage successfully");
 
         } catch (QueryException $e) {
+            Log::info("Running command storage worng");
 
             throw new \Exception("Errore storage: " . $e->getMessage());
+
         }
 
         return $next($request);
