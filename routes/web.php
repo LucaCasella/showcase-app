@@ -92,6 +92,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/logs', [LogController::class, 'showLogs']);
 
+Route::get('/storage', function (){})->middleware('run-storage');
+
 require __DIR__.'/auth.php';
 
 
