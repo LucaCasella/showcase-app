@@ -11,6 +11,8 @@
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+    RewriteRule ^storage/(.*)$ storage/app/public/$1 [L]
+
     # Send Requests To Front Controller Without "public" in URL
     RewriteCond %{REQUEST_URI} !^/public/
     RewriteRule ^(.*)$ public/$1 [L]
