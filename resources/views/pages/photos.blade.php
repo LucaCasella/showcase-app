@@ -7,7 +7,7 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden sm:rounded-lg">
                     <div class="cover-container">
                         <a href="{{route('photos-show', [$album->id])}}">
-                            <img class="album-cover" src="storage/album_covers/{{$album->cover}}" alt="{{$album->title}}">
+                            <img class="album-cover" src="{{ asset('album_covers/'.$album->cover) }}" alt="{{$album->title}}">
                             <div class="album-title-container hidden">
                                 <h4 class="album-title hidden">{{$album->location}}</h4>
                             </div>

@@ -43,7 +43,8 @@ class AlbumController extends Controller
         $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
         // Upload image
-        $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
+        $request->file('cover')->move(public_path('album_covers'), $fileNameToStore);
+        //$path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
 
         // Create album
         $album = new Album;
@@ -79,37 +80,40 @@ class AlbumController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
-            'cover' => 'required|image'
+            'cover' => 'image'
         ]);
 
         // Retrieve selected album
         $album = Album::findOrFail($album_id);
 
-        // Update title
+        // Update title and location
         $album->title = $request->title;
         $album->location = $request->location;
 
-        // Delete previous cover
-        Storage::delete('public/album_covers/'.$album->cover);
+        if ($request->hasFile('cover')) {
+            // Delete previous cover
+            if ($album->cover) {
+                Storage::delete('album_covers/'.$album->cover);
+            }
 
-        // Get filename with extension
-        $fileNameWithExt = $request->file('cover')->getClientOriginalName();
+            // Get filename with extension
+            $fileNameWithExt = $request->file('cover')->getClientOriginalName();
 
-        // Get just the filename
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just the filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
-        // Get extension
-        $extension = $request->file('cover')->getClientOriginalExtension();
+            // Get extension
+            $extension = $request->file('cover')->getClientOriginalExtension();
 
-        // Create new filename
-        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            // Create new filename
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
-        // Upload image
-        $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
+            // Upload image to public/album_covers
+            $request->file('cover')->move(public_path('album_covers'), $fileNameToStore);
 
-        // Update cover
-        $album->cover = $fileNameToStore;
-        $album->updated_at = now();
+            // Update cover
+            $album->cover = $fileNameToStore;
+        }
 
         // Save updates
         $album->save();
@@ -124,12 +128,14 @@ class AlbumController extends Controller
         $album = Album::findOrFail($album_id);
 
         // Delete the album and related cover
-        if (Storage::delete('public/album_covers/'.$album->cover)){
-            $album->delete();
+        if ($album->cover) {
+            Storage::delete('album_covers/'.$album->cover);
         }
 
+        $album->delete();
+
         // Delete photos related to the album deleted
-        Storage::deleteDirectory('public/photos/'.$album->id);
+        Storage::deleteDirectory('photos/'.$album->id);
 
         // Redirect the user and display success message
         return redirect()->route('index-album')->with('success', 'Album deleted successfully');

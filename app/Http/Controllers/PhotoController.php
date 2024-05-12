@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\StorageLinkEvent;
 use App\Models\Album;
 use App\Models\Photo;
 use Illuminate\Http\Request;
@@ -21,13 +20,15 @@ class PhotoController extends Controller
     }
 
     public function store(Request $request, $album_id)
-    {;
+    {
         // Validate the input
         $request->validate([
             'photos.*' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
+
         if ($request->hasFile('photos')) {
+
 
             $photos = $request->file('photos');
 
@@ -45,14 +46,15 @@ class PhotoController extends Controller
                 // Create new filename
                 $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-                $path = $uploadedPhoto->storeAs('public/photos/'.$album_id, $fileNameToStore);
+                //$path = $uploadedPhoto->storeAs('public/photos/'.$album_id, $fileNameToStore);
+                //$uploadedPhoto->file('photos')->move(public_path('photos/'.$album_id), $fileNameToStore);
+                $uploadedPhoto->move(public_path('album/photos/'.$album_id), $fileNameToStore);
 
                 $photo = new Photo();
                 $photo->album_id = $album_id;
                 $photo->name = $fileNameToStore;
                 $photo->photo = $fileNameToStore;
                 $photo->save();
-                event(new StorageLinkEvent());
             }
         }
 

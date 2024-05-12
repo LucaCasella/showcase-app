@@ -16,10 +16,10 @@
 
                     @foreach ($photos as $photo)
                         <div class="photo-item">
-                            <a href="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}" data-lightbox="gallery">
-                                <img class="photo" src="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}"
+                            <a href="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" data-lightbox="gallery">
+                                <img class="photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}"
                                      alt="{{$photo}}"
-                                     data-fullimage="{{asset('storage/photos/'.$album->id.'/'.$photo->name)}}">
+                                     data-fullimage="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}">
                             </a>
                         </div>
                     @endforeach
