@@ -27,6 +27,7 @@ return [
     'goto-prices' => 'PREZZI',
     'goto-albums' => 'FOTO',
     'goto-videos' => 'VIDEO',
+    'instagram' => 'Scoprici anche su Instagram',
     'services' => 'Scopri gli altri servizi',
     'premarital' => 'PRE/POST MATRIMONIALE',
     'polaroid' => 'POLAROID',

@@ -27,6 +27,7 @@ return [
     'goto-prices' => 'PRICES',
     'goto-albums' => 'PHOTOS',
     'goto-videos' => 'VIDEOS',
+    'instagram' => 'Discover us on Instagram',
     'services' => 'Learn about other services',
     'premarital' => 'PRE/POST MARITAL',
     'polaroid' => 'POLAROID',
