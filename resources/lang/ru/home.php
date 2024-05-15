@@ -27,6 +27,7 @@ return [
     'goto-prices' => 'Узнать цены',
     'goto-albums' => 'Фотокнига',
     'goto-videos' => 'Узнать больше',
+    'instagram' => 'Узнайте о нас также в Instagram',
     'services' => 'Откройте для себя мои услуги',
     'premarital' => 'ДО/ПОСЛЕ БРАКА',
     'polaroid' => 'POLAROID',

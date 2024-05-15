@@ -1,6 +1,6 @@
 <div>
     <div>
-        <h2>Scoprimi anche su Instagram</h2>
+        <h2>@lang('home.instagram')</h2>
     </div>
     <div id="ig-photo-container" class="my-2">
     </div>
