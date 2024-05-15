@@ -2,10 +2,7 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Service\InstagramAPI\Facades\InstagramAPIFacades;
-use Service\InstagramAPI\InstagramAPI;
 use Tests\TestCase;
 
 class InstagramAPITest extends TestCase
@@ -17,8 +14,8 @@ class InstagramAPITest extends TestCase
      */
     public function test_instagramAPI()
     {
-        $response = InstagramAPIFacades::getInstagramPhoto();
+        $response = InstagramAPIFacades::getInstagramPhotos();
 
-        dd($response);
+        $this->assertNotNull($response);
     }
 }
