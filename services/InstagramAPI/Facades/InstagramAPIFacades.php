@@ -7,7 +7,7 @@ use Service\InstagramAPI\InstagramAPIContract;
 use Psr\Http\Message\StreamInterface;
 
 /**
- * @method static getInstagramPhoto() :void;
+ * @method static getInstagramPhotos() :void;
  */
 
 class InstagramAPIFacades extends Facade

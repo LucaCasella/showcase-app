@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Service\InstagramAPI\Facades\InstagramAPIFacades;
 
 class InstagramPhotos extends Component
 {
@@ -23,6 +24,7 @@ class InstagramPhotos extends Component
      */
     public function render()
     {
-        return view('components.instagram-photos');
+        $photos = InstagramAPIFacades::getInstagramPhotos();
+        return view('components.instagram-photos', ['photos' => $photos]);
     }
 }
