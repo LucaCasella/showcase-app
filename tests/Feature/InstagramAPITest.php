@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use Service\InstagramAPI\Facades\InstagramAPIFacades;
-use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
 use Tests\TestCase;
 
 class InstagramAPITest extends TestCase
