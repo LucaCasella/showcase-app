@@ -205,7 +205,7 @@ return [
          * Custom Services
          */
         \Service\InstagramAPI\InstagramAPIServiceProvider::class,
-
+        \Service\PlaceReviewsAPI\PlaceReviewsAPIServiceProvider::class,
     ],
 
     /*

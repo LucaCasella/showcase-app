@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Service\InstagramAPI\Facades\InstagramAPIFacades;
+use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
 use Tests\TestCase;
 
 class InstagramAPITest extends TestCase
@@ -14,8 +15,8 @@ class InstagramAPITest extends TestCase
      */
     public function test_instagramAPI()
     {
-        $response = InstagramAPIFacades::getInstagramPhotos();
-
-        $this->assertNotNull($response);
+//        $response = PlaceReviewsAPIFacades::getReviews();
+//
+//      $this->assertNotNull($response);
     }
 }

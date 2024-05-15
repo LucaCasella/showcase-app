@@ -24,7 +24,7 @@ class InstagramPhotos extends Component
      */
     public function render()
     {
-        $photos = InstagramAPIFacades::getInstagramPhotos();
-        return view('components.instagram-photos', ['photos' => $photos]);
+//        $photos = InstagramAPIFacades::getInstagramPhotos();
+//        return view('components.instagram-photos', ['photos' => $photos]);
     }
 }
