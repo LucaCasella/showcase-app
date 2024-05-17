@@ -48,6 +48,7 @@ jobs:
           echo GOOGLE_RECAPTCHA_PROJECT_ID=${{ secrets.GOOGLE_RECAPTCHA_PROJECT_ID }} >> .env
           echo GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }} >> .env
           echo INSTAGRAM_ACCES_TOKEN=${{ secrets.INSTAGRAM_ACCES_TOKEN }} >> .env
+          echo PLACE_API_KEY=${{ secrets.PLACE_API_KEY }} >> .env
       - name: Clear Cache and other Laravel commands
         run: |
               php artisan view:clear || true
