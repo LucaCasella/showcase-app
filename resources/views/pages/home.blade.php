@@ -62,7 +62,7 @@
     </div>
     <x-other-services/>
     <x-instagram-photos/>
-{{--    <x-reviews/>--}}
+    <x-reviews/>
     <x-link-matrimonio-site/>
     <x-contact-form/>
     <x-google-maps-iframe/>

@@ -27,6 +27,7 @@ return [
     'goto-prices' => 'PRICES',
     'goto-albums' => 'PHOTOS',
     'goto-videos' => 'VIDEOS',
+    'instagram' => 'Discover us on Instagram',
     'services' => 'Learn about other services',
     'premarital' => 'PRE/POST MARITAL',
     'polaroid' => 'POLAROID',
@@ -42,6 +43,7 @@ return [
                                 Magical and entertaining moments can be relived beforehand.',
     'wedding-planner-desc' => 'The studio offers a wedding planning and organisation service taking into account the budget and costs of suppliers.
                                 In addition, on the day of the event a professional will ensure that all the planning agreed with the bride and groom is followed.',
+    'what-they-tell' => 'What they say about us',
     'discover-prices' => 'DISCOVER OUR PRICES',
     'full-name' => 'Full name',
     'email-address' => 'Email address',
