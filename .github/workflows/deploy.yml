@@ -74,4 +74,5 @@ jobs:
           server-dir: /www.anastasiakabakova.com/
           exclude: |
             .git*
+            node_modules/**
 
