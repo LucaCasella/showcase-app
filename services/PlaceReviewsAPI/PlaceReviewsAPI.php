@@ -3,12 +3,12 @@
 namespace Service\PlaceReviewsAPI;
 
 use App\Dtos\ReviewDto;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class PlaceReviewsAPI implements PlaceReviewsAPIContract
 {
-    public function getReviews()
+
+    public function getReviews(): \Exception|array|string
     {
         try {
             $response = Http::get('https://maps.googleapis.com/maps/api/place/details/json?
