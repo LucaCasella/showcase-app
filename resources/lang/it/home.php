@@ -43,6 +43,7 @@ return [
                                 Potranno essere rivissuti momenti magici e divertenti antecedenti.',
     'wedding-planner-desc' => 'Lo studio offre un servizio di pianificazione e organizzazione matrimoniale tenendo conto del budget e dei costi annessi ai fornitori.
                                 Inoltre il giorno dell\' evento un professionista si assicurerà che venga seguita tutta la programmazione concordata con gli sposi.',
+    'what-they-tell' => 'Cosa dicono di noi',
     'discover-prices' => 'SCOPRI I NOSTRI PREZZI',
     'full-name' => 'Nome completo',
     'email-address' => 'Indirizzo e-mail',
@@ -91,5 +92,4 @@ return [
     'residence' => 'Residenza:',
     'vat' => 'Partita IVA:',
     'contact-me' => 'Contattami',
-    'ciao' => 'ciao'
 ];

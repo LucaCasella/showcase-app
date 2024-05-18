@@ -1,3 +1,6 @@
+<div class="review-title">
+    <h2>@lang('home.what-they-tell')</h2>
+</div>
 <div id="reviewsCarousel" class="carousel slide" data-bs-interval="3000" data-bs-ride="carousel">
     <div class="carousel-inner">
         @foreach ($reviews as $index => $review)
@@ -29,6 +32,9 @@
     </button>
 </div>
 <style>
+    .review-title{
+     text-transform: uppercase;
+    }
     .card-review {
         padding: 20px;
         background-color: #f8f9fa;
