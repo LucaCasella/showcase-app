@@ -7,7 +7,7 @@
     <div style="display: flex; flex-direction: column; align-items: center">
         <div style="color: #666; font-size: 16px; line-height: 1.6;">@lang('contact-email.text5')</div>
         <a href="https://www.instagram.com/anastasiakabakova_fotografa/" target="_blank" style="display: inline-block; color: #fff; text-decoration: none; border-radius: 5px;">
-            <img src="{{asset('assets/instagram.jpg')}}" alt="" style="width: 50px; height: 50px">
+            <img src="{{asset('assets/instagram-logo.png')}}" alt="" style="width: 50px; height: 50px">
         </a>
     </div>
 

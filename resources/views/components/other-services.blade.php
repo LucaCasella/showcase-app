@@ -1,5 +1,5 @@
-<div class="other-services my-5">
-    <div>
+<div class="other-services mb-5">
+    <div class="mb-3">
         <h2>@lang('home.services')</h2>
     </div>
     <div class="services-container">

@@ -1,5 +1,5 @@
-<div id="contacts" class="contacts">
-    <h2>@lang('home.discover-prices')</h2>
+<div id="contacts" class="contacts mb-5">
+    <h2 class="mb-3">@lang('home.discover-prices')</h2>
     <form action="{{ route('guest-form') }}" method="post">
         @csrf
         <div class="mb-2">
@@ -27,13 +27,8 @@
             <div class="block mt-4">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
             </div>
-        <div class="button-and-socials">
-            <button id="contact-submit" type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
-            <div class="socials">
-                <a href="https://www.instagram.com/anastasiakabakova_fotografa/" target="_blank">
-                    <img src="{{asset('assets/instagram.jpg')}}" alt="">
-                </a>
-            </div>
+        <div class="submit-container">
+            <button id="contact-submit" type="submit" class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
         </div>
     </form>
     <div id="privacy-modal" class="modal">

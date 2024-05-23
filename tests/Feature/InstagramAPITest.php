@@ -14,8 +14,14 @@ class InstagramAPITest extends TestCase
      */
     public function test_instagramAPI()
     {
-//        $response = PlaceReviewsAPIFacades::getReviews();
+//        $response = InstagramAPIFacades::getInstagramPhotos();
 //
-//      $this->assertNotNull($response);
+//        $this->assertNotNull($response);
+    }
+    public function test_instagramAPIUserID()
+    {
+//        $response = InstagramAPIFacades::getUserID();
+//
+//        $this->assertNotNull($response);
     }
 }

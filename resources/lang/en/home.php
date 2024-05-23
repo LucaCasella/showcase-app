@@ -6,12 +6,13 @@ return [
     'photos' => 'Photos',
     'videos' => 'Videos',
     'contacts' => 'Contacts',
+    'AK' => 'ANASTASIA KABAKOVA',
     'presentation' => 'My name is Anastasia Kabakova, after years of working in the photography industry together with my partner Matteo we decide to open our own studio .
                         To date we count on a team of photographers and videomakers, formed by the best collaborators with whom we had the pleasure to work .
                         Innovation, research and development are the basis of our working method.
                         Our fleets of cameras never reach three years of age, for us it is essential to stay up to date in terms of photographic quality, video and equipment.
                         With us you begin a journey, where each package is tailor-made for the client, attention and care to the demands and needs of the client are firm heads of our way of working.
-                        <br>We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI.</strong>',
+                        <br>We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI - CESENA.</strong>',
     'photos-title' => 'PHOTOS',
     'photos-description' => 'Study and passion for this work have led us to make high level photographs.<br>
                                 It is essential for us to understand with the client the type of product they want to achieve by customizing our style for each type of event.<br>
@@ -27,8 +28,8 @@ return [
     'goto-prices' => 'PRICES',
     'goto-albums' => 'PHOTOS',
     'goto-videos' => 'VIDEOS',
-    'instagram' => 'Discover us on Instagram',
-    'services' => 'Learn about other services',
+    'services' => 'LEARN ABOUT OTHER SERVICES',
+    'instagram' => 'DISCOVER US ON INSTAGRAM',
     'premarital' => 'PRE/POST MARITAL',
     'polaroid' => 'POLAROID',
     'video-projection' => 'VIDEO PROJECTION',

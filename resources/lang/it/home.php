@@ -6,37 +6,38 @@ return [
     'photos' => 'Foto',
     'videos' => 'Video',
     'contacts' => 'Contatti',
+    'AK' => 'ANASTASIA KABAKOVA',
     'presentation' => 'Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro .<br>
                         Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare .<br>
                         Innovazione, ricerca e sviluppo sono alla base del nostro metodo di lavoro.<br>
                         I nostri parchi macchine non raggiungono mai i tre anni di età, per noi è fondamentale rimanere sempre aggiornati in termini di qualità fotografica, video e attrezzatura.<br>
                         Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capi saldi del nostro modo di lavorare.<br>
-                        Abbiamo studi su: <strong>MODENA - BOLOGNA - IMOLA - FORLI</strong>',
+                        Abbiamo studi su: <strong>MODENA - BOLOGNA - IMOLA - FORLI - CESENA</strong>',
     'photos-title' => 'FOTO',
     'photos-description' => 'Studio e passione per questo lavoro ci hanno portato realizzare fotografie di alto livello.<br>
                                 Per noi è fondamentale capire con il cliente il tipo di prodotto che vuole realizzare personalizzando il nostro stile per ogni tipo di evento.<br>
                                 Ogni nostro scatto viene restituito alla miglior qualità possibile presente sul mercato.<br>
-                                Ogni prima camera fotografa con due fotocamere per risparmiare tempo sul cambio obiettivo così ottenendo un numero maggiore di scatti.',
+                                Ogni anno proponiamo scatti unici e originali creati in base al tipo di evento, questo ci permette di variare sempre il nostro repertorio e non risultare standard e monotoni.',
     'videos-title' => 'VIDEO',
     'videos-description' => 'Ogni nostro video viene pensato per trasmettere emozioni uniche.<br>
-                                Le nostre camere ci permettono di girare in 4k fino a 120fps.<br>
+                                Le nostre camere ci permettono di girare in 4k fino a 100fps.<br>
                                 Grazie al formato a 10 bit 4:2:2 possiamo fornire una gamma cromatica unica personalizzabile in post produzione secondo le linee guida del progetto che stiamo svolgendo.<br>
-                                Per avere una qualità audio eccellente siamo forniti sia di microfoni wireless sia ambientali .<br>
+                                Per avere una qualità audio eccellente siamo forniti sia di microfoni wireless sia ambientali.<br>
                                 Formazione e componenti tecniche all\'avanguardia ci consentono di andare incontro a tutte le esigenze dei nostri clienti.<br>
                                 Il nostro punto di forza è l\'uso del drone che ci permette riprese aree mozzafiato.',
     'goto-prices' => 'PREZZI',
     'goto-albums' => 'FOTO',
     'goto-videos' => 'VIDEO',
-    'instagram' => 'Scoprici anche su Instagram',
-    'services' => 'Scopri gli altri servizi',
+    'services' => 'SCOPRI GLI ALTRI SERVIZI',
+    'instagram' => 'SCOPRICI ANCHE SU INSTAGRAM',
     'premarital' => 'PRE/POST MATRIMONIALE',
     'polaroid' => 'POLAROID',
     'video-projection' => 'VIDEO PROIEZIONE',
     'wedding-planner' => 'WEDDING PLANNER',
     'premarital-desc' => 'Il servizio pre/post matrimoniale è un servizio foto/video di coppia che può essere realizzato o prima o dopo il matrimonio.
                             Il prematrimoniale viene svolto prima del matrimonio e permette di entrare in sintonia con obiettivi e fotografi.
-                            Il post matrimoniale viene realizzato dopo il matrimonio permettendo di riutilizzare gli abiti nuziali e ricevere le emozioni delle nozze.
-                            I nostri servizi non caratterizzati da pose statiche ma creiamo situazione dinamiche e divertenti che mettano a proprio agio tutti.',
+                            Il post matrimoniale viene realizzato dopo il matrimonio permettendo di riutilizzare gli abiti nuziali e rivivere le emozioni delle nozze.
+                            I nostri servizi non sono caratterizzati da pose statiche ma creiamo situazioni dinamiche e divertenti che mettano a proprio agio tutti.',
     'polaroid-desc' => 'Il servizio polaroid è un servizio di stampa fotografica istantanea, le foto potranno essere appese in luoghi emozionanti della location oppure regalate agli ospiti.
                         Questo servizio permette di spezzare momenti statici dell\' evento e diverte sia ospiti che sposi, inoltre con le foto si può creare un album dei ricordi personalizzato e unico.',
     'video-projection-desc' => 'Il servizio di video proiezione permette di proiettare un video riassuntivo della giornata matrimoniale durante il matrimonio.
