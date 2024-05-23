@@ -61,7 +61,7 @@
         </div>
     </div>
     <x-other-services/>
-    <x-instagram-photos/>
+{{--    <x-instagram-photos/>--}}
     <x-reviews/>
     <x-link-matrimonio-site/>
     <x-contact-form/>
