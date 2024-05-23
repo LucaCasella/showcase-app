@@ -9,7 +9,7 @@
             <div class="description-wrapper col">
                 <div class="description p-3">
                     <div>
-                        <h1 class="">ANASTASIA KABAKOVA</h1>
+                        <h1 class="">@lang('home.AK')</h1>
                     </div>
                     <div class="lh-lg my-2">
                         @lang('home.presentation')
