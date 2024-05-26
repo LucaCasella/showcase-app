@@ -1,6 +1,6 @@
 <div class="mb-5">
     <div class="mb-3">
-        <h2>@lang('home.instagram')</h2>
+{{--        <h2>@lang('home.instagram')</h2>--}}
     </div>
     <div id="ig-photo-container">
         @foreach($photos as $photo)
