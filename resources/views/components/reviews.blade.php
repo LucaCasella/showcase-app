@@ -19,6 +19,10 @@
                         <div class="review-time">
                             {{$review->time}}
                         </div>
+                        <div class="google-review">
+                            <img src="{{ asset('assets/Google-Logo.png') }}" alt="Google Logo" class="google-logo">
+                            <span>Google Reviews</span>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -64,5 +68,15 @@
         cursor: pointer;
         color: blue;
         text-decoration: underline;
+    }
+    .google-review {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .google-logo {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
     }
 </style>
