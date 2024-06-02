@@ -40,6 +40,7 @@ return [
                             I nostri servizi non sono caratterizzati da pose statiche ma creiamo situazioni dinamiche e divertenti che mettano a proprio agio tutti.',
     'polaroid-desc' => 'Il servizio polaroid è un servizio di stampa fotografica istantanea, le foto potranno essere appese in luoghi emozionanti della location oppure regalate agli ospiti.
                         Questo servizio permette di spezzare momenti statici dell\' evento e diverte sia ospiti che sposi, inoltre con le foto si può creare un album dei ricordi personalizzato e unico.',
+
     'video-projection-desc' => 'Il servizio di video proiezione permette di proiettare un video riassuntivo della giornata matrimoniale durante il matrimonio.
                                 Potranno essere rivissuti momenti magici e divertenti antecedenti.',
     'wedding-planner-desc' => 'Lo studio offre un servizio di pianificazione e organizzazione matrimoniale tenendo conto del budget e dei costi annessi ai fornitori.
@@ -92,6 +93,5 @@ return [
     'number-contact' => 'Numero di telefono:',
     'residence' => 'Residenza:',
     'vat' => 'Partita IVA:',
-    'contact-me' => 'Contattami',
-    'ciao'=> 'ciao'
+    'contact-me' => 'Contattami'
 ];
