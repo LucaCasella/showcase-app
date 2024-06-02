@@ -42,20 +42,20 @@
      text-transform: uppercase;
     }
     .card-review {
-        padding: 20px;
+        padding: 15px;
         background-color: #f8f9fa;
         border: 1px solid #ddd;
         border-radius: 10px;
-        margin: 10px;
-        height: 250px;
         overflow: hidden;
         transition: max-height 0.3s ease;
-    }
-    .card-review.expanded {
-        max-height: none;
+        min-height: 100px;
+        max-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     .review-text {
-        max-height: 100px;
+        flex-grow: 1;
         overflow: auto;
     }
     .review-author, .review-rating, .review-text, .review-time {
