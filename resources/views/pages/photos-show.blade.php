@@ -35,7 +35,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             lightGallery(document.getElementById('gallery'), {
                 selector: '.photo-wrapper',
-                plugins: [lgZoom],
                 speed: 500
             });
         });
