@@ -16,7 +16,7 @@
 
                         @foreach ($photos as $photo)
                             <a href="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" class="photo-wrapper">
-                                <img class="photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}">
+                                <img class="photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" loading="lazy">
                             </a>
                         @endforeach
 
