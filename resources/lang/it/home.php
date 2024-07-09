@@ -50,6 +50,7 @@ return [
     'full-name' => 'Nome completo',
     'email-address' => 'Indirizzo e-mail',
     'no-share' => 'Non condivederemo la tua e-mail con nessuno',
+    'remaining-chars' => 'caratteri rimanenti',
     'leave-comment' => 'Lascia un commento',
     'submit' => 'Invia',
     'privacy-check' => 'Accetto l\'informativa sulla privacy',
