@@ -17,6 +17,7 @@
         </div>
         <div class="form-floating mb-2">
             <textarea class="form-control" id="comment" name="comment"></textarea>
+            <textarea class="form-control" id="comment" name="comment" required></textarea>
             <label for="comment">@lang('home.leave-comment')</label>
         </div>
         <div class="mb-2">
@@ -56,5 +57,14 @@
         if (event.target === modal) {
             modal.style.display = 'none';
         }
+    });
+</script>
+<script>
+    const textarea = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+
+    textarea.addEventListener('input', () => {
+        const remaining = 250 - textarea.value.length;
+        charCount.textContent = `${remaining} `;
     });
 </script>
