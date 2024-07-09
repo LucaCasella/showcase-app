@@ -32,7 +32,7 @@
 
                     @foreach ($photos as $photo)
                         <div class="adm-photo-item">
-                            <img class="adm-photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}">
+                            <img class="adm-photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" loading="lazy">
                         </div>
                     @endforeach
 
