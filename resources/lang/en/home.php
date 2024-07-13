@@ -50,6 +50,7 @@ return [
     'full-name' => 'Full name',
     'email-address' => 'Email address',
     'no-share' => 'We will not share your email with anyone',
+    'remaining-chars' => 'remaining characters',
     'leave-comment' => 'Leave a comment',
     'submit' => 'Submit',
     'privacy-check' => 'I accept the privacy policy',

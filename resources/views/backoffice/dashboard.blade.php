@@ -22,7 +22,7 @@
                             <div class="">Email: {{$contact->email}}</div>
                             <div class="">Phone: {{$contact->phone}}</div>
                             <div class="">Date: {{$contact->created_at}}</div>
-                            <div class="">Comment: {{$contact->comment}}</div>
+                            <div class="of-wrap">Comment: {{$contact->comment}}</div>
                             <form action="{{route('destroy-contact', [$contact->id])}}" method="post" class="contact-form">
                                 @csrf
                                 @method('DELETE')

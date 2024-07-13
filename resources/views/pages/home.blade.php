@@ -35,12 +35,12 @@
                 </div>
             </div>
             <div class="image-wrapper image-revert col">
-                <img class="image" src="{{asset('assets/photohp.jpg')}}" alt="photos">
+                <img class="image" src="{{asset('assets/photohp.jpg')}}" alt="photos" loading="lazy">
             </div>
         </div>
         <div class="home-container row row-cols-lg-2 row-cols-1">
             <div class="image-wrapper col">
-                <img class="image" src="{{asset('assets/videohp.jpg')}}" alt="videos">
+                <img class="image" src="{{asset('assets/videohp.jpg')}}" alt="videos" loading="lazy">
             </div>
             <div class="description-wrapper col">
                 <div class="description p-3">

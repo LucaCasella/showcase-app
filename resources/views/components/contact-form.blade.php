@@ -16,13 +16,16 @@
             <input type="tel" class="form-control" id="phone" name="phone" required>
         </div>
         <div class="form-floating mb-2">
-            <textarea class="form-control" id="comment" name="comment"></textarea>
+            <textarea class="form-control" id="comment" name="comment" required></textarea>
+            <small id="charCount">250 </small><small>@lang('home.remaining-chars')</small>
             <label for="comment">@lang('home.leave-comment')</label>
         </div>
         <div class="mb-2">
-            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" required>
+            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" maxlength="250" required>
             <label for="privacycheck">@lang('home.privacy-check')</label>
-            <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
+            <div>
+                <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
+            </div>
         </div>
             <div class="block mt-4">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
@@ -56,5 +59,14 @@
         if (event.target === modal) {
             modal.style.display = 'none';
         }
+    });
+</script>
+<script>
+    const textarea = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+
+    textarea.addEventListener('input', () => {
+        const remaining = 250 - textarea.value.length;
+        charCount.textContent = `${remaining} `;
     });
 </script>
