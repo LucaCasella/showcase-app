@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="cover"><strong>Album Cover</strong></label><br>
-                                            <input id="cover" type="file" name="cover" accept=".jpg, .jpeg, .png" class="">
+                                            <input id="cover" type="file" name="cover" accept=".jpg, .jpeg, .png, .webp" class="">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">

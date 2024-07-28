@@ -27,8 +27,13 @@ class AlbumController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg'
+            'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
+
+        // Check if the file is valid
+        if (!$request->file('cover')->isValid()) {
+            return redirect()->route('create-album')->with('error', 'Invalid file upload');
+        }
 
         // Get filename with extension
         $fileNameWithExt = $request->file('cover')->getClientOriginalName();
@@ -80,7 +85,7 @@ class AlbumController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
-            'cover' => 'image'
+            'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         // Retrieve selected album
@@ -91,10 +96,14 @@ class AlbumController extends Controller
         $album->location = $request->location;
 
         if ($request->hasFile('cover')) {
-            // Delete previous cover
-            if ($album->cover) {
-                Storage::delete('album_covers/'.$album->cover);
+
+            // Check if the file is valid
+            if (!$request->file('cover')->isValid()) {
+                return redirect()->route('edit-album', $album_id)->with('error', 'Invalid file upload');
             }
+
+            // Delete previous cover
+            Storage::delete('public/album_covers/'.$album->cover);
 
             // Get filename with extension
             $fileNameWithExt = $request->file('cover')->getClientOriginalName();
@@ -108,8 +117,8 @@ class AlbumController extends Controller
             // Create new filename
             $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
-            // Upload image to public/album_covers
-            $request->file('cover')->move(public_path('album_covers'), $fileNameToStore);
+            // Upload image
+            $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
 
             // Update cover
             $album->cover = $fileNameToStore;

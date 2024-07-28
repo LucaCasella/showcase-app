@@ -13,6 +13,11 @@ class PhotoController extends Controller
         // Retrieve the album
         $album = Album::find($album_id);
 
+        // Check if album exists
+        if (!$album) {
+            return redirect()->route('index-album')->with('error', 'Album not found');
+        }
+
         // Retrieve related images
         $photos = $album->children;
 
@@ -23,14 +28,20 @@ class PhotoController extends Controller
     {
         // Validate the input
         $request->validate([
-            'photos.*' => 'required|image|mimes:jpeg,png,jpg'
+            'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
+        // Check if album exists
+        $album = Album::find($album_id);
+        if (!$album) {
+            return redirect()->route('index-album')->with('error', 'Album not found');
+        }
 
         if ($request->hasFile('photos')) {
 
-
             $photos = $request->file('photos');
+            $totalPhotos = count($photos);
+            $processedPhotos = 0;
 
             foreach ($photos as $uploadedPhoto) {
 
@@ -55,6 +66,16 @@ class PhotoController extends Controller
                 $photo->name = $fileNameToStore;
                 $photo->photo = $fileNameToStore;
                 $photo->save();
+
+                $processedPhotos++;
+
+                // Send progress update
+                echo json_encode([
+                    'processed' => $processedPhotos,
+                    'total' => $totalPhotos
+                ]);
+                ob_flush();
+                flush();
             }
         }
 
