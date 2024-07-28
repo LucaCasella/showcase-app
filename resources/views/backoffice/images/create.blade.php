@@ -53,7 +53,7 @@
                     <div id="progress-container" class="mt-4 hidden">
                         <p>Uploading...</p>
                         <div class="w-full bg-gray-200 rounded">
-                            <div id="progress-bar" class="bg-blue-500 text-xs leading-none py-1 text-center text-white" style="width: 0%"></div>
+                            <div id="progress-bar" class="bg-blue-500 text-xs leading-none py-1 text-center text-white" style="width: 0"></div>
                         </div>
                     </div>
 
