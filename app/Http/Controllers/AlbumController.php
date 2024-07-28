@@ -48,7 +48,8 @@ class AlbumController extends Controller
         $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
         // Upload image
-        $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
+        $request->file('cover')->move(public_path('album_covers'), $fileNameToStore);
+        //$path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
 
         // Create album
         $album = new Album;
@@ -95,6 +96,7 @@ class AlbumController extends Controller
         $album->location = $request->location;
 
         if ($request->hasFile('cover')) {
+
             // Check if the file is valid
             if (!$request->file('cover')->isValid()) {
                 return redirect()->route('edit-album', $album_id)->with('error', 'Invalid file upload');
@@ -135,12 +137,14 @@ class AlbumController extends Controller
         $album = Album::findOrFail($album_id);
 
         // Delete the album and related cover
-        if (Storage::delete('public/album_covers/'.$album->cover)){
-            $album->delete();
+        if ($album->cover) {
+            Storage::delete('album_covers/'.$album->cover);
         }
 
+        $album->delete();
+
         // Delete photos related to the album deleted
-        Storage::deleteDirectory('public/photos/'.$album->id);
+        Storage::deleteDirectory('photos/'.$album->id);
 
         // Redirect the user and display success message
         return redirect()->route('index-album')->with('success', 'Album deleted successfully');

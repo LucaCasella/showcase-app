@@ -45,7 +45,7 @@
                             </form>
                         </div>
                         <div class="adm-cover-container">
-                            <img class="adm-album-cover" src="storage/album_covers/{{$album->cover}}" alt="{{$album->title}}">
+                            <img class="adm-album-cover" src="{{ asset('album_covers/'.$album->cover) }}" alt="{{$album->title}}" loading="lazy">
                         </div>
                     </div>
                 </div>

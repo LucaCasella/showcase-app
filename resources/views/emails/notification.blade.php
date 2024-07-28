@@ -4,7 +4,7 @@
     <ul>
         <li>{{$email}}</li>
         <li>{{$phone}}</li>
-        <li>{{$comment}}</li>
+        <li style="overflow-wrap: break-word">{{$comment}}</li>
     </ul>
 
     <div>Utente: @lang('contact-email.admin1')</div>

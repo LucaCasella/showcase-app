@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
 
 class Reviews extends Component
 {
@@ -23,6 +24,7 @@ class Reviews extends Component
      */
     public function render()
     {
-        return view('components.reviews');
+        $reviews = PlaceReviewsAPIFacades::getReviews();
+        return view('components.reviews', ['reviews' => $reviews]);
     }
 }

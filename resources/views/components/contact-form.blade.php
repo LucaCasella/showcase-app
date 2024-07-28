@@ -1,5 +1,5 @@
-<div id="contacts" class="contacts">
-    <h2>@lang('home.discover-prices')</h2>
+<div id="contacts" class="contacts mb-5">
+    <h2 class="mb-3">@lang('home.discover-prices')</h2>
     <form action="{{ route('guest-form') }}" method="post">
         @csrf
         <div class="mb-2">
@@ -16,24 +16,22 @@
             <input type="tel" class="form-control" id="phone" name="phone" required>
         </div>
         <div class="form-floating mb-2">
-            <textarea class="form-control" id="comment" name="comment"></textarea>
+            <textarea class="form-control" id="comment" name="comment" required></textarea>
+            <small id="charCount">250 </small><small>@lang('home.remaining-chars')</small>
             <label for="comment">@lang('home.leave-comment')</label>
         </div>
         <div class="mb-2">
-            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" required>
+            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" maxlength="250" required>
             <label for="privacycheck">@lang('home.privacy-check')</label>
-            <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
+            <div>
+                <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
+            </div>
         </div>
             <div class="block mt-4">
                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
             </div>
-        <div class="button-and-socials">
-            <button id="contact-submit" type="submit" class="form-submit btn btn-primary my-2">@lang('home.submit')</button>
-            <div class="socials">
-                <a href="https://www.instagram.com/anastasiakabakova_fotografa/" target="_blank">
-                    <img src="{{asset('assets/instagram.jpg')}}" alt="">
-                </a>
-            </div>
+        <div class="submit-container">
+            <button id="contact-submit" type="submit" class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
         </div>
     </form>
     <div id="privacy-modal" class="modal">
@@ -61,5 +59,14 @@
         if (event.target === modal) {
             modal.style.display = 'none';
         }
+    });
+</script>
+<script>
+    const textarea = document.getElementById('comment');
+    const charCount = document.getElementById('charCount');
+
+    textarea.addEventListener('input', () => {
+        const remaining = 250 - textarea.value.length;
+        charCount.textContent = `${remaining} `;
     });
 </script>

@@ -201,6 +201,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Custom Services
+         */
+        \Service\InstagramAPI\InstagramAPIServiceProvider::class,
+        \Service\PlaceReviewsAPI\PlaceReviewsAPIServiceProvider::class,
     ],
 
     /*

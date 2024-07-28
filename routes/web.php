@@ -92,6 +92,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/logs', [LogController::class, 'showLogs']);
 
+Route::get('/migrations', function (){
+    return "Migrazioni e seeding completati con successo!";
+})->middleware('run-migrations');
+
 require __DIR__.'/auth.php';
 
 

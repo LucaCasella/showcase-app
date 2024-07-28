@@ -6,12 +6,13 @@ return [
     'photos' => 'Photos',
     'videos' => 'Videos',
     'contacts' => 'Contacts',
-    'presentation' => 'My name is Anastasia Kabakova, after years of working in the photography industry together with my partner Matteo we decide to open our own studio .
-                        To date we count on a team of photographers and videomakers, formed by the best collaborators with whom we had the pleasure to work .
-                        Innovation, research and development are the basis of our working method.
-                        Our fleets of cameras never reach three years of age, for us it is essential to stay up to date in terms of photographic quality, video and equipment.
-                        With us you begin a journey, where each package is tailor-made for the client, attention and care to the demands and needs of the client are firm heads of our way of working.
-                        <br>We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI.</strong>',
+    'AK' => 'ANASTASIA KABAKOVA',
+    'presentation' => 'My name is Anastasia Kabakova, after years of working in the photography industry together with my partner Matteo we decide to open our own studio.<br>
+                        To date we count on a team of photographers and videomakers, formed by the best collaborators with whom we had the pleasure to work.<br>
+                        Innovation, research and development are the basis of our working method.<br>
+                        Our fleets of cameras never reach three years of age, for us it is essential to stay up to date in terms of photographic quality, video and equipment.<br>
+                        With us you begin a journey, where each package is tailor-made for the client, attention and care to the demands and needs of the client are firm heads of our way of working.<br>
+                        We have studios in: <strong>MODENA - BOLOGNA - IMOLA - FORLI - CESENA.</strong>',
     'photos-title' => 'PHOTOS',
     'photos-description' => 'Study and passion for this work have led us to make high level photographs.<br>
                                 It is essential for us to understand with the client the type of product they want to achieve by customizing our style for each type of event.<br>
@@ -27,7 +28,8 @@ return [
     'goto-prices' => 'PRICES',
     'goto-albums' => 'PHOTOS',
     'goto-videos' => 'VIDEOS',
-    'services' => 'Learn about other services',
+    'services' => 'LEARN ABOUT OTHER SERVICES',
+    'instagram' => 'DISCOVER US ON INSTAGRAM',
     'premarital' => 'PRE/POST MARITAL',
     'polaroid' => 'POLAROID',
     'video-projection' => 'VIDEO PROJECTION',
@@ -38,14 +40,17 @@ return [
                             Our services are not characterised by static poses but we create dynamic and fun situations that put everyone at ease.',
     'polaroid-desc' => 'The polaroid service is an instant photo printing service, the photos can be hung in exciting places in the venue or given to guests.
                         This service allows you to break up static moments of the event and entertains both guests and bride and groom, and with the photos you can create a personalised and unique album of memories.',
+
     'video-projection-desc' => 'The video projection service allows a summary video of the wedding day to be projected during the wedding.
                                 Magical and entertaining moments can be relived beforehand.',
     'wedding-planner-desc' => 'The studio offers a wedding planning and organisation service taking into account the budget and costs of suppliers.
                                 In addition, on the day of the event a professional will ensure that all the planning agreed with the bride and groom is followed.',
+    'what-they-tell' => 'What they say about us',
     'discover-prices' => 'DISCOVER OUR PRICES',
     'full-name' => 'Full name',
     'email-address' => 'Email address',
     'no-share' => 'We will not share your email with anyone',
+    'remaining-chars' => 'remaining characters',
     'leave-comment' => 'Leave a comment',
     'submit' => 'Submit',
     'privacy-check' => 'I accept the privacy policy',

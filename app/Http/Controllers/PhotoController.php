@@ -57,7 +57,9 @@ class PhotoController extends Controller
                 // Create new filename
                 $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-                $path = $uploadedPhoto->storeAs('public/photos/'.$album_id, $fileNameToStore);
+                //$path = $uploadedPhoto->storeAs('public/photos/'.$album_id, $fileNameToStore);
+                //$uploadedPhoto->file('photos')->move(public_path('photos/'.$album_id), $fileNameToStore);
+                $uploadedPhoto->move(public_path('album/photos/'.$album_id), $fileNameToStore);
 
                 $photo = new Photo();
                 $photo->album_id = $album_id;

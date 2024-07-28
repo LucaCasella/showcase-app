@@ -43,11 +43,12 @@ jobs:
           echo MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }} >> .env
           echo MAIL_ENCRYPTION=ssl >> .env
           echo MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }} >> .env
-          echo MAIL_FROM_NAME=Fotografa >> .env
+          echo MAIL_FROM_NAME=AnastasiaKabakova >> .env
           echo GOOGLE_RECAPTCHA_API_KEY=${{ secrets.GOOGLE_RECAPTCHA_API_KEY }} >> .env
           echo GOOGLE_RECAPTCHA_PROJECT_ID=${{ secrets.GOOGLE_RECAPTCHA_PROJECT_ID }} >> .env
           echo GOOGLE_RECAPTCHA_SITE_KEY=${{ secrets.GOOGLE_RECAPTCHA_SITE_KEY }} >> .env
           echo INSTAGRAM_ACCES_TOKEN=${{ secrets.INSTAGRAM_ACCES_TOKEN }} >> .env
+          echo PLACE_API_KEY=${{ secrets.PLACE_API_KEY }} >> .env
       - name: Clear Cache and other Laravel commands
         run: |
               php artisan view:clear || true
@@ -55,7 +56,6 @@ jobs:
               php artisan config:clear || true
               php artisan route:clear || true
               php artisan storage:link || true
-              php artisan migrate || true
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -75,4 +75,4 @@ jobs:
           exclude: |
             .git*
             node_modules/**
-            vendor/**
+

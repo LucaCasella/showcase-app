@@ -1,15 +1,19 @@
-.button-and-socials {
+.submit-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.socials {
-    display: flex;
-    gap: 10px;
+.form-submit {
+    width: 100px;
+    height: auto;
 }
 
 .socials a img {
-    width: 30px;
-    height: auto;
+    width: 73px;
+    height: 73px;
+}
+
+#contact-submit {
+    width: 8rem;
 }
