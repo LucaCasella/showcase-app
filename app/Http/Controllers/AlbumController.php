@@ -27,7 +27,7 @@ class AlbumController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg'
+            'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         // Get filename with extension
@@ -79,7 +79,7 @@ class AlbumController extends Controller
         $request->validate([
             'title' => 'required',
             'location' => 'required',
-            'cover' => 'required|image'
+            'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         // Retrieve selected album

@@ -20,10 +20,10 @@ class PhotoController extends Controller
     }
 
     public function store(Request $request, $album_id)
-    {;
+    {
         // Validate the input
         $request->validate([
-            'photos.*' => 'required|image|mimes:jpeg,png,jpg'
+            'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
         if ($request->hasFile('photos')) {
