@@ -40,6 +40,8 @@ class PhotoController extends Controller
         if ($request->hasFile('photos')) {
 
             $photos = $request->file('photos');
+            $totalPhotos = count($photos);
+            $processedPhotos = 0;
 
             foreach ($photos as $uploadedPhoto) {
 
@@ -62,6 +64,16 @@ class PhotoController extends Controller
                 $photo->name = $fileNameToStore;
                 $photo->photo = $fileNameToStore;
                 $photo->save();
+
+                $processedPhotos++;
+
+                // Send progress update
+                echo json_encode([
+                    'processed' => $processedPhotos,
+                    'total' => $totalPhotos
+                ]);
+                ob_flush();
+                flush();
             }
         }
 
