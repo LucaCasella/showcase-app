@@ -30,6 +30,11 @@ class AlbumController extends Controller
             'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
         ]);
 
+        // Check if the file is valid
+        if (!$request->file('cover')->isValid()) {
+            return redirect()->route('create-album')->with('error', 'Invalid file upload');
+        }
+
         // Get filename with extension
         $fileNameWithExt = $request->file('cover')->getClientOriginalName();
 
@@ -85,31 +90,37 @@ class AlbumController extends Controller
         // Retrieve selected album
         $album = Album::findOrFail($album_id);
 
-        // Update title
+        // Update title and location
         $album->title = $request->title;
         $album->location = $request->location;
 
-        // Delete previous cover
-        Storage::delete('public/album_covers/'.$album->cover);
+        if ($request->hasFile('cover')) {
+            // Check if the file is valid
+            if (!$request->file('cover')->isValid()) {
+                return redirect()->route('edit-album', $album_id)->with('error', 'Invalid file upload');
+            }
 
-        // Get filename with extension
-        $fileNameWithExt = $request->file('cover')->getClientOriginalName();
+            // Delete previous cover
+            Storage::delete('public/album_covers/'.$album->cover);
 
-        // Get just the filename
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get filename with extension
+            $fileNameWithExt = $request->file('cover')->getClientOriginalName();
 
-        // Get extension
-        $extension = $request->file('cover')->getClientOriginalExtension();
+            // Get just the filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
-        // Create new filename
-        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
+            // Get extension
+            $extension = $request->file('cover')->getClientOriginalExtension();
 
-        // Upload image
-        $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
+            // Create new filename
+            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
 
-        // Update cover
-        $album->cover = $fileNameToStore;
-        $album->updated_at = now();
+            // Upload image
+            $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
+
+            // Update cover
+            $album->cover = $fileNameToStore;
+        }
 
         // Save updates
         $album->save();
