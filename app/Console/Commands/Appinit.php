@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 
 
 class Appinit extends Command
@@ -27,26 +28,24 @@ class Appinit extends Command
      * @return int
      */
     public function handle()
-    {   
+    {
         $envFile = base_path('.env');
         $envExampleFile = base_path('.env.example');
 
-        
+
         if (!File::exists($envFile)) {
-            File::put;
-            return;
+            File::put($envFile, '');
         }else if(File::exists('.env')){
             $this->error('.env file already exists!');
-            return;
         }
 
-        
+
         if (File::exists($envExampleFile)) {
             File::copy($envExampleFile, $envFile);
             $this->info('.env file created from .env.example');
         } else {
             $this->error('.env.example file not found!');
-            return;
+            return false;
         }
 
         // Genera la chiave dell'app
@@ -55,5 +54,5 @@ class Appinit extends Command
 
         return Command::SUCCESS;
     }
-        
+
 }
