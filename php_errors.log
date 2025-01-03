@@ -1,0 +1,7 @@
+[03-Jan-2025 15:23:17 UTC] PHP Warning:  require(C:\Users\rasom\showcase-app/vendor/autoload.php): Failed to open stream: No such file or directory in C:\Users\rasom\showcase-app\artisan on line 18
+[03-Jan-2025 15:23:17 UTC] PHP Stack trace:
+[03-Jan-2025 15:23:17 UTC] PHP   1. {main}() C:\Users\rasom\showcase-app\artisan:0
+[03-Jan-2025 15:23:17 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\rasom\showcase-app/vendor/autoload.php' (include_path='.;C:\php\pear') in C:\Users\rasom\showcase-app\artisan:18
+Stack trace:
+#0 {main}
+  thrown in C:\Users\rasom\showcase-app\artisan on line 18

@@ -103,3 +103,9 @@ require __DIR__.'/auth.php';
 // LOCALIZATION ROUTES
 
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
+
+// REACT PAGES
+
+Route::get('/react', function () {
+    return view('react.react');
+});
