@@ -4,8 +4,12 @@ import react from '@vitejs/plugin-react';
 
 
 export default defineConfig({
+    server: {
+        host: '127.0.0.1',
 
+    },
     plugins: [
+        react(),
         laravel({
             input: [
                 'resources/js/app.js',
@@ -17,5 +21,6 @@ export default defineConfig({
             refresh: true,
             watch: ['resources/**/*.scss'],
         }),
+
     ],
 });
