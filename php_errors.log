@@ -1,0 +1,35 @@
+[04-Jan-2025 11:51:34 UTC] PHP Warning:  require(C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php): Failed to open stream: No such file or directory in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:51:34 UTC] PHP Stack trace:
+[04-Jan-2025 11:51:34 UTC] PHP   1. {main}() C:\Users\rasom\PhpstormProjects\showcase-app\artisan:0
+[04-Jan-2025 11:51:34 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php' (include_path='.;C:\php\pear') in C:\Users\rasom\PhpstormProjects\showcase-app\artisan:18
+Stack trace:
+#0 {main}
+  thrown in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:51:34 UTC] PHP Warning:  require(C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php): Failed to open stream: No such file or directory in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:51:34 UTC] PHP Stack trace:
+[04-Jan-2025 11:51:34 UTC] PHP   1. {main}() C:\Users\rasom\PhpstormProjects\showcase-app\artisan:0
+[04-Jan-2025 11:51:34 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php' (include_path='.;C:\php\pear') in C:\Users\rasom\PhpstormProjects\showcase-app\artisan:18
+Stack trace:
+#0 {main}
+  thrown in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:52:16 UTC] PHP Warning:  require(C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php): Failed to open stream: No such file or directory in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:52:16 UTC] PHP Stack trace:
+[04-Jan-2025 11:52:16 UTC] PHP   1. {main}() C:\Users\rasom\PhpstormProjects\showcase-app\artisan:0
+[04-Jan-2025 11:52:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php' (include_path='.;C:\php\pear') in C:\Users\rasom\PhpstormProjects\showcase-app\artisan:18
+Stack trace:
+#0 {main}
+  thrown in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:53:33 UTC] PHP Warning:  require(C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php): Failed to open stream: No such file or directory in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:53:33 UTC] PHP Stack trace:
+[04-Jan-2025 11:53:33 UTC] PHP   1. {main}() C:\Users\rasom\PhpstormProjects\showcase-app\artisan:0
+[04-Jan-2025 11:53:33 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php' (include_path='.;C:\php\pear') in C:\Users\rasom\PhpstormProjects\showcase-app\artisan:18
+Stack trace:
+#0 {main}
+  thrown in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:54:03 UTC] PHP Warning:  require(C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php): Failed to open stream: No such file or directory in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
+[04-Jan-2025 11:54:03 UTC] PHP Stack trace:
+[04-Jan-2025 11:54:03 UTC] PHP   1. {main}() C:\Users\rasom\PhpstormProjects\showcase-app\artisan:0
+[04-Jan-2025 11:54:03 UTC] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\rasom\PhpstormProjects\showcase-app/vendor/autoload.php' (include_path='.;C:\php\pear') in C:\Users\rasom\PhpstormProjects\showcase-app\artisan:18
+Stack trace:
+#0 {main}
+  thrown in C:\Users\rasom\PhpstormProjects\showcase-app\artisan on line 18
