@@ -28,7 +28,7 @@ php artisan key:generate
 
 After setting up your environment file and generating an application key, you need to run the database migrations. Laravel’s migration system allows you to build your database schema in a structured way. To migrate your database, navigate to your project's root directory and run the following command:
 ```bash
-php artisan artisan migrate
+php artisan migrate
 ```
 
 After the installation is complete, you can start the project by running:
