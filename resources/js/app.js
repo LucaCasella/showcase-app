@@ -1,5 +1,7 @@
 import './bootstrap';
 
+import './react/main.jsx'
+
 import Alpine from 'alpinejs';
 
 import '../css/app.scss';
