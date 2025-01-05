@@ -72,7 +72,7 @@ class AppInit extends Command
         $envContent = File::get($envFilePath);
 
         $envContent = preg_replace('/^APP_ENV=.*$/m', 'APP_ENV=', $envContent);
-        $envContent = preg_replace('/^APP_URL=.*$/m', 'APP_URL=', $envContent);
+        $envContent = preg_replace('/^APP_URL=.*$/m', 'APP_URL=http://127.0.0.1:8000/', $envContent);
 
 
         File::put($envFilePath, $envContent);
