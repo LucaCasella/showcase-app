@@ -48,7 +48,6 @@ Route::get('/videos', function () {
 Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
 
 
-
 // ADMIN ROUTES
 
 Route::get('/admin-login', function () {
@@ -92,14 +91,19 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/logs', [LogController::class, 'showLogs']);
 
-Route::get('/migrations', function (){
+Route::get('/migrations', function () {
     return "Migrazioni e seeding completati con successo!";
 })->middleware('run-migrations');
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';
 
 
 // LOCALIZATION ROUTES
 
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
+
+// REACT ROUTE BUILD
+
+Route::get('/react', function () {
+    return view('react.react');
+});
