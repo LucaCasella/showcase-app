@@ -95,9 +95,9 @@ Route::middleware('auth')->group(function () {
 
 
 // IN CASE EXPLODE PRODUCTION
-//Route::get('/migrations', function (){
-//    return "Migrazioni e seeding completati con successo!";
-//})->middleware('run-migrations');
+Route::get('/migrations', function (){
+    return "Migrazioni e seeding completati con successo!";
+})->middleware('run-migrations');
 
 require __DIR__ . '/auth.php';
 
