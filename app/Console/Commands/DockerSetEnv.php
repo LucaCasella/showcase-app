@@ -37,11 +37,25 @@ class DockerSetEnv extends Command
         if (!File::exists($envFile)) {
             throw new Exception('.env file not found');
         }
+
         $envContent = File::get($envFile);
 
-        $envContent = preg_replace('/^MYSQL_DATABASE=.*$/m', 'MYSQL_DATABASE='.'laravelDocker_db', $envContent);
-        $envContent = preg_replace('/^MYSQL_USER=.*$/m', 'MYSQL_USER='.'laravel_user', $envContent);
-        $envContent = preg_replace('/^MYSQL_PASSWORD=.*$/m', 'MYSQL_PASSWORD='. Str::random(8), $envContent);
+
+        $variables = [
+            'MYSQL_DATABASE' => 'laravelDocker_db',
+            'MYSQL_USER' => 'laravel_user',
+            'MYSQL_PASSWORD' => Str::random(8),
+            'MYSQL_ROOT_PASSWORD' => 'root'
+        ];
+
+
+        foreach ($variables as $key => $value) {
+            if (!preg_match("/^$key=.*$/m", $envContent)) {
+                $envContent .= "\n$key=$value";
+            } else {
+                $envContent = preg_replace("/^$key=.*$/m", "$key=$value", $envContent);
+            }
+        }
 
         File::put($envFile, $envContent);
 
@@ -49,4 +63,5 @@ class DockerSetEnv extends Command
 
         return CommandAlias::SUCCESS;
     }
+
 }
