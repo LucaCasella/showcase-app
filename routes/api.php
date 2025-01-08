@@ -22,3 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/videolist', function () {
     return Video::all()->pluck('yt_video_id')->toJson();
 });
+
+Route::get('/test', function () {
+   $person = [
+        'firstName' => 'Manuel',
+        'lastName' => 'Raso',
+    ];
+    return response()->json($person);
+});
