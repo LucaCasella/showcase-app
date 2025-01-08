@@ -107,7 +107,6 @@ require __DIR__ . '/auth.php';
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 
 // REACT ROUTE BUILD
-
-Route::get('/react', function () {
+Route::get('/{any}', function () {
     return view('react.react');
-});
+})->where('any', '.*');
