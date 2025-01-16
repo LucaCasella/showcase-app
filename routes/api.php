@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +26,13 @@ Route::get('/videolist', function () {
     return Video::all()->pluck('yt_video_id')->toJson();
 });
 
-Route::get('/test', function () {
-   $person = [
-        'firstName' => 'Manuel',
-        'lastName' => 'Raso',
-    ];
-    return response()->json($person);
-});
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+Route::get('/random-data', [ApiController::class, 'testRandomData'])->middleware('auth:sanctum');
+
+
+
+
+
