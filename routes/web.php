@@ -7,6 +7,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\WorkWithUsController;
 use App\Models\Album;
 use App\Models\Contact;
 use App\Models\Video;
@@ -29,6 +30,10 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+Route::get('/work-with-us', function (){
+    return view('pages.work-with-us');
+})->name('work-with-us');
+
 Route::get('/photos', function () {
     $albums = Album::where('visible', '=', 1)->get();
     return view('pages.photos', ['albums' => $albums]);
@@ -46,6 +51,9 @@ Route::get('/videos', function () {
 })->name('videos');
 
 Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
+Route::post('/collaborator-form-submit', [WorkWithUsController::class, 'store'])->name('collaborator-form');
+
+
 
 
 
