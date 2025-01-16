@@ -6,6 +6,7 @@ return [
     'photos' => 'Foto',
     'videos' => 'Video',
     'contacts' => 'Contatti',
+    'work-with-us' => 'Lavora con noi',
     'AK' => 'ANASTASIA KABAKOVA',
     'presentation' => 'Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro .<br>
                         Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare .<br>
