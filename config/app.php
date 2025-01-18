@@ -206,6 +206,7 @@ return [
          */
         \Service\InstagramAPI\InstagramAPIServiceProvider::class,
         \Service\PlaceReviewsAPI\PlaceReviewsAPIServiceProvider::class,
+        \Service\PdfManager\PdfManagerServiceProvider::class,
     ],
 
     /*
