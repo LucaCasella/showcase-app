@@ -15,6 +15,7 @@
 <header class="sticky-top bg-white">
     @include('includes.header')
 </header>
+   @include('includes.redirectMessage')
 <main class="main">
     @include('includes.recaptcha-response-fail')
     @yield('content')

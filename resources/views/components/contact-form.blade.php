@@ -21,17 +21,19 @@
             <label for="comment">@lang('home.leave-comment')</label>
         </div>
         <div class="mb-2">
-            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" maxlength="250" required>
+            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" value="false"
+                   required>
             <label for="privacycheck">@lang('home.privacy-check')</label>
             <div>
                 <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
             </div>
         </div>
-            <div class="block mt-4">
-                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
-            </div>
+        <div class="block mt-4">
+            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
+        </div>
         <div class="submit-container">
-            <button id="contact-submit" type="submit" class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
+            <button id="contact-submit" type="submit"
+                    class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
         </div>
     </form>
     <div id="privacy-modal" class="modal">
@@ -44,17 +46,17 @@
 </div>
 <script>
     // Apri la modal quando viene cliccato il link
-    document.querySelector('.open-modal').addEventListener('click', function() {
+    document.querySelector('.open-modal').addEventListener('click', function () {
         document.getElementById('privacy-modal').style.display = 'block';
     });
 
     // Chiudi la modal quando viene cliccato il pulsante di chiusura
-    document.querySelector('.close-modal').addEventListener('click', function() {
+    document.querySelector('.close-modal').addEventListener('click', function () {
         document.getElementById('privacy-modal').style.display = 'none';
     });
 
     // Chiudi la modal quando viene cliccato al di fuori del contenuto della modal
-    window.addEventListener('click', function(event) {
+    window.addEventListener('click', function (event) {
         var modal = document.getElementById('privacy-modal');
         if (event.target === modal) {
             modal.style.display = 'none';
@@ -64,9 +66,17 @@
 <script>
     const textarea = document.getElementById('comment');
     const charCount = document.getElementById('charCount');
-
+    //Todo:: fix validation input
     textarea.addEventListener('input', () => {
         const remaining = 250 - textarea.value.length;
         charCount.textContent = `${remaining} `;
+    });
+</script>
+<script>
+    const checkbox = document.getElementById("privacycheck");
+
+    checkbox.addEventListener("change", () => {
+
+        checkbox.setAttribute("value", checkbox.checked ? 1 : 0);
     });
 </script>

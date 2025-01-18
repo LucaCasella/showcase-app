@@ -1,5 +1,4 @@
 @extends('public')
-@include('includes.recaptcha-response-fail')
 @section('content')
  <div>
      <form action="{{ route('collaborator-form') }}" method="POST" enctype="multipart/form-data">
@@ -18,25 +17,20 @@
              <label for="phone" class="form-label">@lang('home.number-contact')</label>
              <input type="tel" class="form-control" id="phone" name="phone" required>
          </div>
-         <div class="form-floating mb-2">
-             <textarea class="form-control" id="comment" name="comment" required></textarea>
-             <small id="charCount">250 </small><small>@lang('home.remaining-chars')</small>
-             <label for="comment">@lang('home.leave-comment')</label>
-         </div>
          <div class="mb-2">
-             <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" maxlength="250" required>
+             <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" value="false"
+                    required>
              <label for="privacycheck">@lang('home.privacy-check')</label>
+         </div>
              <div>
                  <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
              </div>
+         <div>
+             <label for="pdf">Upload a PDF file max 2mb:</label>
+             <input type="file" id="pdf" name="pdf" accept=".pdf, application/pdf">
          </div>
          <div class="block mt-4">
              <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
-         </div>
-
-         <div>
-             <label for="pdf">Upload a PDF file:</label>
-             <input type="file" id="pdf" name="pdf" accept="application/pdf" required>
          </div>
          <div class="submit-container">
              <button id="contact-submit" type="submit" class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
@@ -50,4 +44,31 @@
          </div>
      </div>
  </div>
+ <script>
+     // Apri la modal quando viene cliccato il link
+     document.querySelector('.open-modal').addEventListener('click', function() {
+         document.getElementById('privacy-modal').style.display = 'block';
+     });
+
+     // Chiudi la modal quando viene cliccato il pulsante di chiusura
+     document.querySelector('.close-modal').addEventListener('click', function() {
+         document.getElementById('privacy-modal').style.display = 'none';
+     });
+
+     // Chiudi la modal quando viene cliccato al di fuori del contenuto della modal
+     window.addEventListener('click', function(event) {
+         var modal = document.getElementById('privacy-modal');
+         if (event.target === modal) {
+             modal.style.display = 'none';
+         }
+     });
+ </script>
+<script>
+    const checkbox = document.getElementById("privacycheck");
+
+    checkbox.addEventListener("change", () => {
+
+        checkbox.setAttribute("value", checkbox.checked ? 1 : 0);
+    });
+</script>
 @endsection
