@@ -33,25 +33,26 @@ class Collaboration extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        Contact::NAME,
-        Contact::EMAIL,
-        Contact::PHONE,
-        Contact::PRIVACY_ACCEPTED,
-        Contact::VISIBLE
+        Collaboration::NAME,
+        Collaboration::EMAIL,
+        Collaboration::PHONE,
+        Collaboration::CURRICULUM,
+        Collaboration::PRIVACY_ACCEPTED,
+        Collaboration::VISIBLE
     ];
 
     protected $visible = [];
 
     protected $hidden = [
-        Contact::ID,
-        Contact::NAME,
-        Contact::EMAIL,
-        Contact::PHONE,
-        Contact::PRIVACY_ACCEPTED,
-        Contact::REPLIED,
-        Contact::VISIBLE,
-        Contact::CREATED_AT,
-        Contact::UPDATED_AT,
-        Contact::DELETED_AT
+        Collaboration::ID,
+        Collaboration::NAME,
+        Collaboration::EMAIL,
+        Collaboration::PHONE,
+        Collaboration::PRIVACY_ACCEPTED,
+        Collaboration::REPLIED,
+        Collaboration::VISIBLE,
+        Collaboration::CREATED_AT,
+        Collaboration::UPDATED_AT,
+        Collaboration::DELETED_AT
     ];
 }
