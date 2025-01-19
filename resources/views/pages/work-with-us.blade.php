@@ -26,7 +26,7 @@
                  <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
              </div>
          <div>
-             <label for="pdf">Upload a PDF file max 2mb:</label>
+             <label for="pdf">@lang('home.upload-pdf')</label>
              <input type="file" id="pdf" name="pdf" accept=".pdf, application/pdf">
          </div>
          <div class="block mt-4">
