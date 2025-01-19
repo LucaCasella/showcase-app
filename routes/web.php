@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackOfficeController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GuestFormController;
@@ -63,12 +64,14 @@ Route::get('/admin-login', function () {
     return view('welcome');
 })->name('login-admin');
 
-Route::get('/backoffice', function () {
-    $contacts = Contact::where('privacy_accepted', '=', 1)
-        ->where('visible', '=', 1)
-        ->orderBy('created_at', 'asc')->get();
-    return view('backoffice.dashboard', ['contacts' => $contacts]);
-})->middleware(['auth', 'verified'])->name('backoffice');
+//Route::get('/backoffice', function () {
+//    $contacts = Contact::where('privacy_accepted', '=', 1)
+//        ->where('visible', '=', 1)
+//        ->orderBy('created_at', 'asc')->get();
+//    return view('backoffice.dashboard', ['contacts' => $contacts]);
+//})->middleware(['auth', 'verified'])->name('backoffice');
+
+Route::get('/backoffice', [BackOfficeController::class, 'index'])->middleware(['auth' , 'verified'])->name('backoffice');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -95,6 +98,7 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 
+    Route::delete('/collaboration/{collaboration_id}', [BackOfficeController::class, 'destroy'])->name('destroy-collaboration');
 //    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
 
 // ROUTE THAT SHOW LOGS
