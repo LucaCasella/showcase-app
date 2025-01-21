@@ -12,4 +12,6 @@ interface PdfManagerContract
 
       public function getAllPathPdfFromDB(): string;
 
+      public function deletePdfFile($pdfPathStored): string;
+
 }

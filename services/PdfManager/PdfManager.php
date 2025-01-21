@@ -37,4 +37,19 @@ class PdfManager implements PdfManagerContract
     {
         return Collaboration::all('curriculum')->toJson();
     }
+
+    public function deletePdfFile($pdfPathStored): string
+    {
+        $prefixPath = public_path('Curriculum');
+
+        $concatPath = $prefixPath.$pdfPathStored;
+
+        if (file_exists($concatPath)) {
+            unlink($concatPath);
+
+            return true;
+        }
+
+        return false;
+    }
 }
