@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * @method static storePdfFromRequest(File $pdf, $name):string;
  * @method static getAllPathPdfFromDB():string;
+ * @method static deletePdfFile($pdfPathStored):string;
  */
 class PdfManagerFacade extends Facade
 {
