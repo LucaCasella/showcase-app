@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Collaboration;
 use App\Models\Contact;
-use Illuminate\Support\Facades\Log;
+use Exception;
+use Illuminate\Database\QueryException;
+use Service\PdfManager\Facade\PdfManagerFacade;
+
 
 
 class BackOfficeController extends Controller
@@ -23,18 +26,24 @@ class BackOfficeController extends Controller
         return view('backoffice.dashboard', ['contacts' => $contacts, 'collaborations' => $collaborations]);
     }
 
+    /**
+     * @throws Exception
+     */
     public function destroy($collaboration_id)
     {
         try {
-            Log::info($collaboration_id);
+
             $collaboration = Collaboration::findOrFail($collaboration_id);
 
+           if(!PdfManagerFacade::deletePdfFile($collaboration->curriculum)){
+               throw new Exception('File not found');
+           }
 
             $collaboration->delete();
 
             return redirect()->route('backoffice')->with('success', 'collaboration deleted successfully');
 
-        }catch (\Illuminate\Database\QueryException $e){
+        }catch (QueryException $e){
 
             return redirect()->route('backoffice')->withErrors('error', $e->getMessage());
         }
