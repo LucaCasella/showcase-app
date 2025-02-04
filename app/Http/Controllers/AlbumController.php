@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Mockery\Exception;
+use Service\AlbumManager\Facades\AlbumMangerFacades;
 
 class AlbumController extends Controller
 {
@@ -23,43 +24,11 @@ class AlbumController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the input
-        $request->validate([
-            'title' => 'required',
-            'location' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
-        ]);
-
-        // Check if the file is valid
-        if (!$request->file('cover')->isValid()) {
-            return redirect()->route('create-album')->with('error', 'Invalid file upload');
+        try {
+            return AlbumMangerFacades::store($request);
+        } catch (\Exception $e) {
+            return redirect()->route('index-album')->with('error', $e->getMessage());
         }
-
-        // Get filename with extension
-        $fileNameWithExt = $request->file('cover')->getClientOriginalName();
-
-        // Get just the filename
-        $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-        // Get extension
-        $extension = $request->file('cover')->getClientOriginalExtension();
-
-        // Create new filename
-        $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-
-        // Upload image
-        $request->file('cover')->move(public_path('album_covers'), $fileNameToStore);
-        //$path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
-
-        // Create album
-        $album = new Album;
-        $album->title = $request->input('title');
-        $album->location = $request->input('location');
-        $album->cover = $fileNameToStore;
-        $album->save();
-
-        // Redirect the user and send friendly message
-        return redirect()->route('index-album')->with('success', 'Album created successfully');
     }
 
     public function show($album_id)
@@ -81,72 +50,19 @@ class AlbumController extends Controller
 
     public function update(Request $request, $album_id)
     {
-        // Validate the input
-        $request->validate([
-            'title' => 'required',
-            'location' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,webp'
-        ]);
-
-        // Retrieve selected album
-        $album = Album::findOrFail($album_id);
-
-        // Update title and location
-        $album->title = $request->title;
-        $album->location = $request->location;
-
-        if ($request->hasFile('cover')) {
-
-            // Check if the file is valid
-            if (!$request->file('cover')->isValid()) {
-                return redirect()->route('edit-album', $album_id)->with('error', 'Invalid file upload');
-            }
-
-            // Delete previous cover
-            Storage::delete('public/album_covers/'.$album->cover);
-
-            // Get filename with extension
-            $fileNameWithExt = $request->file('cover')->getClientOriginalName();
-
-            // Get just the filename
-            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-            // Get extension
-            $extension = $request->file('cover')->getClientOriginalExtension();
-
-            // Create new filename
-            $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-
-            // Upload image
-            $path = $request->file('cover')->storeAs('public/album_covers', $fileNameToStore);
-
-            // Update cover
-            $album->cover = $fileNameToStore;
+        try {
+            return AlbumMangerFacades::update($request, $album_id);
+        } catch (Exception $e) {
+            return redirect()->route('index-album')->with('error', $e->getMessage());
         }
-
-        // Save updates
-        $album->save();
-
-        // Redirect the user and send friendly message
-        return redirect()->route('index-album')->with('success', 'Album updated successfully');
     }
 
-    public function destroy($album_id)
+    public function destroy(Request $request, $album_id)
     {
-        // Retrieve selected album
-        $album = Album::findOrFail($album_id);
-
-        // Delete the album and related cover
-        if ($album->cover) {
-            Storage::delete('album_covers/'.$album->cover);
+        try {
+            return AlbumMangerFacades::delete($request, $album_id);
+        } catch (Exception $e) {
+            return redirect()->route('index-album')->with('error', $e->getMessage());
         }
-
-        $album->delete();
-
-        // Delete photos related to the album deleted
-        Storage::deleteDirectory('photos/'.$album->id);
-
-        // Redirect the user and display success message
-        return redirect()->route('index-album')->with('success', 'Album deleted successfully');
     }
 }

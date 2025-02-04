@@ -11,9 +11,12 @@ class Album extends Model
     use HasFactory;
 
     const ID = 'id';
+    const SLUG = 'slug';
     const TITLE = 'title';
+    const LOCATION = 'location';
     const COVER = 'cover';
     const VISIBLE = 'visible';
+    const ORDER = 'order';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -26,14 +29,24 @@ class Album extends Model
 
     protected $fillable = [
         Album::TITLE,
+        Album::LOCATION,
         Album::COVER,
-        Album::VISIBLE
+        Album::VISIBLE,
+        Album::ORDER,
+        Album::UPDATED_AT,
+    ];
+
+    protected $guarded = [
+        Album::ID,
     ];
 
     protected $visible = [
+        Album::SLUG,
         Album::TITLE,
+        Album::LOCATION,
         Album::COVER,
-        Album::VISIBLE
+        Album::VISIBLE,
+        Album::ORDER,
     ];
 
     protected $hidden = [
