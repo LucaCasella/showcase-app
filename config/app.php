@@ -204,6 +204,8 @@ return [
         /*
          * Custom Services
          */
+        \Service\AlbumManager\AlbumManagerProvider::class,
+        \Service\PhotoManager\PhotoManagerProvider::class,
         \Service\InstagramAPI\InstagramAPIServiceProvider::class,
         \Service\PlaceReviewsAPI\PlaceReviewsAPIServiceProvider::class,
     ],
