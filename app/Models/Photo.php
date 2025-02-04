@@ -13,7 +13,9 @@ class Photo extends Model
     const ALBUM_ID = 'album_id';
     const NAME = 'name';
     const PHOTO = 'photo';
+    const PHOTO_FHD = 'photo_fhd';
     const VISIBLE = 'visible';
+    const ORDER = 'order';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -27,13 +29,22 @@ class Photo extends Model
     protected $fillable = [
         Photo::NAME,
         Photo::PHOTO,
-        Photo::VISIBLE
+        Photo::PHOTO_FHD,
+        Photo::VISIBLE,
+        Photo::ORDER,
+    ];
+
+    protected $guarded = [
+        Album::ID,
+        Photo::ALBUM_ID,
     ];
 
     protected $visible = [
         Photo::NAME,
         Photo::PHOTO,
-        Photo::VISIBLE
+        Photo::PHOTO_FHD,
+        Photo::VISIBLE,
+        Photo::ORDER,
     ];
 
     protected $hidden = [
