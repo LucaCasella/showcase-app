@@ -18,7 +18,12 @@
 
     @if ($message = \Illuminate\Support\Facades\Session::get('success'))
         <div
-            class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5 relative block w-full p-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
+            class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative block w-full p-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
+            <p>{{$message}}</p>
+        </div>
+    @elseif($message = \Illuminate\Support\Facades\Session::get('error'))
+        <div
+            class="max-w-4xl mx-auto sm:px-6 lg:px-8 relative block w-full p-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
             <p>{{$message}}</p>
         </div>
     @endif
@@ -45,7 +50,7 @@
                             </form>
                         </div>
                         <div class="adm-cover-container">
-                            <img class="adm-album-cover" src="{{ asset('album_covers/'.$album->cover) }}" alt="{{$album->title}}" loading="lazy">
+                            <img class="adm-album-cover" src="{{ asset('albums/'.$album->slug.'/'.$album->cover) }}" alt="{{$album->title}}" loading="lazy">
                         </div>
                     </div>
                 </div>

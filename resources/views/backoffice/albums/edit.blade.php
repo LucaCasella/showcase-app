@@ -46,8 +46,10 @@
                                         <label for="location"><strong>Edit Album Location</strong></label><br>
                                             <input id="location" type="text" name="location" value="{{$album->location}}" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Location">
                                     </div>
+                                    <div>Cover Attuale</div>
+                                    <img class="w-28" src="{{ asset('albums/'.$album->slug.'/'.$album->cover) }}" alt="{{$album->title}}" loading="lazy">
                                     <div class="mb-2">
-                                        <label for="cover"><strong>Edit Album Cover</strong></label><br>
+                                        <label for="cover"><strong>Edit Album Cover</strong> (caricando un'altra immagine sovrasciverai la cover attuale)</label><br>
                                         <input id="cover" type="file" name="cover" class="">
                                     </div>
                                 </div>
