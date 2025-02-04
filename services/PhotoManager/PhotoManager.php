@@ -1,0 +1,162 @@
+<?php
+
+namespace Service\PhotoManager;
+
+use App\Models\Album;
+use App\Models\Photo;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+use Mockery\Exception;
+use Service\Helpers;
+
+class PhotoManager implements PhotoManagerContract
+{
+    public function store(Request $request, $album_id)
+    {
+        try {
+
+            $validator = Validator::make($request->all(), [
+                'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
+            ]);
+            if ($validator->fails()) {
+
+                throw new Exception('Formato di almeno un file errato');
+            }
+
+            // Retrieve album and check if exists
+            $album = Album::find($album_id);
+            if (!$album) {
+                return redirect()->route('index-album')->with('error', 'Album non trovato');
+            }
+
+            $albumSlug = $album->slug;
+
+            if ($request->hasFile('photos')) {
+
+                $photos = $request->file('photos');
+                $totalPhotos = count($photos);
+                $processedPhotos = 0;
+
+                foreach ($photos as $uploadedPhoto) {
+                    try {
+                        // Upload image
+                        $image = imagecreatefromstring(file_get_contents($uploadedPhoto->getRealPath()));
+
+                        // Create unique names for original and FHD files
+                        $timestamp = time();
+                        $fileName = pathinfo($uploadedPhoto->getClientOriginalName(), PATHINFO_FILENAME);
+                        $originalName = $fileName . '_' . $timestamp . '.webp';
+                        $fhdName = $fileName . '_FHD_' . $timestamp . '.webp';
+
+                        // Ensure that the directories exist, otherwise they're created
+                        $originalPath = public_path("albums/{$albumSlug}/original");
+                        if (!file_exists($originalPath)) {
+                            mkdir($originalPath, 0777, true);
+                        }
+                        $fhdPath = public_path("albums/{$albumSlug}/fhd");
+                        if (!file_exists($fhdPath)) {
+                            mkdir($fhdPath, 0777, true);
+                        }
+
+                        // Get original image dimensions and create a fhd image from the original
+                        $imageFHD = Helpers::resizeToFullHd($image);
+//                        $originalWidth = imagesx($image);
+//                        $originalHeight = imagesy($image);
+//                        if ($originalHeight > $originalWidth) {
+//                            $fhdHeight = 1920;
+//                            $fhdWidth = intval(($originalWidth / $originalHeight) * $fhdHeight);
+//                        } else {
+//                            $fhdWidth = 1920;
+//                            $fhdHeight = intval(($originalHeight / $originalWidth) * $fhdWidth);
+//                        }
+//                        $imageFHD = imagecreatetruecolor($fhdWidth, $fhdHeight);
+//                        imagecopyresampled($imageFHD, $image, 0, 0, 0, 0, $fhdWidth, $fhdHeight, $originalWidth, $originalHeight);
+
+                        // Save the original and fhd image as WebP files
+                        $path1 = $originalPath . '/' . $originalName;
+                        imagewebp($image, $path1);
+                        $path2 = $fhdPath . '/' . $fhdName;
+                        imagewebp($imageFHD, $path2);
+
+                        // Retrieve the highest order value on the album
+                        $currentMaxOrder = Photo::where('album_id', $album_id)->max('order') ?? 0;
+
+                        // Save the photo record in the database
+                        $photo = new Photo();
+                        $photo->album_id = $album_id;
+                        $photo->name = $fileName;
+                        $photo->photo = $originalName;
+                        $photo->photo_fhd = $fhdName;
+                        $photo->order = ++$currentMaxOrder;
+                        $photo->save();
+
+                        $processedPhotos++;
+
+                        // Send progress update
+                        echo json_encode([
+                            'processed' => $processedPhotos,
+                            'total' => $totalPhotos
+                        ]);
+                        ob_flush();
+                        flush();
+
+                        // Free memory
+                        imagedestroy($image);
+                        imagedestroy($imageFHD);
+
+                    } catch (\Exception $e) {
+                        // Log the error and continue processing the next photo
+                        Log::error('Errore nel processare la foto: ' . $e->getMessage());
+                        continue;
+                    }
+                }
+            }
+            return redirect()->route('index-album')->with('success', 'Foto caricate con successo');
+
+        }catch (Exception $e) {
+            Log::info($e);
+            return redirect()->route('index-album')->with('error', $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, $album_id)
+    {
+        // TODO: Implement update() method.
+    }
+
+    public function delete(Request $request, $album_id, $photo_id): RedirectResponse
+    {
+        try {
+            // Find Album and relative photo from proper id
+            $photo = Photo::find($photo_id);
+            $album = Album::find($album_id);
+
+            if (!$photo || !$album) {
+                return redirect()->route('index-album')->with('error', 'Foto o relativo album non trovati');
+            }
+
+            // Get path of the image
+            $path4k = public_path('albums/' . $album->slug . '/original/' . $photo->photo_4k);
+            $pathFHD = public_path('albums/' . $album->slug . '/fhd/' . $photo->photo_4k);
+
+            // Delete files from related folders
+            if(file_exists($path4k)) {
+                unlink($path4k);
+            }
+            if(file_exists($pathFHD)) {
+                unlink($pathFHD);
+            }
+
+            // Delete records from DB
+            $photo->delete();
+
+            //todo: take care delete button on UI
+            return redirect()->route('show-album', [$album_id])->with('success', 'Foto eliminata con successo');
+        } catch (\Exception $e) {
+            Log::error('Errore durante l\'eliminazione della foto: ' . $e->getMessage());
+            return redirect()->route('index-album')->with('error', 'Errore durante l\'eliminazione della foto');
+        }
+    }
+}
