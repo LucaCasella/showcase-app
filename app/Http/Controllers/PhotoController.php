@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
-use App\Models\Photo;
 use Illuminate\Http\Request;
+use Mockery\Exception;
+use Service\PhotoManager\Facades\PhotoManagerFacades;
 
 class PhotoController extends Controller
 {
@@ -15,7 +16,7 @@ class PhotoController extends Controller
 
         // Check if album exists
         if (!$album) {
-            return redirect()->route('index-album')->with('error', 'Album not found');
+            return redirect()->route('index-album')->with('error', 'Album non trovato');
         }
 
         // Retrieve related images
@@ -26,60 +27,15 @@ class PhotoController extends Controller
 
     public function store(Request $request, $album_id)
     {
-        // Validate the input
-        $request->validate([
-            'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
-        ]);
+        return PhotoManagerFacades::store($request, $album_id);
+    }
 
-        // Check if album exists
-        $album = Album::find($album_id);
-        if (!$album) {
-            return redirect()->route('index-album')->with('error', 'Album not found');
+    public function delete(Request $request, $album_id, $photo_id)
+    {
+        try {
+            return PhotoManagerFacades::delete($request, $album_id, $photo_id);
+        } catch (Exception $e) {
+            return redirect()->route('show-album')->with('error', $e->getMessage());
         }
-
-        if ($request->hasFile('photos')) {
-
-            $photos = $request->file('photos');
-            $totalPhotos = count($photos);
-            $processedPhotos = 0;
-
-            foreach ($photos as $uploadedPhoto) {
-
-                // Get filename with extension
-                $fileNameWithExt = $uploadedPhoto->getClientOriginalName();
-
-                // Get just the filename
-                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-                // Get extension
-                $extension = $uploadedPhoto->getClientOriginalExtension();
-
-                // Create new filename
-                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-
-                //$path = $uploadedPhoto->storeAs('public/photos/'.$album_id, $fileNameToStore);
-                //$uploadedPhoto->file('photos')->move(public_path('photos/'.$album_id), $fileNameToStore);
-                $uploadedPhoto->move(public_path('album/photos/'.$album_id), $fileNameToStore);
-
-                $photo = new Photo();
-                $photo->album_id = $album_id;
-                $photo->name = $fileNameToStore;
-                $photo->photo = $fileNameToStore;
-                $photo->save();
-
-                $processedPhotos++;
-
-                // Send progress update
-                echo json_encode([
-                    'processed' => $processedPhotos,
-                    'total' => $totalPhotos
-                ]);
-                ob_flush();
-                flush();
-            }
-        }
-
-        // Redirect the user and send friendly message
-        return redirect()->route('index-album')->with('success', 'Photos uploaded');
     }
 }
