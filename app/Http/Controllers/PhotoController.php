@@ -27,10 +27,15 @@ class PhotoController extends Controller
 
     public function store(Request $request, $album_id)
     {
-        return PhotoManagerFacades::store($request, $album_id);
+        try {
+            return PhotoManagerFacades::store($request, $album_id);
+        } catch (Exception $e) {
+            return redirect()->route('create-photo')->with('error', $e->getMessage());
+        }
+
     }
 
-    public function delete(Request $request, $album_id, $photo_id)
+    public function destroy(Request $request, $album_id, $photo_id)
     {
         try {
             return PhotoManagerFacades::delete($request, $album_id, $photo_id);

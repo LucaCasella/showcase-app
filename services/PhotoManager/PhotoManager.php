@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Mockery\Exception;
+use Service\AlbumManager\AlbumManager;
 use Service\Helpers;
 
 class PhotoManager implements PhotoManagerContract
@@ -17,16 +18,11 @@ class PhotoManager implements PhotoManagerContract
     {
         try {
 
-            $validator = Validator::make($request->all(), [
-                'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
-            ]);
-            if ($validator->fails()) {
-
-                throw new Exception('Formato di almeno un file errato');
-            }
+            $this->photoValidator($request);
 
             // Retrieve album and check if exists
             $album = Album::find($album_id);
+
             if (!$album) {
                 return redirect()->route('index-album')->with('error', 'Album non trovato');
             }
@@ -117,7 +113,7 @@ class PhotoManager implements PhotoManagerContract
 
         }catch (Exception $e) {
             Log::info($e);
-            return redirect()->route('index-album')->with('error', $e->getMessage());
+            return redirect()->route('create-photo')->with('error', $e->getMessage());
         }
     }
 
@@ -129,7 +125,7 @@ class PhotoManager implements PhotoManagerContract
     public function delete(Request $request, $album_id, $photo_id): RedirectResponse
     {
         try {
-            // Find Album and relative photo from proper id
+
             $photo = Photo::find($photo_id);
             $album = Album::find($album_id);
 
@@ -137,26 +133,47 @@ class PhotoManager implements PhotoManagerContract
                 return redirect()->route('index-album')->with('error', 'Foto o relativo album non trovati');
             }
 
-            // Get path of the image
-            $path4k = public_path('albums/' . $album->slug . '/original/' . $photo->photo_4k);
-            $pathFHD = public_path('albums/' . $album->slug . '/fhd/' . $photo->photo_4k);
+            $paths = $this->createPhotoPaths($photo, $album);
 
             // Delete files from related folders
-            if(file_exists($path4k)) {
-                unlink($path4k);
+            if(file_exists($paths['path4k'])) {
+                unlink($paths['path4k']);
             }
-            if(file_exists($pathFHD)) {
-                unlink($pathFHD);
+            if(file_exists($paths['pathFHD'])) {
+                unlink($paths['pathFHD']);
             }
 
-            // Delete records from DB
             $photo->delete();
 
-            //todo: take care delete button on UI
-            return redirect()->route('show-album', [$album_id])->with('success', 'Foto eliminata con successo');
+            return redirect()->route('show-album',[$album_id])->with('success', 'Foto eliminata con successo');
         } catch (\Exception $e) {
             Log::error('Errore durante l\'eliminazione della foto: ' . $e->getMessage());
             return redirect()->route('index-album')->with('error', 'Errore durante l\'eliminazione della foto');
         }
+    }
+
+    private function photoValidator(Request $request): void
+    {
+        $validator = Validator::make($request->all(), [
+
+            'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
+        ]);
+        if ($validator->fails()) {
+
+           throw new Exception('Formato di almeno un file errato');
+
+        }
+    }
+
+    private function createPhotoPaths($photo, $album): array
+    {
+        $directory = AlbumManager::ALBUM_DIRECTORY.'/';
+
+        $path4k = public_path($directory . $album->slug . '/original/' . $photo->photo);
+
+        $pathFHD = public_path($directory . $album->slug . '/fhd/' . $photo->photo_fhd);
+
+        return ['path4k' => $path4k,
+                'pathFHD' => $pathFHD];
     }
 }
