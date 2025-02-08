@@ -201,7 +201,7 @@ class AlbumManager implements AlbumManagerContract
 
     }
 
-    private function  albumValidator (Request $request): void
+    private function albumValidator (Request $request): void
     {
 
         $validator = Validator::make($request->all(), [

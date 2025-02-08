@@ -26,8 +26,17 @@
 
                     @foreach ($photos as $photo)
                         <div class="adm-photo-item">
-                            <img class="adm-photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" loading="lazy">
+                            <img class="adm-photo" src="{{asset('albums/'.$album->slug.'/fhd/'.$photo->photo_fhd)}}" alt="{{$photo->name}}" loading="lazy">
                         </div>
+
+                        <form action="{{route('destroy-photo', [$album->id,$photo->id])}}" method="post" class="photo-form">
+                            @csrf
+                            @method('DELETE')
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                                    type="submit">
+                                Delete
+                            </button>
+                        </form>
                     @endforeach
 
                 </div>

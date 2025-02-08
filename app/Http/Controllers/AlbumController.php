@@ -27,7 +27,7 @@ class AlbumController extends Controller
         try {
             return AlbumMangerFacades::store($request);
         } catch (\Exception $e) {
-            return redirect()->route('index-album')->with('error', $e->getMessage());
+            return redirect()->route('create-album')->with('error', $e->getMessage());
         }
     }
 
