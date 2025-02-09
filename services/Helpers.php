@@ -2,6 +2,8 @@
 
 namespace Service;
 
+use GdImage;
+
 class Helpers
 {
     static function resizeToFullHd($imageOriginal)
@@ -25,4 +27,28 @@ class Helpers
 
         return $imageFHD;
     }
+
+    static function freeMemoryFromImage(GDImage $images): void
+    {
+        imagedestroy($images);
+    }
+
+    static function freeMemoryFromImages(array|GdImage $images): void
+    {
+        foreach ($images as $image) {
+            imagedestroy($image);
+        }
+    }
+
+    static function groupImagesToDestroy(...$images): array
+    {
+        $gdImages = [];
+        foreach ($images as $image) {
+            $gdImages[] = $image;
+        }
+        return $gdImages;
+    }
 }
+
+
+
