@@ -11,19 +11,26 @@ use Illuminate\Support\Facades\Validator;
 use Mockery\Exception;
 use Service\AlbumManager\AlbumManager;
 use Service\Helpers;
+use function Webmozart\Assert\Tests\StaticAnalysis\length;
 
 class PhotoManager implements PhotoManagerContract
 {
     const original_directory = 'original';
     const fhd_directory = 'fhd';
+
     public function store(Request $request, $album_id): string
     {
         try {
-            $this->photoValidator($request);
 
-            $photos = $request->file('photos');
+            $totalFiles = count($request->file('photos'));
 
-            $totalPhotos = count($photos);
+            $photos = $this->photoValidator($request);
+
+            $photosValidated = $photos['validatedPhotos'];
+
+            $displayNumberInvalidFile = count($photos['noValidatedPhotos']);
+
+            $photosNoValidated = $photos['noValidatedPhotos'] == [] ? '' : 'file non validi '. $displayNumberInvalidFile;
 
             $processedPhotos = 0;
 
@@ -35,11 +42,8 @@ class PhotoManager implements PhotoManagerContract
 
             $albumSlug = $album->slug;
 
+                foreach ($photosValidated as $uploadedPhoto) {
 
-            if ($request->hasFile('photos')) {
-
-
-                foreach ($photos as $uploadedPhoto) {
                     try {
 
                         $image = imagecreatefromstring(file_get_contents($uploadedPhoto->getRealPath()));
@@ -50,7 +54,7 @@ class PhotoManager implements PhotoManagerContract
 
                         $imageFHD = Helpers::resizeToFullHd($image);
 
-                        $this->convertAndSaveImage($directories,$paths,$image, $imageFHD);
+                        $this->convertAndSaveImage($directories, $paths, $image, $imageFHD);
 
                         $currentMaxOrder = Photo::where('album_id', $album_id)->max('order') ?? 0;
 
@@ -74,11 +78,11 @@ class PhotoManager implements PhotoManagerContract
                         continue;
                     }
                 }
-            }
 
-            return 'Foto processate con successo:' . $processedPhotos . '/' . $totalPhotos;
 
-        }catch (Exception $e) {
+            return 'Foto processate con successo:' . ' ' . $processedPhotos . '/' . $totalFiles . ' ' . $photosNoValidated ;
+
+        } catch (Exception $e) {
             Log::info($e);
             return 'Errore nel processare le foto: ' . $e->getMessage();
         }
@@ -98,16 +102,16 @@ class PhotoManager implements PhotoManagerContract
             $paths = $this->createPhotoPathsFromDb($photo, $album);
 
             // Delete files from related folders
-            if(file_exists($paths['path4k'])) {
+            if (file_exists($paths['path4k'])) {
                 unlink($paths['path4k']);
             }
-            if(file_exists($paths['pathFHD'])) {
+            if (file_exists($paths['pathFHD'])) {
                 unlink($paths['pathFHD']);
             }
 
             $photo->delete();
 
-            return redirect()->route('show-album',[$album_id])->with('success', 'Foto eliminata con successo');
+            return redirect()->route('show-album', [$album_id])->with('success', 'Foto eliminata con successo');
 
         } catch (\Exception $e) {
 
@@ -117,17 +121,33 @@ class PhotoManager implements PhotoManagerContract
         }
     }
 
-    private function photoValidator(Request $request): void
+    private function photoValidator(Request $request): array
     {
-        $validator = Validator::make($request->all(), [
+        $validatedPhotos = [];
+        $noValidatedPhotos = [];
 
-            'photos.*' => 'required|image|mimes:jpeg,png,jpg,webp'
-        ]);
-        if ($validator->fails()) {
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
 
-           throw new Exception('Formato di almeno un file errato');
+                $validator = Validator::make(['photo' => $photo], [
+                    'photo' => 'required|image|mimes:jpeg,png,jpg,webp'
+                ]);
 
+                if ($validator->passes()) {
+
+                    $validatedPhotos[] = $photo;
+
+                }else if ($validator->fails()) {
+
+                    $noValidatedPhotos[] = $photo;
+                }
+            }
         }
+
+        return ['validatedPhotos' => $validatedPhotos,
+            'noValidatedPhotos' => $noValidatedPhotos
+        ];
+
     }
 
     private function createUniqueFilePathNames($uploadedPhoto): array
@@ -146,11 +166,11 @@ class PhotoManager implements PhotoManagerContract
 
     private function createIfNotExistsPhotosDirectories(string $albumSlug): array
     {
-        $originalPath = public_path( AlbumManager::ALBUM_DIRECTORY. '/'. $albumSlug . '/' . PhotoManager::original_directory);
+        $originalPath = public_path(AlbumManager::ALBUM_DIRECTORY . '/' . $albumSlug . '/' . PhotoManager::original_directory);
         if (!file_exists($originalPath)) {
             mkdir($originalPath, 0777, true);
         }
-        $fhdPath = public_path(AlbumManager::ALBUM_DIRECTORY. '/'. $albumSlug . '/' . PhotoManager::fhd_directory);
+        $fhdPath = public_path(AlbumManager::ALBUM_DIRECTORY . '/' . $albumSlug . '/' . PhotoManager::fhd_directory);
         if (!file_exists($fhdPath)) {
             mkdir($fhdPath, 0777, true);
         }
@@ -162,14 +182,14 @@ class PhotoManager implements PhotoManagerContract
 
     private function createPhotoPathsFromDb($photo, $album): array
     {
-        $directory = AlbumManager::ALBUM_DIRECTORY.'/';
+        $directory = AlbumManager::ALBUM_DIRECTORY . '/';
 
         $path4k = public_path($directory . $album->slug . '/original/' . $photo->photo);
 
         $pathFHD = public_path($directory . $album->slug . '/fhd/' . $photo->photo_fhd);
 
         return ['path4k' => $path4k,
-                'pathFHD' => $pathFHD];
+            'pathFHD' => $pathFHD];
     }
 
     private function convertAndSaveImage($directories, $paths, $image, $imageFHD): void

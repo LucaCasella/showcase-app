@@ -15,8 +15,8 @@
                     <div class="photos-container" id="gallery">
 
                         @foreach ($photos as $photo)
-                            <a href="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" class="photo-wrapper">
-                                <img class="photo" src="{{asset('album/photos/'.$album->id.'/'.$photo->name)}}" alt="{{$photo}}" loading="lazy">
+                            <a href="{{asset('albums/' . $album->slug . '/original/' . $photo->photo)}}" class="photo-wrapper">
+                                <img class="photo" src="{{asset('albums/' . $album->slug . '/fhd/' . $photo->photo_fhd)}}" alt="{{$photo}}" loading="lazy">
                             </a>
                         @endforeach
 
