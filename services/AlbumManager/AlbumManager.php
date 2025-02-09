@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Mockery\Exception;
 use Service\Helpers;
+use Service\PhotoManager\PhotoManager;
 
 class AlbumManager implements AlbumManagerContract
 {
@@ -68,13 +69,9 @@ class AlbumManager implements AlbumManagerContract
             $album->order = $order;
             $album->save();
 
+            $imagesToDestroy = Helpers::groupImagesToDestroy($imageOriginal, $imageFHD);
+            Helpers::freeMemoryFromImages($imagesToDestroy);
 
-
-            // Free memory
-            imagedestroy($imageOriginal);
-            imagedestroy($imageFHD);
-
-            // Redirect the user and send friendly message
             return redirect()->route('index-album')->with('success', 'Album creato con successo');
         } catch (Exception $e) {
             return redirect()->route('create-album')->with('error', $e->getMessage());
@@ -145,8 +142,6 @@ class AlbumManager implements AlbumManagerContract
         }
     }
 
-
-    // todo: vedere se sistemare quando creo gli album delle foto title o album dopo implementazione photoManager
     public function delete(Request $request, $album_id): RedirectResponse
     {
         try {
@@ -154,20 +149,24 @@ class AlbumManager implements AlbumManagerContract
             $album = Album::with('Photo')->findOrFail($album_id);
 
             // Delete album cover from filesystem
-            $coverPath = public_path('albums_cover/' . $album->cover);
+            $coverPath = public_path(self::ALBUM_DIRECTORY . '/'. $album->slug . '/' . $album->cover);
+
             if(file_exists($coverPath)) {
                 unlink($coverPath);
             }
 
             // Retrieve and delete photos related to album from filesystem and DB
             $photos = $album->photo;
+
             if ($album->photo && $album->photo->isNotEmpty()) {
+
                 foreach ($photos as $photo) {
-                    $photoPathFHD = public_path('albums/' . $album->title . '/fhd/' . $photo->photo_fhd);
+
+                    $photoPathFHD = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd);
                     if(file_exists($photoPathFHD)) {
                         unlink($photoPathFHD);
                     }
-                    $photoPathOriginal = public_path('albums/' . $album->title . '/original/' . $photo->photo);
+                    $photoPathOriginal = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug . '/' . PhotoManager::original_directory . '/' . $photo->photo);
                     if(file_exists($photoPathOriginal)) {
                         unlink($photoPathOriginal);
                     }
@@ -176,26 +175,32 @@ class AlbumManager implements AlbumManagerContract
             }
 
             // Delete all album folders
-            // todo: vedere se sistemare quando creo gli album delle foto title o album
-            $albumPhotosPathFHD = public_path('albums/' . $album->title . '/fhd');
+            $albumPhotosPathFHD = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug. '/' . PhotoManager::fhd_directory);
+
             if (is_dir($albumPhotosPathFHD) && count(scandir($albumPhotosPathFHD)) <= 2) {
+
                 rmdir($albumPhotosPathFHD);
             }
-            $albumPhotosPathOriginal = public_path('albums/' . $album->title . '/original');
+            $albumPhotosPathOriginal = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug . '/' . PhotoManager::original_directory);
+
             if (is_dir($albumPhotosPathOriginal) && count(scandir($albumPhotosPathOriginal)) <= 2) {
+
                 rmdir($albumPhotosPathOriginal);
             }
-            $albumFolderPath = public_path('albums/' . $album->title);
+
+            $albumFolderPath = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug);
+
             if (is_dir($albumFolderPath) && count(scandir($albumFolderPath)) <= 2) {
+
                 rmdir($albumFolderPath);
             }
 
-            // Delete album reference from DB
             $album->delete();
 
-            // Redirect the user and display success message
             return redirect()->route('index-album')->with('success', 'Album cancellato con succeso');
+
         } catch (Exception $e) {
+
             return redirect()->route('index-album')->with('error', $e->getMessage());
         }
 
