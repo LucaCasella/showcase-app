@@ -14,13 +14,19 @@ use Service\Helpers;
 
 class PhotoManager implements PhotoManagerContract
 {
-    public function store(Request $request, $album_id)
+    const original_directory = 'original';
+    const fhd_directory = 'fhd';
+    public function store(Request $request, $album_id): string
     {
         try {
-
             $this->photoValidator($request);
 
-            // Retrieve album and check if exists
+            $photos = $request->file('photos');
+
+            $totalPhotos = count($photos);
+
+            $processedPhotos = 0;
+
             $album = Album::find($album_id);
 
             if (!$album) {
@@ -29,78 +35,38 @@ class PhotoManager implements PhotoManagerContract
 
             $albumSlug = $album->slug;
 
+
             if ($request->hasFile('photos')) {
 
-                $photos = $request->file('photos');
-                $totalPhotos = count($photos);
-                $processedPhotos = 0;
 
                 foreach ($photos as $uploadedPhoto) {
                     try {
-                        // Upload image
+
                         $image = imagecreatefromstring(file_get_contents($uploadedPhoto->getRealPath()));
 
-                        // Create unique names for original and FHD files
-                        $timestamp = time();
-                        $fileName = pathinfo($uploadedPhoto->getClientOriginalName(), PATHINFO_FILENAME);
-                        $originalName = $fileName . '_' . $timestamp . '.webp';
-                        $fhdName = $fileName . '_FHD_' . $timestamp . '.webp';
+                        $paths = $this->createUniqueFilePathNames($uploadedPhoto);
 
-                        // Ensure that the directories exist, otherwise they're created
-                        $originalPath = public_path("albums/{$albumSlug}/original");
-                        if (!file_exists($originalPath)) {
-                            mkdir($originalPath, 0777, true);
-                        }
-                        $fhdPath = public_path("albums/{$albumSlug}/fhd");
-                        if (!file_exists($fhdPath)) {
-                            mkdir($fhdPath, 0777, true);
-                        }
+                        $directories = $this->createIfNotExistsPhotosDirectories($albumSlug);
 
-                        // Get original image dimensions and create a fhd image from the original
                         $imageFHD = Helpers::resizeToFullHd($image);
-//                        $originalWidth = imagesx($image);
-//                        $originalHeight = imagesy($image);
-//                        if ($originalHeight > $originalWidth) {
-//                            $fhdHeight = 1920;
-//                            $fhdWidth = intval(($originalWidth / $originalHeight) * $fhdHeight);
-//                        } else {
-//                            $fhdWidth = 1920;
-//                            $fhdHeight = intval(($originalHeight / $originalWidth) * $fhdWidth);
-//                        }
-//                        $imageFHD = imagecreatetruecolor($fhdWidth, $fhdHeight);
-//                        imagecopyresampled($imageFHD, $image, 0, 0, 0, 0, $fhdWidth, $fhdHeight, $originalWidth, $originalHeight);
 
-                        // Save the original and fhd image as WebP files
-                        $path1 = $originalPath . '/' . $originalName;
-                        imagewebp($image, $path1);
-                        $path2 = $fhdPath . '/' . $fhdName;
-                        imagewebp($imageFHD, $path2);
+                        $this->convertAndSaveImage($directories,$paths,$image, $imageFHD);
 
-                        // Retrieve the highest order value on the album
                         $currentMaxOrder = Photo::where('album_id', $album_id)->max('order') ?? 0;
 
-                        // Save the photo record in the database
                         $photo = new Photo();
                         $photo->album_id = $album_id;
-                        $photo->name = $fileName;
-                        $photo->photo = $originalName;
-                        $photo->photo_fhd = $fhdName;
+                        $photo->name = $paths['fileName'];
+                        $photo->photo = $paths['photo'];
+                        $photo->photo_fhd = $paths['photo_fhd'];
                         $photo->order = ++$currentMaxOrder;
                         $photo->save();
 
                         $processedPhotos++;
 
-                        // Send progress update
-                        echo json_encode([
-                            'processed' => $processedPhotos,
-                            'total' => $totalPhotos
-                        ]);
-                        ob_flush();
-                        flush();
+                        $imagesToDestroy = Helpers::groupImagesToDestroy($image, $imageFHD);
 
-                        // Free memory
-                        imagedestroy($image);
-                        imagedestroy($imageFHD);
+                        Helpers::freeMemoryFromImages($imagesToDestroy);
 
                     } catch (\Exception $e) {
                         // Log the error and continue processing the next photo
@@ -109,17 +75,13 @@ class PhotoManager implements PhotoManagerContract
                     }
                 }
             }
-            return redirect()->route('index-album')->with('success', 'Foto caricate con successo');
+
+            return 'Foto processate con successo:' . $processedPhotos . '/' . $totalPhotos;
 
         }catch (Exception $e) {
             Log::info($e);
-            return redirect()->route('create-photo')->with('error', $e->getMessage());
+            return 'Errore nel processare le foto: ' . $e->getMessage();
         }
-    }
-
-    public function update(Request $request, $album_id)
-    {
-        // TODO: Implement update() method.
     }
 
     public function delete(Request $request, $album_id, $photo_id): RedirectResponse
@@ -133,7 +95,7 @@ class PhotoManager implements PhotoManagerContract
                 return redirect()->route('index-album')->with('error', 'Foto o relativo album non trovati');
             }
 
-            $paths = $this->createPhotoPaths($photo, $album);
+            $paths = $this->createPhotoPathsFromDb($photo, $album);
 
             // Delete files from related folders
             if(file_exists($paths['path4k'])) {
@@ -146,8 +108,11 @@ class PhotoManager implements PhotoManagerContract
             $photo->delete();
 
             return redirect()->route('show-album',[$album_id])->with('success', 'Foto eliminata con successo');
+
         } catch (\Exception $e) {
+
             Log::error('Errore durante l\'eliminazione della foto: ' . $e->getMessage());
+
             return redirect()->route('index-album')->with('error', 'Errore durante l\'eliminazione della foto');
         }
     }
@@ -165,7 +130,37 @@ class PhotoManager implements PhotoManagerContract
         }
     }
 
-    private function createPhotoPaths($photo, $album): array
+    private function createUniqueFilePathNames($uploadedPhoto): array
+    {
+        $timestamp = time();
+        $fileName = pathinfo($uploadedPhoto->getClientOriginalName(), PATHINFO_FILENAME);
+        $originalName = $fileName . '_' . $timestamp . '.webp';
+        $fhdName = $fileName . '_FHD_' . $timestamp . '.webp';
+
+        return [
+            'fileName' => $fileName,
+            'photo' => $originalName,
+            'photo_fhd' => $fhdName,
+        ];
+    }
+
+    private function createIfNotExistsPhotosDirectories(string $albumSlug): array
+    {
+        $originalPath = public_path( AlbumManager::ALBUM_DIRECTORY. '/'. $albumSlug . '/' . PhotoManager::original_directory);
+        if (!file_exists($originalPath)) {
+            mkdir($originalPath, 0777, true);
+        }
+        $fhdPath = public_path(AlbumManager::ALBUM_DIRECTORY. '/'. $albumSlug . '/' . PhotoManager::fhd_directory);
+        if (!file_exists($fhdPath)) {
+            mkdir($fhdPath, 0777, true);
+        }
+        return [
+            'originalPath' => $originalPath,
+            'fhdPath' => $fhdPath,
+        ];
+    }
+
+    private function createPhotoPathsFromDb($photo, $album): array
     {
         $directory = AlbumManager::ALBUM_DIRECTORY.'/';
 
@@ -175,5 +170,13 @@ class PhotoManager implements PhotoManagerContract
 
         return ['path4k' => $path4k,
                 'pathFHD' => $pathFHD];
+    }
+
+    private function convertAndSaveImage($directories, $paths, $image, $imageFHD): void
+    {
+        $path1 = $directories['originalPath'] . '/' . $paths['photo'];
+        imagewebp($image, $path1);
+        $path2 = $directories['fhdPath'] . '/' . $paths['photo_fhd'];
+        imagewebp($imageFHD, $path2);
     }
 }

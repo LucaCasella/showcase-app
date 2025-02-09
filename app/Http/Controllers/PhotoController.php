@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Mockery\Exception;
 use Service\PhotoManager\Facades\PhotoManagerFacades;
 
@@ -28,11 +29,16 @@ class PhotoController extends Controller
     public function store(Request $request, $album_id)
     {
         try {
-            return PhotoManagerFacades::store($request, $album_id);
+            $message =  PhotoManagerFacades::store($request, $album_id);
+
+            Log::info($message);
+
+            return redirect()->route('show-album', [$album_id])->with('success', $message);
+
         } catch (Exception $e) {
+
             return redirect()->route('create-photo')->with('error', $e->getMessage());
         }
-
     }
 
     public function destroy(Request $request, $album_id, $photo_id)
