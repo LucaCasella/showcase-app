@@ -5,13 +5,20 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import TestAPI from "./components/TestAPI";
 import Counter from "./components/Counter";
 import Logout from "./components/Logout";
+import Carousel from "./components/carousel/Carousel";
 function App() {
-
+    const images = [
+        'https://placehold.co/600x400',
+        'https://placehold.co/600x400',
+        'https://placehold.co/600x400',
+        'https://placehold.co/600x400',
+    ];
     return (
         <>
             <Router>
                 <Routes>
                 <Route path="/login2" element={<Login/>}/>
+                <Route path="car" element={<Carousel images={images}/>}/>
                     <Route
                         path="/dashboard"
                         element={

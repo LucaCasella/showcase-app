@@ -90,9 +90,10 @@ Route::middleware('auth')->group(function () {
 
 // ROUTE THAT SHOW LOGS
 
-    Route::get('/logs', [LogController::class, 'showLogs']);
+
 });
 
+Route::get('/logs', [LogController::class, 'showLogs']);
 
 // IN CASE EXPLODE PRODUCTION
 Route::get('/migrations', function (){
