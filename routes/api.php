@@ -5,7 +5,6 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +30,3 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::get('/random-data', [ApiController::class, 'testRandomData'])->middleware('auth:sanctum');
-
-
-
-
-

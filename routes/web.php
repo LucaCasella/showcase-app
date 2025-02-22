@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+
+
 // PUBLIC ROUTES
 
 Route::get('/', function () {
@@ -87,12 +90,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 
 //    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
-
-// ROUTE THAT SHOW LOGS
-
-
 });
 
+// ROUTE THAT SHOW LOGS
 Route::get('/logs', [LogController::class, 'showLogs']);
 
 // IN CASE EXPLODE PRODUCTION
@@ -100,11 +100,7 @@ Route::get('/migrations', function (){
     return "Migrazioni e seeding completati con successo!";
 })->middleware('run-migrations');
 
-require __DIR__ . '/auth.php';
-
-
 // LOCALIZATION ROUTES
-
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 
 // REACT ROUTE BUILD
