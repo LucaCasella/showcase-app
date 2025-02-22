@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './carousel.css'; // Stili CSS per il carousel
 
-const Carousel = ({ images }) => {
+const Carousel = ({ images }: Images) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrev = () => {
@@ -22,15 +22,15 @@ const Carousel = ({ images }) => {
                 &#10094;
             </button>
             <div className="carousel-content">
-                {images.map((image, index) => (
+                {images.map((image) => (
                     <div
-                        key={index}
+                        key={image.id}
                         className={`carousel-item ${
-                            index === currentIndex ? 'active' : ''
+                            image.id === currentIndex ? 'active' : ''
                         }`}
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                     >
-                        <img src={image} alt={`Slide ${index + 1}`} />
+                        <img src={image.url} alt={`Slide ${image.alt}`} />
                     </div>
                 ))}
             </div>
