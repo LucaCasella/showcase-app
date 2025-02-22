@@ -6,7 +6,7 @@ module.exports = {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './resources/js/react/**/*',
+        './resources/js/react/**/*.{js,jsx,ts,tsx}',
     ],
 
     theme: {
@@ -14,6 +14,16 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                // todo: choose brand colors
+                primary: '',
+                primaryForeground: '',
+                secondary: '',
+                secondaryForeground: '',
+                success: '',
+                warning: '',
+                error: '',
+            }
         },
     },
 
