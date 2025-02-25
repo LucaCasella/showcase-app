@@ -1,87 +1,55 @@
-.carousel {
+.carousel-container {
     position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    transform: rotate(0deg);
-}
-
-.item {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #3498db;
-    color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    margin-top: -20px;
-    margin-left: -20px;
-    transform-origin: 100px 0;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.App {
-    text-align: center;
-}
-
-.content {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-}
-
-.scroll-space {
-    height: 2000px;
-}
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
     overflow: hidden;
+    height: 600px;
+    width: 70%;
 }
 
 .carousel-content {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
-    box-sizing: border-box;
-}
-
-.carousel-item img {
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    display: block;
+    position: relative;
+}
+
+.carousel-button > svg {
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(110, 110, 110, 0.8) 5%, rgba(110, 110, 110, 0) 70%);
 }
 
 .carousel-button {
+    z-index: 2;
+}
+
+.item-carousel {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
+    transition: transform 1s ease, opacity 0.5s ease;
 }
 
-.carousel-button.prev {
-    left: 10px;
+.item-active {
+    transform: translateX(0);
+    z-index: 3;
+    scale: 1;
+    opacity: 1;
+    background: transparent;
 }
 
-.carousel-button.next {
-    right: 10px;
+.item-prev {
+    transform: translateX(-60%) scale(0.7);
+    opacity: 0.4;
+    z-index: 1;
+    background: transparent;
+}
+
+.item-next {
+    transform: translateX(60%) scale(0.7);
+    opacity: 0.4;
+    z-index: 1;
+    background: transparent;
+
+
 }
