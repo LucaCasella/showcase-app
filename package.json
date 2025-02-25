@@ -26,6 +26,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "lucide-react": "^0.475.0",
         "react-refresh": "^0.14.0",
         "react-router-dom": "^7.1.1"
     }
