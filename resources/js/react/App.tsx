@@ -2,16 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
-import TestAPI from "./components/TestAPI";
 import Logout from "./components/Logout";
 import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import './main.css';
 import Contacts from "./pages/Contacts";
-
-function Contact() {
-    return null;
-}
 
 function App() {
     return (
@@ -26,7 +21,6 @@ function App() {
                             path="/dashboard"
                             element={
                                 <ProtectedRoute>
-                                    <TestAPI />
                                     <Logout></Logout>
                                 </ProtectedRoute>
                             }
