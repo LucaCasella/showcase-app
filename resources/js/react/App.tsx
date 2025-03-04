@@ -4,7 +4,6 @@ import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Logout from "./components/Logout";
 import MainLayout from "./layout/MainLayout";
-import Home from "./pages/Home";
 import './main.css';
 import Contacts from "./pages/Contacts";
 import HomeWrapper from "./components/HomeWrapper";
