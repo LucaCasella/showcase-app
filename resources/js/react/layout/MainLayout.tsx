@@ -1,15 +1,17 @@
 import React from 'react';
 import Header from "./Header";
 import Footer from "./Footer";
-import {Outlet} from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const MainLayout = () => {
+    const location = useLocation();
+    const isHomePage = location.pathname === '/home';
+
     return (
         <>
-            <div className='w-full h-full flex flex-col justify-between'>
+            <div className={`w-full h-full flex flex-col justify-between ${isHomePage ? 'home-background' : ''}`}>
                 <Header />
                 <main>
-                    {/* Here are loaded the pages*/}
                     <Outlet />
                 </main>
                 <Footer />

@@ -7,6 +7,7 @@ import MainLayout from "./layout/MainLayout";
 import Home from "./pages/Home";
 import './main.css';
 import Contacts from "./pages/Contacts";
+import HomeWrapper from "./components/HomeWrapper";
 
 function App() {
     return (
@@ -14,7 +15,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route path='/' element={<MainLayout />}>
-                        <Route index path="/home" element={<Home />}/>
+                        <Route index path="/home" element={<HomeWrapper />}/>
                         <Route path="/contacts" element={<Contacts/>}/>
                         <Route path="/login2" element={<Login/>}/>
                         <Route
