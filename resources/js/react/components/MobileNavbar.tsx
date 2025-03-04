@@ -8,11 +8,11 @@ const MobileNavbar = () => (
             <a href='/home'>
                 <div
                     className='text-7xl text-white font-medium tracking-widest hover:underline underline-offset-8 transition ease-in-out duration-500'>
-                    <img src='/assets/logo.jpg' className='w-44' alt='Anastasia Kabakova Logo'/>
+                    <img src='/assets/new/logoWhiteNoBG.png' className='w-44' alt='Anastasia Kabakova Logo'/>
                 </div>
             </a>
         </div>
-        <div className='col-span-1 flex justify-end text-blue-500 font-bold items-end'>
+        <div className='col-span-1 flex justify-end text-white font-bold items-end'>
             MENU
         </div>
     </div>
