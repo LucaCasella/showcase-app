@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-import {Link, menuHeader, MenuItem} from "../constant/pages-links";
+import {Link, useMenuHeader, MenuItem} from "../constant/pages-links";
 import MobileNavbar from "../components/MobileNavbar";
 import {useLocation} from "react-router-dom";
+import LanguageSwitcher from "../language_context/LanguageSwitcher";
 
 const Header = () => {
+    const menuHeader = useMenuHeader();
     const [dropdown, setDropdown] = useState<string | null>(null);
     const location = useLocation();
     const isHomePage = location.pathname === '/home';
@@ -36,6 +38,7 @@ const Header = () => {
                     <NavItem key={item.page} item={item} dropdown={dropdown} setDropdown={setDropdown}
                              isHomePage={isHomePage}/>
                 ))}
+                <LanguageSwitcher/>
             </div>
 
             <MobileNavbar/>
