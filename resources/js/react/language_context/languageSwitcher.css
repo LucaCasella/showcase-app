@@ -1,0 +1,10 @@
+.language-container > select{
+    padding: unset;
+    color: white;
+    background: none;
+    border:none;
+}
+
+option{
+    color: black;
+}
