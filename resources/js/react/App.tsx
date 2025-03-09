@@ -16,10 +16,12 @@ import StudiosPage from "./pages/StudiosPage";
 import AboutUs from "./pages/AboutUs";
 import WorkWithUs from "./pages/WorkWithUs";
 import Info from "./pages/Info";
+import {LanguageProvider} from "./language_context/LanguageProvider";
 
 function App() {
     return (
         <>
+            <LanguageProvider>
             <Router>
                 <Routes>
                     <Route path='/' element={<MainLayout />}>
@@ -46,6 +48,7 @@ function App() {
                     </Route>
                 </Routes>
             </Router>
+            </LanguageProvider>
         </>
     );
 }
