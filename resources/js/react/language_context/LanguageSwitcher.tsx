@@ -3,7 +3,7 @@ import {LanguageContext} from "./LanguageProvider";
 import './languageSwitcher.css';
 const LanguageSwitcher= () =>{
 
-    const {language, setLanguage, languageData } = useContext(LanguageContext);
+    const {language, setLanguage } = useContext(LanguageContext);
     const handleLanguageChange = (event) => {
         setLanguage(event.target.value);
     };
