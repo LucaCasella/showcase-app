@@ -2,26 +2,25 @@ import { useContext } from "react";
 import { LanguageContext } from "../language_context/LanguageProvider";
 
 export const useMenuHeader = (): MenuItem[] => {
-    const { languageData } = useContext(LanguageContext);
+    const {languageData}  = useContext(LanguageContext);
 
     return [
         {
             page: 'gallery',
-            title: languageData.gallery,
+            title: languageData.header.gallery,
             link: '/gallery',
+            dropdown: 'gallery',
             relatedLinks: [
-                { title: languageData.album, link: '/album' },
-                { title: languageData.video, link: '/video' },
-                { title: languageData.locations, link: '/locations' },
+                { title: languageData.header.album, link: '/album' },
+                { title: languageData.header.video, link: '/video' },
+                { title: languageData.header.locations, link: '/locations' },
             ]
         },
-        { page: 'aboutUs', title: languageData.whoWeAre, link: '/about-us' },
-        { page: 'workWithUs', title: languageData.workWithUs, link: '/work-with-us' },
-        { page: 'contacts', title: languageData.contact, link: '/contacts' },
+        { page: 'aboutUs', title: languageData.header.whoWeAre, link: '/about-us' },
+        { page: 'workWithUs', title: languageData.header.workWithUs, link: '/work-with-us' },
+        { page: 'contacts', title: languageData.header.contact, link: '/contacts' },
     ];
 };
-
-
 
 export interface MenuItem {
     page: string;
@@ -35,7 +34,6 @@ export interface Link {
     title: string;
     link: string;
 }
-
 
 // export const menuHeader = [
 //     {page: 'gallery', title: 'GALLERIA', link: '/gallery', dropdown: 'gallery', relatedLinks: [{title: 'ALBUM', link: '/album'}, {title: 'VIDEO', link: '/video'}, {title: 'LOCATIONS', link: '/locations'}]},

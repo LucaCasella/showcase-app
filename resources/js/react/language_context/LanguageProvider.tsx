@@ -1,30 +1,45 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import it from '../language_context/it.json';
 import en from '../language_context/en.json';
 import ru from '../language_context/ru.json';
 
-const languages = {
-    it,
-    en,
-    ru
-};
-const LanguageContext = createContext({});
+interface LanguageProviderProps {
+    children: ReactNode;
+}
 
-const LanguageProvider = ({ children }) => {
-    const browserLanguage = navigator.language.split('-')[0];
+type Language = 'it' | 'en' | 'ru';
 
-    const supportedLanguages = Object.keys(languages);
-    const defaultLanguage = supportedLanguages.includes(browserLanguage) ? browserLanguage : 'en';
+type TranslationData = Record<string, any>;
 
-    const storedLanguage = localStorage.getItem('language') || defaultLanguage;
+interface LanguageContextType {
+    language: Language;
+    setLanguage: React.Dispatch<React.SetStateAction<Language>>;
+    languageData: TranslationData;
+}
 
-    const [language, setLanguage] = useState(storedLanguage);
+const languages: Record<Language, TranslationData> = { it, en, ru };
+
+const LanguageContext = createContext<LanguageContextType>({
+    language: 'en',
+    setLanguage: () => {},
+    languageData: languages.en,
+});
+
+const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+    const browserLanguage = navigator.language.split('-')[0] as Language;
+    const supportedLanguages: Language[] = ['it', 'en', 'ru'];
+    const defaultLanguage: Language = supportedLanguages.includes(browserLanguage) ? browserLanguage : 'en';
+
+    const storedLanguage = localStorage.getItem('language') as Language | null;
+    const initialLanguage: Language = storedLanguage && supportedLanguages.includes(storedLanguage) ? storedLanguage : defaultLanguage;
+
+    const [language, setLanguage] = useState<Language>(initialLanguage);
 
     useEffect(() => {
         localStorage.setItem('language', language);
     }, [language]);
 
-    const languageData = languages[language] || languages.en;
+    const languageData = languages[language];
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage, languageData }}>
@@ -34,4 +49,3 @@ const LanguageProvider = ({ children }) => {
 };
 
 export { LanguageContext, LanguageProvider };
-

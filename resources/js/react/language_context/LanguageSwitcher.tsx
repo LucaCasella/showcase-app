@@ -1,12 +1,13 @@
 import {useContext} from "react";
 import {LanguageContext} from "./LanguageProvider";
 import './languageSwitcher.css';
-const LanguageSwitcher= () =>{
 
+const LanguageSwitcher= () =>{
     const {language, setLanguage } = useContext(LanguageContext);
-    const handleLanguageChange = (event) => {
+    const handleLanguageChange = (event: { target: { value: any; }; }) => {
         setLanguage(event.target.value);
     };
+
     return (
         <div className='language-container'>
             <select value={language} onChange={handleLanguageChange}>
