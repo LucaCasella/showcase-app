@@ -1,9 +1,11 @@
 {
-    "gallery": "galleria",
-    "contact": "contatti",
-    "workWithUs": "lavora con noi",
-    "whoWeAre": "chi siamo",
-    "album": "album",
-    "video": "video",
-    "locations": "locations"
+    "header": {
+        "gallery": "GALLERIA",
+        "contact": "CONTATTI",
+        "workWithUs": "LAVORA CON NOI",
+        "whoWeAre": "CHI SIAMO",
+        "album": "ALBUM",
+        "video": "VIDEO",
+        "locations": "LOCATIONS"
+    }
 }

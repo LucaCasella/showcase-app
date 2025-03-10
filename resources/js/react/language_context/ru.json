@@ -1,9 +1,11 @@
 {
-    "gallery": "gallery",
-    "contact": "contact",
-    "workWithUs": "work with us",
-    "whoWeAre": "who we are",
-    "album": "album",
-    "video": "video",
-    "locations": "locations"
+    "header": {
+        "gallery": "ГАЛЕРЕЯ",
+        "contact": "КОНТАКТЫ",
+        "workWithUs": "ЛАВОРА КОН НОИ",
+        "whoWeAre": "О НАС",
+        "album": "АЛЬБОМЫ",
+        "video": "ВИДЕО",
+        "locations": "МЕСТОПОЛОЖЕНИЯ"
+    }
 }

@@ -21,8 +21,8 @@ const Header = () => {
             <div
                 className={`h-60 mx-auto max-w-7xl hidden md:flex flex-row items-center justify-center gap-16 ${textColorClass}`}>
                 {/* Prima metà del menu */}
-                {firstHalf.map((item) => (
-                    <NavItem key={item.page} item={item} dropdown={dropdown} setDropdown={setDropdown}
+                {firstHalf.map((item, index) => (
+                    <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
                              isHomePage={isHomePage}/>
                 ))}
 
@@ -34,8 +34,8 @@ const Header = () => {
                 </a>
 
                 {/* Seconda metà del menu */}
-                {secondHalf.map((item) => (
-                    <NavItem key={item.page} item={item} dropdown={dropdown} setDropdown={setDropdown}
+                {secondHalf.map((item, index) => (
+                    <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
                              isHomePage={isHomePage}/>
                 ))}
                 <LanguageSwitcher/>
@@ -84,11 +84,7 @@ const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePag
             )}
 
             {dropdown === item.dropdown && item.relatedLinks && (
-                <div
-                    className="absolute flex-col gap-10 text-black left-1/2 -translate-x-1/2 p-10"
-                    onMouseEnter={() => item.dropdown && setDropdown(item.dropdown)}
-                    onMouseLeave={() => setDropdown(null)}
-                >
+                <div className="absolute flex-col gap-10 text-black left-1/2 -translate-x-1/2 pt-10 z-50">
                     <div className={`${relatedContainerColor} p-5`}>
                         {item.relatedLinks.map((subItem: Link) => (
                             <a key={subItem.link} href={subItem.link}
