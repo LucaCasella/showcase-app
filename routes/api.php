@@ -17,16 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/videolist', function () {
+Route::post('/submit-contact', [ApiController::class, 'submitContact']);
+
+Route::get('/albums', [ApiController::class, 'getAllAlbums']);
+
+Route::get('/albums/{id}', [ApiController::class, 'getPhotosByAlbumId']);
+
+Route::get('/google-review', [ApiController::class, 'getGoogleReview']);
+
+Route::get('/video-list', function () {
     return Video::all()->pluck('yt_video_id')->toJson();
 });
 
+Route::middleware('auth:sanctum')->group(function () {
 
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-Route::get('/random-data', [ApiController::class, 'testRandomData'])->middleware('auth:sanctum');
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
