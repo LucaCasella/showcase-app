@@ -78,6 +78,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/adm-gallery/{album_id}/photo/create', [PhotoController::class, 'create'])->name('create-photo');
     Route::post('/adm-gallery/{album_id}/photo/store', [PhotoController::class, 'store'])->name('store-photo');
     Route::delete('/adm-gallery/{album_id}/{photo_id}', [PhotoController::class, 'destroy'])->name('destroy-photo');
+    Route::post('/adm-gallery/update-photo-order', [PhotoController::class, 'updateOrder'])->name('update-photo-order');
 
     Route::get('/adm-videos', [VideoController::class, 'index'])->name('index-video');
     Route::get('/adm-videos/create', [VideoController::class, 'create'])->name('create-video');

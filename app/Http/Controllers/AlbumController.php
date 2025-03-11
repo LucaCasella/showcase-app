@@ -11,7 +11,6 @@ class AlbumController extends Controller
 {
     public function index()
     {
-        // Retrieve all albums
         $albums = Album::with('Photo')->get();
 
         return view('backoffice.albums.index')->with('albums', $albums);
@@ -33,16 +32,14 @@ class AlbumController extends Controller
 
     public function show($album_id)
     {
-        // Retrieve selected album and its photos with relation
-        $album = Album::with('photo')->findOrFail($album_id);
-        $photos = $album->photo;
+        $album = Album::findOrFail($album_id);
+        $photos = $album->photo()->orderBy('order')->get();
 
         return view('backoffice.albums.show')->with(['album' => $album, 'photos' => $photos]);
     }
 
     public function edit($album_id)
     {
-        // Retrieve selected album
         $album = Album::find($album_id);
 
         return view('backoffice.albums.edit')->with('album', $album);

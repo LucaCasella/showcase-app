@@ -101,7 +101,6 @@ class PhotoManager implements PhotoManagerContract
 
             $paths = $this->createPhotoPathsFromDb($photo, $album);
 
-            // Delete files from related folders
             if (file_exists($paths['path4k'])) {
                 unlink($paths['path4k']);
             }
@@ -119,6 +118,33 @@ class PhotoManager implements PhotoManagerContract
 
             return redirect()->route('index-album')->with('error', 'Errore durante l\'eliminazione della foto');
         }
+    }
+
+    public function updateOrder(Request $request)
+    {
+        if (!$request->has('order')) {
+            return response()->json(['error' => 'Order data is missing'], 400);
+        }
+
+        $order = $request->input('order'); // Ottieni l'array degli oggetti con 'id' e 'position'
+
+        // Verifica se l'array contiene oggetti validi
+        if (is_array($order)) {
+            foreach ($order as $item) {
+                // Verifica che ogni oggetto abbia le proprietà 'id' e 'position'
+                if (isset($item['id']) && isset($item['position'])) {
+                    $photo = Photo::find($item['id']);
+                    if ($photo) {
+                        $photo->order = $item['position']; // Aggiorna la posizione
+                        $photo->save();
+                    }
+                }
+            }
+
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => true, 'message' => 'Ordine aggiornato con successo']);
     }
 
     private function photoValidator(Request $request): array

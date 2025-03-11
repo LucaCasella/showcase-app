@@ -12,15 +12,12 @@ class PhotoController extends Controller
 {
     public function create($album_id)
     {
-        // Retrieve the album
         $album = Album::find($album_id);
 
-        // Check if album exists
         if (!$album) {
             return redirect()->route('index-album')->with('error', 'Album non trovato');
         }
 
-        // Retrieve related images
         $photos = $album->children;
 
         return view('backoffice.images.create')->with(['album' => $album, 'photos' => $photos]);
@@ -45,6 +42,14 @@ class PhotoController extends Controller
     {
         try {
             return PhotoManagerFacades::delete($request, $album_id, $photo_id);
+        } catch (Exception $e) {
+            return redirect()->route('show-album')->with('error', $e->getMessage());
+        }
+    }
+
+    public function updateOrder(Request $request) {
+        try {
+            return PhotoManagerFacades::updateOrder($request);
         } catch (Exception $e) {
             return redirect()->route('show-album')->with('error', $e->getMessage());
         }
