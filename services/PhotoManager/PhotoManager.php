@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Mockery\Exception;
 use Service\AlbumManager\AlbumManager;
 use Service\Helpers;
-use function Webmozart\Assert\Tests\StaticAnalysis\length;
 
 class PhotoManager implements PhotoManagerContract
 {
