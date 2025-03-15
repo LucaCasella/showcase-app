@@ -4,6 +4,7 @@ return [
     'title' => 'Fotografa Matrimoni e Eventi Anastasia Kabakova',
     'home' => 'Home',
     'photos' => 'Foto',
+    'locations' => 'Location',
     'videos' => 'Video',
     'contacts' => 'Contatti',
     'AK' => 'ANASTASIA KABAKOVA',

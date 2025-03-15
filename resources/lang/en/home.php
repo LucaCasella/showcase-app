@@ -4,6 +4,7 @@ return [
     'title' => 'Wedding and Event Photographer Anastasia Kabakova',
     'home' => 'Home',
     'photos' => 'Photos',
+    'locations' => 'Locations',
     'videos' => 'Videos',
     'contacts' => 'Contacts',
     'AK' => 'ANASTASIA KABAKOVA',

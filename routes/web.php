@@ -30,7 +30,16 @@ Route::get('/', function () {
 });
 
 Route::get('/photos', function () {
-    $albums = Album::where('visible', '=', 1)->get();
+    $albums = Album::where('visible', 1)
+        ->where('type', 'weddings')
+        ->get();
+    return view('pages.photos', ['albums' => $albums]);
+})->name('photos');
+
+Route::get('/locations', function () {
+    $albums = Album::where('visible', 1)
+        ->where('type', 'locations')
+        ->get();
     return view('pages.photos', ['albums' => $albums]);
 })->name('photos');
 
@@ -62,11 +71,16 @@ Route::get('/backoffice', function () {
     return view('backoffice.dashboard', ['contacts' => $contacts]);
 })->middleware(['auth', 'verified'])->name('backoffice');
 
+Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
+
+//    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+//    ALBUM ROUTES
     Route::get('/adm-gallery', [AlbumController::class, 'index'])->name('index-album');
     Route::get('/adm-gallery/create', [AlbumController::class, 'create'])->name('create-album');
     Route::post('/adm-gallery/store', [AlbumController::class, 'store'])->name('store-album');
@@ -75,11 +89,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-gallery/update/{album_id}', [AlbumController::class, 'update'])->name('update-album');
     Route::delete('/adm-gallery/destroy/{album_id}', [AlbumController::class, 'destroy'])->name('destroy-album');
 
+//    ALBUM PHOTO ROUTES
     Route::get('/adm-gallery/{album_id}/photo/create', [PhotoController::class, 'create'])->name('create-photo');
     Route::post('/adm-gallery/{album_id}/photo/store', [PhotoController::class, 'store'])->name('store-photo');
     Route::delete('/adm-gallery/{album_id}/{photo_id}', [PhotoController::class, 'destroy'])->name('destroy-photo');
     Route::post('/adm-gallery/update-photo-order', [PhotoController::class, 'updateOrder'])->name('update-photo-order');
 
+//    VIDEO ROUTES
     Route::get('/adm-videos', [VideoController::class, 'index'])->name('index-video');
     Route::get('/adm-videos/create', [VideoController::class, 'create'])->name('create-video');
     Route::post('/adm-videos/store', [VideoController::class, 'store'])->name('store-video');
@@ -87,14 +103,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
 
-    Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
-
-//    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
-
-// ROUTE THAT SHOW LOGS
-
+//    ROUTE THAT SHOW LOGS
     Route::get('/logs', [LogController::class, 'showLogs']);
 });
+
 
 
 // IN CASE EXPLODE PRODUCTION
