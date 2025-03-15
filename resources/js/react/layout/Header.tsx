@@ -19,7 +19,7 @@ const Header = () => {
         <div>
             {/*DESKTOP NAVBAR*/}
             <div
-                className={`h-60 mx-auto max-w-7xl hidden md:flex flex-row items-center justify-center gap-16 ${textColorClass}`}>
+                className={`h-60 mx-auto max-w-7xl hidden lg:flex flex-row items-center justify-center gap-16 ${textColorClass}`}>
                 {/* Prima metà del menu */}
                 {firstHalf.map((item, index) => (
                     <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
@@ -38,7 +38,10 @@ const Header = () => {
                     <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
                              isHomePage={isHomePage}/>
                 ))}
-                <LanguageSwitcher/>
+
+                <div className="absolute lg:top-auto lg:right-10">
+                    <LanguageSwitcher/>
+                </div>
             </div>
 
             <MobileNavbar/>
@@ -68,7 +71,7 @@ const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePag
         >
             {item.relatedLinks && item.relatedLinks.length > 0 ? (
                 <div
-                    className={`relative justify-between text-xl text-nowrap no-underline font-medium tracking-widest group cursor-pointer`}>
+                    className={`relative justify-between text-xl no-underline font-medium tracking-widest group cursor-pointer`}>
                     <span className={`${textColor}`}>{item.title}</span>
                     <span
                         className={`absolute left-0 bottom-0 w-full h-[2px] ${underlineColor} scale-x-0 group-hover:scale-x-100 transition-transform ease-in-out duration-200`}/>
@@ -76,7 +79,7 @@ const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePag
             ) : (
                 <a
                     href={item.link}
-                    className={`relative justify-between text-xl text-nowrap no-underline font-medium tracking-widest group`}>
+                    className={`relative justify-between text-xl no-underline font-medium tracking-widest group`}>
                     <span className={`${textColor}`}>{item.title}</span>
                     <span
                         className={`absolute left-0 bottom-0 w-full h-[2px] ${underlineColor} scale-x-0 group-hover:scale-x-100 transition-transform ease-in-out duration-200`}/>

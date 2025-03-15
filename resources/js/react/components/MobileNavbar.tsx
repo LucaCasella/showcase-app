@@ -1,13 +1,19 @@
 import React from 'react';
+import LanguageSwitcher from "../language_context/LanguageSwitcher";
 
 const MobileNavbar = () => (
     <div
-        className='grid grid-cols-3 align-items-center justify-content-center absolute md:hidden h-60 w-full px-4'>
-        <div className='col-span-1'/>
+        className='grid grid-cols-3 align-items-center justify-content-center lg:hidden h-60 w-full px-4'>
+        {/*todo: maybe mobile switcher inside menu*/}
+        <div className='relative col-span-1'>
+            <div className="absolute top-1/2 transform -translate-y-1/2 lg:left-10">
+                <LanguageSwitcher/>
+            </div>
+        </div>
         <div className='col-span-1 flex justify-center'>
             <a href='/home'>
                 <div
-                    className='text-7xl text-white font-medium tracking-widest hover:underline underline-offset-8 transition ease-in-out duration-500'>
+                    className=''>
                     <img src='/assets/new/logoWhiteNoBG.png' className='w-44' alt='Anastasia Kabakova Logo'/>
                 </div>
             </a>
