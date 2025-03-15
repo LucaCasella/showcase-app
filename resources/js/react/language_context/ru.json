@@ -3,9 +3,9 @@
         "gallery": "ГАЛЕРЕЯ",
         "contact": "КОНТАКТЫ",
         "workWithUs": "ЛАВОРА КОН НОИ",
-        "whoWeAre": "О НАС",
-        "album": "АЛЬБОМЫ",
-        "video": "ВИДЕО",
+        "aboutUs": "О НАС",
+        "albums": "АЛЬБОМЫ",
+        "videos": "ВИДЕО",
         "locations": "МЕСТОПОЛОЖЕНИЯ"
     }
 }

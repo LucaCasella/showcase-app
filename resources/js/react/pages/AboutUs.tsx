@@ -5,7 +5,7 @@ function AboutUs() {
 
     return (
         <div className='max-w-7xl mx-auto flex flex-col'>
-            <h2 className='text-6xl text-center tracking-widest font-semibold mt-20'>La Vision</h2>
+            <h2 className='text-6xl text-center tracking-widest font-semibold mt-20'>La Mission</h2>
             <p className='max-w-1/2 text-2xl text-center tracking-widest font-medium my-10'>
                 Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo
                 decidiamo di aprire uno studio nostro.

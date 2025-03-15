@@ -3,9 +3,9 @@
         "gallery": "GALLERIA",
         "contact": "CONTATTI",
         "workWithUs": "LAVORA CON NOI",
-        "whoWeAre": "CHI SIAMO",
-        "album": "ALBUM",
-        "video": "VIDEO",
+        "aboutUs": "CHI SIAMO",
+        "albums": "ALBUM",
+        "videos": "VIDEO",
         "locations": "LOCATIONS"
     }
 }
