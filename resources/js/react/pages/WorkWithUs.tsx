@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Check} from "lucide-react";
 
 function WorkWithUs() {
     const [fileName, setFileName] = useState('');
