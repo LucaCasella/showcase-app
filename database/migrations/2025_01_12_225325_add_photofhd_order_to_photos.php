@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('photos', function (Blueprint $table) {
             $table->string('photo_fhd')->after('photo');
             $table->unsignedInteger('order')->after('visible');
+            $table->string('type')->after('order');
         });
     }
 
@@ -29,6 +30,7 @@ return new class extends Migration
         Schema::table('photos', function (Blueprint $table) {
             $table->dropColumn('photo_fhd');
             $table->dropColumn('order');
+            $table->dropColumn('type');
         });
     }
 };

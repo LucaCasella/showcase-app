@@ -17,6 +17,7 @@ class Album extends Model
     const COVER = 'cover';
     const VISIBLE = 'visible';
     const ORDER = 'order';
+    const TYPE = 'type';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -33,6 +34,7 @@ class Album extends Model
         Album::COVER,
         Album::VISIBLE,
         Album::ORDER,
+        Album::TYPE,
         Album::UPDATED_AT,
     ];
 
@@ -47,6 +49,7 @@ class Album extends Model
         Album::COVER,
         Album::VISIBLE,
         Album::ORDER,
+        Album::TYPE,
     ];
 
     protected $hidden = [

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('albums', function (Blueprint $table) {
             $table->string('slug')->after('id');
             $table->unsignedInteger('order')->default(1)->after('visible');
+            $table->string('type')->after('order');
         });
     }
 
@@ -29,6 +30,7 @@ return new class extends Migration
         Schema::table('albums', function (Blueprint $table) {
             $table->dropColumn('slug');
             $table->dropColumn('order');
+            $table->dropColumn('type');
         });
     }
 };

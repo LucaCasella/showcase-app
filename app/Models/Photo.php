@@ -16,6 +16,7 @@ class Photo extends Model
     const PHOTO_FHD = 'photo_fhd';
     const VISIBLE = 'visible';
     const ORDER = 'order';
+    const TYPE = 'type';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -32,6 +33,7 @@ class Photo extends Model
         Photo::PHOTO_FHD,
         Photo::VISIBLE,
         Photo::ORDER,
+        Photo::TYPE,
     ];
 
     protected $guarded = [
@@ -45,6 +47,7 @@ class Photo extends Model
         Photo::PHOTO_FHD,
         Photo::VISIBLE,
         Photo::ORDER,
+        Photo::TYPE,
     ];
 
     protected $hidden = [
