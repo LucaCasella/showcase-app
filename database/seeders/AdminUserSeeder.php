@@ -11,10 +11,10 @@ class AdminUserSeeder extends Seeder
 {
     public function run()
     {
-        // Creazione dell'utente amministratore con password crittografata
+        // Create admin user with hashed password only for dev purpose
         DB::table('users')->insert([
             'name' => 'Admin',
-            'email' => 'infoKabakova@yahooo.com',
+            'email' => 'infoKabakova@yahoo.com',
             'password' => Hash::make(env('DB_PASSWORD'))
         ]);
     }
