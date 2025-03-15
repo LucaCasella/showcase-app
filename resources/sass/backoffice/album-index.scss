@@ -1,12 +1,14 @@
 .adm-gallery-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 10px;
 }
 
 .adm-album-container {
+    max-width: 400px;
     width: 100%;
     aspect-ratio: 1 / 1;
+    margin: 0 auto;
 }
 
 .adm-album-container img {
@@ -22,8 +24,8 @@
     margin: 0.5rem;
 }
 
-.adm-album-title, .adm-album-location{
-    margin: 0.5rem;
+.adm-album-info > h5 {
+    margin-bottom: 0.5rem;
 }
 
 .adm-cover-container {

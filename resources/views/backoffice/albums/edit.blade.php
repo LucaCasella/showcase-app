@@ -39,6 +39,12 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="mb-2">
+                                        <select id="type" name="type"
+                                                class="hidden peer h-full w-full border-b border-blue-gray rounded-[7px]">
+                                            <option value={{$album->type}} selected>{{$album->type}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
                                         <label for="title"><strong>Edit Album Title</strong></label><br>
                                             <input id="title" type="text" name="title" value="{{$album->title}}" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Title">
                                     </div>
@@ -47,7 +53,7 @@
                                             <input id="location" type="text" name="location" value="{{$album->location}}" class="peer h-full w-full border-b border-blue-gray rounded-[7px]" placeholder="Location">
                                     </div>
                                     <div>Cover Attuale</div>
-                                    <img class="w-28" src="{{ asset('albums/'.$album->slug.'/'.$album->cover) }}" alt="{{$album->title}}" loading="lazy">
+                                    <img class="w-48" src="{{ asset('AK-Photos/' . $album->type . '/' . $album->slug . '/' . $album->cover) }}" alt="{{$album->title}}" loading="lazy">
                                     <div class="mb-2">
                                         <label for="cover"><strong>Edit Album Cover</strong> (caricando un'altra immagine sovrasciverai la cover attuale)</label><br>
                                         <input id="cover" type="file" name="cover" class="">

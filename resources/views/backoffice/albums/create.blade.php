@@ -39,6 +39,14 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <div class="mb-2">
+                                        <label for="type"><strong>Album Type</strong></label><br>
+                                        <select id="type" name="type"
+                                                class="peer h-full w-full border-b border-blue-gray rounded-[7px]">
+                                            <option value="weddings">Wedding</option>
+                                            <option value="locations">Location</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
                                         <label for="title"><strong>Album Title</strong></label><br>
                                         <input id="title" type="text" name="title"
                                                class="peer h-full w-full border-b border-blue-gray rounded-[7px]"

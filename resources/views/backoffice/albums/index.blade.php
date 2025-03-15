@@ -18,24 +18,27 @@
 
     @if ($message = \Illuminate\Support\Facades\Session::get('success'))
         <div
-            class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative block w-full p-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
+            class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative block w-full p-4 mb-4 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
             <p>{{$message}}</p>
         </div>
     @elseif($message = \Illuminate\Support\Facades\Session::get('error'))
         <div
-            class="max-w-4xl mx-auto sm:px-6 lg:px-8 relative block w-full p-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
+            class="max-w-4xl mx-auto sm:px-6 lg:px-8 relative block w-full p-4 mb-4 text-base leading-5 text-white bg-red-500 rounded-lg opacity-100 font-regular">
             <p>{{$message}}</p>
         </div>
     @endif
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-5 adm-gallery-container">
         @foreach ($albums as $album)
-            <div class="max-w-7xl mx-auto adm-album-container">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="adm-album-container">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="adm-album-info">
-                            <h5 class="adm-album-title">{{$album->title}}</h5>
-                            <h5 class="adm-album-location">{{$album->location}}</h5>
+                            <div class="flex- flex-col">
+                                <h5>Type: {{$album->type === 'weddings' ? 'Wedding' : 'Location'}}</h5>
+                                <h5>Title: {{$album->title}}</h5>
+                                <h5>Location: {{$album->location}}</h5>
+                            </div>
                             <form action="{{route('destroy-album', [$album->id])}}" method="post" class="album-form">
                                 <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                                    href="{{route('show-album', [$album->id])}}">Info</a>
@@ -50,7 +53,7 @@
                             </form>
                         </div>
                         <div class="adm-cover-container">
-                            <img class="adm-album-cover" src="{{ asset('albums/'.$album->slug.'/'.$album->cover) }}" alt="{{$album->title}}" loading="lazy">
+                            <img class="adm-album-cover" src="{{asset('AK-Photos/' . $album->type . '/' . $album->slug. '/' . $album->cover) }}" alt="{{$album->title}}" loading="lazy">
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,6 @@ class PhotoManager implements PhotoManagerContract
     public function store(Request $request, $album_id): string
     {
         try {
-
             $totalFiles = count($request->file('photos'));
 
             $photos = $this->photoValidator($request);
@@ -40,16 +39,16 @@ class PhotoManager implements PhotoManagerContract
             }
 
             $albumSlug = $album->slug;
+            $albumType = $album->type;
 
                 foreach ($photosValidated as $uploadedPhoto) {
 
                     try {
-
                         $image = imagecreatefromstring(file_get_contents($uploadedPhoto->getRealPath()));
 
                         $paths = $this->createUniqueFilePathNames($uploadedPhoto);
 
-                        $directories = $this->createIfNotExistsPhotosDirectories($albumSlug);
+                        $directories = $this->createIfNotExistsPhotosDirectories($albumType, $albumSlug);
 
                         $imageFHD = Helpers::resizeToFullHd($image);
 
@@ -63,6 +62,7 @@ class PhotoManager implements PhotoManagerContract
                         $photo->photo = $paths['photo'];
                         $photo->photo_fhd = $paths['photo_fhd'];
                         $photo->order = ++$currentMaxOrder;
+                        $photo->type = $albumType;
                         $photo->save();
 
                         $processedPhotos++;
@@ -78,7 +78,6 @@ class PhotoManager implements PhotoManagerContract
                     }
                 }
 
-
             return 'Foto processate con successo:' . ' ' . $processedPhotos . '/' . $totalFiles . ' ' . $photosNoValidated ;
 
         } catch (Exception $e) {
@@ -90,15 +89,15 @@ class PhotoManager implements PhotoManagerContract
     public function delete(Request $request, $album_id, $photo_id): RedirectResponse
     {
         try {
-
             $photo = Photo::find($photo_id);
             $album = Album::find($album_id);
+            $albumType = $album->type;
 
             if (!$photo || !$album) {
                 return redirect()->route('index-album')->with('error', 'Foto o relativo album non trovati');
             }
 
-            $paths = $this->createPhotoPathsFromDb($photo, $album);
+            $paths = $this->createPhotoPathsFromDb($photo, $album, $albumType);
 
             if (file_exists($paths['path4k'])) {
                 unlink($paths['path4k']);
@@ -110,11 +109,8 @@ class PhotoManager implements PhotoManagerContract
             $photo->delete();
 
             return redirect()->route('show-album', [$album_id])->with('success', 'Foto eliminata con successo');
-
         } catch (\Exception $e) {
-
             Log::error('Errore durante l\'eliminazione della foto: ' . $e->getMessage());
-
             return redirect()->route('index-album')->with('error', 'Errore durante l\'eliminazione della foto');
         }
     }
@@ -142,7 +138,6 @@ class PhotoManager implements PhotoManagerContract
 
             return response()->json(['success' => true]);
         }
-
         return response()->json(['success' => true, 'message' => 'Ordine aggiornato con successo']);
     }
 
@@ -159,11 +154,8 @@ class PhotoManager implements PhotoManagerContract
                 ]);
 
                 if ($validator->passes()) {
-
                     $validatedPhotos[] = $photo;
-
                 }else if ($validator->fails()) {
-
                     $noValidatedPhotos[] = $photo;
                 }
             }
@@ -172,7 +164,6 @@ class PhotoManager implements PhotoManagerContract
         return ['validatedPhotos' => $validatedPhotos,
             'noValidatedPhotos' => $noValidatedPhotos
         ];
-
     }
 
     private function createUniqueFilePathNames($uploadedPhoto): array
@@ -189,13 +180,13 @@ class PhotoManager implements PhotoManagerContract
         ];
     }
 
-    private function createIfNotExistsPhotosDirectories(string $albumSlug): array
+    private function createIfNotExistsPhotosDirectories(string $albumType, string $albumSlug): array
     {
-        $originalPath = public_path(AlbumManager::ALBUM_DIRECTORY . '/' . $albumSlug . '/' . PhotoManager::original_directory);
+        $originalPath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $albumType . '/' . $albumSlug . '/' . PhotoManager::original_directory);
         if (!file_exists($originalPath)) {
             mkdir($originalPath, 0777, true);
         }
-        $fhdPath = public_path(AlbumManager::ALBUM_DIRECTORY . '/' . $albumSlug . '/' . PhotoManager::fhd_directory);
+        $fhdPath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $albumType . '/' . $albumSlug . '/' . PhotoManager::fhd_directory);
         if (!file_exists($fhdPath)) {
             mkdir($fhdPath, 0777, true);
         }
@@ -205,9 +196,9 @@ class PhotoManager implements PhotoManagerContract
         ];
     }
 
-    private function createPhotoPathsFromDb($photo, $album): array
+    private function createPhotoPathsFromDb($photo, $album, $albumType): array
     {
-        $directory = AlbumManager::ALBUM_DIRECTORY . '/';
+        $directory = AlbumManager::BASE_DIRECTORY . '/' . $albumType . '/';
 
         $path4k = public_path($directory . $album->slug . '/original/' . $photo->photo);
 

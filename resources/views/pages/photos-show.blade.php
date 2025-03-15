@@ -15,8 +15,8 @@
                     <div class="photos-container" id="gallery">
 
                         @foreach ($photos as $photo)
-                            <a href="{{asset('albums/' . $album->slug . '/original/' . $photo->photo)}}" class="photo-wrapper">
-                                <img class="photo" src="{{asset('albums/' . $album->slug . '/fhd/' . $photo->photo_fhd)}}" alt="{{$photo}}" loading="lazy">
+                            <a href="{{asset('AK-Photos/' . $album->type . '/' . $album->slug . '/original/' . $photo->photo)}}" class="photo-wrapper">
+                                <img class="photo" src="{{asset('AK-Photos/' . $album->type . '/' . $album->slug . '/fhd/' . $photo->photo_fhd)}}" alt="{{$photo}}" loading="lazy">
                             </a>
                         @endforeach
 
@@ -35,7 +35,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             lightGallery(document.getElementById('gallery'), {
                 selector: '.photo-wrapper',
-                speed: 500
+                speed: 500,
+                download: false
             });
         });
     </script>

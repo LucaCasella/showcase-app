@@ -14,8 +14,7 @@ use Service\PhotoManager\PhotoManager;
 
 class AlbumManager implements AlbumManagerContract
 {
-
-    const ALBUM_DIRECTORY = 'albums';
+    const BASE_DIRECTORY = 'AK-Photos';
 
     /**
      * @throws \Exception
@@ -23,11 +22,10 @@ class AlbumManager implements AlbumManagerContract
     public function store(Request $request) :RedirectResponse
     {
         try {
-            // Input validation
-
             $this->albumValidator($request);
 
-            // Upload image
+            $type = $request->input('type');
+
             $uploadedCover = $request->file('cover');
 
             $imageOriginal = imagecreatefromstring(file_get_contents($uploadedCover->getRealPath()));
@@ -36,30 +34,15 @@ class AlbumManager implements AlbumManagerContract
 
             $slugAndName = $this->createFileSlugAndName($request->input('location'));
 
-            // Ensure the directory exists, otherwise is created
-            $directory = public_path(AlbumManager::ALBUM_DIRECTORY);
+            $album_directory = $this->getAlbumDirectory($type, $slugAndName['fileSlug']);
 
-            $album_directory = public_path(albumManager::ALBUM_DIRECTORY . '/' . $slugAndName['fileSlug']);
-
-            if (!file_exists($directory) ) {
-
-                mkdir($directory, 0777, true);
-
-            }
-            if(!file_exists($album_directory)) {
-
-                mkdir($album_directory, 0777, true);
-            }
-
-            // Save image in WebP format
             $path = $album_directory . '/' . $slugAndName['fileNameWebP'];
 
             imagewebp($imageFHD, $path, 100);
 
-
             $maxOrder = Album::max('order');
-            $order = $maxOrder ? $maxOrder + 1 : 1;
 
+            $order = $maxOrder ? $maxOrder + 1 : 1;
 
             $album = new Album;
             $album->slug = $slugAndName['fileSlug'];
@@ -67,6 +50,7 @@ class AlbumManager implements AlbumManagerContract
             $album->location = $request->input('location');
             $album->cover = $slugAndName['fileNameWebP'];
             $album->order = $order;
+            $album->type = $type;
             $album->save();
 
             $imagesToDestroy = Helpers::groupImagesToDestroy($imageOriginal, $imageFHD);
@@ -81,19 +65,18 @@ class AlbumManager implements AlbumManagerContract
     public function update(Request $request, $album_id): RedirectResponse
     {
         try {
-
             $this->albumValidator($request);
 
             $album = Album::findOrFail($album_id);
+            $type = $album->type;
 
             $slugAndName = $this->createFileSlugAndName($request->input('location'));
 
             if ($request->hasFile('cover')) {
 
-                $oldCoverPath = public_path('albums/'.$album->slug.'/'.$album->cover);
+                $oldCoverPath = public_path('AK-Photos/' . $type . '/' . $album->slug. '/' . $album->cover);
 
                 if(file_exists($oldCoverPath)) {
-
                     unlink($oldCoverPath);
                 }
 
@@ -105,18 +88,17 @@ class AlbumManager implements AlbumManagerContract
 
                 $imageFHD = Helpers::resizeToFullHd($imageOriginal);
 
-
                 // Ensure the directory exists, create if it doesn't
-                $directory = public_path(albumManager::ALBUM_DIRECTORY);
+                $directory = public_path(albumManager::BASE_DIRECTORY. '/' . $type);
 
-                $album_directory = public_path(albumManager::ALBUM_DIRECTORY .'/'. $album->slug);
+                $album_directory = public_path(albumManager::BASE_DIRECTORY . '/' . $type .'/'. $album->slug);
 
                 if (!file_exists($directory)) {
                     mkdir($directory, 0777, true);
                 }
 
                 // Save image in WebP format
-                $path = $album_directory .'/'.$slugAndName['fileNameWebP'];
+                $path = $album_directory . '/' .$slugAndName['fileNameWebP'];
                 imagewebp($imageFHD, $path);
 
                 // Free memory
@@ -132,8 +114,6 @@ class AlbumManager implements AlbumManagerContract
             $album->title = $request->title;
             $album->location = $request->location;
             $album->updated_at = $updated_at;
-
-
             $album->save();
 
             return redirect()->route('index-album')->with('success', 'Album modificato con successo');
@@ -145,11 +125,11 @@ class AlbumManager implements AlbumManagerContract
     public function delete(Request $request, $album_id): RedirectResponse
     {
         try {
-            // Retrieve selected album
             $album = Album::with('Photo')->findOrFail($album_id);
+            $type = $album->type;
 
             // Delete album cover from filesystem
-            $coverPath = public_path(self::ALBUM_DIRECTORY . '/'. $album->slug . '/' . $album->cover);
+            $coverPath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/'. $album->slug . '/' . $album->cover);
 
             if(file_exists($coverPath)) {
                 unlink($coverPath);
@@ -162,11 +142,11 @@ class AlbumManager implements AlbumManagerContract
 
                 foreach ($photos as $photo) {
 
-                    $photoPathFHD = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd);
+                    $photoPathFHD = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd);
                     if(file_exists($photoPathFHD)) {
                         unlink($photoPathFHD);
                     }
-                    $photoPathOriginal = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug . '/' . PhotoManager::original_directory . '/' . $photo->photo);
+                    $photoPathOriginal = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug . '/' . PhotoManager::original_directory . '/' . $photo->photo);
                     if(file_exists($photoPathOriginal)) {
                         unlink($photoPathOriginal);
                     }
@@ -175,54 +155,64 @@ class AlbumManager implements AlbumManagerContract
             }
 
             // Delete all album folders
-            $albumPhotosPathFHD = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug. '/' . PhotoManager::fhd_directory);
+            $albumPhotosPathFHD = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug. '/' . PhotoManager::fhd_directory);
 
             if (is_dir($albumPhotosPathFHD) && count(scandir($albumPhotosPathFHD)) <= 2) {
-
                 rmdir($albumPhotosPathFHD);
             }
-            $albumPhotosPathOriginal = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug . '/' . PhotoManager::original_directory);
+            $albumPhotosPathOriginal = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug . '/' . PhotoManager::original_directory);
 
             if (is_dir($albumPhotosPathOriginal) && count(scandir($albumPhotosPathOriginal)) <= 2) {
-
                 rmdir($albumPhotosPathOriginal);
             }
 
-            $albumFolderPath = public_path(self::ALBUM_DIRECTORY . '/' . $album->slug);
+            $albumFolderPath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug);
 
             if (is_dir($albumFolderPath) && count(scandir($albumFolderPath)) <= 2) {
-
                 rmdir($albumFolderPath);
             }
 
             $album->delete();
 
             return redirect()->route('index-album')->with('success', 'Album cancellato con succeso');
-
         } catch (Exception $e) {
-
             return redirect()->route('index-album')->with('error', $e->getMessage());
         }
-
     }
 
     private function albumValidator (Request $request): void
     {
-
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'location' => 'required',
             'cover' => 'image|mimes:jpeg,png,jpg,webp',
+            'type' => 'required|in:weddings,locations'
         ]);
 
         if ($validator->fails()) {
-
             throw new Exception('Formato del file errato');
         }
     }
+
+    private function getAlbumDirectory(string $type, string $slug): string
+    {
+        $baseDirectory = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type);
+
+        if (!file_exists($baseDirectory)) {
+            mkdir($baseDirectory, 0777, true);
+        }
+
+        $albumDirectory = $baseDirectory . '/' . $slug;
+
+        if (!file_exists($albumDirectory)) {
+            mkdir($albumDirectory, 0777, true);
+        }
+
+        return $albumDirectory;
+    }
+
     function createFileSlugAndName($location): array
     {
-
         $timestamp = time();
 
         $rowFileSlug = Str::slug($location);
