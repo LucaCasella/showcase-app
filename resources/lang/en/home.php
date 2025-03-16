@@ -7,7 +7,9 @@ return [
     'locations' => 'Locations',
     'videos' => 'Videos',
     'contacts' => 'Contacts',
+    'work-with-us' => 'Work with us',
     'AK' => 'ANASTASIA KABAKOVA',
+    'upload-pdf' => 'Upload PDF (Max 2 MB)',
     'presentation' => 'My name is Anastasia Kabakova, after years of working in the photography industry together with my partner Matteo we decide to open our own studio.<br>
                         To date we count on a team of photographers and videomakers, formed by the best collaborators with whom we had the pleasure to work.<br>
                         Innovation, research and development are the basis of our working method.<br>

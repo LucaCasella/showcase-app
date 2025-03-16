@@ -16,22 +16,24 @@
             <input type="tel" class="form-control" id="phone" name="phone" required>
         </div>
         <div class="form-floating mb-2">
-            <textarea class="form-control" id="comment" name="comment" required></textarea>
-            <small id="charCount">250 </small><small>@lang('home.remaining-chars')</small>
+            <textarea class="form-control" id="comment" name="comment" maxlength="250" required></textarea>
+            <small id="charCount">250 </small><small> @lang('home.remaining-chars')</small>
             <label for="comment">@lang('home.leave-comment')</label>
         </div>
         <div class="mb-2">
-            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" maxlength="250" required>
+            <input class="privacycheck mx-2" id="privacycheck" name="privacycheck" type="checkbox" value="false"
+                   required>
             <label for="privacycheck">@lang('home.privacy-check')</label>
             <div>
                 <a href="#privacy-modal" class="open-modal mx-3">@lang('home.privacy-info')</a>
             </div>
         </div>
-            <div class="block mt-4">
-                <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
-            </div>
+        <div class="block mt-4">
+            <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha_ent.site_key') }}"></div>
+        </div>
         <div class="submit-container">
-            <button id="contact-submit" type="submit" class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
+            <button id="contact-submit" type="submit"
+                    class="btn-lg form-submit btn btn-primary my-2">@lang('home.submit')</button>
         </div>
     </form>
     <div id="privacy-modal" class="modal">
@@ -66,7 +68,22 @@
     const charCount = document.getElementById('charCount');
 
     textarea.addEventListener('input', () => {
-        const remaining = 250 - textarea.value.length;
-        charCount.textContent = `${remaining} `;
+        let remaining = 250 - textarea.value.length;
+
+        if (remaining < 0) {
+            charCount.textContent = 'Stai superando il limite di caratteri';
+            charCount.style.color = 'red';
+        } else {
+            charCount.textContent = `${remaining}`;
+            charCount.style.color = "";
+        }
+    });
+</script>
+<script>
+    const checkbox = document.getElementById("privacycheck");
+
+    checkbox.addEventListener("change", () => {
+
+        checkbox.setAttribute("value", checkbox.checked ? 1 : 0);
     });
 </script>

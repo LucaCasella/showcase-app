@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackOfficeController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GuestFormController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\WorkWithUsController;
 use App\Models\Album;
 use App\Models\Contact;
 use App\Models\Video;
@@ -27,7 +29,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.home');
-});
+})->name('home');
+
+Route::get('/work-with-us', function (){
+    return view('pages.work-with-us');
+})->name('work-with-us');
 
 Route::get('/photos', function () {
     $albums = Album::where('visible', 1)
@@ -55,6 +61,9 @@ Route::get('/videos', function () {
 })->name('videos');
 
 Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
+Route::post('/collaborator-form-submit', [WorkWithUsController::class, 'store'])->name('collaborator-form');
+
+
 
 
 
@@ -64,12 +73,14 @@ Route::get('/admin-login', function () {
     return view('welcome');
 })->name('login-admin');
 
-Route::get('/backoffice', function () {
-    $contacts = Contact::where('privacy_accepted', '=', 1)
-        ->where('visible', '=', 1)
-        ->orderBy('created_at', 'asc')->get();
-    return view('backoffice.dashboard', ['contacts' => $contacts]);
-})->middleware(['auth', 'verified'])->name('backoffice');
+//Route::get('/backoffice', function () {
+//    $contacts = Contact::where('privacy_accepted', '=', 1)
+//        ->where('visible', '=', 1)
+//        ->orderBy('created_at', 'asc')->get();
+//    return view('backoffice.dashboard', ['contacts' => $contacts]);
+//})->middleware(['auth', 'verified'])->name('backoffice');
+
+Route::get('/backoffice', [BackOfficeController::class, 'index'])->middleware(['auth' , 'verified'])->name('backoffice');
 
 Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 
@@ -103,7 +114,13 @@ Route::middleware('auth')->group(function () {
     Route::put('/adm-videos/update/{video_id}', [VideoController::class, 'update'])->name('update-video');
     Route::delete('/adm-videos/destroy/{video_id}', [VideoController::class, 'destroy'])->name('destroy-video');
 
-//    ROUTE THAT SHOW LOGS
+    Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
+
+    Route::delete('/collaboration/{collaboration_id}', [BackOfficeController::class, 'destroy'])->name('destroy-collaboration');
+//    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
+
+// ROUTE THAT SHOW LOGS
+
     Route::get('/logs', [LogController::class, 'showLogs']);
 });
 

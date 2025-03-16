@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Mail\ContactMail;
 use App\Mail\Notification;
 use App\Models\Contact;
@@ -16,27 +17,33 @@ class GuestFormController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
-        $validator = Validator::make($request->all(), [
-            'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule]
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule],
+            ]);
 
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput();
+            if ($validator->fails()) {
+                return back()->withErrors($validator)->withInput();
+            }
+
+            Contact::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'comment' => $request->comment,
+                'privacy_accepted' => $request->privacycheck
+            ])->save;
+
+            Mail::to('rasomanuel1@gmail.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
+
+            Mail::to('rasomanuel1@gmail.com')->send(new ContactMail($request->name));
+
+            return redirect()->route('home')->with('success', 'Thanks for contacting us!');
+        }
+        catch (\Exception $exception){
+            return redirect()->route('home')->with('error', 'something went wrong!');
         }
 
-        Contact::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'comment' => $request->comment,
-            'privacy_accepted' => 1
-        ])->save;
-
-        Mail::to('infokabakova@yahoo.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
-
-        Mail::to($request->input('email'))->send(new ContactMail($request->name));
-
-        return redirect('/');
     }
 
     public function destroy($contact_id)
