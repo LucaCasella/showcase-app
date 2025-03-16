@@ -1,8 +1,7 @@
-@import "bootstrap/scss/bootstrap";
-
-@import "backoffice/dasboard.scss";
-@import "backoffice/album-index";
-@import "backoffice/general";
-@import "backoffice/login-register";
-@import "backoffice/photo-show";
-@import "backoffice/video-index";
+@use "bootstrap/scss/bootstrap";
+@use "backoffice/dasboard.scss";
+@use "backoffice/album-index";
+@use "backoffice/general";
+@use "backoffice/login-register";
+@use "backoffice/photo-show";
+@use "backoffice/video-index";
