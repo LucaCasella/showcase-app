@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 
 use App\Mail\ContactMail;
-use App\Mail\Notification;
 use App\Models\Album;
 use App\Models\Contact;
 use App\Models\Photo;
 use App\Rules\ReCaptchaEnterpriseRule;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
