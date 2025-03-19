@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/css/lightgallery.min.css" />
     <title>@lang('home.title')</title>
     <link rel="icon" href="{{asset('favicon.ico')}}">
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/sass/main-public.scss'])
 </head>
 <body class="container-xxl">
 <header class="sticky-top bg-white">
