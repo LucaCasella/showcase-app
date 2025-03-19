@@ -49,15 +49,16 @@ const Contacts = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log(axiosInstance)
+
         if (validateForm()) {
             try {
                 const response = await axiosInstance.post(apiUrl.publicUrl.submitContact, formData, {
+
                 });
 
                 console.log("✅ Dati inviati con successo", response.data);
 
-                // Pulire il form dopo l'invio
+                
                 setFormData({
                     name: "",
                     email: "",
@@ -67,7 +68,7 @@ const Contacts = () => {
                     recaptcha: null,
                 });
 
-                // Opzionale: mostrare un messaggio di conferma all'utente
+
                 alert("Messaggio inviato con successo!");
             } catch (error: any) {
                 console.error("❌ Errore durante l'invio", error.response?.data || error.message);
