@@ -7,5 +7,21 @@
         "album": "ALBUM",
         "video": "VIDEO",
         "locations": "LOCATIONS"
+    },
+    "contactFormError": {
+        "name": "Il nome è obbligatorio",
+        "hintName": "Minimo 3 caratteri",
+        "email": "L'email è obbligatoria",
+        "hintEmail": "Formato email non valido",
+        "phone": "Il numero di telefono è obbligatorio",
+        "hintPhone": "Formato numero di telefono non valido",
+        "comment": "Il commento è obbligatorio",
+        "hintComment": "Minimo 10 caratteri",
+        "privacy": "Devi accettare la privacy policy",
+        "captcha": "Devi completare il reCAPTCHA"
+    },
+    "requestNotify": {
+        "success": "Messaggio inviato con successo!",
+        "error": "Errore durante l'invio."
     }
 }
