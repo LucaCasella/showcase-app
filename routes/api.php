@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/generate-token', [ApiController::class, 'generateToken']);
+
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::post('/submit-contact', [ApiController::class, 'submitContact']);
+Route::post('/submit-contact', [ApiController::class, 'submitContact'])->middleware('SPA-verify');
 
 Route::get('/albums', [ApiController::class, 'getAllAlbums']);
 
