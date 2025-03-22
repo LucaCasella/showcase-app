@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, {useContext, useState} from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
-import axiosInstance from "../api/axios";
+import axiosInstance, {tokenSPAVerify} from "../api/axios";
 import {apiUrl} from "../constant/api-url";
+import SuccessNotification from "../components/notificationRequest/SuccessNotification";
+import ErrorNotification from "../components/notificationRequest/ErrorNotification";
+import {LanguageContext} from "../language_context/LanguageProvider";
+
+
 
 const Contacts = () => {
+    const {languageData} = useContext(LanguageContext)
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -13,15 +21,17 @@ const Contacts = () => {
         recaptcha: null,
     });
 
+
+
     const [errors, setErrors] = useState<{ [key in keyof typeof formData]?: string }>({});
 
     const validations = {
-        name: (value: string) => !value.trim() ? "Il nome è obbligatorio" : value.length < 3 ? "Minimo 3 caratteri" : null,
-        email: (value: string) => !value.trim() ? "L'email è obbligatoria" : !/^\S+@\S+\.\S+$/.test(value) ? "Formato email non valido" : null,
-        phone: (value: string) => !value.trim() ? "Il telefono è obbligatorio" : !/^\+?[0-9]{8,15}$/.test(value) ? "Formato telefono non valido" : null,
-        comment: (value: string) => !value.trim() ? "Il commento è obbligatorio" : value.length < 10 ? "Minimo 10 caratteri" : null,
-        privacy: (value: boolean) => !value ? "Devi accettare la privacy policy" : null,
-        recaptcha: (value: string | null) => !value ? "Devi completare il reCAPTCHA" : null,
+        name: (value: string) => !value.trim() ? languageData.contactFormError.name : value.length < 3 ? languageData.contactFormError.hintName: null,
+        email: (value: string) => !value.trim() ? languageData.contactFormError.email : !/^\S+@\S+\.\S+$/.test(value) ? languageData.contactFormError.hintEmail : null,
+        phone: (value: string) => !value.trim() ? languageData.contactFormError.phone : !/^\+?[0-9]{8,15}$/.test(value) ? languageData.contactFormError.hintPhone : null,
+        comment: (value: string) => !value.trim() ? languageData.contactFormError.comment : value.length < 10 ? languageData.contactFormError.hintComment : null,
+        privacy: (value: boolean) => !value ? languageData.contactFormError.privacy : null,
+        recaptcha: (value: string | null) => !value ? languageData.contactFormError.captcha : null,
     };
 
     const handleChange = (field: keyof typeof formData, value: any) => {
@@ -48,31 +58,34 @@ const Contacts = () => {
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
+
         e.preventDefault();
 
         if (validateForm()) {
             try {
+                const token = await tokenSPAVerify()
+
                 const response = await axiosInstance.post(apiUrl.publicUrl.submitContact, formData, {
-
+                    headers: {
+                        "Authorization": token,
+                    },
                 });
 
-                console.log("✅ Dati inviati con successo", response.data);
+                if(response.data.success){
+                    setSuccessMessage(languageData.requestNotify.success);
 
-                
-                setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    comment: "",
-                    privacy: false,
-                    recaptcha: null,
-                });
+                    setFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        comment: "",
+                        privacy: false,
+                        recaptcha: null,
+                    });
+                }
 
-
-                alert("Messaggio inviato con successo!");
             } catch (error: any) {
-                console.error("❌ Errore durante l'invio", error.response?.data || error.message);
-                alert("Errore durante l'invio del messaggio.");
+                setErrorMessage(languageData.requestNotify.error);
             }
         }
     };
@@ -83,7 +96,8 @@ const Contacts = () => {
             <p className='max-w-2xl mx-auto text-2xl text-center tracking-widest font-medium ml-20 my-20'>
                 Scrivici un messaggio se hai bisogno di aiuto o anche solo per dirci la tua
             </p>
-
+            {successMessage && <SuccessNotification message={successMessage} onClose={() => setSuccessMessage("")} />}
+            {errorMessage && <ErrorNotification message={errorMessage} onClose={() => setErrorMessage("")} />}
             <div className='flex flex-col lg:flex-row gap-10 my-20'>
                 <div className='lg:w-2/3 flex flex-col'>
                     <span className='w-1/4 h-[1px] bg-black' />
