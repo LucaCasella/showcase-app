@@ -3,11 +3,14 @@ import { apiUrl } from "../constant/api-url";
 
 const axiosInstance = axios.create({
     baseURL: apiUrl.publicUrl.baseUrl + apiUrl.publicUrl.apiPrefix,
-    withCredentials: true,
-    withXSRFToken: true,
     headers: {
         Accept: "application/json",
     },
 });
 
+const tokenSPAVerify = async ( ) =>{
+    const tokenResponse = await axiosInstance.get(apiUrl.publicUrl.tokenSPA);
+    return  tokenResponse.data.token;
+}
 export default axiosInstance;
+export { tokenSPAVerify };
