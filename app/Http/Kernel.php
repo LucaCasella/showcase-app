@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'guestVerified' => \App\Http\Middleware\GuestVerified::class,
         'run-migrations' => \App\Http\Middleware\RunMigrationsAndSeeders::class,
         'run-storage' => \App\Http\Middleware\RunCommandStorageLink::class,
+        'SPA-verify' => \App\Http\Middleware\SPARequestAuth::class,
     ];
 }
