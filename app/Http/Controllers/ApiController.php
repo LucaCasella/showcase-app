@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Mail\ContactMail;
+use App\Mail\Notification;
 use App\Models\Album;
 use App\Models\Contact;
 use App\Models\Photo;
@@ -12,7 +13,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
@@ -62,8 +62,7 @@ class ApiController extends Controller
                 'comment' => $request->comment,
                 'privacy_accepted' => 1
             ])->save;
-
-           Mail::to('infokabakova@yahoo.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
+            Mail::to('infokabakova@yahoo.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
 
            Mail::to($request->input('email'))->send(new ContactMail($request->name));
 
