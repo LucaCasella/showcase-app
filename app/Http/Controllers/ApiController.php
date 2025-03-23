@@ -20,6 +20,11 @@ use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
 class ApiController extends Controller
 {
 
+    /**
+     * This function generate a temporary token that allow SPA application
+     *to perform request
+     * @return JsonResponse
+     */
     public function generateToken(): JsonResponse
     {
         $expiration = Carbon::now()->addSeconds(10);
@@ -34,15 +39,33 @@ class ApiController extends Controller
             'token' => $token
         ]);
     }
+
+    /**
+     * This method provide to the SPA Google review
+     * @return JsonResponse
+     */
     public function getGoogleReview(): JsonResponse
     {
-         $reviews = PlaceReviewsAPIFacades::getReviews();
-           if (!$reviews) {
-               return response()->json(['error' => 'No reviews found'], status:404);
-           }
+        try {
+            $reviews = PlaceReviewsAPIFacades::getReviews();
+            if (!$reviews) {
+                return response()->json(['error' => 'No reviews found'], status:404);
+            }
             return response()->json($reviews);
+
+        }catch (\Exception $exception){
+
+            return response()->json(['error' => $exception->getMessage()], status:500);
+        }
+
     }
 
+    /**
+     * This method allow SPA to store some information of contact by user's
+     * that want it
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function submitContact(Request $request): JsonResponse
     {
         try {
@@ -62,7 +85,8 @@ class ApiController extends Controller
                 'comment' => $request->comment,
                 'privacy_accepted' => 1
             ])->save;
-            Mail::to('infokabakova@yahoo.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
+
+           Mail::to('infokabakova@yahoo.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
 
            Mail::to($request->input('email'))->send(new ContactMail($request->name));
 
@@ -74,13 +98,32 @@ class ApiController extends Controller
         }
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function getAllAlbums(): JsonResponse
     {
-        $albums = Album::where('visible', '=', 1)->get();
+        try {
+            $albums = Album::where('visible', '=', 1)->get();
 
-        return response()->json($albums);
+            if ($albums->isEmpty()) {
+
+                return response()->json(["message" => "No albums found"],status:404);
+            }
+
+            return response()->json($albums);
+
+        }catch (\Exception $e){
+
+            return response()->json([$e->getMessage()], 500);
+        }
+
     }
 
+    /**
+     * @param int $album_id
+     * @return JsonResponse
+     */
     public function getPhotosByAlbumId(int $album_id): JsonResponse
     {
         try {
