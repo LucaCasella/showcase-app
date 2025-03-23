@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import LanguageSwitcher from "../language_context/LanguageSwitcher";
 import {useMenuHeader} from "../constant/pages-links";
 import {useLocation} from "react-router-dom";
-import {Link, Menu, X} from "lucide-react";
+import {Menu, X} from "lucide-react";
 
 const MobileNavbar = () => {
     const menuHeader = useMenuHeader();

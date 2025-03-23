@@ -1,5 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import React, {useContext, useState} from 'react';
 import {LanguageContext} from "../language_context/LanguageProvider";
 
 function AboutUs() {
