@@ -1,6 +1,6 @@
 import { apiUrl } from "../../constant/api-url";
 import { useEffect, useState } from "react";
-import axiosInstance from "../../api/axios";
+import axiosInstance, {tokenSPAVerify} from "../../api/axios";
 import LoadingIndicator from "../indicator_loading/LoadingIndicator";
 
 const GoogleReview = () => {
@@ -11,18 +11,26 @@ const GoogleReview = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
+
+                const  token:string = await tokenSPAVerify();
+
                 const response = await axiosInstance.get(
-                     apiUrl.publicUrl.googleReview
+                     apiUrl.publicUrl.googleReview, {
+                         headers:{
+                             "Authorization": token,
+                         }
+                    }
                 );
-                setReviews(response.data);
+                //setReviews(response.data);
+                console.log(response.data)
             } catch (err) {
                 // @ts-ignore
-                setError(err.message);
+                //setError(err.message);
+                console.log(response)
             } finally {
                 setLoading(false);
             }
         };
-
          fetchReviews();
     }, []);
 
