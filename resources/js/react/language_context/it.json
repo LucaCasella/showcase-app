@@ -3,11 +3,50 @@
         "gallery": "GALLERIA",
         "contact": "CONTATTI",
         "workWithUs": "LAVORA CON NOI",
-        "whoWeAre": "CHI SIAMO",
-        "album": "ALBUM",
-        "video": "VIDEO",
+        "aboutUs": "CHI SIAMO",
+        "albums": "ALBUM",
+        "videos": "VIDEO",
         "locations": "LOCATIONS"
     },
+
+    "aboutUs": {
+        "mission": "La Mission",
+        "missionDesc": "Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro. Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare. Innovazione, ricerca e sviluppo sono alla base del nostro metodo di lavoro. I nostri parchi macchine non raggiungono mai i tre anni di età, per noi è fondamentale rimanere sempre aggiornati in termini di qualità fotografica, video e attrezzatura. Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capi saldi del nostro modo di lavorare.",
+        "aboutUs": "Chi Siamo",
+        "anastasia": "Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro.",
+        "matteo": "Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare.",
+        "aboutUsDesc": " "
+    },
+
+    "workWithUs": {
+        "title": "Entra nel team",
+        "description": "Siamo sempre alla ricerca di talenti appasionati e motivati. Se vuoi entrare a far parte del nostro team, inviaci la tua candidatura",
+        "text1": "Lo Studio Anastasia Kabakova è una realtà innovativa e digitale del settore matrimoniale. Gli importanti investimenti realizzati negli ultimi anni rispecchiano la crescente attenzione rivolta alla ricerca, all'innovazione e alla sostenibilità in tutte le sue attività. Crediamo che persone qualificate e in grado di accogliere le sfide del mercato possano contribuire con successo allo sviluppo dello Studio. Per questa ragione, investiamo nella scelta di persone dinamiche, brillanti, global mindset, con un approccio digitale e aperte al cambiamento.",
+        "title2": "Chi cerchiamo e perché sceglierci",
+        "text2": "Ricerchiamo persone con cui condividere la nostra mission e i nostri valori per attuare un progetto di contenuti sempre più emozionanti e tecnologicamente avanzati, anche attraverso iniziative di Employer Branding, eventi di orientamento al lavoro e Recruiting/Job Day, in collaborazione con location del settore. Attenti ai nuovi talenti, valorizziamo le nostre persone promuovendone la crescita nelle aree tecniche, professionali e manageriali, nel rispetto del work-life integration.",
+        "cvUpload": "Carica un c.v."
+    },
+
+    "contacts": {
+        "title": "Contattaci",
+        "description": "Scrivici un messaggio se hai bisogno di aiuto o anche solo per dirci la tua",
+        "followUs": "SEGUICI SU",
+        "callUs": "Puoi chiamarci al numero"
+    },
+
+    "utils": {
+        "form": {
+            "name": "Il tuo nome",
+            "email": "La tua email",
+            "phone": "Un tuo numero",
+            "message": "Il tuo messaggio",
+            "privacy1": "Ho letto e accetto l'",
+            "privacy2": "informativa sulla privacy",
+            "privacy3": ", acconsentendo al trattamento dei miei dati personali.",
+            "submit": "INVIA"
+        }
+    },
+
     "contactFormError": {
         "name": "Il nome è obbligatorio",
         "hintName": "Minimo 3 caratteri",
@@ -20,6 +59,7 @@
         "privacy": "Devi accettare la privacy policy",
         "captcha": "Devi completare il reCAPTCHA"
     },
+
     "requestNotify": {
         "success": "Messaggio inviato con successo!",
         "error": "Errore durante l'invio."

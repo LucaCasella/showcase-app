@@ -11,12 +11,12 @@ export const useMenuHeader = (): MenuItem[] => {
             link: '/gallery',
             dropdown: 'gallery',
             relatedLinks: [
-                { title: languageData.header.album, link: '/album' },
-                { title: languageData.header.video, link: '/video' },
+                { title: languageData.header.albums, link: '/albums' },
+                { title: languageData.header.videos, link: '/videos' },
                 { title: languageData.header.locations, link: '/locations' },
             ]
         },
-        { page: 'aboutUs', title: languageData.header.whoWeAre, link: '/about-us' },
+        { page: 'aboutUs', title: languageData.header.aboutUs, link: '/about-us' },
         { page: 'workWithUs', title: languageData.header.workWithUs, link: '/work-with-us' },
         { page: 'contacts', title: languageData.header.contact, link: '/contacts' },
     ];
@@ -27,10 +27,10 @@ export interface MenuItem {
     title: string;
     link: string;
     dropdown?: string;
-    relatedLinks?: Link[];
+    relatedLinks?: LinkItem[];
 }
 
-export interface Link {
+export interface LinkItem {
     title: string;
     link: string;
 }

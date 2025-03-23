@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, useMenuHeader, MenuItem} from "../constant/pages-links";
+import {LinkItem, useMenuHeader, MenuItem} from "../constant/pages-links";
 import MobileNavbar from "../components/MobileNavbar";
 import {useLocation} from "react-router-dom";
 import LanguageSwitcher from "../language_context/LanguageSwitcher";
@@ -18,8 +18,8 @@ const Header = () => {
     return (
         <div>
             {/*DESKTOP NAVBAR*/}
-            <div
-                className={`h-60 mx-auto max-w-7xl hidden md:flex flex-row items-center justify-center gap-16 ${textColorClass}`}>
+            <nav
+                className={`h-60 mx-auto max-w-7xl hidden lg:flex flex-row items-center justify-center gap-8 xl:gap-16 ${textColorClass}`}>
                 {/* Prima metà del menu */}
                 {firstHalf.map((item, index) => (
                     <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
@@ -38,8 +38,11 @@ const Header = () => {
                     <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
                              isHomePage={isHomePage}/>
                 ))}
-                <LanguageSwitcher/>
-            </div>
+
+                <div className="absolute lg:top-auto lg:left-6">
+                    <LanguageSwitcher/>
+                </div>
+            </nav>
 
             <MobileNavbar/>
         </div>
@@ -55,7 +58,7 @@ interface NavItemProps {
     isHomePage: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePage}) => {
+export const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePage}) => {
     const textColor = isHomePage ? 'text-white' : 'text-black';
     const underlineColor = isHomePage ? 'bg-white' : 'bg-black';
     const relatedContainerColor = isHomePage ? 'bg-white' : 'bg-gray-200';
@@ -68,7 +71,7 @@ const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePag
         >
             {item.relatedLinks && item.relatedLinks.length > 0 ? (
                 <div
-                    className={`relative justify-between text-xl text-nowrap no-underline font-medium tracking-widest group cursor-pointer`}>
+                    className={`relative justify-between text-xl no-underline font-medium tracking-widest group cursor-pointer`}>
                     <span className={`${textColor}`}>{item.title}</span>
                     <span
                         className={`absolute left-0 bottom-0 w-full h-[2px] ${underlineColor} scale-x-0 group-hover:scale-x-100 transition-transform ease-in-out duration-200`}/>
@@ -76,7 +79,7 @@ const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePag
             ) : (
                 <a
                     href={item.link}
-                    className={`relative justify-between text-xl text-nowrap no-underline font-medium tracking-widest group`}>
+                    className={`relative justify-between text-xl no-underline font-medium tracking-widest group`}>
                     <span className={`${textColor}`}>{item.title}</span>
                     <span
                         className={`absolute left-0 bottom-0 w-full h-[2px] ${underlineColor} scale-x-0 group-hover:scale-x-100 transition-transform ease-in-out duration-200`}/>
@@ -86,7 +89,7 @@ const NavItem: React.FC<NavItemProps> = ({item, dropdown, setDropdown, isHomePag
             {dropdown === item.dropdown && item.relatedLinks && (
                 <div className="absolute flex-col gap-10 text-black left-1/2 -translate-x-1/2 pt-10 z-50">
                     <div className={`${relatedContainerColor} p-5`}>
-                        {item.relatedLinks.map((subItem: Link) => (
+                        {item.relatedLinks.map((subItem: LinkItem) => (
                             <a key={subItem.link} href={subItem.link}
                                className={`block ${relatedContainerColor} text-center text-black font-medium tracking-widest no-underline hover:underline underline-offset-8 px-4 py-2`}>
                                 {subItem.title}

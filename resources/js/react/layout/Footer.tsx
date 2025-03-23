@@ -8,7 +8,7 @@ const Footer = () => {
 
     return (
         <div className='h-20 w-full flex flex-row justify-center items-center'>
-            <p className={`text-center ${textColorClass} tracking-widest text-sm`}>© 2025, ayriika - P.IVA 04057881205</p>
+            <p className={`text-center ${textColorClass} tracking-widest text-sm my-auto`}>© 2025, ayriika - P.IVA 04057881205</p>
         </div>
     );
 };
