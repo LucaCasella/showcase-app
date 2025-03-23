@@ -27,10 +27,10 @@ export interface MenuItem {
     title: string;
     link: string;
     dropdown?: string;
-    relatedLinks?: Link[];
+    relatedLinks?: LinkItem[];
 }
 
-export interface Link {
+export interface LinkItem {
     title: string;
     link: string;
 }
