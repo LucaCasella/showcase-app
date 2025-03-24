@@ -57,7 +57,10 @@
         "comment": "Comment is required",
         "hintComment": "Minimum 10 characters" ,
         "privacy": "You must accept the privacy policy",
-        "captcha": "You must complete the reCAPTCHA"
+        "captcha": "You must complete the reCAPTCHA",
+        "file": "You must upload a pdf file",
+        "fileType": "You must upload a PDF file",
+        "fileSize": "The file must not exceed 2MB"
     },
 
     "requestNotify": {
