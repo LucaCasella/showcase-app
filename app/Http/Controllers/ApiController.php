@@ -98,6 +98,37 @@ class ApiController extends Controller
         }
     }
 
+    public function submitCurriculum(Request $request): JsonResponse
+    {
+         try {
+            $validator = Validator::make($request->all(), [
+                'recaptcha' => ['required', new ReCaptchaEnterpriseRule],
+                'pdf' => ['required', 'file', 'mimetypes:application/pdf', 'max:2048'],
+                'email' => ['required', 'email'],
+                'phone' => ['required'],
+            ]);
+
+            if ($validator->fails()) {
+
+                return response()->json(['captchaError' => $validator->errors()], 400);
+            }
+//             Collaboration::create([
+//                'name' => $request->name,
+//                'email' => $request->email,
+//                'phone' => $request->phone,
+//                'privacy_accepted' => $request->privacycheck,
+//                'curriculum' => PdfManagerFacade::storePdfFromRequest($request->file('pdf'), $request->name),
+//            ])->save;
+
+            return response()->json(['success', 'Request collaboration created successfully'] );
+
+        }catch (\Exception $e){
+
+            return response()->json(['error', $e->getMessage()], 500);
+        }
+    }
+
+
     /**
      * @return JsonResponse
      */

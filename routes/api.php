@@ -20,6 +20,8 @@ Route::get('/generate-token', [ApiController::class, 'generateToken']);
 
 Route::post('/submit-contact', [ApiController::class, 'submitContact'])->middleware('SPA-verify');
 
+Route::post('/submit-curriculum', [ApiController::class, 'submitCurriculum'])->middleware('SPA-verify');
+
 Route::get('/albums', [ApiController::class, 'getAllAlbums'])->middleware('SPA-verify');
 
 Route::get('/albums/{id}', [ApiController::class, 'getPhotosByAlbumId'])->middleware('SPA-verify');
