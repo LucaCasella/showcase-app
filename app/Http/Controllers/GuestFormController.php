@@ -16,6 +16,10 @@ class GuestFormController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
+        if ($request->candy) {
+            return redirect('/');
+        }
+
         $validator = Validator::make($request->all(), [
             'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule]
         ]);

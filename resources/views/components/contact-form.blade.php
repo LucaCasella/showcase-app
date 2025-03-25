@@ -2,6 +2,10 @@
     <h2 class="mb-3">@lang('home.discover-prices')</h2>
     <form action="{{ route('guest-form') }}" method="post">
         @csrf
+        <div class="hidden">
+            <label for="candy" class="form-label"></label>
+            <input type="text" class="form-control" id="candy" name="candy" style="display:none;">
+        </div>
         <div class="mb-2">
             <label for="name" class="form-label">@lang('home.full-name')</label>
             <input type="text" class="form-control" id="name" aria-describedby="name" name="name" required>
