@@ -5,6 +5,7 @@ export const apiUrl = {
         "apiPrefix": "api/",
         "googleReview" : "google-review",
         "submitContact": "submit-contact",
-        "tokenSPA": "generate-token"
+        "tokenSPA": "generate-token",
+        "albums": "albums",
     }
 }
