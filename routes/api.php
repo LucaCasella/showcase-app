@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\ApiController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Models\Video;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/generate-token', [ApiController::class, 'generateToken']);
+
+Route::post('/submit-contact', [ApiController::class, 'submitContact'])->middleware('SPA-verify');
+
+Route::post('/submit-curriculum', [ApiController::class, 'submitCurriculum'])->middleware('SPA-verify');
+
+Route::get('/albums', [ApiController::class, 'getAllAlbums'])->middleware('SPA-verify');
+
+Route::get('/albums/{id}', [ApiController::class, 'getPhotosByAlbumId'])->middleware('SPA-verify');
+
+Route::get('/google-review', [ApiController::class, 'getGoogleReview'])->middleware('SPA-verify');
+
+Route::get('/video-list', function () {
+    return Video::all()->pluck('yt_video_id')->toJson();
 });
 
-Route::get('/videolist', function () {
-    return Video::all()->pluck('yt_video_id')->toJson();
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::post('/logout', [AuthController::class, 'logout']);
 });

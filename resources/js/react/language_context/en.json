@@ -1,0 +1,70 @@
+{
+    "header": {
+        "gallery": "GALLERY",
+        "contact": "CONTACTS",
+        "workWithUs": "WORK WITH US",
+        "aboutUs": "ABOUT US",
+        "albums": "ALBUM",
+        "videos": "VIDEO",
+        "locations": "LOCATIONS"
+    },
+
+    "aboutUs": {
+        "mission": "The Mission",
+        "missionDesc": " ",
+        "aboutUs": "About Us",
+        "anastasia": " ",
+        "matteo": " ",
+        "aboutUsDesc": " "
+    },
+
+    "workWithUs": {
+        "title": "Join the team",
+        "description": "We are always looking for passionate and motivated talents. If you want to join our team, send us your application",
+        "text1": "Anastasia Kabakova Law Firm is an innovative and digital reality in the matrimonial sector. The significant investments made in recent years reflect the growing attention paid to research, innovation and sustainability in all its activities. We believe that qualified people who are able to take on the challenges of the market can successfully contribute to the development of the Firm. For this reason, we invest in the choice of dynamic, brilliant, global-minded people, with a digital approach and open to change.",
+        "title2": "Who we are looking for and why choose us",
+        "text2": "We are looking for people to share our mission and values with, to implement a project of increasingly exciting and technologically advanced content, also through Employer Branding initiatives, career orientation events and Recruiting/Job Day, in collaboration with industry locations. Attentive to new talents, we enhance our people by promoting their growth in the technical, professional and managerial areas, in compliance with work-life integration.",
+        "cvUpload": "Upload your CV"
+    },
+
+    "contacts": {
+        "title": "Contact us",
+        "description": "Write us a message if you need help or just to tell us your opinion",
+        "followUs": "FOLLOW US ON",
+        "callUs": "You can call us at"
+    },
+
+    "utils": {
+        "form": {
+            "name": "Your name",
+            "email": "Your email",
+            "phone": "Your phone",
+            "message": "Your message",
+            "privacy1": "I have read and accept the ",
+            "privacy2": "privacy policy",
+            "privacy3": ", consenting to the processing of my personal data.",
+            "submit": "SUBMIT"
+        }
+    },
+
+    "contactFormError": {
+        "name": "Name is required",
+        "hintName":"Minimum 3 characters" ,
+        "email": "Email is required",
+        "hintEmail": "Invalid email format" ,
+        "phone": "Phone number is required",
+        "hintPhone": "Invalid phone number format",
+        "comment": "Comment is required",
+        "hintComment": "Minimum 10 characters" ,
+        "privacy": "You must accept the privacy policy",
+        "captcha": "You must complete the reCAPTCHA",
+        "file": "You must upload a pdf file",
+        "fileType": "You must upload a PDF file",
+        "fileSize": "The file must not exceed 2MB"
+    },
+
+    "requestNotify": {
+        "success": "Message sent successfully!",
+        "error": "Error during sending"
+    }
+}

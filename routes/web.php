@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__ . '/auth.php';
+
+
 // PUBLIC ROUTES
 
 Route::get('/', function () {
@@ -62,7 +65,6 @@ Route::get('/videos', function () {
 
 Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
 Route::post('/collaborator-form-submit', [WorkWithUsController::class, 'store'])->name('collaborator-form');
-
 
 
 
@@ -118,23 +120,21 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/collaboration/{collaboration_id}', [BackOfficeController::class, 'destroy'])->name('destroy-collaboration');
 //    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
-
-// ROUTE THAT SHOW LOGS
-
-    Route::get('/logs', [LogController::class, 'showLogs']);
 });
 
+// ROUTE THAT SHOW LOGS
+Route::get('/logs', [LogController::class, 'showLogs']);
 
 
 // IN CASE EXPLODE PRODUCTION
-//Route::get('/migrations', function (){
-//    return "Migrazioni e seeding completati con successo!";
-//})->middleware('run-migrations');
-
-require __DIR__.'/auth.php';
-
-
+Route::get('/migrations', function (){
+    return "Migrazioni e seeding completati con successo!";
+})->middleware('run-migrations');
 
 // LOCALIZATION ROUTES
-
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
+
+// REACT ROUTE BUILD
+Route::get('/{any}', function () {
+    return view('react.react');
+})->where('any', '.*');

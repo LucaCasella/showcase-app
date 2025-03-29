@@ -1,11 +1,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default  {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './resources/js/react/**/*.{js,jsx,ts,tsx}',
     ],
 
     theme: {
@@ -13,6 +14,16 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                // todo: choose brand colors
+                primary: '',
+                primaryForeground: '',
+                secondary: '',
+                secondaryForeground: '',
+                success: '',
+                warning: '',
+                error: '',
+            }
         },
     },
 

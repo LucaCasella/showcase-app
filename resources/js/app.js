@@ -1,11 +1,8 @@
 import './bootstrap';
 
-import Alpine from 'alpinejs';
+import './react/main.tsx'
+import './react/main.css';
 
 import '../css/app.scss';
 import '../sass/main-backoffice.scss'
 import '../sass/main-public.scss';
-
-window.Alpine = Alpine;
-
-Alpine.start();

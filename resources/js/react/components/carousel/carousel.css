@@ -1,0 +1,53 @@
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 600px;
+    width: 70%;
+}
+
+.carousel-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.carousel-button > svg {
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(110, 110, 110, 0.8) 5%, rgba(110, 110, 110, 0) 70%);
+}
+
+.carousel-button {
+    z-index: 2;
+}
+
+.item-carousel {
+    position: absolute;
+    transition: transform 1s ease, opacity 0.5s ease;
+}
+
+.item-active {
+    transform: translateX(0);
+    z-index: 3;
+    scale: 1;
+    opacity: 1;
+    background: transparent;
+}
+
+.item-prev {
+    transform: translateX(-60%) scale(0.7);
+    opacity: 0.4;
+    z-index: 1;
+    background: transparent;
+}
+
+.item-next {
+    transform: translateX(60%) scale(0.7);
+    opacity: 0.4;
+    z-index: 1;
+    background: transparent;
+}

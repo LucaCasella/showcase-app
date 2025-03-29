@@ -42,7 +42,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'guestVerified' => \App\Http\Middleware\GuestVerified::class,
         'run-migrations' => \App\Http\Middleware\RunMigrationsAndSeeders::class,
         'run-storage' => \App\Http\Middleware\RunCommandStorageLink::class,
+        'SPA-verify' => \App\Http\Middleware\SPARequestAuth::class,
     ];
 }

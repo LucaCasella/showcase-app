@@ -1,0 +1,7 @@
+.home-background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background: url("/public/assets/new/10.webp") center;
+}
