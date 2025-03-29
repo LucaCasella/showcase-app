@@ -1,19 +1,25 @@
 const carouselItems = [
     {
-        title: 'GALLERIA',
-        text: "Studio e passione per questo lavoro ci hanno portato realizzare fotografie di alto livello. Per noi è fondamentale capire con il cliente il tipo di prodotto che vuole realizzare personalizzando il nostro stile per ogni tipo di evento. Ogni nostro scatto viene restituito alla miglior qualità possibile presente sul mercato.Ogni anno proponiamo scatti unici e originali creati in base al tipo di evento, questo ci permette di variare sempre il nostro repertorio e non risultare standard e monotoni.",
-        image: "/assets/new/10.webp"
+        title: 'ALBUMS',
+        text: "La nostra passione ed esperienza ci spingono a creare fotografie di altissimo livello. Personalizziamo ogni scatto in base alle esigenze del cliente, garantendo sempre la massima qualità. Ogni evento è un’opportunità per innovare, offrendo immagini uniche e mai scontate.",
+        image: "/assets/new/10.webp",
+        link: "/albums"
+    },
+    {
+        title: 'VIDEO',
+        text: "Creiamo video pensati per emozionare, con riprese in 4K fino a 100fps e una gamma cromatica ricca grazie al formato 10-bit 4:2:2. Garantiamo un audio impeccabile con microfoni wireless e ambientali. Tecnologia avanzata e formazione costante ci permettono di soddisfare ogni esigenza, mentre il nostro drone regala riprese aeree spettacolari.",
+        image: "/assets/new/home-videos.jpg",
+        link: "/videos"
     },
     {
         title: 'CONTATTI',
-        text: "Ogni nostro video viene pensato per trasmettere emozioni uniche.\nLe nostre camere ci permettono di girare in 4k fino a 100fps.\nGrazie al formato a 10 bit 4:2:2 possiamo fornire una gamma cromatica unica personalizzabile in post produzione secondo le linee guida del progetto che stiamo svolgendo.\nPer avere una qualità audio eccellente siamo forniti sia di microfoni wireless sia ambientali.\nFormazione e componenti tecniche all'avanguardia ci consentono di andare incontro a tutte le esigenze dei nostri clienti.\nIl nostro punto di forza è l'uso del drone che ci permette riprese aree mozzafiato.",
-        image: "/assets/new/10.webp"
-    },
-    {
-        title: 'INFO',
-        text: "Ogni nostro video viene pensato per trasmettere emozioni uniche.\nLe nostre camere ci permettono di girare in 4k fino a 100fps.\nGrazie al formato a 10 bit 4:2:2 possiamo fornire una gamma cromatica unica personalizzabile in post produzione secondo le linee guida del progetto che stiamo svolgendo.\nPer avere una qualità audio eccellente siamo forniti sia di microfoni wireless sia ambientali.\nFormazione e componenti tecniche all'avanguardia ci consentono di andare incontro a tutte le esigenze dei nostri clienti.\nIl nostro punto di forza è l'uso del drone che ci permette riprese aree mozzafiato.",
-        image: "/assets/new/10.webp"
+        text: " Ogni pacchetto viene cucito su misura del cliente. Attenzione e cura delle richieste sono capi saldi del nostro modo di lavorare. Vuoi dare vita al tuo progetto con immagini straordinarie? Contattaci per raccontarci la tua idea e creare qualcosa di unico insieme!",
+        image: "/assets/new/10.webp",
+        link: "/contacts"
     }
 ]
 
 export default carouselItems;
+
+//LOCATIONS
+//Scopri le location mozzafiato dove realizziamo i nostri servizi fotografici. Luoghi unici che rendono ogni scatto ancora più speciale! Lasciati ispirare dalla magia di ogni scenario.

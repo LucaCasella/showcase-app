@@ -132,10 +132,16 @@ class ApiController extends Controller
     /**
      * @return JsonResponse
      */
-    public function getAllAlbums(): JsonResponse
+    public function getAllAlbums(Request $request): JsonResponse
     {
         try {
-            $albums = Album::where('visible', '=', 1)->get();
+            $query = Album::where('visible', '=', 1);
+
+            if ($request->has('type')) {
+                $query->where('type', $request->query('type'));
+            }
+
+            $albums = $query->get();
 
             if ($albums->isEmpty()) {
 
@@ -148,7 +154,6 @@ class ApiController extends Controller
 
             return response()->json([$e->getMessage()], 500);
         }
-
     }
 
     /**

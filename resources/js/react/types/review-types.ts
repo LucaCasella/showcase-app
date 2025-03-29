@@ -1,4 +1,3 @@
-
 interface Review {
     textReview : string
     author: string
