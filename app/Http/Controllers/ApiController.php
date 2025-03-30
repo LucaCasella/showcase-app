@@ -187,4 +187,35 @@ class ApiController extends Controller
 
     }
 
+    /**
+     * Retrieves photos from an album based on its slug.
+     *
+     * This method looks up an album using the provided slug. If the album exists,
+     * it fetches all associated photos ordered by the 'order' field in ascending order.
+     * If the album or photos are not found, it returns an appropriate error response.
+     *
+     * @param string $slug The unique slug of the album.
+     * @return JsonResponse A JSON response containing the photos or an error message.
+     */
+    public function getPhotosByAlbumSlug(string $slug): JsonResponse
+    {
+        try {
+            $album = Album::where('slug', $slug)->first();
+
+            if (!$album) {
+                return response()->json(["message" => "Album not found"], 404);
+            }
+
+            $photos = Photo::where('album_id', $album->id)->orderBy('order', 'asc')->get();
+
+            if ($photos->isEmpty()) {
+                return response()->json(["message" => "No photos found"], 404);
+            }
+
+            return response()->json($photos);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }

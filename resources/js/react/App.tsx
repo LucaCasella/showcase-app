@@ -27,10 +27,10 @@ function App() {
                     <Route path='/' element={<MainLayout />}>
                         <Route index path="/home" element={<HomeWrapper />}/>
                         <Route path="/albums" element={<AlbumsPage/>}/>
-                        <Route path="/albums/:id" element={<AlbumPage/>}/>
+                        <Route path="/albums/:slug" element={<AlbumPage/>}/>
                         <Route path="/videos" element={<VideosPage/>}/>
                         <Route path="/locations" element={<LocationsPage/>}/>
-                        <Route path="/locations/:id" element={<LocationPage/>}/>
+                        <Route path="/locations/:slug" element={<LocationPage/>}/>
                         {/*<Route path="/studios" element={<StudiosPage/>}/>*/}
                         <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="/work-with-us" element={<WorkWithUs/>}/>

@@ -24,7 +24,7 @@ Route::post('/submit-curriculum', [ApiController::class, 'submitCurriculum'])->m
 
 Route::get('/albums', [ApiController::class, 'getAllAlbums'])->middleware('SPA-verify');
 
-Route::get('/albums/{id}', [ApiController::class, 'getPhotosByAlbumId'])->middleware('SPA-verify');
+Route::get('/albums/{slug}', [ApiController::class, 'getPhotosByAlbumSlug'])->middleware('SPA-verify');
 
 Route::get('/google-review', [ApiController::class, 'getGoogleReview'])->middleware('SPA-verify');
 
