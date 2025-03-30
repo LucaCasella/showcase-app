@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import axiosInstance, {tokenSPAVerify} from "../api/axios";
-import {apiUrl} from "../constant/api-url";
 import axios from "axios";
+import {getAlbumsByType} from "../services/getAlbumsByType";
 
 function LocationsPage() {
     const [locations, setLocations] = useState<Album[]>([]);
@@ -10,18 +9,8 @@ function LocationsPage() {
     useEffect(() => {
         const fetchLocations = async () => {
             try {
-                const  token:string = await tokenSPAVerify();
-
-                const response = await axiosInstance.get(
-                    apiUrl.publicUrl.albums, {
-                        headers:{
-                            "Authorization": token,
-                        },
-                        params: {type: "location"},
-                    }
-                );
+                const response = await getAlbumsByType('locations');
                 setLocations(response.data);
-                console.log(response.data)
             } catch (err) {
                 if (axios.isAxiosError(err)) {
                     console.error("Errore API:", err.response?.data || err.message);
@@ -30,47 +19,45 @@ function LocationsPage() {
                 }
             }
         };
+
         fetchLocations();
     }, []);
 
     return (
         <div className='w-full lg:w-3/4 mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            <LocationItem title={'location.title'} location={'location.location'} cover={'1_1742850506.jpg'} />
-            <LocationItem title={'location.title'} location={'location.location'} cover={'2_1742850522.jpg'} />
-            <LocationItem title={'location.title'} location={'location.location'} cover={'1_1742850506.jpg'} />
             {error ? (
                 <p className="text-red-500">{error}</p>
             ) : (
                 locations.map((location, index) => (
-                    <LocationItem key={index} title={location.title} location={location.location} cover={location.cover} />
+                    <LocationItem key={index} slug={location.slug} title={location.title} location={location.location} cover={location.cover} />
                 ))
             )}
         </div>
     );
 }
 
-function LocationItem({title, location, cover}: any) {
+function LocationItem({slug, title, location, cover}: any) {
     return (
-        <div>
+        <a href={`/locations/${slug}`} className='no-underline'>
             <div className="relative overflow-hidden group mb-4">
                 <img
-                    className="w-full aspect-[4/3] object-cover group-hover:scale-110 transition-transform duration-500"
-                    src={`/album_covers/${cover}`}
-                    alt={`Location ${title}`}
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:opacity-60"
+                    src={`AK-Photos/locations/${slug}/${cover}`}
+                    alt={`${title}`}
                     loading="lazy"
                 />
                 <div className="absolute inset-0 items-center justify-center hidden group-hover:flex duration-500">
-                    <p className="text-2xl tracking-widest font-semibold">{title}</p>
+                    <p className="text-black text-3xl tracking-widest font-semibold">{title}</p>
                 </div>
             </div>
             <div className='flex items-center gap-10 px-4'>
                 <span className='w-full h-[1px] bg-gray-500'/>
-                <div className='text-center text-nowrap'>
-                    {location ? location : ''}
+                <div className='text-center text-nowrap text-black'>
+                    {location}
                 </div>
                 <span className='w-full h-[1px] bg-gray-500'/>
             </div>
-        </div>
+        </a>
     );
 }
 

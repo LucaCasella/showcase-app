@@ -130,15 +130,22 @@ class ApiController extends Controller
 
 
     /**
-     * @return JsonResponse
+     * Retrieves all visible albums, optionally filtered by type.
+     *
+     * This method fetches all albums where the 'visible' field is set to 1.
+     * If a 'type' query parameter is provided, it filters the albums by the given type.
+     * If no albums are found, it returns an error response.
+     *
+     * @param Request $request The HTTP request containing optional query parameters.
+     * @return JsonResponse A JSON response containing the albums or an error message.
      */
-    public function getAllAlbums(Request $request): JsonResponse
+    public function getAllAlbums(Request $request): JsonResponse //todo: add a pagination
     {
         try {
             $query = Album::where('visible', '=', 1);
 
             if ($request->has('type')) {
-                $query->where('type', $request->query('type'));
+                $query->where('type', $request->query('type'))->orderBy('created_at', 'desc');
             }
 
             $albums = $query->get();
@@ -150,7 +157,7 @@ class ApiController extends Controller
 
             return response()->json($albums);
 
-        }catch (\Exception $e){
+        } catch (\Exception $e){
 
             return response()->json([$e->getMessage()], 500);
         }
