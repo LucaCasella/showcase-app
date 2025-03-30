@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {LanguageContext} from "../language_context/LanguageProvider";
+import GoogleReview from "../components/GoogleReview/GoogleReview";
 
 function AboutUs() {
     const {languageData} = useContext(LanguageContext);
@@ -65,6 +66,8 @@ function AboutUs() {
 
                 {/* todo: aggiungere carosello recensioni google */}
             </div>
+
+            <GoogleReview />
         </div>
     );
 }
