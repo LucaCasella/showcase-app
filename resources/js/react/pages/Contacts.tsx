@@ -7,7 +7,6 @@ import ErrorNotification from "../components/notificationRequest/ErrorNotificati
 import {LanguageContext} from "../language_context/LanguageProvider";
 
 
-
 const Contacts = () => {
     const {languageData} = useContext(LanguageContext);
     const [successMessage, setSuccessMessage] = useState("");
@@ -69,7 +68,7 @@ const Contacts = () => {
                     },
                 });
 
-                if(response.data.success){
+                if (response.data.success) {
                     setSuccessMessage(languageData.requestNotify.success);
 
                     setFormData({
@@ -144,18 +143,22 @@ const Contacts = () => {
                                 {errors.comment && <p className="text-red-500">{errors.comment}</p>}
                             </div>
                             <div className='flex gap-4 items-center'>
-                                <label className='my-auto'>
-                                    <input
-                                        type="checkbox"
-                                        checked={formData.privacy}
-                                        onChange={(e) => handleChange("privacy", e.target.checked)}
-                                    />
-                                    {languageData.utils.form.privacy1}<a
-                                    href="">{languageData.utils.form.privacy2}</a>{languageData.utils.form.privacy3}
-                                </label>
+                                <input
+                                    type="checkbox"
+                                    checked={formData.privacy}
+                                    className='w-6 h-6'
+                                    onChange={(e) => handleChange("privacy", e.target.checked)}
+                                />
+                                <p className='my-auto'>
+                                    {languageData.utils.form.privacy1}
+                                    <a href="">
+                                        {languageData.utils.form.privacy2}
+                                    </a>
+                                    {languageData.utils.form.privacy3}
+                                </p>
                                 {errors.privacy && <p className="text-red-500">{errors.privacy}</p>}
                             </div>
-                            <div>
+                            <div className='self-center'>
                                 <ReCAPTCHA
                                     sitekey="6LccrpYpAAAAAGcl7WBDiRWSkDNbOgGZvFefjFYb"
                                     onChange={(value) => handleChange("recaptcha", value)}

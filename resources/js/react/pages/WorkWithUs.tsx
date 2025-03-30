@@ -172,14 +172,22 @@ function WorkWithUs() {
                                 {errors.file && <p className="text-red-500 mt-2">{errors.file}</p>}
                             </div>
                             <div className='flex gap-4 items-center'>
-                                <input type="checkbox"  checked={formData.privacy} className='w-6 h-6'  onChange={(e) => handleChange("privacy", e.target.checked)}
+                                <input
+                                    type="checkbox"
+                                    checked={formData.privacy}
+                                    className='w-6 h-6'
+                                    onChange={(e) => handleChange("privacy", e.target.checked)}
                                 />
                                 <p className='my-auto'>
-                                    {languageData.utils.form.privacy1}<a href="">{languageData.utils.form.privacy2}</a>{languageData.utils.form.privacy3}
+                                    {languageData.utils.form.privacy1}
+                                    <a href="">
+                                        {languageData.utils.form.privacy2}
+                                    </a>
+                                    {languageData.utils.form.privacy3}
                                 </p>
                                 {errors.privacy && <p className="text-red-500">{errors.privacy}</p>}
                             </div>
-                            <div>
+                            <div className='self-center'>
                                 <ReCAPTCHA
                                     sitekey="6LccrpYpAAAAAGcl7WBDiRWSkDNbOgGZvFefjFYb"
                                     onChange={(value) => handleChange("recaptcha", value)}

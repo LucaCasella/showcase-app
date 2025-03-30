@@ -7,15 +7,15 @@ const Footer = () => {
     const textColorClass = isHomePage ? 'text-white' : 'text-black';
 
     return (
-        <div className='h-20 w-full grid grid-cols-3'>
+        <div className='h-40 md:h-20 w-full grid grid-cols-1 md:grid-cols-3 gap-4 p-4'>
             <div className='grid-cols-1' />
             <div className='grid grid-cols-1 h-full place-items-center'>
-                <p className={`text-center ${textColorClass} tracking-widest text-sm my-auto`}>© 2025, ayriika -
+                <p className={`text-nowrap text-center ${textColorClass} tracking-widest text-sm my-auto`}>© 2025, ayriika -
                     P.IVA
                     04057881205</p>
             </div>
             <div className='grid-cols-1'>
-                <div className='h-full flex flex-row sm:flex-col gap-4 items-center'>
+                <div className='h-full flex flex-row sm:flex-col gap-4 items-center justify-center'>
                     <a href="">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px"
                              height="48px">
