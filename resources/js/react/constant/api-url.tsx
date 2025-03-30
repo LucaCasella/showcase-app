@@ -1,4 +1,3 @@
-
 export const apiUrl = {
     "publicUrl": {
         "tokenSPA": "generate-token",
@@ -8,5 +7,6 @@ export const apiUrl = {
         "submitContact": "submit-contact",
         "submitCurriculum": "submit-curriculum",
         "albums": "albums",
+        "videos": "videos",
     }
 }

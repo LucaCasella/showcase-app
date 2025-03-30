@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
+//todo: at the end check all the routes end clear useless ones
 
 // PUBLIC ROUTES
 
@@ -34,9 +35,9 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
-Route::get('/work-with-us', function (){
-    return view('pages.work-with-us');
-})->name('work-with-us');
+//Route::get('/work-with-us', function (){
+//    return view('pages.work-with-us');
+//})->name('work-with-us');
 
 Route::get('/photos', function () {
     $albums = Album::where('visible', 1)
@@ -45,12 +46,12 @@ Route::get('/photos', function () {
     return view('pages.photos', ['albums' => $albums]);
 })->name('photos');
 
-Route::get('/locations', function () {
-    $albums = Album::where('visible', 1)
-        ->where('type', 'locations')
-        ->get();
-    return view('pages.photos', ['albums' => $albums]);
-})->name('photos');
+//Route::get('/locations', function () {
+//    $albums = Album::where('visible', 1)
+//        ->where('type', 'locations')
+//        ->get();
+//    return view('pages.photos', ['albums' => $albums]);
+//})->name('photos');
 
 Route::get('/photos/{id}', function ($album_id) {
     $album = Album::with('photo')->findOrFail($album_id);
@@ -58,10 +59,10 @@ Route::get('/photos/{id}', function ($album_id) {
     return view('pages.photos-show')->with(['album' => $album, 'photos' => $photos]);
 })->name('photos-show');
 
-Route::get('/videos', function () {
-    $videos = Video::where('visible', '=', 1)->get();
-    return view('pages.videos', ['videos' => $videos]);
-})->name('videos');
+//Route::get('/videos', function () {
+//    $videos = Video::where('visible', '=', 1)->get();
+//    return view('pages.videos', ['videos' => $videos]);
+//})->name('videos');
 
 Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
 Route::post('/collaborator-form-submit', [WorkWithUsController::class, 'store'])->name('collaborator-form');
@@ -119,17 +120,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
 
     Route::delete('/collaboration/{collaboration_id}', [BackOfficeController::class, 'destroy'])->name('destroy-collaboration');
+
 //    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
 });
 
 // ROUTE THAT SHOW LOGS
 Route::get('/logs', [LogController::class, 'showLogs']);
-
-
-// IN CASE EXPLODE PRODUCTION
-Route::get('/migrations', function (){
-    return "Migrazioni e seeding completati con successo!";
-})->middleware('run-migrations');
 
 // LOCALIZATION ROUTES
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
@@ -138,3 +134,8 @@ Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('s
 Route::get('/{any}', function () {
     return view('react.react');
 })->where('any', '.*');
+
+// IN CASE EXPLODE PRODUCTION
+//Route::get('/migrations', function (){
+//    return "Migrazioni e seeding completati con successo!";
+//})->middleware('run-migrations');
