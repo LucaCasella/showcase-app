@@ -6,7 +6,6 @@ import SuccessNotification from "../components/notificationRequest/SuccessNotifi
 import ErrorNotification from "../components/notificationRequest/ErrorNotification";
 import {LanguageContext} from "../language_context/LanguageProvider";
 
-
 const Contacts = () => {
     const {languageData} = useContext(LanguageContext);
     const [successMessage, setSuccessMessage] = useState("");
@@ -23,7 +22,7 @@ const Contacts = () => {
     const [errors, setErrors] = useState<{ [key in keyof typeof formData]?: string }>({});
 
     const validations = {
-        name: (value: string) => !value.trim() ? languageData.contactFormError.name : value.length < 3 ? languageData.contactFormError.hintName: null,
+        name: (value: string) => !value.trim() ? languageData.contactFormError.name : value.length < 3 ? languageData.contactFormError.hintName : null,
         email: (value: string) => !value.trim() ? languageData.contactFormError.email : !/^\S+@\S+\.\S+$/.test(value) ? languageData.contactFormError.hintEmail : null,
         phone: (value: string) => !value.trim() ? languageData.contactFormError.phone : !/^\+?[0-9]{8,15}$/.test(value) ? languageData.contactFormError.hintPhone : null,
         comment: (value: string) => !value.trim() ? languageData.contactFormError.comment : value.length < 10 ? languageData.contactFormError.hintComment : null,
@@ -32,9 +31,9 @@ const Contacts = () => {
     };
 
     const handleChange = (field: keyof typeof formData, value: any) => {
-        setFormData(prev => ({ ...prev, [field]: value }));
+        setFormData(prev => ({...prev, [field]: value}));
         // @ts-ignore
-        setErrors(prev => ({ ...prev, [field]: validations[field](value) }));
+        setErrors(prev => ({...prev, [field]: validations[field](value)}));
     };
 
     const validateForm = () => {
@@ -67,7 +66,7 @@ const Contacts = () => {
                         "Authorization": token,
                     },
                 });
-
+                // todo: add honeypot input
                 if (response.data.success) {
                     setSuccessMessage(languageData.requestNotify.success);
 
@@ -101,70 +100,78 @@ const Contacts = () => {
                     <div className='lg:w-2/3 flex flex-col'>
                         <span className='w-1/4 h-[1px] bg-black'/>
                         <form onSubmit={handleSubmit}
-                              className='flex flex-col gap-16 p-5 border-1 border-y-transparent border-x-black'>
+                              className='flex flex-col gap-8 lg:gap-16 p-5 border-1 border-y-transparent border-x-black'>
                             <div>
-                                <div>
-                                    <input
-                                        type="text"
-                                        className='w-[100%] min-h-20 mx-auto mt-2 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                        placeholder={languageData.utils.form.name}
-                                        value={formData.name}
-                                        onChange={(e) => handleChange("name", e.target.value)}
-                                    />
-                                    {errors.name && <p className="text-red-500">{errors.name}</p>}
-                                </div>
-                                <div>
-                                    <input
-                                        className='w-[100%] min-h-20 mx-auto mt-2 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                        placeholder={languageData.utils.form.email}
-                                        type="email"
-                                        value={formData.email}
-                                        onChange={(e) => handleChange("email", e.target.value)}
-                                    />
-                                    {errors.email && <p className="text-red-500">{errors.email}</p>}
-                                </div>
-                                <div>
-                                    <input
-                                        className='w-[100%] min-h-20 mx-auto mt-2 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                        placeholder={languageData.utils.form.phone}
-                                        type="tel"
-                                        value={formData.phone}
-                                        onChange={(e) => handleChange("phone", e.target.value)}
-                                    />
-                                    {errors.phone && <p className="text-red-500">{errors.phone}</p>}
-                                </div>
+                                <input
+                                    type="text"
+                                    className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    placeholder={languageData.utils.form.name}
+                                    value={formData.name}
+                                    onChange={(e) => handleChange("name", e.target.value)}
+                                />
+                                {errors.name && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.name}</p>}
+                            </div>
+
+                            <div>
+                                <input
+                                    className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    placeholder={languageData.utils.form.email}
+                                    type="email"
+                                    value={formData.email}
+                                    onChange={(e) => handleChange("email", e.target.value)}
+                                />
+                                {errors.email && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.email}</p>}
+                            </div>
+
+                            <div>
+                                <input
+                                    className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    placeholder={languageData.utils.form.phone}
+                                    type="tel"
+                                    value={formData.phone}
+                                    onChange={(e) => handleChange("phone", e.target.value)}
+                                />
+                                {errors.phone && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.phone}</p>}
+                            </div>
+
+                            <div>
                                 <textarea
                                     id="contact-message"
-                                    className='w-[100%] mx-auto mt-2 min-h-20 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    className='w-full h-32 min-h-20 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                     placeholder={languageData.utils.form.message}
                                     value={formData.comment}
                                     onChange={(e) => handleChange("comment", e.target.value)}
                                 />
-                                {errors.comment && <p className="text-red-500">{errors.comment}</p>}
+                                {errors.comment && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.comment}</p>}
                             </div>
-                            <div className='flex gap-4 items-center'>
-                                <input
-                                    type="checkbox"
-                                    checked={formData.privacy}
-                                    className='w-6 h-6'
-                                    onChange={(e) => handleChange("privacy", e.target.checked)}
-                                />
-                                <p className='my-auto'>
-                                    {languageData.utils.form.privacy1}
-                                    <a href="">
-                                        {languageData.utils.form.privacy2}
-                                    </a>
-                                    {languageData.utils.form.privacy3}
-                                </p>
-                                {errors.privacy && <p className="text-red-500">{errors.privacy}</p>}
+
+                            <div>
+                                <div className='flex gap-4 items-center'>
+                                    <input
+                                        type="checkbox"
+                                        checked={formData.privacy}
+                                        className='w-6 h-6'
+                                        onChange={(e) => handleChange("privacy", e.target.checked)}
+                                    />
+                                    <p className='my-auto'>
+                                        {languageData.utils.form.privacy1}
+                                        <a href="">
+                                            {languageData.utils.form.privacy2}
+                                        </a>
+                                        {languageData.utils.form.privacy3}
+                                    </p>
+                                </div>
+                                {errors.privacy && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.privacy}</p>}
                             </div>
+
                             <div className='self-center'>
                                 <ReCAPTCHA
                                     sitekey="6LccrpYpAAAAAGcl7WBDiRWSkDNbOgGZvFefjFYb"
                                     onChange={(value) => handleChange("recaptcha", value)}
                                 />
-                                {errors.recaptcha && <p className="text-red-500">{errors.recaptcha}</p>}
+                                {errors.recaptcha && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.recaptcha}</p>}
                             </div>
+
                             <button type='submit'
                                     className='w-full sm:w-1/2 mx-auto font-normal border-1 border-slate-700 p-2'>
                                 {languageData.utils.form.submit}

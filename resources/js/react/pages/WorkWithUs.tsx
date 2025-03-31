@@ -21,8 +21,6 @@ function WorkWithUs() {
         file: null
     });
 
-
-
     const [errors, setErrors] = useState<{ [key in keyof typeof formData]?: string }>({});
 
     const validations = {
@@ -64,7 +62,6 @@ function WorkWithUs() {
         }
     };
 
-
     const validateForm = () => {
         let valid = true;
         const newErrors: typeof errors = {};
@@ -95,7 +92,7 @@ function WorkWithUs() {
                         "Authorization": token,
                     },
                 });
-
+                // todo: add honeypot input
                 if(response.data.success){
                     setSuccessMessage(languageData.requestNotify.success);
 
@@ -129,32 +126,44 @@ function WorkWithUs() {
                     <div className='lg:w-2/3 flex flex-col'>
                         <span className='w-1/4 h-[1px] bg-black'/>
                         <form onSubmit={handleSubmit}
-                              className='flex flex-col gap-16 p-5 border-1 border-y-transparent border-x-black'>
-                            <input type="text"
-                                   className='text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                   placeholder={languageData.utils.form.name}
-                                   value={formData.name}
-                                   onChange={(e) => handleChange("name", e.target.value)}/>
-                            {errors.name && <p className="text-red-500">{errors.name}</p>}
-                            <input type="email"
-                                   className='text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                   placeholder={languageData.utils.form.email}
-                                   value={formData.email}
-                                   onChange={(e) => handleChange("email", e.target.value)}/>
-                            {errors.email && <p className="text-red-500">{errors.email}</p>}
-                            <input type="tel"
-                                   className='text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                   placeholder={languageData.utils.form.phone}
-                                   value={formData.phone}
-                                   onChange={(e) => handleChange("phone", e.target.value)}/>
-                            {errors.phone && <p className="text-red-500">{errors.phone}</p>}
-                            <textarea name="comment"
-                                      id="contact-message"
-                                      className='h-32 min-h-20 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                      placeholder={languageData.utils.form.message}
-                                      value={formData.comment}
-                                      onChange={(e) => handleChange("comment", e.target.value)}/>
-                            {errors.comment && <p className="text-red-500">{errors.comment}</p>}
+                              className='flex flex-col gap-8 lg:gap-16 p-5 border-1 border-y-transparent border-x-black'>
+                            <div>
+                                <input type="text"
+                                       className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                       placeholder={languageData.utils.form.name}
+                                       value={formData.name}
+                                       onChange={(e) => handleChange("name", e.target.value)}/>
+                                {errors.name && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.name}</p>}
+                            </div>
+
+                            <div>
+                                <input type="email"
+                                       className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                       placeholder={languageData.utils.form.email}
+                                       value={formData.email}
+                                       onChange={(e) => handleChange("email", e.target.value)}/>
+                                {errors.email && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.email}</p>}
+                            </div>
+
+                            <div>
+                                <input type="tel"
+                                        className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                        placeholder={languageData.utils.form.phone}
+                                        value={formData.phone}
+                                        onChange={(e) => handleChange("phone", e.target.value)}/>
+                                {errors.phone && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.phone}</p>}
+                            </div>
+
+                            <div>
+                                <textarea name="comment"
+                                          id="contact-message"
+                                          className='w-full h-32 min-h-20 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                          placeholder={languageData.utils.form.message}
+                                          value={formData.comment}
+                                          onChange={(e) => handleChange("comment", e.target.value)}/>
+                                {errors.comment && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.comment}</p>}
+                            </div>
+
                             <div className="w-full flex flex-col items-center space-x-2 self-center">
                                 <input
                                     id="file-upload"
@@ -169,32 +178,41 @@ function WorkWithUs() {
                                     {languageData.workWithUs.cvUpload}
                                 </label>
                                 {fileName && <span>{fileName}</span>}
-                                {errors.file && <p className="text-red-500 mt-2">{errors.file}</p>}
+                                {errors.file && <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.file}</p>}
                             </div>
-                            <div className='flex gap-4 items-center'>
-                                <input
-                                    type="checkbox"
-                                    checked={formData.privacy}
-                                    className='w-6 h-6'
-                                    onChange={(e) => handleChange("privacy", e.target.checked)}
-                                />
-                                <p className='my-auto'>
-                                    {languageData.utils.form.privacy1}
-                                    <a href="">
-                                        {languageData.utils.form.privacy2}
-                                    </a>
-                                    {languageData.utils.form.privacy3}
-                                </p>
-                                {errors.privacy && <p className="text-red-500">{errors.privacy}</p>}
+
+                            <div>
+                                <div className='flex gap-4 items-center'>
+                                    <input
+                                        type="checkbox"
+                                        checked={formData.privacy}
+                                        className='w-6 h-6'
+                                        onChange={(e) => handleChange("privacy", e.target.checked)}
+                                    />
+                                    <p className='my-auto'>
+                                        {languageData.utils.form.privacy1}
+                                        <a href="">
+                                            {languageData.utils.form.privacy2}
+                                        </a>
+                                        {languageData.utils.form.privacy3}
+                                    </p>
+                                </div>
+                                {errors.privacy &&
+                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.privacy}</p>
+                                }
                             </div>
+
                             <div className='self-center'>
                                 <ReCAPTCHA
                                     sitekey="6LccrpYpAAAAAGcl7WBDiRWSkDNbOgGZvFefjFYb"
                                     onChange={(value) => handleChange("recaptcha", value)}
                                 />
-                                {errors.recaptcha && <p className="text-red-500">{errors.recaptcha}</p>}
+                                {errors.recaptcha &&
+                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.recaptcha}</p>}
                             </div>
-                            <button type='submit' className='w-full md:w-1/2 mx-auto font-normal border p-2'>{languageData.utils.form.submit}
+
+                            <button type='submit'
+                                    className='w-full md:w-1/2 mx-auto font-normal border p-2'>{languageData.utils.form.submit}
                             </button>
                         </form>
                         <span className='w-1/4 h-[1px] bg-black self-end'/>
@@ -202,7 +220,7 @@ function WorkWithUs() {
 
                     <div className='lg:w-1/3 flex flex-col'>
                         <div className='lg:h-1/2'>
-                            <p>
+                        <p>
                                 {languageData.workWithUs.text1}
                             </p>
                         </div>
