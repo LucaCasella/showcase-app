@@ -5,15 +5,32 @@ const Footer = () => {
     const location = useLocation();
     const isHomePage = location.pathname === '/home';
     const textColorClass = isHomePage ? 'text-white' : 'text-black';
-
+    //todo: cambiare icone footer in nere e bianche e mettere icona whatsapp
     return (
-        <div className='h-40 md:h-20 w-full grid grid-cols-1 md:grid-cols-3 gap-4 p-4'>
-            <div className='grid-cols-1' />
+        <div className='h-40 md:h-28 w-full grid grid-cols-1 md:grid-cols-3 gap-4 p-4'>
+            <div className='grid-cols-1 flex justify-center'>
+                <div id="wp-ratedWA">
+                    <a target="_blank"
+                        href="https://www.matrimonio.com/fotografo-matrimonio/anastasia-kabakova--e308307"
+                        rel="nofollow"
+                        title="Anastasia Kabakova, vincitore Wedding Awards 2025 Matrimonio.com">
+                        <img width="75" height="75"
+                             alt="Anastasia Kabakova, vincitore Wedding Awards 2025 Matrimonio.com"
+                             id="wp-ratedWA-img-2025"
+                             src="https://cdn1.matrimonio.com/img/badges/2025/badge-weddingawards_it_IT.jpg"/>
+                    </a>
+                </div>
+                <script type="text/javascript" src="https://cdn1.matrimonio.com/_js/wp-rated.js?v=4"></script>
+                <script>wpShowRatedWAv3('308307','2025');</script>
+            </div>
+
             <div className='grid grid-cols-1 h-full place-items-center'>
-                <p className={`text-nowrap text-center ${textColorClass} tracking-widest text-sm my-auto`}>© 2025, ayriika -
+                <p className={`text-nowrap text-center ${textColorClass} tracking-widest text-sm my-auto`}>© 2025,
+                    ayriika -
                     P.IVA
                     04057881205</p>
             </div>
+
             <div className='grid-cols-1'>
                 <div className='h-full flex flex-row sm:flex-col gap-4 items-center justify-center'>
                     <a href="">
