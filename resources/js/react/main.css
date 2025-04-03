@@ -2,6 +2,6 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-size: cover;
-    background: url("/public/assets/new/10.webp") center;
+    background-size: cover !important;
+    background: url("/public/assets/new/home.jpg") center no-repeat;
 }

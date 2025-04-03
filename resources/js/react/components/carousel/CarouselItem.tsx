@@ -3,7 +3,6 @@ import {ChevronRight} from "lucide-react";
 
 const CarouselItem = ({item, position}: { item: { title: string, text: string, image: string, link: string }, position: string }) => {
     return (
-
         <div className={`item-carousel w-[800px] flex flex-col gap-4 pr-4 bg-white ${position}`}>
             <a href={item.link} className='text-black no-underline'>
                 <div className="flex justify-between gap-4 p-2">
