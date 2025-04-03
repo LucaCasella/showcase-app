@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {getAlbumsByType} from "../services/getAlbumsByType";
+import LoadingIndicator from "../components/indicator_loading/LoadingIndicator";
 
 function AlbumsPage() {
     const [albums, setAlbums] = useState<Album[]>([]);
-    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         const fetchWeddings = async () => {
             try {
+                setLoading(true);
                 const response = await getAlbumsByType('weddings');
+                setLoading(false);
                 setAlbums(response.data);
             } catch (err) {
                 if (axios.isAxiosError(err)) {
@@ -17,6 +20,8 @@ function AlbumsPage() {
                 } else {
                     console.error("Errore sconosciuto:", err);
                 }
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -25,12 +30,15 @@ function AlbumsPage() {
 
     return (
         <div className='w-full lg:w-3/4 mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {error ? (
-                <p className="text-red-500">{error}</p>
-            ) : (
+            {!loading ? (
                 albums.map((album, index) => (
-                    <AlbumItem key={index} slug={album.slug} title={album.title} location={album.location} cover={album.cover} />
+                    <AlbumItem key={index} slug={album.slug} title={album.title} location={album.location}
+                               cover={album.cover}/>
                 ))
+            ) : (
+                <div className='w-full mx-auto col-span-3 flex justify-center'>
+                    <LoadingIndicator/>
+                </div>
             )}
         </div>
     );
