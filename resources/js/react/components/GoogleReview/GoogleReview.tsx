@@ -43,7 +43,7 @@ const GoogleReview = () => {
         if (reviews.length > 0) {
             const interval = setInterval(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-            }, 10000);
+            }, 5000);
             return () => clearInterval(interval);
         }
     }, [reviews]);
