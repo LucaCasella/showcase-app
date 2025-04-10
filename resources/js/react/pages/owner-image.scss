@@ -1,0 +1,53 @@
+.owner-container {
+    display: inline-block;
+    position: relative;
+}
+
+.owner-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.owner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo scuro per il testo */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-text {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.owner-image-wrapper:hover .overlay {
+    opacity: 1;
+}
+
+.owner-image-wrapper:hover .overlay-text {
+    transform: translateY(0); /* Animazione della tendina */
+}
+
+.owners-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

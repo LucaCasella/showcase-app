@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {LanguageContext} from "../language_context/LanguageProvider";
 import GoogleReview from "../components/GoogleReview/GoogleReview";
+import './owner-image.scss';
 
 function AboutUs() {
     const {languageData} = useContext(LanguageContext);
@@ -16,8 +17,8 @@ function AboutUs() {
                 </p>
 
                 <h2 className='text-4xl lg:text-6xl text-center tracking-widest font-semibold mt-10'>{languageData.aboutUs.aboutUs}</h2>
-                <div className="relative flex my-10 flex-col md:flex-row">
-                    {/* Immagine Sinistra */}
+                <div className="hidden xl:relative xl:flex my-10 flex-col md:flex-row justify-center">
+                    {/* SX image */}
                     <div
                         className="relative transition-all duration-300"
                         onMouseEnter={() => setActiveImage('left')}
@@ -30,9 +31,9 @@ function AboutUs() {
                         />
                     </div>
 
-                    {/* Area centrale per il testo */}
+                    {/* Central text */}
                     <div className="relative h-10 lg:h-96 flex-grow mx-4 bg-white overflow-hidden">
-                        {/* Testo per immagine sinistra */}
+                        {/* SX text */}
                         <div
                             className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out ${activeImage === 'left' ? 'opacity-100' : 'opacity-0'}`}>
                             <p className={`text-center text-3xl font-medium tracking-widest leading-10 px-16 transition-all duration-500 ease-out transform ${activeImage === 'left' ? 'translate-x-0' : '-translate-x-full'}`}>Anastasia</p>
@@ -40,7 +41,7 @@ function AboutUs() {
                                 {languageData.aboutUs.anastasia}
                             </p>
                         </div>
-                        {/* Testo per immagine destra */}
+                        {/* DX text */}
                         <div
                             className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out ${activeImage === 'right' ? 'opacity-100' : 'opacity-0'}`}>
                             <p className={`text-center text-3xl font-medium tracking-widest leading-10 px-16 transition-all duration-500 ease-out transform ${activeImage === 'right' ? 'translate-x-0' : 'translate-x-full'}`}>Matteo</p>
@@ -50,7 +51,7 @@ function AboutUs() {
                         </div>
                     </div>
 
-                    {/* Immagine Destra */}
+                    {/* DX image */}
                     <div
                         className="relative transition-all duration-300"
                         onMouseEnter={() => setActiveImage('right')}
@@ -64,12 +65,47 @@ function AboutUs() {
                     </div>
                 </div>
 
-                {/* todo: aggiungere carosello recensioni google */}
+                <div className='flex xl:hidden my-10'>
+                    <div className="flex flex-col md:flex-row mx-auto gap-4">
+                        <OwnerImage
+                            image="/assets/new/home.jpg"
+                            name="Anastasia"
+                            description={languageData.aboutUs.anastasia}
+                        />
+                        <OwnerImage
+                            image="/assets/new/home.jpg"
+                            name="Matteo"
+                            description={languageData.aboutUs.matteo}
+                        />
+                    </div>
+                </div>
             </div>
 
-            <GoogleReview />
+            <GoogleReview/>
         </div>
     );
 }
 
 export default AboutUs;
+
+interface OwnerProps {
+    image: string;
+    name: string;
+    description: string;
+}
+
+const OwnerImage = ({image, name, description}: OwnerProps) => {
+    return (
+        <div className="w-full h-full">
+            <div className="owner-image-wrapper">
+                <img src={image} alt='' className="owner-image"/>
+                <div className="overlay">
+                    <div className="overlay-text">
+                        <h3>{name}</h3>
+                        <p>{description}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
