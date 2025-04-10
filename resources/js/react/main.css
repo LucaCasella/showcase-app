@@ -1,7 +1,24 @@
 .home-background {
-    position: fixed;
-    width: 100vw;
+    background: url("/public/assets/new/home.jpg") center/cover no-repeat;
     height: 100vh;
-    background-size: cover !important;
-    background: url("/public/assets/new/home.jpg") center no-repeat;
+    position: relative;
+}
+
+.home-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.home-background > * {
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 1024px) {
+    .home-background {
+        height: 50vh;
+    }
 }
