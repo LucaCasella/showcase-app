@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Mail\ContactMail;
 use App\Mail\Notification;
 use App\Models\Contact;
@@ -17,9 +16,13 @@ class GuestFormController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
+        if ($request->candy) {
+            return redirect('/');
+        }
+
         try {
             $validator = Validator::make($request->all(), [
-                'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule],
+                'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule]
             ]);
 
             if ($validator->fails()) {
@@ -31,12 +34,12 @@ class GuestFormController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'comment' => $request->comment,
-                'privacy_accepted' => $request->privacycheck
+                'privacy_accepted' => 1
             ])->save;
 
-            Mail::to('rasomanuel1@gmail.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
+            Mail::to('infokabakova@yahoo.com')->send(new Notification($request->name, $request->email, $request->phone, $request->comment));
 
-            Mail::to('rasomanuel1@gmail.com')->send(new ContactMail($request->name));
+            Mail::to($request->input('email'))->send(new ContactMail($request->name));
 
             return redirect()->route('home')->with('success', 'Thanks for contacting us!');
         }
