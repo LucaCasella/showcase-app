@@ -1,11 +1,13 @@
 import {apiUrl} from "../../constant/api-url";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import axiosInstance, {tokenSPAVerify} from "../../api/axios";
 import LoadingIndicator from "../indicator_loading/LoadingIndicator";
 import axios from "axios";
 import {Star} from "lucide-react";
+import {LanguageContext} from "../../language_context/LanguageProvider";
 
 const GoogleReview = () => {
+    const {languageData} = useContext(LanguageContext);
     const [reviews, setReviews] = useState<Review[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -51,10 +53,11 @@ const GoogleReview = () => {
     if (error) return null;
 
     return (
-        <div className="relative w-full mx-auto overflow-hidden">
-            <h3 className='text-4xl lg:text-6xl text-center lg:text-start tracking-widest font-semibold mt-10'>
-                Dicono di noi
-            </h3>
+        <div className="relative w-full mx-auto overflow-hidden pt-10">
+            {/*<h3 className='text-4xl lg:text-6xl text-center lg:text-start tracking-widest font-semibold mt-10'>*/}
+            {/*    Dicono di noi*/}
+            {/*</h3>*/}
+            <h2>{languageData.utils.reviewsTitle}</h2>
             {
                 loading ? (
                     <div className='w-full mx-auto flex justify-center my-10'>
