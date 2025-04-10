@@ -53,9 +53,9 @@
                     <a class="link-black" href="#contacts">
                         @lang('home.goto-prices')
                     </a>
-                    <a class="link-white" href="{{route('videos')}}">
-                        @lang('home.goto-videos')
-                    </a>
+{{--                    <a class="link-white" href="{{route('videos')}}">--}}
+{{--                        @lang('home.goto-videos')--}}
+{{--                    </a>--}}
                 </div>
             </div>
         </div>
