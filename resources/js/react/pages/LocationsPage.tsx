@@ -25,7 +25,7 @@ function LocationsPage() {
             }
         };
 
-        fetchLocations();
+        fetchLocations()
     }, []);
 
     return (

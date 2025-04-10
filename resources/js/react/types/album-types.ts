@@ -4,6 +4,7 @@ interface Album {
     location: string;
     cover: string;
     order: number;
+    type: string;
     visible: boolean;
     updated_at: Date;
 }
