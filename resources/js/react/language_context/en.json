@@ -6,16 +6,70 @@
         "aboutUs": "ABOUT US",
         "albums": "ALBUM",
         "videos": "VIDEO",
-        "locations": "LOCATIONS"
+        "locations": "LOCATIONS",
+        "vendors": "VENDORS",
+        "payoff": {
+            "title": "\"We will create your best memory\"",
+            "winner": "Winner of the 2025 wedding awards"
+        }
+    },
+
+    "home": {
+        "heroSection": {
+            "text": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nWith us, a journey begins where every package is tailor-made for the client.\nAttention and care for your needs and requests are the cornerstones of our way of working.",
+            "studios": "We have studios in:"
+        },
+        "squaresSection": {
+            "albums": "Albums",
+            "aboutUs": "About Us",
+            "workWithUs": "Work with Us",
+            "contacts": "Contacts",
+            "videos": "Videos",
+            "locations": "Locations"
+        },
+        "bannerSection": {
+            "title": "\"We will create your best memory\"",
+            "description": "For us, it’s essential to understand with the client what kind of product they want to create, personalizing our style to match the type of event.",
+            "description2": "This allows us to produce unique and original shots, constantly evolving our portfolio.",
+            "button": "FREE QUOTE"
+        },
+        "lastAlbumsSection": {
+            "title": "Our Photo Albums",
+            "button": "SEE MORE"
+        },
+        "otherServicesSection": {
+            "title": "Other Services",
+            "cardButton": "More Information",
+            "service1": {
+                "title": "PRE/POST MARITAL",
+                "description": "The pre/post wedding service is a couple's photo/video service that can be carried out either before or after the wedding. The pre-wedding service is carried out before the wedding and allows you to get in tune with the lenses and photographers. The post-wedding is carried out after the wedding, allowing the wedding dresses to be reused and the emotions of the wedding to be received. Our services are not characterised by static poses but we create dynamic and fun situations that put everyone at ease."
+            },
+            "service2": {
+                "title": "WEDDING PLANNER",
+                "description": "The studio offers a wedding planning and organisation service taking into account the budget and costs of suppliers. In addition, on the day of the event a professional will ensure that all the planning agreed with the bride and groom is followed."
+            },
+            "service3": {
+                "title": "VIDEO PROJECTION",
+                "description": "The video projection service allows a summary video of the wedding day to be projected during the wedding. Magical and entertaining moments can be relived beforehand."
+            },
+            "service4": {
+                "title": "POLAROID",
+                "description": "The polaroid service is an instant photo printing service, the photos can be hung in exciting places in the venue or given to guests. This service allows you to break up static moments of the event and entertains both guests and bride and groom, and with the photos you can create a personalised and unique album of memories."
+            }
+        }
+    },
+
+    "videos": {
+        "description": "Each of our videos is designed to convey unique emotions. Our cameras allow us to shoot in 4k up to 120fps. Thanks to the 10-bit 4:2:2 format we can provide a unique color palette that can be customized in post production according to the guidelines of the project we are doing. To have excellent audio quality we are equipped with both wireless and environmental microphones. Training and state-of-the-art technical components enable us to meet all our clients needs. Our strong point is the use of drone that allows us to shoot breathtaking areas."
     },
 
     "aboutUs": {
         "mission": "The Mission",
-        "missionDesc": " ",
+        "missionDesc": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nToday, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with.\nInnovation, research, and development are the foundation of our work method.\nOur equipment is never older than three years — staying up-to-date in terms of photographic and video quality, as well as gear, is essential to us.\nWith us, you begin a journey where every package is tailor-made for the client. Attention and care for their needs and requests are the cornerstones of our approach.",
         "aboutUs": "About Us",
-        "anastasia": " ",
-        "matteo": " ",
-        "aboutUsDesc": " "
+        "anastasia": "descrizione anastasia",
+        "matteo": "descrizione matteo",
+        "aboutUsDesc": ""
     },
 
     "workWithUs": {
@@ -34,7 +88,14 @@
         "callUs": "You can call us at"
     },
 
+    "footer":{
+        "contacts": "Contacts",
+        "workWithUs": "Work with Us",
+        "privacyPolicy": "Privacy Policy"
+    },
+
     "utils": {
+        "reviewsTitle": "Testimonials",
         "form": {
             "name": "Your name",
             "email": "Your email",
