@@ -5,15 +5,17 @@ import BannerCTASection from "../components/BannerCTASection";
 import LastAlbumsSection from "../components/LastAlbumsSection";
 import OtherServicesSection from "../components/OtherServicesSection";
 import GoogleReview from "../components/GoogleReview/GoogleReview";
+import SocialSection from "../components/SocialSection";
 
 const Home = () => {
     return (
-        <div className='w-full lg:w-3/4 mx-auto flex flex-col p-4 gap-10'>
-            <HeroSection />
-            <SquaresSection />
-            <BannerCTASection />
+        <div className='flex flex-col py-4 gap-10'>
             <LastAlbumsSection />
-            <OtherServicesSection />
+            <HeroSection />
+            <SocialSection />
+            <SquaresSection />
+            {/*<BannerCTASection />*/}
+            {/*<OtherServicesSection />*/}
             <GoogleReview />
         </div>
     );

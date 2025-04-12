@@ -30,7 +30,7 @@ const MobileNavbar = () => {
     }, [isOpen]);
 
     return (
-        <div className='lg:hidden'>
+        <div className='w-full flex lg:hidden'>
             {/* Mobile Header*/}
             <div className='grid grid-cols-3 align-items-center justify-content-center lg:hidden h-32 w-full px-4'>
                 <div className='col-span-1'>

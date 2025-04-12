@@ -6,7 +6,7 @@ const BannerCTASection = () => {
     const {languageData} = useContext(LanguageContext);
 
     return (
-        <div className="min-h-96 flex items-center justify-center relative left-1/2 -translate-x-1/2 w-screen bg-gray-100 py-8 px-4">
+        <div className="w-full min-h-96 flex items-center justify-center bg-gray-100 py-8">
             <div className="max-w-7xl w-full h-full mx-auto flex flex-col lg:flex-row items-center justify-between px-4">
                 <div className="max-w-2xl h-full flex flex-col justify-evenly">
                     <h4 className="text-2xl text-center font-semibold italic mb-4">

@@ -10,13 +10,13 @@ const LastAlbumsSection = () => {
     const [lastAlbums, setLastAlbums] = useState<Album[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
-    useEffect(() => {
+    useEffect(() => { //todo: retrieve only highlighted albums
         const fetchLastAlbums = async () => {
             try {
                 setLoading(true);
                 const response = await getAlbumsByType('weddings');
                 setLoading(false);
-                setLastAlbums(response.data.slice(0, 3));
+                setLastAlbums(response.data.slice(0, 6));
             } catch (err) {
                 if (axios.isAxiosError(err)) {
                     console.error("Errore API:", err.response?.data || err.message);
@@ -32,7 +32,7 @@ const LastAlbumsSection = () => {
     }, []);
 
     return (
-        <div>
+        <div className='w-full lg:w-3/4 mx-auto p-4'>
             <h2 className='p-4'>{languageData.home.lastAlbumsSection.title}</h2>
             <div className='w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-4 md:py-10'>
                 {!loading ? (
@@ -48,7 +48,7 @@ const LastAlbumsSection = () => {
             </div>
             <div className="flex justify-center mt-4">
                 <a
-                    href="/albums"
+                    href="/contacts"
                     className="group flex flex-row items-center gap-2 no-underline text-black"
                 >
                     <span className="relative inline-block text-xl">
@@ -74,16 +74,16 @@ function LastAlbumItem({slug, title, location, cover, type}: any) {
                     loading="lazy"
                 />
                 <div className="absolute inset-0 items-center justify-center hidden group-hover:flex duration-500">
-                    <p className="text-black text-3xl tracking-widest font-semibold">{title}</p>
+                    <p className="text-black text-3xl tracking-widest font-semibold">{location}</p>
                 </div>
             </div>
-            <div className='flex items-center gap-10 px-4'>
-                <span className='w-full h-[1px] bg-gray-500'/>
-                <div className='text-center text-nowrap text-black'>
-                    {type}
-                </div>
-                <span className='w-full h-[1px] bg-gray-500'/>
-            </div>
+            {/*<div className='flex items-center gap-10 px-4'>*/}
+            {/*    <span className='w-full h-[1px] bg-gray-500'/>*/}
+            {/*    <div className='text-center text-nowrap text-black'>*/}
+            {/*        {type}*/}
+            {/*    </div>*/}
+            {/*    <span className='w-full h-[1px] bg-gray-500'/>*/}
+            {/*</div>*/}
         </a>
     );
 }

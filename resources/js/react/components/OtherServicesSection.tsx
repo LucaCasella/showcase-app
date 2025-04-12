@@ -5,7 +5,7 @@ const OtherServicesSection = () => {
     const {languageData} = useContext(LanguageContext);
 
     return (
-        <div className='flex flex-col gap-10 py-4'>
+        <div className='w-full lg:w-3/4 mx-auto flex flex-col gap-10 py-4'>
             <h2>{languageData.home.otherServicesSection.title}</h2>
             {/* todo: sistemare card immagini testo che spaccano il layout e non è resposivo */}
             <div className='w-full h-full shadow-2xl'>

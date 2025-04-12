@@ -13,7 +13,7 @@ const MainLayout = () => {
         <>
             <div className={`w-full h-full flex flex-col justify-between ${isHomePage ? 'home-background' : ''}`}>
                 <Header />
-                <Payoff />
+                {isHomePage ? <Payoff /> : null}
             </div>
             <main>
                 <Outlet />

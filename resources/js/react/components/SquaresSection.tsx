@@ -6,7 +6,7 @@ const SquaresSection = () => {
     const {languageData} = useContext(LanguageContext);
 
     return (
-        <div className="py-4">
+        <div className="w-full lg:w-3/4 mx-auto p-4">
             <div className='h-auto items-center flex flex-col md:flex-row gap-4 justify-between'>
                 <div className='w-full md:w-1/2 flex flex-col gap-4 justify-between'>
                     <a href='/albums' className='relative overflow-hidden aspect-video albums-background'>
@@ -22,7 +22,7 @@ const SquaresSection = () => {
                         </a>
                         <a href='/work-with-us' className='relative w-1/2 aspect-vide workwithus-background'>
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.workWithUs}</p>
+                                <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.vendors}</p>
                             </div>
                         </a>
                     </div>
@@ -37,7 +37,7 @@ const SquaresSection = () => {
                         </a>
                         <a href='/videos' className='relative w-1/2 aspect-video videos-background'>
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.videos}</p>
+                                <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.extra}</p>
                             </div>
                         </a>
                     </div>
