@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Mail\ContactMail;
 use App\Mail\Notification;
 use App\Models\Album;
+use App\Models\Collaboration;
 use App\Models\Contact;
 use App\Models\Photo;
 use App\Rules\ReCaptchaEnterpriseRule;
@@ -15,6 +16,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Service\PdfManager\Facade\PdfManagerFacade;
 use Service\PlaceReviewsAPI\Facades\PlaceReviewsAPIFacades;
 
 class ApiController extends Controller
@@ -68,13 +70,16 @@ class ApiController extends Controller
      */
     public function submitContact(Request $request): JsonResponse
     {
+        if (!empty($request->input('middle_name_cnt'))) {
+            return response()->json([], 200);
+        }
+
         try {
             $validator = Validator::make($request->all(), [
                 'recaptcha' => ['required', new ReCaptchaEnterpriseRule]
             ]);
 
             if ($validator->fails()) {
-
                 return response()->json(['captchaError' => $validator->errors()], 400);
             }
 
@@ -100,6 +105,10 @@ class ApiController extends Controller
 
     public function submitCurriculum(Request $request): JsonResponse
     {
+        if (!empty($request->input('middle_name_wwu'))) {
+            return response()->json([], 200);
+        }
+
          try {
             $validator = Validator::make($request->all(), [
                 'recaptcha' => ['required', new ReCaptchaEnterpriseRule],
@@ -112,13 +121,14 @@ class ApiController extends Controller
 
                 return response()->json(['captchaError' => $validator->errors()], 400);
             }
-//             Collaboration::create([
-//                'name' => $request->name,
-//                'email' => $request->email,
-//                'phone' => $request->phone,
-//                'privacy_accepted' => $request->privacycheck,
-//                'curriculum' => PdfManagerFacade::storePdfFromRequest($request->file('pdf'), $request->name),
-//            ])->save;
+             //todo: check this and add mail notification to user and admin
+             Collaboration::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'privacy_accepted' => $request->privacycheck,
+                'curriculum' => PdfManagerFacade::storePdfFromRequest($request->file('pdf'), $request->name),
+            ])->save;
 
             return response()->json(['success', 'Request collaboration created successfully'] );
 
