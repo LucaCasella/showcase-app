@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react';
 import {getAlbumsByType} from "../services/getAlbumsByType";
 import axios from "axios";
 import LoadingIndicator from "./indicator_loading/LoadingIndicator";
-import {ChevronRight} from "lucide-react";
 import {LanguageContext} from "../language_context/LanguageProvider";
 
 const LastAlbumsSection = () => {
