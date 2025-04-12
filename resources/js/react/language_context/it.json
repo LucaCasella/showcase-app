@@ -15,6 +15,10 @@
     },
 
     "home": {
+        "lastAlbumsSection": {
+            "title": "Le Nostre Storie",
+            "button": "PREVENTIVO GRATUITO"
+        },
         "heroSection": {
             "text": "Mi chiamo Anastasia Kabakova. Dopo anni di lavoro nel settore fotografico, insieme al mio compagno Matteo, abbiamo deciso di aprire uno studio nostro. \nCon noi inizia un percorso, dove ogni pacchetto viene cucito su misura per il cliente. Attenzione e cura delle vostre richieste ed esigenze sono i capisaldi del nostro modo di lavorare.",
             "studios": "Abbiamo studi su:"
@@ -22,9 +26,9 @@
         "squaresSection": {
             "albums": "Album",
             "aboutUs": "Chi Siamo",
-            "workWithUs": "Lavora coi Noi",
+            "vendors": "Fornitori",
             "contacts": "Contatti",
-            "videos": "Video",
+            "extra": "Extra",
             "locations": "Location"
         },
         "bannerSection": {
@@ -32,10 +36,6 @@
             "description1": "Per noi è fondamentale capire con il cliente il tipo di prodotto che vuole realizzare, personalizzando il nostro stile per il tipo di evento.",
             "description2": "Questo ci permette di creare scatti unici e originali e di variare sempre il nostro repertorio.",
             "button": "PREVENTIVO GRATUITO"
-        },
-        "lastAlbumsSection": {
-            "title": "I nostri album fotografici",
-            "button": "VEDI DI PIU'"
         },
         "otherServicesSection": {
             "title": "Altri Servizi",

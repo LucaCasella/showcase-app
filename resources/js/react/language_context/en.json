@@ -15,6 +15,10 @@
     },
 
     "home": {
+        "lastAlbumsSection": {
+            "title": "Our Stories",
+            "button": "FREE QUOTE"
+        },
         "heroSection": {
             "text": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nWith us, a journey begins where every package is tailor-made for the client.\nAttention and care for your needs and requests are the cornerstones of our way of working.",
             "studios": "We have studios in:"
@@ -22,9 +26,9 @@
         "squaresSection": {
             "albums": "Albums",
             "aboutUs": "About Us",
-            "workWithUs": "Work with Us",
+            "vendors": "Vendors",
             "contacts": "Contacts",
-            "videos": "Videos",
+            "extra": "Extras",
             "locations": "Locations"
         },
         "bannerSection": {
@@ -32,10 +36,6 @@
             "description": "For us, it’s essential to understand with the client what kind of product they want to create, personalizing our style to match the type of event.",
             "description2": "This allows us to produce unique and original shots, constantly evolving our portfolio.",
             "button": "FREE QUOTE"
-        },
-        "lastAlbumsSection": {
-            "title": "Our Photo Albums",
-            "button": "SEE MORE"
         },
         "otherServicesSection": {
             "title": "Other Services",
