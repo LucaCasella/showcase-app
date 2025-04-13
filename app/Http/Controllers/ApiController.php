@@ -106,16 +106,16 @@ class ApiController extends Controller
     public function submitCurriculum(Request $request): JsonResponse
     {
         if (!empty($request->input('middle_name_wwu'))) {
-            return response()->json([], 200);
+            return response()->json([], 401);
         }
 
          try {
-            $validator = Validator::make($request->all(), [
-                'recaptcha' => ['required', new ReCaptchaEnterpriseRule],
-                'pdf' => ['required', 'file', 'mimetypes:application/pdf', 'max:2048'],
-                'email' => ['required', 'email'],
-                'phone' => ['required'],
-            ]);
+                $validator = Validator::make($request->all(), [
+                    'recaptcha' => ['required', new ReCaptchaEnterpriseRule],
+                    'file' => ['required', 'file', 'mimetypes:application/pdf', 'max:2048'],
+                    'email' => ['required', 'email'],
+                    'phone' => ['required'],
+                ]);
 
             if ($validator->fails()) {
 
@@ -126,11 +126,12 @@ class ApiController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'privacy_accepted' => $request->privacycheck,
-                'curriculum' => PdfManagerFacade::storePdfFromRequest($request->file('pdf'), $request->name),
+                'comment' => $request->comment,
+                'privacy_accepted' => 1,
+                'curriculum' => PdfManagerFacade::storePdfFromRequest($request->file('file'), $request->name),
             ])->save;
 
-            return response()->json(['success', 'Request collaboration created successfully'] );
+            return response()->json(['success', 'Request collaboration created successfully'],200 );
 
         }catch (\Exception $e){
 
