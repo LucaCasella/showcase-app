@@ -98,10 +98,11 @@ function WorkWithUs() {
                 const response = await axiosInstance.post(apiUrl.publicUrl.submitCurriculum, formData, {
                     headers: {
                         "Authorization": token,
+                        "Content-Type": "multipart/form-data",
                     },
                 });
-                // todo: add honeypot input
-                if (response.data.success) {
+
+                if (response.status === 200) {
                     setSuccessMessage(languageData.requestNotify.success);
 
                     setFormData({
@@ -184,6 +185,7 @@ function WorkWithUs() {
 
                             <div className="w-full flex flex-col items-center space-x-2 self-center">
                                 <input
+                                    name="file"
                                     id="file-upload"
                                     type="file"
                                     className="hidden"
