@@ -20,6 +20,7 @@ class Collaboration extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
+    const COMMENT = "comment";
 
     protected $primaryKey = Collaboration::ID;
 
@@ -38,7 +39,8 @@ class Collaboration extends Model
         Collaboration::PHONE,
         Collaboration::CURRICULUM,
         Collaboration::PRIVACY_ACCEPTED,
-        Collaboration::VISIBLE
+        Collaboration::VISIBLE,
+        Collaboration::COMMENT,
     ];
 
     protected $visible = [];
