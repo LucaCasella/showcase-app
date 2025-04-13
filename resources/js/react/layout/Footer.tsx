@@ -8,7 +8,8 @@ const Footer = () => {
     const [isModalOpen, setModalOpen] = useState(false);
 
     const openModal = (e: any) => {
-        e.preventDefault(); // utile se usi un <a>
+        e.preventDefault();
+        window.scrollTo({top: 0 , behavior: "smooth"})
         setModalOpen(true);
     };
 
@@ -45,10 +46,10 @@ const Footer = () => {
                 <p className='text-nowrap text-center tracking-widest text-sm my-auto'>
                     <a href="#" className='text-black no-underline hover:underline'>{languageData.footer.workWithUs}</a>
                 </p>
-                <p className='text-nowrap text-center tracking-widest text-sm my-auto'>
+                <div className='text-nowrap text-center tracking-widest text-sm my-auto'>
                     <a href="#" onClick={openModal} className='text-black no-underline hover:underline'>{languageData.footer.privacyPolicy}</a>
                     <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
-                </p>
+                </div>
 
             </div>
 

@@ -13,7 +13,6 @@
             "winner": "Vincitrice del wedding awards 2025"
         }
     },
-
     "home": {
         "lastAlbumsSection": {
             "title": "Le Nostre Storie",
@@ -58,11 +57,9 @@
             }
         }
     },
-
     "videos": {
         "description": "Ogni nostro video viene pensato per trasmettere emozioni uniche. Le nostre camere ci permettono di girare in 4k fino a 100fps. Grazie al formato a 10 bit 4:2:2 possiamo fornire una gamma cromatica unica personalizzabile in post produzione secondo le linee guida del progetto che stiamo svolgendo. Per avere una qualità audio eccellente siamo forniti sia di microfoni wireless sia ambientali. Formazione e componenti tecniche all'avanguardia ci consentono di andare incontro a tutte le esigenze dei nostri clienti. Il nostro punto di forza è l'uso del drone che ci permette riprese aree mozzafiato."
     },
-
     "aboutUs": {
         "mission": "La Mission",
         "missionDesc": "Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro. Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare. Innovazione, ricerca e sviluppo sono alla base del nostro metodo di lavoro. I nostri parchi macchine non raggiungono mai i tre anni di età, per noi è fondamentale rimanere sempre aggiornati in termini di qualità fotografica, video e attrezzatura. Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capi saldi del nostro modo di lavorare.",
@@ -71,7 +68,6 @@
         "matteoDesc": "descrizione matteo",
         "aboutUsDesc": ""
     },
-
     "workWithUs": {
         "title": "Entra nel team",
         "description": "Siamo sempre alla ricerca di talenti appasionati e motivati. Se vuoi entrare a far parte del nostro team, inviaci la tua candidatura",
@@ -80,20 +76,17 @@
         "text2": "Ricerchiamo persone con cui condividere la nostra mission e i nostri valori per attuare un progetto di contenuti sempre più emozionanti e tecnologicamente avanzati, anche attraverso iniziative di Employer Branding, eventi di orientamento al lavoro e Recruiting/Job Day, in collaborazione con location del settore. Attenti ai nuovi talenti, valorizziamo le nostre persone promuovendone la crescita nelle aree tecniche, professionali e manageriali, nel rispetto del work-life integration.",
         "cvUpload": "Carica un c.v."
     },
-
     "contacts": {
         "title": "Contattaci",
         "description": "Scrivici un messaggio se hai bisogno di aiuto o anche solo per dirci la tua",
         "followUs": "SEGUICI SU",
         "callUs": "Puoi chiamarci al numero"
     },
-
-    "footer":{
+    "footer": {
         "contacts": "Contatti",
         "workWithUs": "Lavora con Noi",
         "privacyPolicy": "Privacy Policy"
     },
-
     "utils": {
         "reviewsTitle": "Dicono di Noi",
         "form": {
@@ -107,7 +100,6 @@
             "submit": "INVIA"
         }
     },
-
     "privacyModal": {
         "title": "Informativa sulla Privacy",
         "updatedAt": "Ultimo aggiornamento: 31/03/2024",
@@ -138,9 +130,6 @@
             "title": "5. I tuoi diritti",
             "description1": "Hai il diritto di:",
             "li1": "- Autorità di regolamentazione o legali, se richiesto dalla legge o per proteggere i nostri diritti legali.",
-            "li2": "- Autorità di regolamentazione o legali, se richiesto dalla legge o per proteggere i nostri diritti legali.",
-            "li3": "- Autorità di regolamentazione o legali, se richiesto dalla legge o per proteggere i nostri diritti legali.",
-            "li4": "- Autorità di regolamentazione o legali, se richiesto dalla legge o per proteggere i nostri diritti legali.",
             "description2": "Per esercitare i tuoi diritti, contattaci utilizzando le informazioni di contatto fornite alla fine di questa informativa sulla privacy."
         },
         "item6": {
@@ -153,7 +142,6 @@
         },
         "outro": "Grazie per la fiducia che ci accordi nel gestire le tue informazioni personali. Cordiali saluti"
     },
-
     "contactFormError": {
         "name": "Il nome è obbligatorio",
         "hintName": "Minimo 3 caratteri",
@@ -166,10 +154,9 @@
         "privacy": "Devi accettare la privacy policy",
         "captcha": "Devi completare il reCAPTCHA",
         "file": "Devi fare l'upload di un file pdf",
-        "fileType":"Devi inserire un file formato pdf",
+        "fileType": "Devi inserire un file formato pdf",
         "fileSize": "Il file non deve superare 2MB"
     },
-
     "requestNotify": {
         "success": "Messaggio inviato con successo!",
         "error": "Errore durante l'invio."

@@ -13,7 +13,6 @@
             "winner": "Winner of the 2025 wedding awards"
         }
     },
-
     "home": {
         "lastAlbumsSection": {
             "title": "Our Stories",
@@ -58,11 +57,9 @@
             }
         }
     },
-
     "videos": {
         "description": "Each of our videos is designed to convey unique emotions. Our cameras allow us to shoot in 4k up to 120fps. Thanks to the 10-bit 4:2:2 format we can provide a unique color palette that can be customized in post production according to the guidelines of the project we are doing. To have excellent audio quality we are equipped with both wireless and environmental microphones. Training and state-of-the-art technical components enable us to meet all our clients needs. Our strong point is the use of drone that allows us to shoot breathtaking areas."
     },
-
     "aboutUs": {
         "mission": "The Mission",
         "missionDesc": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nToday, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with.\nInnovation, research, and development are the foundation of our work method.\nOur equipment is never older than three years — staying up-to-date in terms of photographic and video quality, as well as gear, is essential to us.\nWith us, you begin a journey where every package is tailor-made for the client. Attention and care for their needs and requests are the cornerstones of our approach.",
@@ -71,7 +68,6 @@
         "matteo": "descrizione matteo",
         "aboutUsDesc": ""
     },
-
     "workWithUs": {
         "title": "Join the team",
         "description": "We are always looking for passionate and motivated talents. If you want to join our team, send us your application",
@@ -80,20 +76,17 @@
         "text2": "We are looking for people to share our mission and values with, to implement a project of increasingly exciting and technologically advanced content, also through Employer Branding initiatives, career orientation events and Recruiting/Job Day, in collaboration with industry locations. Attentive to new talents, we enhance our people by promoting their growth in the technical, professional and managerial areas, in compliance with work-life integration.",
         "cvUpload": "Upload your CV"
     },
-
     "contacts": {
         "title": "Contact us",
         "description": "Write us a message if you need help or just to tell us your opinion",
         "followUs": "FOLLOW US ON",
         "callUs": "You can call us at"
     },
-
-    "footer":{
+    "footer": {
         "contacts": "Contacts",
         "workWithUs": "Work with Us",
         "privacyPolicy": "Privacy Policy"
     },
-
     "utils": {
         "reviewsTitle": "Testimonials",
         "form": {
@@ -107,23 +100,63 @@
             "submit": "SUBMIT"
         }
     },
-
+    "privacyModal": {
+        "title": "Privacy Policy",
+        "updatedAt": "Last updated: 31/03/2024",
+        "intro": "Dear User,\nThank you for visiting Anastasia Kabakova. In this privacy policy, we explain what information we collect, how we use and protect it, and the choices available to you regarding your privacy when using our site.",
+        "item1": {
+            "title": "1. Information Collected",
+            "description": "Personal information: We may collect personal information such as your name, email address, phone number, and physical address only if you voluntarily provide it through contact or registration forms on our site.\nNon-personal information: Our site may automatically collect non-personal information such as your IP address, browser type, operating system, page history, and other browsing data in order to improve user experience and site performance."
+        },
+        "item2": {
+            "title": "2. Use of Information",
+            "description": "We use the collected information for the following purposes:",
+            "li1": "- To provide you with the requested services and features.",
+            "li2": "- To communicate with you and respond to your inquiries.",
+            "li3": "- To personalize your experience on our site.",
+            "li4": "- To improve the quality of our services and develop new features."
+        },
+        "item3": {
+            "title": "3. Sharing of Information",
+            "description": "We will not share, sell, or rent your personal information to third parties without your consent, except as described in this privacy policy or as required by law. We may share your personal information with:",
+            "li1": "- Trusted service providers and partners who assist us in managing the site and delivering services.",
+            "li2": "- Regulatory or legal authorities, if required by law or to protect our legal rights."
+        },
+        "item4": {
+            "title": "4. Information Security",
+            "description": "We adopt appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no data transmission or storage system is completely secure. Therefore, we cannot guarantee the absolute security of information transmitted through our site."
+        },
+        "item5": {
+            "title": "5. Your Rights",
+            "description1": "You have the right to:",
+            "li1": "- Regulatory or legal authorities, if required by law or to protect our legal rights.",
+            "description2": "To exercise your rights, please contact us using the contact information provided at the end of this privacy policy."
+        },
+        "item6": {
+            "title": "6. Changes to this Privacy Policy",
+            "description": "We reserve the right to update this privacy policy periodically. We recommend reviewing it regularly to stay informed about how we protect your information."
+        },
+        "item7": {
+            "title": "7. Contact Us",
+            "description": "If you have any questions or concerns about this privacy policy or our information handling practices, please contact us at Infokabakova@yahoo.com."
+        },
+        "outro": "Thank you for trusting us with your personal information. Best regards"
+    },
     "contactFormError": {
         "name": "Name is required",
-        "hintName":"Minimum 3 characters" ,
+        "hintName": "Minimum 3 characters",
         "email": "Email is required",
-        "hintEmail": "Invalid email format" ,
+        "hintEmail": "Invalid email format",
         "phone": "Phone number is required",
         "hintPhone": "Invalid phone number format",
         "comment": "Comment is required",
-        "hintComment": "Minimum 10 characters" ,
+        "hintComment": "Minimum 10 characters",
         "privacy": "You must accept the privacy policy",
         "captcha": "You must complete the reCAPTCHA",
         "file": "You must upload a pdf file",
         "fileType": "You must upload a PDF file",
         "fileSize": "The file must not exceed 2MB"
     },
-
     "requestNotify": {
         "success": "Message sent successfully!",
         "error": "Error during sending"

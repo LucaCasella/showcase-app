@@ -5,6 +5,7 @@ import SuccessNotification from "../components/notificationRequest/SuccessNotifi
 import ErrorNotification from "../components/notificationRequest/ErrorNotification";
 import axiosInstance, {tokenSPAVerify} from "../api/axios";
 import {apiUrl} from "../constant/api-url";
+import PrivacyModal from "../components/modal/PrivacyModal";
 
 function WorkWithUs() {
     const {languageData} = useContext(LanguageContext);
@@ -20,6 +21,13 @@ function WorkWithUs() {
         recaptcha: null,
         file: null
     });
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const openModal = (e: any) => {
+        e.preventDefault();
+        window.scrollTo({top: 0 , behavior: "smooth"})
+        setModalOpen(true);
+    };
 
     const [errors, setErrors] = useState<{ [key in keyof typeof formData]?: string }>({});
 
@@ -200,13 +208,13 @@ function WorkWithUs() {
                                         className='w-6 h-6'
                                         onChange={(e) => handleChange("privacy", e.target.checked)}
                                     />
-                                    <p className='my-auto'>
+                                    <div className='my-auto'>
                                         {languageData.utils.form.privacy1}
-                                        <a href="">
+                                        <a href="" onClick={openModal}>
                                             {languageData.utils.form.privacy2}
                                         </a>
-                                        {languageData.utils.form.privacy3}
-                                    </p>
+                                        <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+                                    </div>
                                 </div>
                                 {errors.privacy &&
                                     <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.privacy}</p>

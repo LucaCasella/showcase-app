@@ -5,6 +5,7 @@ import {apiUrl} from "../constant/api-url";
 import SuccessNotification from "../components/notificationRequest/SuccessNotification";
 import ErrorNotification from "../components/notificationRequest/ErrorNotification";
 import {LanguageContext} from "../language_context/LanguageProvider";
+import PrivacyModal from "../components/modal/PrivacyModal";
 
 const Contacts = () => {
     const {languageData} = useContext(LanguageContext);
@@ -18,6 +19,14 @@ const Contacts = () => {
         privacy: false,
         recaptcha: null,
     });
+    const [isModalOpen, setModalOpen] = useState(false);
+
+
+    const openModal = (e: any) => {
+        e.preventDefault();
+        window.scrollTo({top: 0 , behavior: "smooth"})
+        setModalOpen(true);
+    };
 
     const [errors, setErrors] = useState<{ [key in keyof typeof formData]?: string }>({});
 
@@ -161,13 +170,14 @@ const Contacts = () => {
                                         className='w-6 h-6'
                                         onChange={(e) => handleChange("privacy", e.target.checked)}
                                     />
-                                    <p className='my-auto'>
+                                    <div className='my-auto'>
                                         {languageData.utils.form.privacy1}
-                                        <a href="">
+                                        <a href="" onClick={openModal}>
                                             {languageData.utils.form.privacy2}
                                         </a>
+                                        <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
                                         {languageData.utils.form.privacy3}
-                                    </p>
+                                    </div>
                                 </div>
                                 {errors.privacy &&
                                     <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.privacy}</p>}
