@@ -201,7 +201,7 @@ class AlbumManager implements AlbumManagerContract
             'title' => 'required',
             'location' => 'required',
             'cover' => 'image|mimes:jpeg,png,jpg,webp',
-            'type' => 'required|in:weddings,locations'
+            'type' => 'required|in:weddings,locations,vendors'
         ]);
 
         if ($validator->fails()) {

@@ -35,7 +35,21 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="adm-album-info">
                             <div class="flex- flex-col">
-                                <h5>Type: {{$album->type === 'weddings' ? 'Wedding' : 'Location'}}</h5>
+                                <h5>
+                                    @switch($album->type)
+                                        @case('weddings')
+                                            Type: Matrimonio
+                                            @break
+                                        @case('locations')
+                                            Type: Location
+                                            @break
+                                        @case('vendors')
+                                            Type: Fornitore
+                                            @break
+                                        @default
+                                            Type: N/D
+                                    @endswitch
+                                </h5>
                                 <h5>Title: {{$album->title}}</h5>
                                 <h5>Location: {{$album->location}}</h5>
                             </div>

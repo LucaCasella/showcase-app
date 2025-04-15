@@ -42,8 +42,9 @@
                                         <label for="type"><strong>Album Type</strong></label><br>
                                         <select id="type" name="type"
                                                 class="peer h-full w-full border-b border-blue-gray rounded-[7px]">
-                                            <option value="weddings">Wedding</option>
+                                            <option value="weddings">Matrimonio</option>
                                             <option value="locations">Location</option>
+                                            <option value="vendors">Fornitore</option>
                                         </select>
                                     </div>
                                     <div class="mb-2">
