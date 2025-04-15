@@ -26,34 +26,34 @@ class AlbumManager implements AlbumManagerContract
 
             $type = $request->input('type');
 
-            $uploadedCover = $request->file('cover');
+            $coverImageUploaded = $request->file('cover');
 
-            $imageOriginal = imagecreatefromstring(file_get_contents($uploadedCover->getRealPath()));
+            $coverImageOriginal = imagecreatefromstring(file_get_contents($coverImageUploaded->getRealPath()));
 
-            $imageFHD = Helpers::resizeToFullHd($imageOriginal);
+            $coverImageFHD = Helpers::resizeToFullHd($coverImageOriginal);
 
-            $slugAndName = $this->createFileSlugAndName($request->input('location'));
+            $coverSlugAndName = $this->createFileSlugAndName($request->input('location'));
 
-            $album_directory = $this->getAlbumDirectory($type, $slugAndName['fileSlug']);
+            $album_directory = $this->getAlbumDirectory($type, $coverSlugAndName['fileSlug']);
 
-            $path = $album_directory . '/' . $slugAndName['fileNameWebP'];
+            $coverPath = $album_directory . '/' . $coverSlugAndName['fileNameWebP'];
 
-            imagewebp($imageFHD, $path, 100);
+            imagewebp($coverImageFHD, $coverPath, 100);
 
             $maxOrder = Album::max('order');
 
             $order = $maxOrder ? $maxOrder + 1 : 1;
 
             $album = new Album;
-            $album->slug = $slugAndName['fileSlug'];
+            $album->slug = $coverSlugAndName['fileSlug'];
             $album->title = $request->input('title');
             $album->location = $request->input('location');
-            $album->cover = $slugAndName['fileNameWebP'];
+            $album->cover = $coverSlugAndName['fileNameWebP'];
             $album->order = $order;
             $album->type = $type;
             $album->save();
 
-            $imagesToDestroy = Helpers::groupImagesToDestroy($imageOriginal, $imageFHD);
+            $imagesToDestroy = Helpers::groupImagesToDestroy($coverImageOriginal, $coverImageFHD);
             Helpers::freeMemoryFromImages($imagesToDestroy);
 
             return redirect()->route('index-album')->with('success', 'Album creato con successo');
@@ -126,10 +126,8 @@ class AlbumManager implements AlbumManagerContract
     {
         try {
             $album = Album::with('Photo')->findOrFail($album_id);
-            $type = $album->type;
 
-            // Delete album cover from filesystem
-            $coverPath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/'. $album->slug . '/' . $album->cover);
+            $basePath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $album->type . '/'. $album->slug);
 
             if(file_exists($coverPath)) {
                 unlink($coverPath);
@@ -142,11 +140,11 @@ class AlbumManager implements AlbumManagerContract
 
                 foreach ($photos as $photo) {
 
-                    $photoPathFHD = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd);
+                    $photoPathFHD = public_path($basePath . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd);
                     if(file_exists($photoPathFHD)) {
                         unlink($photoPathFHD);
                     }
-                    $photoPathOriginal = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug . '/' . PhotoManager::original_directory . '/' . $photo->photo);
+                    $photoPathOriginal = public_path($basePath . '/' . PhotoManager::original_directory . '/' . $photo->photo);
                     if(file_exists($photoPathOriginal)) {
                         unlink($photoPathOriginal);
                     }
@@ -155,18 +153,21 @@ class AlbumManager implements AlbumManagerContract
             }
 
             // Delete all album folders
-            $albumPhotosPathFHD = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug. '/' . PhotoManager::fhd_directory);
+            $albumPhotosPathFHD = public_path($basePath . '/' . PhotoManager::fhd_directory);
 
             if (is_dir($albumPhotosPathFHD) && count(scandir($albumPhotosPathFHD)) <= 2) {
                 rmdir($albumPhotosPathFHD);
             }
-            $albumPhotosPathOriginal = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug . '/' . PhotoManager::original_directory);
+
+            $albumPhotosPathOriginal = public_path($basePath . '/' . PhotoManager::original_directory);
 
             if (is_dir($albumPhotosPathOriginal) && count(scandir($albumPhotosPathOriginal)) <= 2) {
                 rmdir($albumPhotosPathOriginal);
             }
 
-            $albumFolderPath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $type . '/' . $album->slug);
+            if (is_dir($basePath) && count(scandir($basePath)) <= 2) {
+                rmdir($basePath);
+            }
 
             if (is_dir($albumFolderPath) && count(scandir($albumFolderPath)) <= 2) {
                 rmdir($albumFolderPath);
@@ -174,7 +175,7 @@ class AlbumManager implements AlbumManagerContract
 
             $album->delete();
 
-            return redirect()->route('index-album')->with('success', 'Album cancellato con succeso');
+            return redirect()->route('index-album')->with('success', 'Album cancellato con successo');
         } catch (Exception $e) {
             return redirect()->route('index-album')->with('error', $e->getMessage());
         }
