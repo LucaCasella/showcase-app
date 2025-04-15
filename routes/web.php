@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BackOfficeController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GuestFormController;
@@ -108,6 +109,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/adm-gallery/{album_id}/photo/store', [PhotoController::class, 'store'])->name('store-photo');
     Route::delete('/adm-gallery/{album_id}/{photo_id}', [PhotoController::class, 'destroy'])->name('destroy-photo');
     Route::post('/adm-gallery/update-photo-order', [PhotoController::class, 'updateOrder'])->name('update-photo-order');
+
+//    ALBUM DETAIL ROUTES
+    Route::get('/adm-gallery/{album_id}/detail/create', [DetailController::class, 'create'])->name('create-detail');
+    Route::post('/adm-gallery/{album_id}/detail/store', [DetailController::class, 'store'])->name('store-detail');
+    Route::put('/adm-gallery/{album_id}/detail/update', [DetailController::class, 'update'])->name('update-detail');
+    Route::put('/adm-gallery/{album_id}/detail/clear', [DetailController::class, 'clear'])->name('clear-detail');
+    Route::delete('/adm-gallery/{album_id}/detail/delete', [DetailController::class, 'delete'])->name('delete-detail');
 
 //    VIDEO ROUTES
     Route::get('/adm-videos', [VideoController::class, 'index'])->name('index-video');
