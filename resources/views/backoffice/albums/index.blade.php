@@ -53,10 +53,12 @@
                                 <h5>Title: {{$album->title}}</h5>
                                 <h5>Location: {{$album->location}}</h5>
                             </div>
-                            <form action="{{route('destroy-album', [$album->id])}}" method="post" class="album-form">
-                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                   href="{{route('show-album', [$album->id])}}">Info</a>
-                                <a class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+                            <form action="{{route('destroy-album', [$album->id])}}" method="post" class="grid grid-cols-2 gap-2">
+                                <a class="bg-green-500 hover:bg-green-700 text-center text-white font-bold py-2 px-4 rounded"
+                                   href="{{route('show-album', [$album->id])}}">Photo</a>
+                                <a class="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 px-4 rounded"
+                                   href="{{route('create-detail', [$album->id])}}">Details</a>
+                                <a class="bg-yellow-500 hover:bg-yellow-700 text-center text-white font-bold py-2 px-4 rounded"
                                    href="{{route('edit-album', [$album->id])}}">Edit</a>
                                 @csrf
                                 @method('DELETE')
