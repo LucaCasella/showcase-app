@@ -129,8 +129,22 @@ class AlbumManager implements AlbumManagerContract
 
             $basePath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $album->type . '/'. $album->slug);
 
-            if(file_exists($coverPath)) {
-                unlink($coverPath);
+            // Delete album images (cover, owner, location) from filesystem
+            $filesToDelete = [
+                $album->cover,
+                $album->detail->owner_image ?? null,
+                $album->detail->location_image ?? null,
+                $album->detail->owner_image_fhd ?? null,
+                $album->detail->location_image_fhd ?? null,
+            ];
+
+            foreach ($filesToDelete as $file) {
+                if ($file) {
+                    $fullPath = $basePath . '/' . $file;
+                    if (file_exists($fullPath)) {
+                        unlink($fullPath);
+                    }
+                }
             }
 
             // Retrieve and delete photos related to album from filesystem and DB
@@ -169,8 +183,8 @@ class AlbumManager implements AlbumManagerContract
                 rmdir($basePath);
             }
 
-            if (is_dir($albumFolderPath) && count(scandir($albumFolderPath)) <= 2) {
-                rmdir($albumFolderPath);
+            if ($album->detail) {
+                $album->detail->delete();
             }
 
             $album->delete();
