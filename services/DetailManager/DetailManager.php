@@ -1,0 +1,175 @@
+<?php
+
+namespace Service\DetailManager;
+
+use App\Models\Album;
+use App\Models\Detail;
+use DateTime;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Mockery\Exception;
+use Service\AlbumManager\AlbumManager;
+use Service\Helpers;
+use Service\PhotoManager\PhotoManager;
+
+class DetailManager implements DetailManagerContract
+{
+    /**
+     * @throws \Exception
+     */
+    public function store(Request $request, $album_id) :RedirectResponse
+    {
+        try {
+            // valida richiesta
+            $this->detailValidator($request);
+
+            // ottengo l'album e le info che mi servono
+            $album = Album::find($album_id);
+            $albumSlug = $album->slug;
+            $albumType = $album->type;
+
+            // creo percorso per il salvataggio in filesystem
+            $directory = AlbumManager::BASE_DIRECTORY . '/' . $albumType . '/' . $albumSlug;
+
+            // creo istanza
+            $detail = new Detail();
+            $detail->album_id = $album_id;
+            $detail->description_it = $request->input('description_it');
+            $detail->description_en = $request->input('description_en');
+            $detail->description_ru = $request->input('description_ru');
+            $detail->owner_image = '';
+            $detail->owner_image_fhd = '';
+            $detail->location_image = '';
+            $detail->location_image_fhd = '';
+            $detail->created_at = new DateTime();
+
+            // se ho immagine owner
+            if ($request->hasFile('owner_image')) {
+                // prendo immagine dalla richiesta e il suo percorso nel browser
+                $ownerImageUploaded = $request->file('owner_image');
+                $ownerImageOriginal = imagecreatefromstring(file_get_contents($ownerImageUploaded->getRealPath()));
+
+                // creo i nomi per i file
+                $pathsOwner = $this->createFilesNameByType('owner');
+
+                // converto immagine in fhd
+                $ownerImageFHD = Helpers::resizeToFullHd($ownerImageOriginal);
+
+                $this->convertAndSaveImage($directory, $pathsOwner, $ownerImageOriginal, $ownerImageFHD);
+
+                // compilo istanza con i nuovi valori
+                $detail->owner_image = $pathsOwner['fileNameOriginal'];
+                $detail->owner_image_fhd = $pathsOwner['fileNameFHD'];
+
+                // libero memoria dalle immagini
+                $ownerImagesToDestroy = Helpers::groupImagesToDestroy($ownerImageOriginal, $ownerImageFHD);
+                Helpers::freeMemoryFromImages($ownerImagesToDestroy);
+            }
+
+            // se ho immagine location
+            if ($request->hasFile('location_image')) {
+                // prendo immagine dalla richiesta e il suo percorso nel browser
+                $locationImageUploaded = $request->file('location_image');
+                $locationImageOriginal = imagecreatefromstring(file_get_contents($locationImageUploaded->getRealPath()));
+
+                // creo i nomi per i file
+                $pathsLocation = $this->createFilesNameByType('location');
+
+                // converto immagine in fhd
+                $locationImageFHD = Helpers::resizeToFullHd($locationImageOriginal);
+
+                $this->convertAndSaveImage($directory, $pathsLocation, $locationImageOriginal, $locationImageFHD);
+
+                // compilo istanza con i nuovi valori
+                $detail->location_image = $pathsLocation['fileNameOriginal'];
+                $detail->location_image_fhd = $pathsLocation['fileNameFHD'];
+
+                // libero memoria dalle immagini
+                $locationImagesToDestroy = Helpers::groupImagesToDestroy($locationImageOriginal, $locationImageFHD);
+                Helpers::freeMemoryFromImages($locationImagesToDestroy);
+            }
+
+            $detail->save();
+
+            return redirect()->route('index-album')->with('success', 'Dettagli aggiunti con successo');
+        } catch (Exception $e) {
+            return redirect()->route('create-album')->with('error', $e->getMessage());
+        }
+    }
+
+    public function update(Request $request, $album_id, $detail_id): ?RedirectResponse
+    {
+        return null;
+    }
+
+    public function clear($album_id) // todo: non raggiunge la rotta e poi testare
+    {
+        $album = Album::where('id', '=', $album_id)->first();
+        $albumDetail = Album::with('Detail')->findOrFail($album_id);
+
+//        dd($album_id, $albumDetail);
+
+        $basePath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $album->type . '/'. $album->slug);
+        $detailImagesPaths = [
+            $basePath . '/' . $albumDetail->owner_image,
+            $basePath . '/' . $albumDetail->owner_image_fhd,
+            $basePath . '/' . $albumDetail->location_image,
+            $basePath . '/' . $albumDetail->location_image_fhd,
+        ];
+
+        foreach ($detailImagesPaths as $imagePath) {
+
+            if(file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        if ($albumDetail) {
+            $albumDetail->update([
+                'description_it' => null,
+                'description_en' => null,
+                'description_ru' => null,
+                'owner_image' => null,
+                'owner_image_fhd' => null,
+                'location_image_fhd' => null,
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Dettagli resettati.');
+    }
+
+    function createFilesNameByType(string $image_type): array
+    {
+        $timestamp = time();
+
+        $fileNameOriginal = $image_type . '_' . $timestamp . '.webp';
+        $fileNameFHD = $image_type . '_fhd_' . $timestamp . '.webp';
+
+        return [
+            'fileNameOriginal' => $fileNameOriginal,
+            'fileNameFHD' => $fileNameFHD
+        ];
+    }
+
+    private function detailValidator(Request $request): void
+    {
+        $validator = Validator::make($request->all(), [
+            'owner-image' => 'image|mimes:jpeg,png,jpg,webp',
+            'location-image' => 'image|mimes:jpeg,png,jpg,webp',
+        ]);
+
+        if ($validator->fails()) {
+            throw new Exception('Formato del file errato');
+        }
+    }
+
+    private function convertAndSaveImage($directory, $paths, $ownerImageOriginal, $ownerImageFHD): void
+    {
+        $path1 = $directory . '/' . $paths['fileNameOriginal'];
+        imagewebp($ownerImageOriginal, $path1);
+        $path2 = $directory . '/' . $paths['fileNameFHD'];
+        imagewebp($ownerImageFHD, $path2);
+    }
+}
