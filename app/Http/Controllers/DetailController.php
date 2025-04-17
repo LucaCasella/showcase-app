@@ -16,10 +16,10 @@ class DetailController extends Controller
             $detail = Detail::where('album_id', '=' , $album_id)->first();
 
             if ($detail) {
-                return view('backoffice.details.create', compact('album', 'detail'));
+                return view('backoffice.details.manage', compact('album', 'detail'));
             }
 
-            return view('backoffice.details.create')->with('album', $album);
+            return view('backoffice.details.manage')->with('album', $album);
         } catch (\Exception $e) {
             return redirect()->route('index-album')->with('error', $e->getMessage());
         }
