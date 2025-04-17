@@ -122,6 +122,18 @@ class AlbumManager implements AlbumManagerContract
         }
     }
 
+    public function toggleHighlight($album_id)
+    {
+        $album = Album::findOrFail($album_id);
+        $album->highlight = !$album->highlight;
+        $album->save();
+
+        return redirect()->route('index-album')->with([
+            'success' => true,
+            'highlight' => $album->highlight,
+        ]);
+    }
+
     public function delete(Request $request, $album_id): RedirectResponse
     {
         try {

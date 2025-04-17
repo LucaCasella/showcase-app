@@ -102,6 +102,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/adm-gallery/show/{album_id}', [AlbumController::class, 'show'])->name('show-album');
     Route::get('/adm-gallery/edit/{album_id}', [AlbumController::class, 'edit'])->name('edit-album');
     Route::put('/adm-gallery/update/{album_id}', [AlbumController::class, 'update'])->name('update-album');
+    Route::patch('/adm-gallery/highlight/{album_id}', [AlbumController::class, 'toggleHighlight'])->name('toggle-highlight');
     Route::delete('/adm-gallery/destroy/{album_id}', [AlbumController::class, 'destroy'])->name('destroy-album');
 
 //    ALBUM PHOTO ROUTES

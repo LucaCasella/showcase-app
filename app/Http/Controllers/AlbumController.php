@@ -54,6 +54,15 @@ class AlbumController extends Controller
         }
     }
 
+    public function toggleHighlight($album_id)
+    {
+        try {
+            return AlbumMangerFacades::toggleHighlight($album_id);
+        } catch (Exception $e) {
+            return redirect()->route('index-album')->with('error', $e->getMessage());
+        }
+    }
+
     public function destroy(Request $request, $album_id)
     {
         try {
