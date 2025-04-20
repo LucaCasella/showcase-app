@@ -114,7 +114,7 @@ Route::middleware('auth')->group(function () {
 //    ALBUM DETAIL ROUTES
     Route::get('/adm-gallery/{album_id}/detail/create', [DetailController::class, 'create'])->name('create-detail');
     Route::post('/adm-gallery/{album_id}/detail/store', [DetailController::class, 'store'])->name('store-detail');
-    Route::put('/adm-gallery/{album_id}/detail/update', [DetailController::class, 'update'])->name('update-detail');
+    Route::put('/adm-gallery/{album_id}/detail/{detail_id}/update', [DetailController::class, 'update'])->name('update-detail');
     Route::put('/adm-gallery/{album_id}/detail/clear', [DetailController::class, 'clear'])->name('clear-detail');
     Route::delete('/adm-gallery/{album_id}/detail/delete', [DetailController::class, 'delete'])->name('delete-detail');
 

@@ -34,6 +34,15 @@ class DetailController extends Controller
         }
     }
 
+    public function update(Request $request, $album_id, $detail_id)
+    {
+        try {
+            return DetailMangerFacades::update($request, $album_id, $detail_id);
+        } catch (\Exception $e) {
+            return redirect()->route('index-album')->with('error', $e->getMessage());
+        }
+    }
+
     public function clear($album_id)
     {
         try {

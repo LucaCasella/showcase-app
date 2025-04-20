@@ -99,10 +99,91 @@ class DetailManager implements DetailManagerContract
 
     public function update(Request $request, $album_id, $detail_id): ?RedirectResponse
     {
-        return null;
+        try {
+            // Valida la richiesta
+            $this->detailValidator($request);
+
+            // Recupera album e relativo slug/type
+            $album = Album::findOrFail($album_id);
+            $albumSlug = $album->slug;
+            $albumType = $album->type;
+
+            // Recupera dettaglio esistente
+            $detail = Detail::where('album_id', $album_id)->firstOrFail();
+
+            // Crea percorso di salvataggio immagini
+            $directory = AlbumManager::BASE_DIRECTORY . '/' . $albumType . '/' . $albumSlug;
+
+            // Elimina immagini precedenti se esistono
+
+            // Aggiorna i testi
+            $detail->description_it = $request->input('description_it');
+            $detail->description_en = $request->input('description_en');
+            $detail->description_ru = $request->input('description_ru');
+
+            // Reset immagini
+
+            // Se presente nuova immagine owner
+            if ($request->hasFile('owner_image')) {
+
+                $detail->owner_image = '';
+                $detail->owner_image_fhd = '';
+
+                Helpers::deleteImageIfExists($directory . '/' . $detail->owner_image);
+                Helpers::deleteImageIfExists($directory . '/' . $detail->owner_image_fhd);
+
+                $ownerImageUploaded = $request->file('owner_image');
+                $ownerImageOriginal = imagecreatefromstring(file_get_contents($ownerImageUploaded->getRealPath()));
+
+                $pathsOwner = $this->createFilesNameByType('owner');
+                $ownerImageFHD = Helpers::resizeToFullHd($ownerImageOriginal);
+
+                $this->convertAndSaveImage($directory, $pathsOwner, $ownerImageOriginal, $ownerImageFHD);
+
+                $detail->owner_image = $pathsOwner['fileNameOriginal'];
+                $detail->owner_image_fhd = $pathsOwner['fileNameFHD'];
+
+                Helpers::freeMemoryFromImages(
+                    Helpers::groupImagesToDestroy($ownerImageOriginal, $ownerImageFHD)
+                );
+            }
+
+            // Se presente nuova immagine location
+            if ($request->hasFile('location_image')) {
+
+                $detail->location_image = '';
+                $detail->location_image_fhd = '';
+
+                Helpers::deleteImageIfExists($directory . '/' . $detail->location_image);
+                Helpers::deleteImageIfExists($directory . '/' . $detail->location_image_fhd);
+
+                $locationImageUploaded = $request->file('location_image');
+                $locationImageOriginal = imagecreatefromstring(file_get_contents($locationImageUploaded->getRealPath()));
+
+                $pathsLocation = $this->createFilesNameByType('location');
+                $locationImageFHD = Helpers::resizeToFullHd($locationImageOriginal);
+
+                $this->convertAndSaveImage($directory, $pathsLocation, $locationImageOriginal, $locationImageFHD);
+
+                $detail->location_image = $pathsLocation['fileNameOriginal'];
+                $detail->location_image_fhd = $pathsLocation['fileNameFHD'];
+
+                Helpers::freeMemoryFromImages(
+                    Helpers::groupImagesToDestroy($locationImageOriginal, $locationImageFHD)
+                );
+            }
+
+            $detail->updated_at = new DateTime();
+            $detail->save();
+
+            return redirect()->route('index-album')->with('success', 'Dettagli aggiornati con successo');
+        } catch (Exception $e) {
+            return redirect()->route('edit-album', ['album_id' => $album_id])
+                ->with('error', 'Errore durante l\'aggiornamento: ' . $e->getMessage());
+        }
     }
 
-    public function clear($album_id) // todo: non raggiunge la rotta e poi testare
+    public function clear($album_id)
     {
         $album = Album::where('id', '=', $album_id)->first();
         $albumDetail = Album::with('Detail')->findOrFail($album_id);
