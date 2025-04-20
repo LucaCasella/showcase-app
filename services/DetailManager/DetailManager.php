@@ -186,9 +186,8 @@ class DetailManager implements DetailManagerContract
     public function clear($album_id)
     {
         $album = Album::where('id', '=', $album_id)->first();
-        $albumDetail = Album::with('Detail')->findOrFail($album_id);
-
-//        dd($album_id, $albumDetail);
+        $albumWithDetail = Album::with('detail')->findOrFail($album_id);
+        $albumDetail = $albumWithDetail->detail;
 
         $basePath = public_path(AlbumManager::BASE_DIRECTORY . '/' . $album->type . '/'. $album->slug);
         $detailImagesPaths = [
@@ -199,7 +198,6 @@ class DetailManager implements DetailManagerContract
         ];
 
         foreach ($detailImagesPaths as $imagePath) {
-
             if(file_exists($imagePath)) {
                 unlink($imagePath);
             }
@@ -212,11 +210,13 @@ class DetailManager implements DetailManagerContract
                 'description_ru' => null,
                 'owner_image' => null,
                 'owner_image_fhd' => null,
+                'location_image' => null,
                 'location_image_fhd' => null,
+                'updated_at' => new DateTime(),
             ]);
         }
 
-        return redirect()->back()->with('success', 'Dettagli resettati.');
+        return redirect()->route('index-album')->with('success', 'Dettagli resettati con successo');
     }
 
     function createFilesNameByType(string $image_type): array
