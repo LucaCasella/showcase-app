@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react';
-import {useLocation} from "react-router-dom";
 import {LanguageContext} from "../language_context/LanguageProvider";
 import PrivacyModal from "../components/modal/PrivacyModal";
 
@@ -13,9 +12,6 @@ const Footer = () => {
         setModalOpen(true);
     };
 
-    // const location = useLocation();
-    // const isHomePage = location.pathname === '/home';
-    // const textColorClass = isHomePage ? 'text-white' : 'text-black';
     return (
         <div className='h-40 md:h-full w-full grid grid-cols-1 md:grid-cols-3 gap-4 p-4'>
             <div className='grid-cols-1 flex justify-center items-center'>

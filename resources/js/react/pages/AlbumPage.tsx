@@ -12,7 +12,6 @@ import lgZoom from 'lightgallery/plugins/zoom';
 function AlbumPage() {
     const {slug} = useParams();
     const [photos, setPhotos] = useState<Photo[]>([]);
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -34,9 +33,7 @@ function AlbumPage() {
 
     return (
         <div className='w-full lg:w-3/4 mx-auto p-4'>
-            {error ? (
-                <p className="text-red-500">{error}</p>
-            ) : (
+            {!photos ? null : (
                 <LightGallery
                     speed={500}
                     plugins={[lgThumbnail, lgZoom]}
