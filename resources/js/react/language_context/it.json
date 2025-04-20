@@ -64,8 +64,8 @@
         "mission": "La Mission",
         "missionDesc": "Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro. Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare. Innovazione, ricerca e sviluppo sono alla base del nostro metodo di lavoro. I nostri parchi macchine non raggiungono mai i tre anni di età, per noi è fondamentale rimanere sempre aggiornati in termini di qualità fotografica, video e attrezzatura. Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capi saldi del nostro modo di lavorare.",
         "aboutUs": "Chi Siamo",
-        "anastasiaDesc": "descrizione anastasia",
-        "matteoDesc": "descrizione matteo",
+        "anastasiaDesc": "\"Ogni scatto è un modo per fermare il tempo. Amo cogliere quei momenti che spesso sfuggono, ma che raccontano più di mille parole.\"",
+        "matteoDesc": "\"La fotografia è il mio strumento per raccontare storie autentiche. Mi affascina osservare, comprendere e trasformare emozioni reali in immagini che restano.\"",
         "aboutUsDesc": ""
     },
     "workWithUs": {
@@ -78,7 +78,7 @@
     },
     "contacts": {
         "title": "Contattaci",
-        "description": "Scrivici un messaggio se hai bisogno di aiuto o anche solo per dirci la tua",
+        "description": "Compila il modulo per ricevere un preventivo mirato",
         "followUs": "SEGUICI SU",
         "callUs": "Puoi chiamarci al numero"
     },

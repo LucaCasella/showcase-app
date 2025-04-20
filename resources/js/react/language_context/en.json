@@ -64,8 +64,8 @@
         "mission": "The Mission",
         "missionDesc": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nToday, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with.\nInnovation, research, and development are the foundation of our work method.\nOur equipment is never older than three years — staying up-to-date in terms of photographic and video quality, as well as gear, is essential to us.\nWith us, you begin a journey where every package is tailor-made for the client. Attention and care for their needs and requests are the cornerstones of our approach.",
         "aboutUs": "About Us",
-        "anastasia": "descrizione anastasia",
-        "matteo": "descrizione matteo",
+        "anastasiaDesc": "\"Every shot is a way to freeze time. I love capturing those fleeting moments that often go unnoticed but say more than a thousand words.\"",
+        "matteoDesc": "\"Photography is my way of telling authentic stories. I'm fascinated by observing, understanding, and turning real emotions into lasting images.\"",
         "aboutUsDesc": ""
     },
     "workWithUs": {
@@ -78,7 +78,7 @@
     },
     "contacts": {
         "title": "Contact us",
-        "description": "Write us a message if you need help or just to tell us your opinion",
+        "description": "Fill out the form to receive a tailored quote",
         "followUs": "FOLLOW US ON",
         "callUs": "You can call us at"
     },
