@@ -1,21 +1,21 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {getAlbumsByType} from "../services/getAlbumsByType";
 import axios from "axios";
 import LoadingIndicator from "./indicator_loading/LoadingIndicator";
 import {LanguageContext} from "../language_context/LanguageProvider";
+import {getHighlightedAlbums} from "../services/getHighlightedAlbums";
 
-const LastAlbumsSection = () => {
+const AlbumsSection = () => {
     const {languageData} = useContext(LanguageContext);
-    const [lastAlbums, setLastAlbums] = useState<Album[]>([]);
+    const [highlightedAlbums, setHighlightedAlbums] = useState<Album[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
-    useEffect(() => { //todo: retrieve only highlighted albums
-        const fetchLastAlbums = async () => {
+    useEffect(() => {
+        const fetchHighlightedAlbums = async () => {
             try {
                 setLoading(true);
-                const response = await getAlbumsByType('weddings');
+                const response = await getHighlightedAlbums(true, 'weddings');
                 setLoading(false);
-                setLastAlbums(response.data.slice(0, 6));
+                setHighlightedAlbums(response.data?.slice(0, 6));
             } catch (err) {
                 if (axios.isAxiosError(err)) {
                     console.error("Errore API:", err.response?.data || err.message);
@@ -27,7 +27,7 @@ const LastAlbumsSection = () => {
             }
         };
 
-        fetchLastAlbums();
+        fetchHighlightedAlbums();
     }, []);
 
     return (
@@ -35,9 +35,9 @@ const LastAlbumsSection = () => {
             <h2 className='p-4'>{languageData.home.lastAlbumsSection.title}</h2>
             <div className='w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-4 md:py-10'>
                 {!loading ? (
-                    lastAlbums.map((lastAlbums, index) => (
-                        <LastAlbumItem key={index} slug={lastAlbums.slug} title={lastAlbums.title}
-                                       location={lastAlbums.location} cover={lastAlbums.cover} type={lastAlbums.type}/>
+                    highlightedAlbums.map((highlightedAlbum, index) => (
+                        <LastAlbumItem key={index} slug={highlightedAlbum.slug} title={highlightedAlbum.title}
+                                       location={highlightedAlbum.location} cover={highlightedAlbum.cover} type={highlightedAlbum.type}/>
                     ))
                 ) : (
                     <div className='w-full mx-auto col-span-3 flex justify-center'>
@@ -76,15 +76,8 @@ function LastAlbumItem({slug, title, location, cover, type}: any) {
                     <p className="text-black text-3xl tracking-widest font-semibold">{location}</p>
                 </div>
             </div>
-            {/*<div className='flex items-center gap-10 px-4'>*/}
-            {/*    <span className='w-full h-[1px] bg-gray-500'/>*/}
-            {/*    <div className='text-center text-nowrap text-black'>*/}
-            {/*        {type}*/}
-            {/*    </div>*/}
-            {/*    <span className='w-full h-[1px] bg-gray-500'/>*/}
-            {/*</div>*/}
         </a>
     );
 }
 
-export default LastAlbumsSection;
+export default AlbumsSection;

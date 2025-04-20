@@ -194,27 +194,32 @@ class ApiController extends Controller
     }
 
     /**
-     * @param int $album_id
-     * @return JsonResponse
+     * Retrieves all highlighted albums.
+     *
+     * This method returns a list of albums that are marked as highlighted and visible.
+     * Optionally, it can filter the albums by their 'type' if the 'type' query parameter is provided.
+     * The albums are ordered by creation date in descending order when filtered by type.
+     *
+     * @param Request $request The incoming HTTP request, which may include a 'type' query parameter.
+     * @return JsonResponse A JSON response containing the list of highlighted albums, or an empty array if none are found.
      */
-    public function getPhotosByAlbumId(int $album_id): JsonResponse
+    public function getHighlightedAlbums(Request $request): JsonResponse
     {
         try {
+            $query = Album::where('visible', '=', 1)->where('highlight', '=', 1);
 
-            $photos = Photo::where('album_id', '=', $album_id)->get();
-
-            if($photos->isEmpty()){
-
-                return response()->json(["message" => "No photos found"],status:404);
+            if ($request->has('type')) {
+                $query->where('type', $request->query('type'))->orderBy('created_at', 'desc');
             }
 
-            return response()->json($photos);
+            $albums = $query->get();
 
-        }catch (\Exception $e){
+            return response()->json($albums);
 
-            return response()->json(['error' => $e->getMessage()]);
+        } catch (\Exception $e){
+
+            return response()->json([$e->getMessage()], 500);
         }
-
     }
 
     /**
