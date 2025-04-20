@@ -16,7 +16,7 @@ function AlbumPage() {
 
     useEffect(() => {
         const fetchPhotos = async () => {
-            if (!slug) return; //todo: explode error???
+            if (!slug) return;
             try {
                 const response = await getPhotosByAlbumSlug(slug);
                 setPhotos(response.data);

@@ -6,7 +6,7 @@ import LoadingIndicator from "../components/indicator_loading/LoadingIndicator";
 function LocationsPage() {
     const [locations, setLocations] = useState<Album[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-
+    // todo: high - retrieve details too for location albums and vendors and update components
     useEffect(() => {
         const fetchLocations = async () => {
             try {
@@ -25,7 +25,7 @@ function LocationsPage() {
             }
         };
 
-        fetchLocations()
+        fetchLocations();
     }, []);
 
     return (

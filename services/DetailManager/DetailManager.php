@@ -8,11 +8,9 @@ use DateTime;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 use Mockery\Exception;
 use Service\AlbumManager\AlbumManager;
 use Service\Helpers;
-use Service\PhotoManager\PhotoManager;
 
 class DetailManager implements DetailManagerContract
 {

@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
-//todo: at the end check all the routes end clear useless ones
+//todo: high - at the end check all the routes end clear useless ones
 
 // PUBLIC ROUTES
 

@@ -10,7 +10,7 @@ const SocialSection = () => {
                 <h2 className='text-2xl'>{languageData.contacts.followUs}</h2>
                 <div className='flex flex-row sm:flex-col gap-4 lg:gap-10'>
                     <a href="">
-                        {/* todo: add link to facebook */}
+                        {/* todo: high - add link to facebook */}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="100px"
                              height="100px">
                             <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/>
@@ -49,7 +49,7 @@ const SocialSection = () => {
                         </svg>
                     </a>
                     <a href="">
-                        {/* todo: add link to youtube */}
+                        {/* todo: high - add link to youtube */}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="100px"
                              height="100px">
                             <path fill="#FF3D00"

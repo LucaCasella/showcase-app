@@ -8,7 +8,6 @@ function AboutUs() {
     const [activeImage, setActiveImage] = useState('');
 
     return (
-        // todo: sistemare foto chi siamo per mobile
         <div className='max-w-7xl mx-auto'>
             <div className='m-4'>
                 <h2 className='text-4xl lg:text-6xl text-center tracking-widest font-semibold mt-10'>{languageData.aboutUs.mission}</h2>
@@ -25,7 +24,7 @@ function AboutUs() {
                         onMouseLeave={() => setActiveImage('')}
                     >
                         <img
-                            src='https://placehold.co/600x400'
+                            src='https://placehold.co/600x400' // todo: high - change this image
                             alt="Immagine sinistra"
                             className="h-[600px] w-[400px] object-cover"
                         />
@@ -38,7 +37,8 @@ function AboutUs() {
                             className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out ${activeImage === 'left' ? 'opacity-100' : 'opacity-0'}`}>
                             <p className={`text-center text-3xl font-medium tracking-widest leading-10 px-16 transition-all duration-500 ease-out transform ${activeImage === 'left' ? 'translate-x-0' : '-translate-x-full'}`}>Anastasia</p>
                             <p className={`text-center text-lg font-medium tracking-widest leading-10 px-16 transition-all duration-500 ease-out transform ${activeImage === 'left' ? 'translate-x-0' : '-translate-x-full'}`}>
-                                {languageData.aboutUs.anastasia}
+                                {languageData.aboutUs.anastasiaDesc}
+                                {/* todo: low - ask for this descripption */}
                             </p>
                         </div>
                         {/* DX text */}
@@ -46,7 +46,8 @@ function AboutUs() {
                             className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out ${activeImage === 'right' ? 'opacity-100' : 'opacity-0'}`}>
                             <p className={`text-center text-3xl font-medium tracking-widest leading-10 px-16 transition-all duration-500 ease-out transform ${activeImage === 'right' ? 'translate-x-0' : 'translate-x-full'}`}>Matteo</p>
                             <p className={`text-center text-lg font-medium tracking-widest leading-10 px-16 transition-all duration-500 ease-out transform ${activeImage === 'right' ? 'translate-x-0' : 'translate-x-full'}`}>
-                                {languageData.aboutUs.matteo}
+                                {languageData.aboutUs.matteoDesc}
+                                {/* todo: low - ask for this descripption */}
                             </p>
                         </div>
                     </div>
@@ -58,7 +59,7 @@ function AboutUs() {
                         onMouseLeave={() => setActiveImage('')}
                     >
                         <img
-                            src='https://placehold.co/600x400'
+                            src='https://placehold.co/600x400' // todo: high - change this image
                             alt="Immagine destra"
                             className="h-[600px] w-[400px] object-cover"
                         />
@@ -68,14 +69,14 @@ function AboutUs() {
                 <div className='flex xl:hidden my-10'>
                     <div className="flex flex-col md:flex-row mx-auto gap-4">
                         <OwnerImage
-                            image="/assets/new/home.jpg"
+                            image="/assets/new/home.jpg" // todo: high - change this image
                             name="Anastasia"
-                            description={languageData.aboutUs.anastasia}
+                            description={languageData.aboutUs.anastasiaDesc} // todo: low - ask for this descripption
                         />
                         <OwnerImage
-                            image="/assets/new/home.jpg"
+                            image="/assets/new/home.jpg" // todo: high - change this image
                             name="Matteo"
-                            description={languageData.aboutUs.matteo}
+                            description={languageData.aboutUs.matteoDesc} // todo: low - ask for this descripption
                         />
                     </div>
                 </div>

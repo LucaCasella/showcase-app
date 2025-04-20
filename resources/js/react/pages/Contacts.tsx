@@ -75,7 +75,7 @@ const Contacts = () => {
                         "Authorization": token,
                     },
                 });
-                // todo: add honeypot input
+
                 if (response.data.success) {
                     setSuccessMessage(languageData.requestNotify.success);
 
@@ -205,7 +205,7 @@ const Contacts = () => {
                             <div className=''>{languageData.contacts.followUs}</div>
                             <div className='flex flex-row sm:flex-col gap-4'>
                                 <a href="">
-                                    {/* todo: add link to facebook */}
+                                    {/* todo: high - add link to facebook */}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px"
                                          height="48px">
                                     <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/>
@@ -244,7 +244,7 @@ const Contacts = () => {
                                     </svg>
                                 </a>
                                 <a href="">
-                                    {/* todo: add link to youtube */}
+                                    {/* todo: high - add link to youtube */}
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px"
                                          height="48px">
                                         <path fill="#FF3D00"

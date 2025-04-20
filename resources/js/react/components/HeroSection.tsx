@@ -5,7 +5,7 @@ const HeroSection = () => {
     const {languageData} = useContext(LanguageContext);
 
     return (
-        // todo: gray banner like BannerCTASection component
+        // todo: low - gray banner like BannerCTASection component
         <div className='w-full lg:w-3/4 mx-auto p-4'>
             <h1 className='text-center py-4 lg:py-10'>ANASTASIA KABAKOVA</h1>
             <p className='text-center text-lg lg:text-2xl lg:leading-10'>

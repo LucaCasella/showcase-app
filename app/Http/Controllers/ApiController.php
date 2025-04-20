@@ -103,6 +103,25 @@ class ApiController extends Controller
         }
     }
 
+    /**
+     * Handles the submission of a curriculum for collaboration.
+     *
+     * This method validates the incoming request, including a reCAPTCHA check,
+     * basic form fields, and a PDF file upload. If validation passes, the curriculum
+     * is stored and a new Collaboration entry is created. It also includes a honeypot
+     * check to prevent spam bots by inspecting the 'middle_name_wwu' field.
+     *
+     * Expected request fields:
+     * - name: Candidate's name
+     * - email: Candidate's email address (required, must be valid)
+     * - phone: Candidate's phone number (required)
+     * - comment: Optional message or notes
+     * - file: PDF file of the CV (required, max 2MB)
+     * - recaptcha: Google reCAPTCHA Enterprise token
+     *
+     * @param Request $request The incoming HTTP request containing form data and file upload.
+     * @return JsonResponse A JSON response indicating success or failure with an appropriate HTTP status code.
+     */
     public function submitCurriculum(Request $request): JsonResponse
     {
         if (!empty($request->input('middle_name_wwu'))) {
@@ -121,7 +140,7 @@ class ApiController extends Controller
 
                 return response()->json(['captchaError' => $validator->errors()], 400);
             }
-             //todo: check this and add mail notification to user and admin
+             //todo: low - check this and add mail notification to user and admin
              Collaboration::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -150,7 +169,7 @@ class ApiController extends Controller
      * @param Request $request The HTTP request containing optional query parameters.
      * @return JsonResponse A JSON response containing the albums or an error message.
      */
-    public function getAllAlbums(Request $request): JsonResponse //todo: add a pagination
+    public function getAllAlbums(Request $request): JsonResponse //todo: low - add a pagination
     {
         try {
             $query = Album::where('visible', '=', 1);
@@ -163,7 +182,7 @@ class ApiController extends Controller
 
             if ($albums->isEmpty()) {
 
-                return response()->json(["message" => "No albums found"],status:404);
+                return response()->json(["message" => "No albums found"], status:404);
             }
 
             return response()->json($albums);
