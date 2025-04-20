@@ -128,10 +128,7 @@ class AlbumManager implements AlbumManagerContract
         $album->highlight = !$album->highlight;
         $album->save();
 
-        return redirect()->route('index-album')->with([
-            'success' => true,
-            'highlight' => $album->highlight,
-        ]);
+        return redirect()->route('index-album');
     }
 
     public function delete(Request $request, $album_id): RedirectResponse
@@ -166,11 +163,11 @@ class AlbumManager implements AlbumManagerContract
 
                 foreach ($photos as $photo) {
 
-                    $photoPathFHD = public_path($basePath . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd);
+                    $photoPathFHD = $basePath . '/' . PhotoManager::fhd_directory . '/' . $photo->photo_fhd;
                     if(file_exists($photoPathFHD)) {
                         unlink($photoPathFHD);
                     }
-                    $photoPathOriginal = public_path($basePath . '/' . PhotoManager::original_directory . '/' . $photo->photo);
+                    $photoPathOriginal = $basePath . '/' . PhotoManager::original_directory . '/' . $photo->photo;
                     if(file_exists($photoPathOriginal)) {
                         unlink($photoPathOriginal);
                     }
@@ -179,13 +176,13 @@ class AlbumManager implements AlbumManagerContract
             }
 
             // Delete all album folders
-            $albumPhotosPathFHD = public_path($basePath . '/' . PhotoManager::fhd_directory);
+            $albumPhotosPathFHD = $basePath . '/' . PhotoManager::fhd_directory;
 
             if (is_dir($albumPhotosPathFHD) && count(scandir($albumPhotosPathFHD)) <= 2) {
                 rmdir($albumPhotosPathFHD);
             }
 
-            $albumPhotosPathOriginal = public_path($basePath . '/' . PhotoManager::original_directory);
+            $albumPhotosPathOriginal = $basePath . '/' . PhotoManager::original_directory;
 
             if (is_dir($albumPhotosPathOriginal) && count(scandir($albumPhotosPathOriginal)) <= 2) {
                 rmdir($albumPhotosPathOriginal);
