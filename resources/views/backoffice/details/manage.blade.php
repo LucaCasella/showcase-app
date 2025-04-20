@@ -40,7 +40,7 @@
                     @endif
                     @include('includes.redirectMessage')
 
-                    <form action="{{isset($detail) ? route('update-detail', $album->id) : route('store-detail', $album->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{isset($detail) ? route('update-detail', [$album->id, $detail->id]) : route('store-detail', $album->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if(isset($detail))
                             @method('PUT')
