@@ -48,6 +48,16 @@ class Helpers
         }
         return $gdImages;
     }
+
+    public static function deleteImageIfExists(?string $path): void //todo: low - try to use this in other images deletion process
+    {
+        if (!$path) return;
+
+        if (file_exists($path) && is_file($path)) {
+            unlink($path);
+        }
+    }
+
 }
 
 
