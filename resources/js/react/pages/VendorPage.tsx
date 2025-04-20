@@ -9,7 +9,6 @@ import lgZoom from "lightgallery/plugins/zoom";
 const VendorPage = () => {
     const {slug} = useParams();
     const [photos, setPhotos] = useState<Photo[]>([]);
-    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchPhotos = async () => {
