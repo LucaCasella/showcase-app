@@ -12,7 +12,7 @@ const LanguageSwitcher = () => {
         <select
             value={language}
             onChange={handleLanguageChange}
-            id="languages"
+            name="languages-switcher"
             className="w-20 h-10 rounded-none bg-white text-black focus:border-slate-700 focus:ring-slate-700 text-md font-normal block dark:bg-gray-700 dark:border-gray-300 dark:placeholder-gray-400 dark:text-white">
                 <option value="en">EN</option>
                 <option value="it">IT</option>

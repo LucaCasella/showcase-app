@@ -15,7 +15,7 @@ class WorkWithUsController extends Controller
 
          try {
 
-              Validator::make($request->all(), [
+             Validator::make($request->all(), [
                  'g-recaptcha-response' => ['required', new ReCaptchaEnterpriseRule],
                  'pdf' => ['required', 'file', 'mimetypes:application/pdf', 'max:2048'],
                  'email' => ['required', 'email'],

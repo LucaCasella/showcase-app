@@ -16,7 +16,7 @@ const Header = () => {
     const secondHalf = menuHeader.slice(centerIndex);
 
     return (
-        <header className={`relative w-full flex flex-col justify-between items-end ${isHomePage ? "home-header" : "h-auto"}`}>
+        <header className={`relative w-full flex flex-col justify-between items-end ${isHomePage ? "" : "h-auto"}`}>
             {/*DESKTOP NAVBAR*/}
             <nav
                 className={`h-60 mx-auto max-w-7xl hidden lg:flex flex-row items-center justify-center gap-8 xl:gap-16 ${textColorClass}`}>
