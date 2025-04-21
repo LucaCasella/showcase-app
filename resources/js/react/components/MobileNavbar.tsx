@@ -79,7 +79,7 @@ const MobileNavbar = () => {
                                 {item.relatedLinks && (
                                     <div
                                         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                                            openIndex === index ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                                            openIndex === index ? "max-h-72 opacity-100" : "max-h-0 opacity-0"
                                         }`}
                                     >
                                         <ul className="flex flex-col gap-2 pt-2 list-none p-0">

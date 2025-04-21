@@ -15,6 +15,7 @@ export const useMenuHeader = (): MenuItem[] => {
                 { title: languageData.header.videos, link: '/videos' },
                 { title: languageData.header.locations, link: '/locations' },
                 { title: languageData.header.vendors, link: '/vendors' },
+                { title: languageData.header.extra, link: '/extra' },
             ]
         },
         { page: 'aboutUs', title: languageData.header.aboutUs, link: '/about-us' },

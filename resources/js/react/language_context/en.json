@@ -8,6 +8,7 @@
         "videos": "VIDEO",
         "locations": "LOCATIONS",
         "vendors": "VENDORS",
+        "extra": "EXTRA",
         "payoff": {
             "title": "\"We will create your best memory\"",
             "winner": "Winner of the 2025 wedding awards"
