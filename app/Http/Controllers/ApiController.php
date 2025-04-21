@@ -109,7 +109,7 @@ class ApiController extends Controller
      * This method validates the incoming request, including a reCAPTCHA check,
      * basic form fields, and a PDF file upload. If validation passes, the curriculum
      * is stored and a new Collaboration entry is created. It also includes a honeypot
-     * check to prevent spam bots by inspecting the 'middle_name_wwu' field.
+     * check to prevent spambots by inspecting the 'middle_name_wwu' field.
      *
      * Expected request fields:
      * - name: Candidate's name
@@ -246,7 +246,8 @@ class ApiController extends Controller
             $photos = Photo::where('album_id', $album->id)->orderBy('order', 'asc')->get();
 
             if ($photos->isEmpty()) {
-                return response()->json(["message" => "No photos found"], 404);
+//                return response()->json(["message" => "No photos found"], 404);
+                $photos = [];
             }
 
             return response()->json([
