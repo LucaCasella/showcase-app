@@ -91,7 +91,6 @@ interface ReviewItemProps {
 }
 
 const ReviewItem = ({review}: ReviewItemProps) => {
-    console.log(review)
     return (
         <div className="min-w-full flex justify-center">
             <div className="max-w-2xl p-6 bg-white rounded-2xl shadow-lg text-center border border-gray-200 flex flex-col justify-between">
