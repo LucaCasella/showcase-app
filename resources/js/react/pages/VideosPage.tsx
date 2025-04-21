@@ -1,6 +1,8 @@
 import React, {useContext, useEffect} from 'react';
 import './video.scss';
 import {LanguageContext} from "../language_context/LanguageProvider";
+import axiosInstance, {tokenSPAVerify} from "../api/axios";
+import {apiUrl} from "../constant/api-url";
 
 function VideosPage() {
     const {languageData} = useContext(LanguageContext);
@@ -33,10 +35,19 @@ function VideosPage() {
         // Funzione di inizializzazione
         const init = async () => {
             try {
-                const response = await fetch('https://www.anastasiakabakova.com/api/videolist');
-                const videoIds = await response.json();
 
-                // Itera su ciascun videoId e carica il video corrispondente
+                const token: string = await tokenSPAVerify();
+                // Chiamata API con autorizzazione
+                const response = await axiosInstance.get(apiUrl.publicUrl.videos, {
+                    headers: {
+                        Authorization:  token,
+                    },
+                });
+
+                console.log(response)
+
+                const videoIds: string[] = response.data;
+
                 videoIds.forEach((videoId: string) => {
                     const playerDivId = createVideoPlayerContainer(videoId);
                     loadYouTubeVideo(videoId, playerDivId);
@@ -45,7 +56,6 @@ function VideosPage() {
                 console.error('Si è verificato un errore durante il recupero degli ID dei video:', error);
             }
         };
-
         // Carica il player di YouTube quando l'API è pronta
         const loadYouTubeAPI = () => {
             if (window.YT) {
