@@ -24,7 +24,7 @@ function AboutUs() {
                         onMouseLeave={() => setActiveImage('')}
                     >
                         <img
-                            src='https://placehold.co/600x400' // todo: high - change this image
+                            src={'/assets/new/Anastasia.jpg'}
                             alt="Immagine sinistra"
                             className="h-[600px] w-[400px] object-cover"
                         />
@@ -59,7 +59,7 @@ function AboutUs() {
                         onMouseLeave={() => setActiveImage('')}
                     >
                         <img
-                            src='https://placehold.co/600x400' // todo: high - change this image
+                            src={'/assets/new/Matteo.jpg'}
                             alt="Immagine destra"
                             className="h-[600px] w-[400px] object-cover"
                         />
@@ -69,12 +69,12 @@ function AboutUs() {
                 <div className='flex xl:hidden my-10'>
                     <div className="flex flex-col md:flex-row mx-auto gap-4">
                         <OwnerImage
-                            image="/assets/new/home.jpg" // todo: high - change this image
+                            image={'/assets/new/Anastasia.jpg'}
                             name="Anastasia"
                             description={languageData.aboutUs.anastasiaDesc} // todo: low - ask for this descripption
                         />
                         <OwnerImage
-                            image="/assets/new/home.jpg" // todo: high - change this image
+                            image={'/assets/new/Matteo.jpg'}
                             name="Matteo"
                             description={languageData.aboutUs.matteoDesc} // todo: low - ask for this descripption
                         />
