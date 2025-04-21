@@ -26,7 +26,7 @@ Route::get('/albums', [ApiController::class, 'getAllAlbums'])->middleware('SPA-v
 
 Route::get('/highlighted-albums', [ApiController::class, 'getHighlightedAlbums'])->middleware('SPA-verify');
 
-Route::get('/albums/{slug}', [ApiController::class, 'getPhotosByAlbumSlug'])->middleware('SPA-verify');
+Route::get('/albums/{slug}', [ApiController::class, 'getAlbumBySlug'])->middleware('SPA-verify');
 
 Route::get('/google-review', [ApiController::class, 'getGoogleReview'])->middleware('SPA-verify');
 

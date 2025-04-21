@@ -9,6 +9,16 @@ interface Album {
     updated_at: Date;
 }
 
+interface Detail {
+    description_it: string;
+    description_en: string;
+    description_ru: string;
+    owner_image: string;
+    owner_image_fhd: string;
+    location_image: string;
+    location_image_fhd: string;
+}
+
 interface Photo {
     name: string;
     photo: string;
