@@ -1,4 +1,4 @@
-.logo-container {
+.logo-container-1 {
     position: relative;
     width: 100px;
     height: 100px;
@@ -7,15 +7,16 @@
     animation: pulse 3s infinite ease-in-out 3s;
 }
 
-.logo {
+.logo-1 {
     width: 100%;
+    height: 100%;
     border-radius: 50%;
     display: block;
     position: absolute;
     z-index: 1;
 }
 
-.logo-fill {
+.logo-fill-1 {
     position: absolute;
     width: 100%;
     height: 100%;
