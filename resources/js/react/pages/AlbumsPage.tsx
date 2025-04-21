@@ -46,7 +46,7 @@ function AlbumsPage() {
 
 function AlbumItem({slug, title, location, cover}: any) {
     return (
-        <a href={`/albums/${slug}`} className='no-underline mb-4'>
+        <a href={`/weddings/${slug}`} className='no-underline mb-4'>
             <div className="relative overflow-hidden group mb-4">
                 <img
                     className="w-full aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:opacity-60"

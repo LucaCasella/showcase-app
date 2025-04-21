@@ -11,7 +11,7 @@ export const useMenuHeader = (): MenuItem[] => {
             link: '/gallery',
             dropdown: 'gallery',
             relatedLinks: [
-                { title: languageData.header.albums, link: '/albums' },
+                { title: languageData.header.albums, link: '/weddings' },
                 { title: languageData.header.videos, link: '/videos' },
                 { title: languageData.header.locations, link: '/locations' },
                 { title: languageData.header.vendors, link: '/vendors' },
