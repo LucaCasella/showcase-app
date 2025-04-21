@@ -8,6 +8,6 @@ export const apiUrl = {
         "submitCurriculum": "submit-curriculum",
         "albums": "albums",
         "highlightedAlbums": "highlighted-albums",
-        "videos": "videos",
+        "videos": "video-list",
     }
 }
