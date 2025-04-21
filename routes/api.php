@@ -32,7 +32,7 @@ Route::get('/google-review', [ApiController::class, 'getGoogleReview'])->middlew
 
 Route::get('/video-list', function () {
     return Video::all()->pluck('yt_video_id')->toJson();
-});
+})->middleware('SPA-verify');
 
 Route::middleware('auth:sanctum')->group(function () {
 
