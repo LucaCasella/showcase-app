@@ -2,7 +2,7 @@ import axios from "axios";
 import { apiUrl } from "../constant/api-url";
 
 const axiosInstance = axios.create({
-    baseURL: apiUrl.publicUrl.baseUrl + apiUrl.publicUrl.apiPrefix,
+    baseURL: apiUrl.publicUrl.apiPrefix,
     headers: {
         Accept: "application/json",
     },

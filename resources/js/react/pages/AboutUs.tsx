@@ -82,7 +82,7 @@ function AboutUs() {
                 </div>
             </div>
 
-            {/*<GoogleReview/>*/}
+            <GoogleReview/>
         </div>
     );
 }
