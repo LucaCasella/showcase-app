@@ -7,9 +7,8 @@ const OtherServicesSection = () => {
     return (
         <div className='w-full lg:w-3/4 mx-auto flex flex-col gap-10 py-4'>
             <h2>{languageData.home.otherServicesSection.title}</h2>
-            {/* todo: high - sistemare card immagini testo che spaccano il layout e non è resposivo */}
             <div className='w-full h-full shadow-2xl'>
-                <div className='flex flex-col xl:flex-row gap-4 justify-center items-center p-4'>
+                <div className='flex w-full flex-col xl:flex-row gap-4 justify-between items-center p-4'>
                     <img src="/assets/premarital.jpg" alt="pre/post marital image"
                          className='w-96 h-auto object-contain'/>
                     <div className='flex flex-col justify-center text-center'>
@@ -35,7 +34,7 @@ const OtherServicesSection = () => {
             </div>
 
             <div className='w-full h-full shadow-2xl'>
-                <div className='flex flex-col xl:flex-row gap-4 justify-center items-center p-4'>
+                <div className='flex w-full flex-col xl:flex-row gap-4 justify-between items-center p-4'>
                     <img src="/assets/wedding-planner.jpg" alt="wedding planner image"
                          className='w-96 h-auto object-contain'/>
                     <div className='flex flex-col justify-center text-center'>
@@ -59,7 +58,7 @@ const OtherServicesSection = () => {
             </div>
 
             <div className='w-full h-full shadow-2xl'>
-                <div className='flex flex-col xl:flex-row gap-4 justify-center items-center p-4'>
+                <div className='flex w-full flex-col xl:flex-row gap-4 justify-between items-center p-4'>
                     <img src="/assets/video-projection.jpg" alt="video projection image"
                          className='w-96 h-auto object-contain'/>
                     <div className='flex flex-col justify-center text-center'>
@@ -83,7 +82,7 @@ const OtherServicesSection = () => {
             </div>
 
             <div className='w-full h-full shadow-2xl'>
-                <div className='flex flex-col xl:flex-row gap-4 justify-center items-center p-4'>
+                <div className='flex w-full flex-col xl:flex-row gap-4 justify-between items-center p-4'>
                     <img src="/assets/polaroid.jpeg" alt="polaroid image"
                          className='w-96 h-auto object-contain'/>
                     <div className='flex flex-col justify-center text-center'>
