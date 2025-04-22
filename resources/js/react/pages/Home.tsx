@@ -12,7 +12,7 @@ const Home = () => {
             <HeroSection />
             <SocialSection />
             <SquaresSection />
-            <GoogleReview />
+            {/*<GoogleReview />*/}
         </div>
     );
 };
