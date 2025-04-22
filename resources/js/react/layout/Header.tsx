@@ -3,12 +3,13 @@ import {LinkItem, useMenuHeader, MenuItem} from "../constant/pages-links";
 import MobileNavbar from "../components/MobileNavbar";
 import {useLocation} from "react-router-dom";
 import LanguageSwitcher from "../language_context/LanguageSwitcher";
+import Payoff from "../components/Payoff";
 
 const Header = () => {
     const menuHeader = useMenuHeader();
     const [dropdown, setDropdown] = useState<string | null>(null);
     const location = useLocation();
-    const isHomePage = location.pathname === '/home';
+    const isHomePage = location.pathname === '/';
     const logoSrc = isHomePage ? "/assets/new/logoWhiteNoBG.png" : "/assets/new/logoNoBG.png";
     const textColorClass = isHomePage ? 'text-white' : 'text-black';
     const centerIndex = Math.floor(menuHeader.length / 2);
@@ -16,36 +17,41 @@ const Header = () => {
     const secondHalf = menuHeader.slice(centerIndex);
 
     return (
-        <header className={`relative w-full flex flex-col justify-between items-end ${isHomePage ? "" : "h-auto"}`}>
-            {/*DESKTOP NAVBAR*/}
-            <nav
-                className={`h-60 mx-auto max-w-7xl hidden lg:flex flex-row items-center justify-center gap-8 xl:gap-16 ${textColorClass}`}>
-                {/* Prima metà del menu */}
-                {firstHalf.map((item, index) => (
-                    <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
-                             isHomePage={isHomePage}/>
-                ))}
+        <div className='h-full flex flex-col justify-between'>
+            <header className={`relative w-full flex flex-col justify-between items-end ${isHomePage ? "" : "h-auto"}`}>
 
-                {/* Immagine centrale */}
-                <a href="/home" className="flex-shrink-0">
-                    <div className="w-44 text-7xl text-white font-medium tracking-widest">
-                        <img src={logoSrc} alt="Anastasia Kabakova Logo"/>
+                {/*DESKTOP NAVBAR*/}
+                <nav
+                    className={`h-60 mx-auto max-w-7xl hidden lg:flex flex-row items-center justify-center gap-8 xl:gap-16 ${textColorClass}`}>
+                    {/* Prima metà del menu */}
+                    {firstHalf.map((item, index) => (
+                        <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
+                                 isHomePage={isHomePage}/>
+                    ))}
+
+                    {/* Immagine centrale */}
+                    <a href="/" className="flex-shrink-0">
+                        <div className="w-44 text-7xl text-white font-medium tracking-widest">
+                            <img src={logoSrc} alt="Anastasia Kabakova Logo"/>
+                        </div>
+                    </a>
+
+                    {/* Seconda metà del menu */}
+                    {secondHalf.map((item, index) => (
+                        <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
+                                 isHomePage={isHomePage}/>
+                    ))}
+
+                    <div className="absolute lg:top-auto lg:left-6">
+                        <LanguageSwitcher/>
                     </div>
-                </a>
+                </nav>
 
-                {/* Seconda metà del menu */}
-                {secondHalf.map((item, index) => (
-                    <NavItem key={index} item={item} dropdown={dropdown} setDropdown={setDropdown}
-                             isHomePage={isHomePage}/>
-                ))}
+                <MobileNavbar/>
 
-                <div className="absolute lg:top-auto lg:left-6">
-                    <LanguageSwitcher/>
-                </div>
-            </nav>
-
-            <MobileNavbar/>
-        </header>
+            </header>
+            {isHomePage ? <Payoff/> : null}
+        </div>
     );
 };
 

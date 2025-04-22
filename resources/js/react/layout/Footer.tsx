@@ -50,7 +50,7 @@ const Footer = () => {
             </div>
 
             <div className='grid-cols-1'>
-                <div className='h-full flex flex-row sm:flex-col gap-4 items-center justify-center'>
+                <div className='h-full flex flex-row gap-4 items-center justify-center'>
                     <a href="">
                         {/*todo: high - add facebook link*/}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">

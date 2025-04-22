@@ -8,7 +8,7 @@ const MobileNavbar = () => {
     const menuHeader = useMenuHeader();
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
-    const isHomePage = location.pathname === '/home';
+    const isHomePage = location.pathname === '/';
     const logoSrc = isHomePage ? "/assets/new/logoWhiteNoBG.png" : "/assets/new/logoNoBG.png";
     const textColorClass = isHomePage ? 'text-white' : 'text-black';
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -39,7 +39,7 @@ const MobileNavbar = () => {
                     {/*</div>*/}
                 </div>
                 <div className='col-span-1 flex justify-center'>
-                    <a href='/home'>
+                    <a href='/'>
                         <div
                             className=''>
                             <img src={logoSrc} className='w-44' alt='Anastasia Kabakova Logo'/>
