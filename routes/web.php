@@ -11,8 +11,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\WorkWithUsController;
 use App\Models\Album;
-use App\Models\Contact;
-use App\Models\Video;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,10 +29,13 @@ require __DIR__ . '/auth.php';
 //todo: high - at the end check all the routes end clear useless ones
 
 // PUBLIC ROUTES
+Route::get('/migrations', function (){
+    return "Migrazioni e seeding completati con successo!";
+})->middleware('run-migrations');
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+//Route::get('/', function () {
+//    return view('pages.home');
+//})->name('home');
 
 //Route::get('/work-with-us', function (){
 //    return view('pages.work-with-us');
@@ -140,11 +141,13 @@ Route::get('/logs', [LogController::class, 'showLogs']);
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 
 // REACT ROUTE BUILD
-Route::get('/{any}', function () {
+//Route::get('/{any}', function () {
+//    return view('react.react');
+//})->where('any', '.*');
+
+Route::fallback(function () {
     return view('react.react');
-})->where('any', '.*');
+});
 
 // IN CASE EXPLODE PRODUCTION
-//Route::get('/migrations', function (){
-//    return "Migrazioni e seeding completati con successo!";
-//})->middleware('run-migrations');
+
