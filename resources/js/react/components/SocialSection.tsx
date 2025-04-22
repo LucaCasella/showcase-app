@@ -8,7 +8,7 @@ const SocialSection = () => {
         <div className='w-full lg:w-3/4 mx-auto p-4'>
             <div className='flex flex-col gap-6 items-center justify-center'>
                 <h2 className='text-2xl'>{languageData.contacts.followUs}</h2>
-                <div className='flex flex-row sm:flex-col gap-4 lg:gap-10'>
+                <div className='flex flex-row sm:flex-row gap-4 lg:gap-10'>
                     <a href="">
                         {/* todo: high - add link to facebook */}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="100px"

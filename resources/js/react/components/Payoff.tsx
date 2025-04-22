@@ -5,7 +5,7 @@ const Payoff = () => {
     const {languageData} = useContext(LanguageContext);
 
     return (
-        <div className='max-w-min text-nowrap flex flex-col gap-3 lg:gap-20 text-white left-5 lg:left-10 bottom-5 lg:bottom-10'>
+        <div className='max-w-min ml-4 mb-4 text-nowrap flex flex-col gap-3 lg:gap-20 text-white left-5 lg:left-10 bottom-5 lg:bottom-10'>
             {/* todo: low - add fade in to title */}
             <p className='italic text-sm lg:text-3xl xl:text-5xl font-semibold tracking-wide'>{languageData.header.payoff.title}</p>
             <div className='flex gap-10 items-center'>
