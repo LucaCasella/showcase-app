@@ -225,7 +225,7 @@ function WorkWithUs() {
 
                             <div className='self-center'>
                                 <ReCAPTCHA
-                                    sitekey="6LccrpYpAAAAAGcl7WBDiRWSkDNbOgGZvFefjFYb"
+                                    sitekey="6LdGCJspAAAAAJ5uwkOWb3ADEsq4as6eFMpv8jgj"
                                     onChange={(value) => handleChange("recaptcha", value)}
                                 />
                                 {errors.recaptcha &&
