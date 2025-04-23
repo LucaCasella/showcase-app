@@ -29,6 +29,7 @@ function AlbumPage() {
             if (!slug) return;
             try {
                 const response = await getAlbumBySlug(slug);
+                console.log(response)
                 setDetail(response.data.detail);
                 setPhotos(response.data.photos);
             } catch (err) {
