@@ -27,8 +27,8 @@ function App() {
                 <Routes>
                     <Route path='/' element={<MainLayout />}>
                         <Route index path="/" element={<Home />}/>
-                        <Route path="/weddings" element={<AlbumsPage/>}/>
-                        <Route path="/weddings/:slug" element={<AlbumPage/>}/>
+                        <Route path="/albums" element={<AlbumsPage/>}/>
+                        <Route path="/albums/:slug" element={<AlbumPage/>}/>
                         <Route path="/videos" element={<VideosPage/>}/>
                         <Route path="/locations" element={<LocationsPage/>}/>
                         <Route path="/locations/:slug" element={<LocationPage/>}/>

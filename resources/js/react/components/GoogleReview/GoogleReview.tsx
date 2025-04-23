@@ -18,7 +18,7 @@ const GoogleReview = () => {
             try {
                 const token: string = await tokenSPAVerify();
 
-                const response = await axiosInstance.get(
+                const response = await axios.get( apiUrl.publicUrl.apiPrefix +
                     apiUrl.publicUrl.googleReview, {
                         headers: {
                             "Authorization": token,
