@@ -246,8 +246,8 @@ class ApiController extends Controller
             $photos = Photo::where('album_id', $album->id)->orderBy('order', 'asc')->get();
 
             if ($photos->isEmpty()) {
-//                return response()->json(["message" => "No photos found"], 404);
-                $photos = [];
+                return response()->json(["message" => "No photos found"], 404);
+//                $photos = [];
             }
 
             return response()->json([
