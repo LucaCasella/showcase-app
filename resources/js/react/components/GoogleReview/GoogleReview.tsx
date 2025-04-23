@@ -1,6 +1,6 @@
 import {apiUrl} from "../../constant/api-url";
 import {useContext, useEffect, useState} from "react";
-import axiosInstance, {tokenSPAVerify, axiosInstanceToken} from "../../api/axios";
+import axiosInstance, {tokenSPAVerify} from "../../api/axios";
 import LoadingIndicator from "../indicator_loading/LoadingIndicator";
 import axios from "axios";
 import {Star} from "lucide-react";
@@ -18,7 +18,7 @@ const GoogleReview = () => {
             try {
                 const token: string = await tokenSPAVerify();
 
-                const response = await axiosInstanceToken.get(
+                const response = await axiosInstance.get(
                     apiUrl.publicUrl.googleReview, {
                         headers: {
                             "Authorization": token,
