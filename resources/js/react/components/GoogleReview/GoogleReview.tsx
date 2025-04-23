@@ -27,6 +27,7 @@ const GoogleReview = () => {
                 );
 
                 setReviews(response.data);
+
             } catch (err) {
                 if (axios.isAxiosError(err)) {
                     console.error("Errore API:", err.response?.data || err.message);
