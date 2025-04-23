@@ -8,9 +8,23 @@ const axiosInstance = axios.create({
     },
 });
 
+
 const tokenSPAVerify = async ( ) =>{
     const tokenResponse = await axiosInstance.get(apiUrl.publicUrl.tokenSPA);
     return  tokenResponse.data.token;
 }
+const tokenSPAVerifyAbsolute = async ( ) =>{
+
+    const tokenResponse = await axios.get(
+
+        `/${apiUrl.publicUrl.apiPrefix}${apiUrl.publicUrl.tokenSPA}`, {
+            headers: {
+                Accept: "application/json",
+            },
+        }
+    );
+
+    return  tokenResponse.data.token;
+}
 export default axiosInstance;
-export { tokenSPAVerify };
+export { tokenSPAVerify, tokenSPAVerifyAbsolute};
