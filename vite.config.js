@@ -26,10 +26,6 @@ export default defineConfig({
         host: 'localhost',
         port: 3000,
         strictPort: true,
-        // host: '0.0.0.0', // consente l’accesso dall’esterno (es. ngrok)
-        // hmr: {
-        //     host: 'localhost', // oppure il tuo dominio ngrok (facoltativo)
-        //     protocol: 'ws',
-        // }
+
     }
 });

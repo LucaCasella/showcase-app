@@ -37,10 +37,10 @@ const Footer = () => {
                     04057881205
                 </p>
                 <p className='text-nowrap text-center tracking-widest text-sm my-auto'>
-                    <a href="#" className='text-black no-underline hover:underline'>{languageData.footer.contacts}</a>
+                    <a href="/contacts" className='text-black no-underline hover:underline'>{languageData.footer.contacts}</a>
                 </p>
                 <p className='text-nowrap text-center tracking-widest text-sm my-auto'>
-                    <a href="#" className='text-black no-underline hover:underline'>{languageData.footer.workWithUs}</a>
+                    <a href="/work-with-us" className='text-black no-underline hover:underline'>{languageData.footer.workWithUs}</a>
                 </p>
                 <div className='text-nowrap text-center tracking-widest text-sm my-auto'>
                     <a href="#" onClick={openModal} className='text-black no-underline hover:underline'>{languageData.footer.privacyPolicy}</a>

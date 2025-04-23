@@ -9,7 +9,7 @@ const SquaresSection = () => {
         <div className="w-full lg:w-3/4 mx-auto p-4">
             <div className='h-auto items-center flex flex-col md:flex-row gap-4 justify-between'>
                 <div className='w-full md:w-1/2 flex flex-col gap-4 justify-between'>
-                    <a href='/albums' className='relative overflow-hidden aspect-video albums-background'>
+                    <a href='/weddings' className='relative overflow-hidden aspect-video albums-background'>
                         <div className="absolute inset-0 flex items-center justify-center">
                             <p className="text-white italic text-5xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.albums}</p>
                         </div>
