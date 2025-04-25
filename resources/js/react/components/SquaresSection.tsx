@@ -20,7 +20,7 @@ const SquaresSection = () => {
                                 <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.aboutUs}</p>
                             </div>
                         </a>
-                        <a href='/work-with-us' className='relative w-1/2 aspect-vide workwithus-background'>
+                        <a href='/vendors' className='relative w-1/2 aspect-vide workwithus-background'>
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.vendors}</p>
                             </div>
@@ -35,7 +35,7 @@ const SquaresSection = () => {
                                 <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.contacts}</p>
                             </div>
                         </a>
-                        <a href='/videos' className='relative w-1/2 aspect-video videos-background'>
+                        <a href='/extra' className='relative w-1/2 aspect-video videos-background'>
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <p className="text-white italic text-xl lg:text-3xl text-center tracking-widest font-semibold">{languageData.home.squaresSection.extra}</p>
                             </div>
