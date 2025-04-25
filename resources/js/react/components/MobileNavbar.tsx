@@ -42,7 +42,7 @@ const MobileNavbar = () => {
                     <a href='/'>
                         <div
                             className=''>
-                            <img src={logoSrc} className='w-44' alt='Anastasia Kabakova Logo'/>
+                            <img src={logoSrc} className='w-44' alt='Anastasia Kabakova'/>
                         </div>
                     </a>
                 </div>

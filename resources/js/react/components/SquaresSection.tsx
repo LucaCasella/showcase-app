@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import './grid.css';
+import './square-section.css';
 import {LanguageContext} from "../language_context/LanguageProvider";
 
 const SquaresSection = () => {
