@@ -64,7 +64,7 @@ const AlbumsSection = () => {
 
 function LastAlbumItem({slug, title, location, cover, type}: any) {
     return (
-        <a href={`/${type}/${slug}`} className='no-underline'>
+        <a href={`/albums/${slug}`} className='no-underline'>
             <div className="relative overflow-hidden group mb-4">
                 <img
                     className="w-full aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:opacity-60"
