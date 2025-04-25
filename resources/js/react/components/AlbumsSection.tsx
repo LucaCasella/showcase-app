@@ -63,17 +63,25 @@ const AlbumsSection = () => {
 }
 
 function LastAlbumItem({slug, title, location, cover, type}: any) {
+    let finalType = type;
+    switch (type) {
+        case 'weddings':
+            finalType = 'albums';
+            break;
+        default: break;
+    }
+
     return (
         <a href={`/albums/${slug}`} className='no-underline'>
             <div className="relative overflow-hidden group mb-4">
                 <img
                     className="w-full aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-110 group-hover:opacity-60"
-                    src={`AK-Photos/${type}/${slug}/${cover}`}
+                    src={`AK-Photos/${finalType}/${slug}/${cover}`}
                     alt={`${title}`}
                     loading="lazy"
                 />
                 <div className="absolute inset-0 items-center justify-center hidden group-hover:flex duration-500">
-                    <p className="text-black text-3xl tracking-widest font-semibold">{location}</p>
+                    <p className="text-black text-xl md:text-3xl text-center tracking-widest font-semibold">{location}</p>
                 </div>
             </div>
         </a>

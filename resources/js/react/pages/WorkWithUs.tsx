@@ -203,7 +203,7 @@ function WorkWithUs() {
                             </div>
 
                             <div>
-                                <div className='flex gap-4 items-center'>
+                                <div className='flex gap-4 items-center justify-center'>
                                     <input
                                         type="checkbox"
                                         checked={formData.privacy}
@@ -237,21 +237,6 @@ function WorkWithUs() {
                             </button>
                         </form>
                         <span className='w-1/4 h-[1px] bg-black self-end'/>
-                    </div>
-
-                    <div className='lg:w-1/3 flex flex-col'>
-                        <div className='lg:h-1/2'>
-                            <p>
-                                {languageData.workWithUs.text1}
-                            </p>
-                        </div>
-
-                        <div className='lg:h-2/2'>
-                            <h5>{languageData.workWithUs.title2}</h5>
-                            <p>
-                                {languageData.workWithUs.text2}
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>

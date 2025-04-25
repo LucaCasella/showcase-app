@@ -55,7 +55,7 @@ function VendorItem({slug, title, location, cover}: any) {
                     loading="lazy"
                 />
                 <div className="absolute inset-0 items-center justify-center hidden group-hover:flex duration-500">
-                    <p className="text-black text-3xl tracking-widest font-semibold">{title}</p>
+                    <p className="text-black text-xl md:text-3xl text-center tracking-widest font-semibold">{title}</p>
                 </div>
             </div>
             <div className='flex items-center gap-10 px-4'>

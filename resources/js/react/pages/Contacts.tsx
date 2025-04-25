@@ -163,7 +163,7 @@ const Contacts = () => {
                             </div>
 
                             <div>
-                                <div className='flex gap-4 items-center'>
+                                <div className='flex gap-4 items-center justify-center'>
                                     <input
                                         type="checkbox"
                                         checked={formData.privacy}
