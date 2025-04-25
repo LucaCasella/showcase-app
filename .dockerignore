@@ -1,5 +1,40 @@
-/vendor
-/node_modules
-/storage/logs/*
-/storage/framework/*
-.env
+# Node dependencies
+node_modules/
+npm-debug.log
+yarn.lock
+pnpm-lock.yaml
+
+# Laravel environment files (mantieni solo .env base se necessario)
+.env.*
+!.env
+
+# Laravel framework files da evitare
+.phpunit.result.cache
+.php_cs.cache
+storage/*.key
+
+
+# IDE/editor config
+.vscode/
+.idea/
+*.swp
+
+# Test & documentazione
+tests/
+docs/
+*.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Build e asset temporanei (solo se NON usi Mix)
+public/hot
+public/storage
+public/mix-manifest.json
+
+# Git
+.git
+.gitignore
+
