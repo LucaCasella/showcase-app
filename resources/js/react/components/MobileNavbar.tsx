@@ -46,7 +46,7 @@ const MobileNavbar = () => {
                         </div>
                     </a>
                 </div>
-                <div className={`col-span-1 flex justify-end font-bold items-end ${textColorClass} z-60`}>
+                <div className={`col-span-1 flex justify-end font-bold items-center ${textColorClass} z-60`}>
                     <button onClick={() => setIsOpen(!isOpen)} className="text-white font-bold">
                         {
                             isOpen
