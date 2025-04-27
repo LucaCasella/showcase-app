@@ -76,3 +76,12 @@ jobs:
             .git*
             node_modules/**
 
+      - name: Force replace ONLY public folder
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./public
+          server-dir: /www.anastasiakabakova.com/public/
+          dangerous-clean-slate: true
