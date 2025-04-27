@@ -35,21 +35,20 @@ function Detail({description, albumSlug, albumType, ownerOriginal, ownerFhd, loc
                 {!description ? null : (
                     <>
                         <div className="flex flex-col items-center text-center">
-                            <p className="font-semibold text-xl mb-2">{languageData.aboutUs.mission}</p>
-                            <p className="px-8 leading-8">{description}</p>
+                            <p className="libre-baskerville text-xl lg:text-3xl mb-4">{languageData.utils.mission}</p>
+                            <p className="libre-baskerville lg:text-xl px-8 leading-8">{description}</p>
                         </div>
                         <div className="group inline-block">
                             <a
                                 href="/contacts"
                                 className="flex flex-row items-center gap-2 no-underline text-black"
                             >
-                        <span className="relative inline-block text-xl">
-                            {languageData.home.bannerSection.button}
-                            <span
-                                className="absolute left-1/2 bottom-0 h-[1px] w-0 bg-black transition-all duration-300 ease-in-out group-hover:left-1/2 group-hover:w-full transform -translate-x-1/2"
-                            />
-                        </span>
-                                <ChevronRight size={24}/>
+                                <span className="quote relative inline-block text-4xl">
+                                    {languageData.utils.quote}
+                                    <span
+                                        className="absolute left-1/2 bottom-0 h-[1px] w-0 bg-black transition-all duration-300 ease-in-out group-hover:left-1/2 group-hover:w-full transform -translate-x-1/2"
+                                    />
+                                </span>
                             </a>
                         </div>
                     </>

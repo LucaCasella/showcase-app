@@ -59,7 +59,7 @@ const MobileNavbar = () => {
 
             {/* Menu Navbar */}
             <div
-                className={`fixed top-32 left-0 w-full bg-white bg-opacity-80 z-50 transform ${isOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300`}
+                className={`fixed top-32 left-0 w-full bg-white z-50 transform ${isOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300`}
                 style={{height: "calc(100vh - 60px)"}}
             >
                 <div className='h-full m-10'>
@@ -100,7 +100,7 @@ const MobileNavbar = () => {
                             </li>
                         ))}
                     </ul>
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center mt-2'>
                         <LanguageSwitcher />
                     </div>
                 </div>

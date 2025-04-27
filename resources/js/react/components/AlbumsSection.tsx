@@ -32,7 +32,7 @@ const AlbumsSection = () => {
 
     return (
         <div className='w-full lg:w-3/4 mx-auto p-4'>
-            <h2 className='p-4'>{languageData.home.lastAlbumsSection.title}</h2>
+            <h2 className='text-2xl md:text-4xl text-center p-4'>{languageData.home.lastAlbumsSection.title}</h2>
             <div className='w-full mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 py-4 md:py-10'>
                 {!loading ? (
                     highlightedAlbums.map((highlightedAlbum, index) => (
@@ -45,13 +45,13 @@ const AlbumsSection = () => {
                     </div>
                 )}
             </div>
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center sm:justify-end mt-4">
                 <a
                     href="/contacts"
                     className="group flex flex-row items-center gap-2 no-underline text-black"
                 >
-                    <span className="relative inline-block text-xl">
-                        {languageData.home.lastAlbumsSection.button}
+                    <span className="quote relative inline-block text-4xl">
+                        {languageData.utils.quote}
                         <span
                             className="absolute left-1/2 bottom-0 h-[1px] w-0 bg-black transition-all duration-300 ease-in-out group-hover:left-1/2 group-hover:w-full transform -translate-x-1/2"
                         />
@@ -81,7 +81,7 @@ function LastAlbumItem({slug, title, location, cover, type}: any) {
                     loading="lazy"
                 />
                 <div className="absolute inset-0 items-center justify-center hidden group-hover:flex duration-500">
-                    <p className="text-black text-xl md:text-3xl text-center tracking-widest font-semibold">{location}</p>
+                    <p className="great-vibes text-black text-2xl md:text-4xl text-center tracking-widest">{location}</p>
                 </div>
             </div>
         </a>

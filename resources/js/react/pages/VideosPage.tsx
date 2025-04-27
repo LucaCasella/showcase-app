@@ -3,6 +3,7 @@ import './video.scss';
 import {LanguageContext} from "../language_context/LanguageProvider";
 import axiosInstance, {tokenSPAVerify} from "../api/axios";
 import {apiUrl} from "../constant/api-url";
+import splitTextBySentences from "../helpers/helpers";
 
 function VideosPage() {
     const {languageData} = useContext(LanguageContext);
@@ -75,8 +76,8 @@ function VideosPage() {
 
     return (
         <>
-            <div className="max-w-7xl mx-auto text-center px-4 py-10">
-                {languageData.videos.description}
+            <div className="libre-baskerville max-w-7xl mx-auto text-center leading-8 px-4 py-10">
+                {splitTextBySentences(languageData.videos.description)}
             </div>
             <div className="max-w-7xl mx-auto videos-container row" id="videos-container" />
         </>

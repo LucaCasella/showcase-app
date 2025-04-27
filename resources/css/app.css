@@ -1,5 +1,39 @@
-@import "bootstrap";
-
+/*@import "bootstrap";*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Libre Baskerville", "Times New Roman", Times, serif;
+}
+
+.special-elite {
+    font-family: "Special Elite", "Courier New", Courier, monospace;
+}
+
+.arial {
+    font-family: Arial, serif;
+}
+
+.libre-baskerville {
+    font-family: "Libre Baskerville", "Times New Roman", Times, serif;
+}
+
+.great-vibes {
+    font-family: "Great Vibes", "Snell Roundhand", cursive;
+}
+
+.owner-name {
+    font-family: "Libre Baskerville", "Times New Roman", Times, serif;
+}
+
+.owner-desc {
+    font-family: "Great Vibes", "Snell Roundhand", cursive;
+    font-size: 1.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.quote {
+    font-family: "Great Vibes", "Snell Roundhand", cursive;
+    letter-spacing: 0.2rem;
+}

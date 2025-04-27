@@ -16,8 +16,7 @@
     },
     "home": {
         "lastAlbumsSection": {
-            "title": "Our Stories",
-            "button": "FREE QUOTE"
+            "title": "OUR STORIES"
         },
         "heroSection": {
             "text": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nWith us, a journey begins where every package is tailor-made for the client.\nAttention and care for your needs and requests are the cornerstones of our way of working.",
@@ -62,20 +61,21 @@
         "description": "Each of our videos is designed to convey unique emotions. Our cameras allow us to shoot in 4k up to 120fps. Thanks to the 10-bit 4:2:2 format we can provide a unique color palette that can be customized in post production according to the guidelines of the project we are doing. To have excellent audio quality we are equipped with both wireless and environmental microphones. Training and state-of-the-art technical components enable us to meet all our clients needs. Our strong point is the use of drone that allows us to shoot breathtaking areas."
     },
     "aboutUs": {
-        "mission": "The Mission",
-        "missionDesc": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nToday, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with.\nInnovation, research, and development are the foundation of our work method.\nOur equipment is never older than three years — staying up-to-date in terms of photographic and video quality, as well as gear, is essential to us.\nWith us, you begin a journey where every package is tailor-made for the client. Attention and care for their needs and requests are the cornerstones of our approach.",
-        "aboutUs": "About Us",
+        "mission": "OUR ESSENCE",
+        "missionDesc1": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nToday, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with.\nInnovation, research, and development are the foundation of our work method.\nOur equipment is never older than three years — staying up-to-date in terms of photographic and video quality, as well as gear, is essential to us.\nWith us, you begin a journey where every package is tailor-made for the client. Attention and care for their needs and requests are the cornerstones of our approach.",
+        "missionDesc2": "Our equipment fleet is never older than three years; for us, staying constantly updated in terms of photographic quality, video, and gear is essential.\nWith us, you embark on a journey where every package is tailored to the client’s needs.\nAttention to detail and care for the client's requests and requirements are the cornerstones of our way of working.",
+        "aboutUs": "ABOUT US",
         "anastasiaDesc": "\"Every shot is a way to freeze time. I love capturing those fleeting moments that often go unnoticed but say more than a thousand words.\"",
         "matteoDesc": "\"Photography is my way of telling authentic stories. I'm fascinated by observing, understanding, and turning real emotions into lasting images.\"",
         "aboutUsDesc": ""
     },
     "workWithUs": {
-        "title": "Join the team",
+        "title": "JOIN THE TEAM",
         "description": "We are always looking for passionate and motivated talents. If you want to join our team, send us your application",
         "cvUpload": "Upload your CV"
     },
     "contacts": {
-        "title": "Contact us",
+        "title": "CONTACT US",
         "description": "Fill out the form to receive a tailored quote",
         "followUs": "FOLLOW US ON",
         "callUs": "You can call us at"
@@ -86,6 +86,8 @@
         "privacyPolicy": "Privacy Policy"
     },
     "utils": {
+        "mission": "The Mission",
+        "quote": "- request a quote -",
         "reviewsTitle": "Testimonials",
         "form": {
             "name": "Your name",

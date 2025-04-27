@@ -97,9 +97,9 @@ const Contacts = () => {
 
     return (
         <div className='max-w-7xl mx-auto'>
-            <div className='m-4'>
-                <h2 className='text-4xl lg:text-6xl text-center lg:text-start tracking-widest font-semibold mt-10'>{languageData.contacts.title}</h2>
-                <p className='max-w-2xl mx-auto text-md lg:text-xl text-center tracking-widest leading-normal lg:leading-10 font-medium ml-20 my-10'>
+            <div className='flex flex-col justify-center items-center m-4'>
+                <h2 className='text-2xl md:text-4xl text-center tracking-widest mt-10'>{languageData.contacts.title}</h2>
+                <p className='libre-baskerville max-w-2xl text-md lg:text-xl text-center tracking-widest leading-normal lg:leading-10 font-medium my-10'>
                     {languageData.contacts.description}
                 </p>
                 {successMessage &&
@@ -109,7 +109,7 @@ const Contacts = () => {
                     <div className='lg:w-2/3 flex flex-col'>
                         <span className='w-1/4 h-[1px] bg-black'/>
                         <form onSubmit={handleSubmit}
-                              className='flex flex-col gap-8 lg:gap-16 p-5 border-1 border-y-transparent border-x-black'>
+                              className='flex flex-col gap-8 lg:gap-16 p-10 border border-y-transparent border-x-black'>
                             <div className='hidden'>
                                 <input type="text" id="middle_name_cnt" name="middle_name_cnt" style={{ display: 'none' }} />
                             </div>
@@ -117,7 +117,7 @@ const Contacts = () => {
                             <div>
                                 <input
                                     type="text"
-                                    className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                     placeholder={languageData.utils.form.name}
                                     value={formData.name}
                                     onChange={(e) => handleChange("name", e.target.value)}
@@ -128,7 +128,7 @@ const Contacts = () => {
 
                             <div>
                                 <input
-                                    className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                     placeholder={languageData.utils.form.email}
                                     type="email"
                                     value={formData.email}
@@ -140,7 +140,7 @@ const Contacts = () => {
 
                             <div>
                                 <input
-                                    className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                     placeholder={languageData.utils.form.phone}
                                     type="tel"
                                     value={formData.phone}
@@ -153,7 +153,7 @@ const Contacts = () => {
                             <div>
                                 <textarea
                                     id="contact-message"
-                                    className='w-full h-32 min-h-20 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                    className='w-full h-32 min-h-20 text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                     placeholder={languageData.utils.form.message}
                                     value={formData.comment}
                                     onChange={(e) => handleChange("comment", e.target.value)}
@@ -172,7 +172,11 @@ const Contacts = () => {
                                     />
                                     <div className='my-auto'>
                                         {languageData.utils.form.privacy1}
-                                        <a href="" onClick={openModal}>
+                                        <a
+                                            href=""
+                                            onClick={openModal}
+                                            className='underline'
+                                        >
                                             {languageData.utils.form.privacy2}
                                         </a>
                                         <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
@@ -193,7 +197,7 @@ const Contacts = () => {
                             </div>
 
                             <button type='submit'
-                                    className='w-full sm:w-1/2 mx-auto font-normal border-1 border-slate-700 p-2'>
+                                    className='w-full sm:w-1/2 mx-auto font-normal border p-2'>
                                 {languageData.utils.form.submit}
                             </button>
                         </form>
