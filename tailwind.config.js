@@ -15,7 +15,7 @@ export default  {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                // todo: low - choose brand colors
+                // todo: low - choose brand colors and fonts
                 primary: '',
                 primaryForeground: '',
                 secondary: '',

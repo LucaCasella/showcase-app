@@ -12,7 +12,6 @@ const MainLayout = () => {
         <>
             <div className={`w-full flex flex-col justify-between ${isHomePage ? 'home-background' : ''}`}>
                 <Header />
-
             </div>
             <main>
                 <Outlet />

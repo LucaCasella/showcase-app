@@ -54,10 +54,7 @@ const GoogleReview = () => {
 
     return (
         <div className="relative w-full mx-auto overflow-hidden pt-10">
-            {/*<h3 className='text-4xl lg:text-6xl text-center lg:text-start tracking-widest font-semibold mt-10'>*/}
-            {/*    Dicono di noi*/}
-            {/*</h3>*/}
-            <h2>{languageData.utils.reviewsTitle}</h2>
+            <h2 className='text-2xl md:text-4xl text-center'>{languageData.utils.reviewsTitle}</h2>
             {
                 loading ? (
                     <div className='w-full mx-auto flex justify-center my-10'>
