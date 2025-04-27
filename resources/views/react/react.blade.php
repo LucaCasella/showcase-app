@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    @vite(['resources/js/app.js', 'resources/css/app.scss', 'resources/css/app.css', ])
+    @vite(['resources/js/app.js', 'resources/css/app.scss', 'resources/css/app.css'])
 </head>
 <body>
 <div id="root">
