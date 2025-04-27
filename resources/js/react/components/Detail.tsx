@@ -2,7 +2,6 @@ import React, {useContext} from "react";
 import {PhotoProvider, PhotoView} from "react-photo-view";
 import 'react-photo-view/dist/react-photo-view.css';
 import {LanguageContext} from "../language_context/LanguageProvider";
-import {ChevronRight} from "lucide-react";
 
 function Detail({description, albumSlug, albumType, ownerOriginal, ownerFhd, locationOriginal, locationFhd}: any) {
     const {languageData} = useContext(LanguageContext);
