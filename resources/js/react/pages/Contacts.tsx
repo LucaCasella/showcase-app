@@ -217,8 +217,8 @@ const Contacts = () => {
                                 {/*    </svg>*/}
                                 {/*</a>*/}
                                 <a href="https://www.instagram.com/anastasiakabakova_fotografa/">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px"
-                                         height="48px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" width="50px"
+                                         height="50px">
                                         <radialGradient id="yOrnnhliCrdS2gy~4tD8ma" cx="19.38" cy="42.035" r="44.899"
                                                         gradientUnits="userSpaceOnUse">
                                             <stop offset="0" stopColor="#fd5"/>

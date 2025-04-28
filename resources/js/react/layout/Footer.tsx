@@ -13,7 +13,7 @@ const Footer = () => {
     };
 
     return (
-        <div className='h-40 md:h-full w-full grid grid-cols-1 md:grid-cols-3 gap-4 p-4'>
+        <div className='h-full md:h-48 w-full grid grid-cols-1 md:grid-cols-3 gap-4 px-4 py-10'>
             <div className='grid-cols-1 flex justify-center items-center'>
                 <div id="wp-ratedWA">
                     <a target="_blank"
