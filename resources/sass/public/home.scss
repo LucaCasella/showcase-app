@@ -1,134 +1,134 @@
-h1, h2, h3 {
-    //font-family: 'Times New Roman', cursive;
-    text-align: center;
-}
-
-body {
-    font-weight: 200;
-    font-size: 18px;
-}
-
-.home-container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.image-wrapper {
-    position: relative;
-    width: 50%;
-    padding-top: 50%;
-}
-
-.image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.description-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.link-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.link-container a {
-    flex: 1;
-    text-align: center;
-}
-
-.link-black, .link-white {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-    min-width: 100px;
-    border-radius: 10px;
-}
-
-.link-black {
-    padding: 5px;
-    background-color: #000000;
-    border: black solid 2px;
-    color: white;
-    font-size: larger;
-    text-decoration: none;
-}
-
-.link-black:hover {
-    background-color: white;
-    color: black;
-}
-
-.link-white {
-    color: black;
-    padding: 5px;
-    background-color: #ffffff;
-    border: black solid 2px;
-    font-size: larger;
-    text-decoration: none;
-}
-
-.link-white:hover {
-    background-color: lightgrey;
-    color: white;
-}
-
-.link-wedding-site-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-evenly;
-    margin: 2em 0 2em 0;
-}
-
-.locations {
-    max-width: 100%;
-    height: auto;
-}
-
-@media screen and (max-width: 991px) {
-
-    body {
-        font-size: 16px;
-    }
-
-    .image-wrapper {
-        position: relative;
-        width: 100%;
-        padding-top: 100%;
-    }
-
-    .image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .image-revert {
-        order: 1;
-    }
-
-    .description-revert {
-        order: 2;
-    }
-}
+//h1, h2, h3 {
+//    //font-family: 'Times New Roman', cursive;
+//    text-align: center;
+//}
+//
+//body {
+//    font-weight: 200;
+//    font-size: 18px;
+//}
+//
+//.home-container {
+//    display: flex;
+//    flex-wrap: wrap;
+//}
+//
+//.image-wrapper {
+//    position: relative;
+//    width: 50%;
+//    padding-top: 50%;
+//}
+//
+//.image {
+//    position: absolute;
+//    top: 0;
+//    left: 0;
+//    width: 100%;
+//    height: 100%;
+//    object-fit: cover;
+//}
+//
+//.description {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    justify-content: space-between;
+//}
+//
+//.description-wrapper {
+//    display: flex;
+//    flex-direction: column;
+//    align-items: center;
+//    justify-content: space-around;
+//}
+//
+//.link-container {
+//    display: flex;
+//    justify-content: space-between;
+//    gap: 10px;
+//}
+//
+//.link-container a {
+//    flex: 1;
+//    text-align: center;
+//}
+//
+//.link-black, .link-white {
+//    display: flex;
+//    justify-content: center;
+//    flex-grow: 1;
+//    min-width: 100px;
+//    border-radius: 10px;
+//}
+//
+//.link-black {
+//    padding: 5px;
+//    background-color: #000000;
+//    border: black solid 2px;
+//    color: white;
+//    font-size: larger;
+//    text-decoration: none;
+//}
+//
+//.link-black:hover {
+//    background-color: white;
+//    color: black;
+//}
+//
+//.link-white {
+//    color: black;
+//    padding: 5px;
+//    background-color: #ffffff;
+//    border: black solid 2px;
+//    font-size: larger;
+//    text-decoration: none;
+//}
+//
+//.link-white:hover {
+//    background-color: lightgrey;
+//    color: white;
+//}
+//
+//.link-wedding-site-container{
+//    display: flex;
+//    flex-wrap: wrap;
+//    gap: 20px;
+//    align-items: center;
+//    justify-content: space-evenly;
+//    margin: 2em 0 2em 0;
+//}
+//
+//.locations {
+//    max-width: 100%;
+//    height: auto;
+//}
+//
+//@media screen and (max-width: 991px) {
+//
+//    body {
+//        font-size: 16px;
+//    }
+//
+//    .image-wrapper {
+//        position: relative;
+//        width: 100%;
+//        padding-top: 100%;
+//    }
+//
+//    .image {
+//        position: absolute;
+//        top: 0;
+//        left: 0;
+//        width: 100%;
+//        height: 100%;
+//        object-fit: cover;
+//    }
+//
+//    .image-revert {
+//        order: 1;
+//    }
+//
+//    .description-revert {
+//        order: 2;
+//    }
+//}

@@ -6,7 +6,7 @@ import LoadingIndicator from "../components/indicator_loading/LoadingIndicator";
 function LocationsPage() {
     const [locations, setLocations] = useState<Album[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
-    // todo: high - retrieve details too for location albums and vendors and update components
+
     useEffect(() => {
         const fetchLocations = async () => {
             try {
@@ -54,12 +54,12 @@ function LocationItem({slug, title, location, cover}: any) {
                     loading="lazy"
                 />
                 <div className="absolute inset-0 items-center justify-center hidden group-hover:flex duration-500">
-                    <p className="text-black text-3xl tracking-widest font-semibold">{title}</p>
+                    <p className="great-vibes text-black text-3xl md:text-5xl text-center tracking-widest">{title}</p>
                 </div>
             </div>
             <div className='flex items-center gap-10 px-4'>
                 <span className='w-full h-[1px] bg-gray-500'/>
-                <div className='text-center text-nowrap text-black'>
+                <div className='great-vibes text-2xl text-center text-nowrap text-black tracking-widest'>
                     {location}
                 </div>
                 <span className='w-full h-[1px] bg-gray-500'/>

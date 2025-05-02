@@ -32,7 +32,7 @@ const Header = () => {
                     {/* Immagine centrale */}
                     <a href="/" className="flex-shrink-0">
                         <div className="w-44 text-7xl text-white font-medium tracking-widest">
-                            <img src={logoSrc} alt="Anastasia Kabakova Logo"/>
+                            <img src={logoSrc} alt="Anastasia Kabakova"/>
                         </div>
                     </a>
 

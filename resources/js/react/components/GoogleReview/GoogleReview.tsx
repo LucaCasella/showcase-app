@@ -54,10 +54,7 @@ const GoogleReview = () => {
 
     return (
         <div className="relative w-full mx-auto overflow-hidden pt-10">
-            {/*<h3 className='text-4xl lg:text-6xl text-center lg:text-start tracking-widest font-semibold mt-10'>*/}
-            {/*    Dicono di noi*/}
-            {/*</h3>*/}
-            <h2>{languageData.utils.reviewsTitle}</h2>
+            <h2 className='text-2xl md:text-4xl text-center'>{languageData.utils.reviewsTitle}</h2>
             {
                 loading ? (
                     <div className='w-full mx-auto flex justify-center my-10'>
@@ -94,8 +91,8 @@ const ReviewItem = ({review}: ReviewItemProps) => {
     return (
         <div className="min-w-full flex justify-center">
             <div className="max-w-2xl p-6 bg-white rounded-2xl shadow-lg text-center border border-gray-200 flex flex-col justify-between">
-                <p className="text-xl font-bold text-gray-800">{review?.author}</p>
-                <p className="text-lg text-gray-600 mt-2">{review?.textReview}</p>
+                <p className="libre-baskerville text-xl text-gray-800">{review?.author}</p>
+                <p className="libre-baskerville text-gray-600 mt-2">{review?.textReview}</p>
                 <div className="flex flex-row gap-2 items-center justify-center text-yellow-500 text-2xl mt-2">
                     <Star/>
                     <p className='m-0'>{review?.rating}</p>

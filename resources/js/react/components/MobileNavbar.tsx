@@ -42,11 +42,11 @@ const MobileNavbar = () => {
                     <a href='/'>
                         <div
                             className=''>
-                            <img src={logoSrc} className='w-44' alt='Anastasia Kabakova Logo'/>
+                            <img src={logoSrc} className='w-44' alt='Anastasia Kabakova'/>
                         </div>
                     </a>
                 </div>
-                <div className={`col-span-1 flex justify-end font-bold items-end ${textColorClass} z-60`}>
+                <div className={`col-span-1 flex justify-end font-bold items-center ${textColorClass} z-60`}>
                     <button onClick={() => setIsOpen(!isOpen)} className="text-white font-bold">
                         {
                             isOpen
@@ -59,7 +59,7 @@ const MobileNavbar = () => {
 
             {/* Menu Navbar */}
             <div
-                className={`fixed top-32 left-0 w-full bg-white bg-opacity-80 z-50 transform ${isOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300`}
+                className={`fixed top-32 left-0 w-full bg-white z-50 transform ${isOpen ? "translate-x-0" : "translate-x-full"} transition-transform duration-300`}
                 style={{height: "calc(100vh - 60px)"}}
             >
                 <div className='h-full m-10'>
@@ -100,7 +100,7 @@ const MobileNavbar = () => {
                             </li>
                         ))}
                     </ul>
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center mt-2'>
                         <LanguageSwitcher />
                     </div>
                 </div>

@@ -6,6 +6,7 @@ import ErrorNotification from "../components/notificationRequest/ErrorNotificati
 import axiosInstance, {tokenSPAVerify} from "../api/axios";
 import {apiUrl} from "../constant/api-url";
 import PrivacyModal from "../components/modal/PrivacyModal";
+import splitTextBySentences from "../helpers/helpers";
 
 function WorkWithUs() {
     const {languageData} = useContext(LanguageContext);
@@ -124,19 +125,19 @@ function WorkWithUs() {
 
     return (
         <div className='max-w-7xl mx-auto'>
-            <div className='m-4'>
-                <h2 className='text-4xl lg:text-6xl text-center tracking-widest font-semibold mt-10'>{languageData.workWithUs.title}</h2>
-                <p className='max-w-2xl mx-auto text-md lg:text-xl text-center tracking-widest leading-normal lg:leading-10 font-medium ml-20 my-10'>
-                    {languageData.workWithUs.description}
+            <div className='flex flex-col justify-center items-center m-4'>
+                <h2 className='text-2xl md:text-4xl text-center tracking-widest mt-10'>{languageData.workWithUs.title}</h2>
+                <p className='libre-baskerville max-w-3xl text-md lg:text-xl text-center tracking-widest leading-normal lg:leading-10 font-medium my-10'>
+                    {splitTextBySentences(languageData.workWithUs.description)}
                 </p>
                 {successMessage &&
                     <SuccessNotification message={successMessage} onClose={() => setSuccessMessage("")}/>}
                 {errorMessage && <ErrorNotification message={errorMessage} onClose={() => setErrorMessage("")}/>}
-                <div className='flex flex-col lg:flex-row gap-10 my-20'>
+                <div className='w-full flex flex-col justify-center items-center gap-10 my-20'>
                     <div className='lg:w-2/3 flex flex-col'>
                         <span className='w-1/4 h-[1px] bg-black'/>
                         <form onSubmit={handleSubmit}
-                              className='flex flex-col gap-8 lg:gap-16 p-5 border-1 border-y-transparent border-x-black'>
+                              className='flex flex-col gap-8 lg:gap-16 p-10 border border-y-transparent border-x-black'>
                             <div className='hidden'>
                                 <input type="text" id="middle_name_wwu" name="middle_name_wwu"
                                        style={{display: 'none'}}/>
@@ -144,7 +145,7 @@ function WorkWithUs() {
 
                             <div>
                                 <input type="text"
-                                       className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                       className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                        placeholder={languageData.utils.form.name}
                                        value={formData.name}
                                        onChange={(e) => handleChange("name", e.target.value)}/>
@@ -154,7 +155,7 @@ function WorkWithUs() {
 
                             <div>
                                 <input type="email"
-                                       className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                       className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                        placeholder={languageData.utils.form.email}
                                        value={formData.email}
                                        onChange={(e) => handleChange("email", e.target.value)}/>
@@ -164,7 +165,7 @@ function WorkWithUs() {
 
                             <div>
                                 <input type="tel"
-                                       className='w-full text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                       className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                        placeholder={languageData.utils.form.phone}
                                        value={formData.phone}
                                        onChange={(e) => handleChange("phone", e.target.value)}/>
@@ -175,7 +176,7 @@ function WorkWithUs() {
                             <div>
                                 <textarea name="comment"
                                           id="contact-message"
-                                          className='w-full h-32 min-h-20 text-center border-none border-bottom focus:outline-none focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                          className='w-full h-32 min-h-20 text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
                                           placeholder={languageData.utils.form.message}
                                           value={formData.comment}
                                           onChange={(e) => handleChange("comment", e.target.value)}/>
@@ -203,7 +204,7 @@ function WorkWithUs() {
                             </div>
 
                             <div>
-                                <div className='flex gap-4 items-center'>
+                                <div className='flex gap-4 items-center justify-center'>
                                     <input
                                         type="checkbox"
                                         checked={formData.privacy}
@@ -212,7 +213,11 @@ function WorkWithUs() {
                                     />
                                     <div className='my-auto'>
                                         {languageData.utils.form.privacy1}
-                                        <a href="" onClick={openModal}>
+                                        <a
+                                            href=""
+                                            onClick={openModal}
+                                            className='underline'
+                                        >
                                             {languageData.utils.form.privacy2}
                                         </a>
                                         <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
@@ -237,21 +242,6 @@ function WorkWithUs() {
                             </button>
                         </form>
                         <span className='w-1/4 h-[1px] bg-black self-end'/>
-                    </div>
-
-                    <div className='lg:w-1/3 flex flex-col'>
-                        <div className='lg:h-1/2'>
-                            <p>
-                                {languageData.workWithUs.text1}
-                            </p>
-                        </div>
-
-                        <div className='lg:h-2/2'>
-                            <h5>{languageData.workWithUs.title2}</h5>
-                            <p>
-                                {languageData.workWithUs.text2}
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>
