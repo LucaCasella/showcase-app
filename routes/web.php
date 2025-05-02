@@ -26,51 +26,6 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
-//todo: high - at the end check all the routes end clear useless ones
-
-// PUBLIC ROUTES
-Route::get('/migrations', function (){
-    return "Migrazioni e seeding completati con successo!";
-})->middleware('run-migrations');
-
-//Route::get('/', function () {
-//    return view('pages.home');
-//})->name('home');
-
-//Route::get('/work-with-us', function (){
-//    return view('pages.work-with-us');
-//})->name('work-with-us');
-
-Route::get('/photos', function () {
-    $albums = Album::where('visible', 1)
-        ->where('type', 'weddings')
-        ->get();
-    return view('pages.photos', ['albums' => $albums]);
-})->name('photos');
-
-//Route::get('/locations', function () {
-//    $albums = Album::where('visible', 1)
-//        ->where('type', 'locations')
-//        ->get();
-//    return view('pages.photos', ['albums' => $albums]);
-//})->name('photos');
-
-Route::get('/photos/{id}', function ($album_id) {
-    $album = Album::with('photo')->findOrFail($album_id);
-    $photos = $album->photo;
-    return view('pages.photos-show')->with(['album' => $album, 'photos' => $photos]);
-})->name('photos-show');
-
-//Route::get('/videos', function () {
-//    $videos = Video::where('visible', '=', 1)->get();
-//    return view('pages.videos', ['videos' => $videos]);
-//})->name('videos');
-
-Route::post('/guest-form-submit', [GuestFormController::class, 'store'])->name('guest-form');
-Route::post('/collaborator-form-submit', [WorkWithUsController::class, 'store'])->name('collaborator-form');
-
-
-
 
 // ADMIN ROUTES
 
@@ -78,18 +33,10 @@ Route::get('/admin-login', function () {
     return view('welcome');
 })->name('login-admin');
 
-//Route::get('/backoffice', function () {
-//    $contacts = Contact::where('privacy_accepted', '=', 1)
-//        ->where('visible', '=', 1)
-//        ->orderBy('created_at', 'asc')->get();
-//    return view('backoffice.dashboard', ['contacts' => $contacts]);
-//})->middleware(['auth', 'verified'])->name('backoffice');
 
 Route::get('/backoffice', [BackOfficeController::class, 'index'])->middleware(['auth' , 'verified'])->name('backoffice');
 
 Route::delete('/backoffice/{contact_id}', [GuestFormController::class, 'destroy'])->name('destroy-contact');
-
-//    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -131,6 +78,11 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/collaboration/{collaboration_id}', [BackOfficeController::class, 'destroy'])->name('destroy-collaboration');
 
+    //ROUTE THAT RUN MIGRATIONS & SEEDER UNDER AUTH MIDDLEWARE
+    Route::get('/migrations', function (){
+        return "Migrazioni e seeding completati con successo!";
+    })->middleware('run-migrations');
+
 //    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
 });
 
@@ -141,13 +93,8 @@ Route::get('/logs', [LogController::class, 'showLogs']);
 Route::post('set-locale', [LocalizationController::class, 'setLocale'])->name('set.locale');
 
 // REACT ROUTE BUILD
-//Route::get('/{any}', function () {
-//    return view('react.react');
-//})->where('any', '.*');
-
 Route::fallback(function () {
     return view('react.react');
 });
 
-// IN CASE EXPLODE PRODUCTION
 
