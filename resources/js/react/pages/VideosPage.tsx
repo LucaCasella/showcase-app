@@ -24,7 +24,7 @@ function VideosPage() {
         const createVideoPlayerContainer = (videoId: string) => {
             const videosContainer = document.getElementById('videos-container');
             const itemContainer = document.createElement('div');
-            itemContainer.className = 'col-md-6 mb-4';
+            itemContainer.className = 'col-md-6 mb-4 px-2';
             const uniqueId = 'player_' + videoId;
             itemContainer.setAttribute('id', uniqueId);
             // @ts-ignore
