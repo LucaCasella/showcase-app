@@ -32,7 +32,7 @@ const MobileNavbar = () => {
     return (
         <div className='w-full flex lg:hidden'>
             {/* Mobile Header*/}
-            <div className='grid grid-cols-3 align-items-center justify-content-center lg:hidden h-32 w-full px-4'>
+            <div className='grid grid-cols-3 items-center justify-center lg:hidden h-32 w-full px-4'>
                 <div className='col-span-1'>
                     {/*<div className="absolute top-1/2 transform -translate-y-1/2 lg:left-10">*/}
                     {/*    <LanguageSwitcher/>*/}

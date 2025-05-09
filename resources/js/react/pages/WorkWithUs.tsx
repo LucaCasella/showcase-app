@@ -134,7 +134,7 @@ function WorkWithUs() {
                     <SuccessNotification message={successMessage} onClose={() => setSuccessMessage("")}/>}
                 {errorMessage && <ErrorNotification message={errorMessage} onClose={() => setErrorMessage("")}/>}
                 <div className='w-full flex flex-col justify-center items-center gap-10 my-20'>
-                    <div className='lg:w-2/3 flex flex-col'>
+                    <div className='w-full lg:w-2/3 flex flex-col m-4'>
                         <span className='w-1/4 h-[1px] bg-black'/>
                         <form onSubmit={handleSubmit}
                               className='flex flex-col gap-8 lg:gap-16 p-10 border border-y-transparent border-x-black'>
