@@ -42,7 +42,6 @@ const Footer = () => {
 
                 <div className='flex flex-col items-center gap-4'>
                     <p>{languageData.footer.email}</p>
-                    {/* todo: change the email */}
                     <a href='mailto:infokabakova@yahoo.com'>infokabakova@yahoo.com</a>
                 </div>
             </div>
