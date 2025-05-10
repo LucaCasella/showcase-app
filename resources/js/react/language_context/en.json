@@ -4,13 +4,13 @@
         "contact": "CONTACTS",
         "workWithUs": "WORK WITH US",
         "aboutUs": "ABOUT US",
-        "albums": "ALBUM",
+        "albums": "PHOTOS",
         "videos": "VIDEO",
         "locations": "LOCATIONS",
         "vendors": "VENDORS",
         "extra": "EXTRA",
         "payoff": {
-            "title": "\"Capture the moment, create the magic.\"",
+            "title": "\"Capture the moment, create the magic\"",
             "winner": "Winner of the 2025 wedding awards"
         }
     },
@@ -37,7 +37,7 @@
             "button": "FREE QUOTE"
         },
         "otherServicesSection": {
-            "title": "Other Services",
+            "title": "OTHER SERVICES",
             "cardButton": "More Information",
             "service1": {
                 "title": "PRE/POST MARITAL",
@@ -52,7 +52,7 @@
                 "description": "The video projection service allows a summary video of the wedding day to be projected during the wedding. Magical and entertaining moments can be relived beforehand."
             },
             "service4": {
-                "title": "POLAROID",
+                "title": "MIRROR SELFIE",
                 "description": "The polaroid service is an instant photo printing service, the photos can be hung in exciting places in the venue or given to guests. This service allows you to break up static moments of the event and entertains both guests and bride and groom, and with the photos you can create a personalised and unique album of memories."
             }
         }
@@ -62,8 +62,8 @@
     },
     "aboutUs": {
         "mission": "OUR ESSENCE",
-        "missionDesc1": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio.\nToday, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with.\nInnovation, research, and development are the foundation of our work method.\nOur equipment is never older than three years — staying up-to-date in terms of photographic and video quality, as well as gear, is essential to us.\nWith us, you begin a journey where every package is tailor-made for the client. Attention and care for their needs and requests are the cornerstones of our approach.",
-        "missionDesc2": "Our equipment fleet is never older than three years; for us, staying constantly updated in terms of photographic quality, video, and gear is essential.\nWith us, you embark on a journey where every package is tailored to the client’s needs.\nAttention to detail and care for the client's requests and requirements are the cornerstones of our way of working.",
+        "missionDesc1": "My name is Anastasia Kabakova. After years of working in the photography industry, together with my partner Matteo, we decided to open our own studio. Today, we rely on a team of photographers and videomakers made up of the best collaborators we've had the pleasure of working with. Innovation, research, and development are the foundation of our work method.",
+        "missionDesc2": "Our equipment fleet is never older than three years; for us, staying constantly updated in terms of photographic quality, video, and gear is essential. With us, you embark on a journey where every package is tailored to the client’s needs. Attention to detail and care for the client's requests and requirements are the cornerstones of our way of working.",
         "aboutUs": "ABOUT US",
         "anastasiaDesc": "\"Every shot is a way to freeze time. I love capturing those fleeting moments that often go unnoticed but say more than a thousand words.\"",
         "matteoDesc": "\"Photography is my way of telling authentic stories. I'm fascinated by observing, understanding, and turning real emotions into lasting images.\"",
@@ -81,8 +81,14 @@
         "callUs": "You can call us at"
     },
     "footer": {
-        "contacts": "Contacts",
-        "workWithUs": "Work with Us",
+        "home": "HOME",
+        "aboutUs": "ABOUT US",
+        "photos": "PHOTOS",
+        "workWithUs": "WORK WITH US",
+        "contacts": "CONTACTS",
+        "phone": "Phone",
+        "follow": "Follow me",
+        "email": "Email",
         "privacyPolicy": "Privacy Policy"
     },
     "utils": {

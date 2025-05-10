@@ -7,7 +7,7 @@ const Payoff = () => {
     return (
         <div className='max-w-min ml-4 mb-4 text-nowrap flex flex-col gap-3 lg:gap-20 text-white left-5 lg:left-10 bottom-5 lg:bottom-10'>
             {/* todo: low - add fade in to title */}
-            <p className='special-elite text-md lg:text-3xl xl:text-5xl tracking-wide'>{languageData.header.payoff.title}</p>
+            <p className='great-vibes text-lg lg:text-4xl xl:text-6xl tracking-wide'>{languageData.header.payoff.title}</p>
             <div className='flex gap-10 items-center'>
                 <p className='arial hidden md:flex text-sm lg:text-xl xl:text-2xl m-0'>{languageData.header.payoff.winner}</p>
                 <div className='w-14 h-14 sm:w-20 sm:h-20'>

@@ -4,13 +4,13 @@
         "contact": "CONTATTI",
         "workWithUs": "LAVORA CON NOI",
         "aboutUs": "CHI SIAMO",
-        "albums": "ALBUM",
+        "albums": "FOTO",
         "videos": "VIDEO",
         "locations": "LOCATIONS",
         "vendors": "FORNITORI",
         "extra": "EXTRA",
         "payoff": {
-            "title": "\"Scatta il momento, crea la magia.\"",
+            "title": "\"Scatta il momento, crea la magia\"",
             "winner": "Vincitrice del wedding awards 2025"
         }
     },
@@ -37,7 +37,7 @@
             "button": "PREVENTIVO GRATUITO"
         },
         "otherServicesSection": {
-            "title": "Altri Servizi",
+            "title": "ALTRI SERVIZI",
             "cardButton": "Maggiori informazioni",
             "service1": {
                 "title": "PRE/POST MATRIMONIALE",
@@ -52,7 +52,7 @@
                 "description": "Il servizio di video proiezione permette di proiettare un video riassuntivo della giornata matrimoniale durante il matrimonio. Potranno essere rivissuti momenti magici e divertenti antecedenti."
             },
             "service4": {
-                "title": "POLAROID",
+                "title": "MIRROR SELFIE",
                 "description": "Il servizio polaroid è un servizio di stampa fotografica istantanea, le foto potranno essere appese in luoghi emozionanti della location oppure regalate agli ospiti. Questo servizio permette di spezzare momenti statici dell' evento e diverte sia ospiti che sposi, inoltre con le foto si può creare un album dei ricordi personalizzato e unico."
             }
         }
@@ -62,7 +62,7 @@
     },
     "aboutUs": {
         "mission": "LA NOSTRA ESSENZA",
-        "missionDesc1": "Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro. Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare. Innovazione, ricerca e sviluppo sono alla base del nostro metodo di lavoro. I nostri parchi macchine non raggiungono mai i tre anni di età, per noi è fondamentale rimanere sempre aggiornati in termini di qualità fotografica, video e attrezzatura. Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capi saldi del nostro modo di lavorare.",
+        "missionDesc1": "Mi chiamo Anastasia Kabakova, dopo anni di lavoro nel settore fotografico insieme al mio compagno Matteo decidiamo di aprire uno studio nostro. Ad oggi contiamo su una squadra tra fotografi e videomaker, formata dai migliori collaboratori con cui abbiamo avuto il piacere di lavorare. Innovazione, ricerca e sviluppo sono alla base del nostro metodo di lavoro.",
         "missionDesc2": "I nostri parchi macchine non raggiungono mai i tre anni di età, per noi è fondamentale rimanere sempre aggiornati in termini di qualità fotografica, video e attrezzatura. Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capisaldi del nostro modo di lavorare.",
         "aboutUs": "CHI SIAMO",
         "anastasiaDesc": "\"Ogni scatto è un modo per fermare il tempo. Amo cogliere quei momenti che spesso sfuggono, ma che raccontano più di mille parole.\"",
@@ -81,8 +81,14 @@
         "callUs": "Puoi chiamarci al numero"
     },
     "footer": {
-        "contacts": "Contatti",
-        "workWithUs": "Lavora con Noi",
+        "home": "HOME",
+        "aboutUs": "CHI SIAMO",
+        "photos": "FOTO",
+        "workWithUs": "LAVORA CON NOI",
+        "contacts": "CONTATTI",
+        "phone": "Telefono",
+        "follow": "Seguimi",
+        "email": "Email",
         "privacyPolicy": "Privacy Policy"
     },
     "utils": {
