@@ -12,7 +12,7 @@ function AboutUs() {
         <div className='max-w-7xl mx-auto'>
             <div className='m-4'>
                 <h2 className='text-2xl md:text-4xl text-center tracking-widest mt-10'>{languageData.aboutUs.mission}</h2>
-                <p className='libre-baskerville max-w-1/2 lg:text-lg tracking-widest leading-normal lg:leading-10 font-medium py-4 lg:py-10'>
+                <p className='libre-baskerville max-w-1/2 lg:text-lg tracking-widest leading-normal lg:leading-10 font-medium pt-4 lg:pt-10'>
                     {splitTextBySentences(languageData.aboutUs.missionDesc1)}
                 </p>
                 <p className='libre-baskerville max-w-1/2 lg:text-lg tracking-widest leading-normal lg:leading-10 font-medium pb-4 lg:pb-10'>
