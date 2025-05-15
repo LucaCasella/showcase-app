@@ -167,7 +167,7 @@ const Contacts = () => {
                                     <input
                                         type="checkbox"
                                         checked={formData.privacy}
-                                        className='w-6 h-6'
+                                        className='w-6 h-6 hover:cursor-pointer'
                                         onChange={(e) => handleChange("privacy", e.target.checked)}
                                     />
                                     <div className='my-auto'>
@@ -197,7 +197,7 @@ const Contacts = () => {
                             </div>
 
                             <button type='submit'
-                                    className='w-full sm:w-1/2 mx-auto font-normal border p-2'>
+                                    className='w-full sm:w-1/2 mx-auto font-normal border p-2 hover:cursor-pointer'>
                                 {languageData.utils.form.submit}
                             </button>
                         </form>

@@ -208,7 +208,7 @@ function WorkWithUs() {
                                     <input
                                         type="checkbox"
                                         checked={formData.privacy}
-                                        className='w-6 h-6'
+                                        className='w-6 h-6 hover:cursor-pointer'
                                         onChange={(e) => handleChange("privacy", e.target.checked)}
                                     />
                                     <div className='my-auto'>
@@ -238,7 +238,8 @@ function WorkWithUs() {
                             </div>
 
                             <button type='submit'
-                                    className='w-full md:w-1/2 mx-auto font-normal border p-2'>{languageData.utils.form.submit}
+                                    className='w-full md:w-1/2 mx-auto font-normal border p-2 hover:cursor-pointer'>
+                                {languageData.utils.form.submit}
                             </button>
                         </form>
                         <span className='w-1/4 h-[1px] bg-black self-end'/>
