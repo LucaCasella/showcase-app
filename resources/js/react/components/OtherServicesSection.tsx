@@ -10,7 +10,7 @@ const OtherServicesSection = () => {
             <h2 className='text-2xl md:text-4xl text-center'>{languageData.home.otherServicesSection.title}</h2>
             <div className='w-full h-full shadow-2xl'>
                 <div className='flex w-full flex-col xl:flex-row gap-4 xl:gap-16 items-center p-4'>
-                    <img src="/assets/premarital.jpg" alt="pre/post marital image"
+                    <img src="/assets/new/prepost-marital.jpg" alt="pre/post marital image"
                          className='w-96 h-auto object-contain'/>
                     <div className='w-full flex flex-col justify-center'>
                         <h5 className='mb-3 text-center'>{languageData.home.otherServicesSection.service1.title}</h5>
