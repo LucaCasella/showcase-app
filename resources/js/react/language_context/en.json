@@ -89,7 +89,8 @@
         "phone": "Phone",
         "follow": "Follow me",
         "email": "Email",
-        "privacyPolicy": "Privacy Policy"
+        "privacyPolicy": "Privacy Policy",
+        "cookiePref": "Manage Cookies"
     },
     "utils": {
         "mission": "The Mission",

@@ -89,7 +89,8 @@
         "phone": "Телефон",
         "follow": "Подписка",
         "email": "Почта",
-        "privacyPolicy": "Политика конфиденциальности"
+        "privacyPolicy": "Политика конфиденциальности",
+        "cookiePref": "Выбор Cookie"
     },
     "utils": {
         "mission": "Наша миссия",

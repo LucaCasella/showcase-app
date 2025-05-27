@@ -6,6 +6,10 @@ const Footer = () => {
     const {languageData} = useContext(LanguageContext);
     const [isModalOpen, setModalOpen] = useState(false);
 
+    const handleOpenCookieSettings = () => {
+        (window as any).CC?.showSettings(600);
+    };
+
     const openModal = (e: any) => {
         e.preventDefault();
         window.scrollTo({top: 0, behavior: "smooth"})
@@ -59,9 +63,10 @@ const Footer = () => {
                 <a href=""
                    onClick={openModal}
                 >
-                    {languageData.footer.privacyPolicy}
+                    {languageData.footer.privacyPolicy} |&nbsp;
                 </a>
-                <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
+                <button onClick={handleOpenCookieSettings}>{languageData.footer.cookiePref}</button>
+                <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}/>
             </div>
         </div>
     );

@@ -89,7 +89,8 @@
         "phone": "Telefono",
         "follow": "Seguimi",
         "email": "Email",
-        "privacyPolicy": "Privacy Policy"
+        "privacyPolicy": "Privacy Policy",
+        "cookiePref": "Gestisci Cookie"
     },
     "utils": {
         "mission": "La Mission",
