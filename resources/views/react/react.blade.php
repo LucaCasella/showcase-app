@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <meta name="google-site-verification" content="phEbloRnVbxiVdVeJMFb_LXaqljMciwbk5TRA4UJy_k" />
+    <script>
+        window.IS_PRODUCTION = {{ app()->environment('production') ? 'true' : 'false' }};
+    </script>
     @vite(['resources/js/app.js', 'resources/css/app.scss', 'resources/css/app.css'])
 </head>
 <body>

@@ -2,11 +2,12 @@ import 'vanilla-cookieconsent/dist/cookieconsent.css';
 import 'vanilla-cookieconsent';
 
 window.addEventListener('load', function () {
-    const cc = initCookieConsent();
-    window.CC = cc;
+    function isProduction() {
+        return window.IS_PRODUCTION === true || window.IS_PRODUCTION === 'true';
+    }
 
     function loadGA() {
-        if (window.gaLoaded) return;
+        if (!isProduction() || window.gaLoaded) return;
         let gaScript = document.createElement('script');
         gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-40WTWKS9TN';
         gaScript.async = true;
@@ -21,7 +22,7 @@ window.addEventListener('load', function () {
     }
 
     function loadClarity() {
-        if (window.clarityInitialized) return;
+        if (!isProduction() || window.clarityInitialized) return;
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -30,6 +31,9 @@ window.addEventListener('load', function () {
 
         window.clarityInitialized = true;
     }
+
+    const cc = initCookieConsent();
+    window.CC = cc;
 
     cc.run({
         current_lang: 'it',
