@@ -53,7 +53,7 @@ const Footer = () => {
             <div className='flex justify-center gap-4 lg:gap-16 px-4 py-10 text-center'>
                 <a href="/">{languageData.footer.home}</a>
                 <a href="/about-us">{languageData.footer.aboutUs}</a>
-                <a href="/weddings">{languageData.footer.photos}</a>
+                <a href="/albums">{languageData.footer.photos}</a>
                 <a href="/work-with-us">{languageData.footer.workWithUs}</a>
                 <a href="/contacts">{languageData.footer.contacts}</a>
             </div>
