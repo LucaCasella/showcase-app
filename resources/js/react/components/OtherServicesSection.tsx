@@ -10,8 +10,11 @@ const OtherServicesSection = () => {
             <h2 className='text-2xl md:text-4xl text-center'>{languageData.home.otherServicesSection.title}</h2>
             <div className='w-full h-full shadow-2xl'>
                 <div className='flex w-full flex-col xl:flex-row gap-4 xl:gap-16 items-center p-4'>
-                    <img src="/assets/new/prepost-marital.jpg" alt="pre/post marital image"
-                         className='w-96 h-auto object-contain'/>
+                    <div className='w-96 aspect-[4/3] flex items-center justify-center overflow-hidden'>
+                        <img src="/assets/new/prepost-marital.jpg"
+                             alt="pre/post marital image"
+                             className='w-full h-full object-cover'/>
+                    </div>
                     <div className='w-full flex flex-col justify-center'>
                         <h5 className='mb-3 text-center'>{languageData.home.otherServicesSection.service1.title}</h5>
                         <p className='libre-baskerville mx-auto md:px-4'>{splitTextBySentences(languageData.home.otherServicesSection.service1.description)}</p>
@@ -34,8 +37,10 @@ const OtherServicesSection = () => {
 
             <div className='w-full h-full shadow-2xl'>
                 <div className='flex w-full flex-col xl:flex-row gap-4 xl:gap-16 items-center p-4'>
-                    <img src="/assets/wedding-planner.jpg" alt="wedding planner image"
-                         className='w-96 h-auto object-contain'/>
+                    <div className='w-96 aspect-[4/3] flex items-center justify-center overflow-hidden'>
+                        <img src="/assets/wedding-planner.jpg" alt="wedding planner image"
+                             className='w-full h-full object-cover'/>
+                    </div>
                     <div className='w-full flex flex-col justify-center'>
                         <h5 className='mb-3 text-center'>{languageData.home.otherServicesSection.service2.title}</h5>
                         <p className='libre-baskerville mx-auto md:px-4'>{splitTextBySentences(languageData.home.otherServicesSection.service2.description)}</p>
@@ -58,8 +63,10 @@ const OtherServicesSection = () => {
 
             <div className='w-full h-full shadow-2xl'>
                 <div className='flex w-full flex-col xl:flex-row gap-4 xl:gap-16 items-center p-4'>
-                    <img src="/assets/video-projection.jpg" alt="video projection image"
-                         className='w-96 h-auto object-contain'/>
+                    <div className='w-96 aspect-[4/3] flex items-center justify-center overflow-hidden'>
+                        <img src="/assets/video-projection.jpg" alt="video projection image"
+                             className='w-full h-full object-cover'/>
+                    </div>
                     <div className='w-full flex flex-col'>
                         <h5 className='mb-3 text-center'>{languageData.home.otherServicesSection.service3.title}</h5>
                         <p className='libre-baskerville mx-auto md:px-4'>{splitTextBySentences(languageData.home.otherServicesSection.service3.description)}</p>
@@ -82,8 +89,10 @@ const OtherServicesSection = () => {
 
             <div className='w-full h-full shadow-2xl'>
                 <div className='flex w-full flex-col xl:flex-row gap-4 xl:gap-16 items-center p-4'>
-                    <img src="/assets/polaroid.jpeg" alt="polaroid image"
-                         className='w-96 h-auto object-contain'/>
+                    <div className='w-96 aspect-[4/3] flex items-center justify-center overflow-hidden'>
+                        <img src="/assets/new/mirror-selfie.jpg" alt="polaroid image"
+                             className='w-full h-full object-cover'/>
+                    </div>
                     <div className='w-full flex flex-col'>
                         <h5 className='mb-3 text-center'>{languageData.home.otherServicesSection.service4.title}</h5>
                         <p className='libre-baskerville mx-auto md:px-4'>{splitTextBySentences(languageData.home.otherServicesSection.service4.description)}</p>
