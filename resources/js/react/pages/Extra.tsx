@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {LanguageContext} from "../language_context/LanguageProvider";
 import splitTextBySentences from "../helpers/helpers";
 
-const OtherServicesSection = () => {
+const Extra = () => {
     const {languageData} = useContext(LanguageContext);
 
     return (
@@ -116,4 +116,4 @@ const OtherServicesSection = () => {
     );
 };
 
-export default OtherServicesSection;
+export default Extra;
