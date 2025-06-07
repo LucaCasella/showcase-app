@@ -6,6 +6,7 @@ import SuccessNotification from "../components/notificationRequest/SuccessNotifi
 import ErrorNotification from "../components/notificationRequest/ErrorNotification";
 import {LanguageContext} from "../language_context/LanguageProvider";
 import PrivacyModal from "../components/modal/PrivacyModal";
+import { Helmet } from 'react-helmet';
 
 const Contacts = () => {
     const {languageData} = useContext(LanguageContext);
@@ -96,61 +97,70 @@ const Contacts = () => {
     };
 
     return (
-        <div className='max-w-7xl mx-auto'>
-            <div className='flex flex-col justify-center items-center m-4'>
-                <h2 className='text-2xl md:text-4xl text-center tracking-widest mt-10'>{languageData.contacts.title}</h2>
-                <p className='libre-baskerville max-w-2xl text-md lg:text-xl text-center tracking-widest leading-normal lg:leading-10 font-medium my-10'>
-                    {languageData.contacts.description}
-                </p>
-                {successMessage &&
-                    <SuccessNotification message={successMessage} onClose={() => setSuccessMessage("")}/>}
-                {errorMessage && <ErrorNotification message={errorMessage} onClose={() => setErrorMessage("")}/>}
-                <div className='w-full flex flex-col items-center gap-10 my-20'>
-                    <div className='w-full lg:w-2/3 flex flex-col m-4'>
-                        <span className='w-1/4 h-[1px] bg-black'/>
-                        <form onSubmit={handleSubmit}
-                              className='flex flex-col gap-8 lg:gap-16 p-10 border border-y-transparent border-x-black'>
-                            <div className='hidden'>
-                                <input type="text" id="middle_name_cnt" name="middle_name_cnt" style={{ display: 'none' }} />
-                            </div>
+        <>
+            <Helmet>
+                <title>{languageData.meta.contacts.title}</title>
+                <meta name="description"
+                      content={languageData.meta.contacts.description}/>
+                <meta name="keywords" content={languageData.meta.contacts.keywords}/>
+            </Helmet>
 
-                            <div>
-                                <input
-                                    type="text"
-                                    className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                    placeholder={languageData.utils.form.name}
-                                    value={formData.name}
-                                    onChange={(e) => handleChange("name", e.target.value)}
-                                />
-                                {errors.name &&
-                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.name}</p>}
-                            </div>
+            <div className='max-w-7xl mx-auto'>
+                <div className='flex flex-col justify-center items-center m-4'>
+                    <h2 className='text-2xl md:text-4xl text-center tracking-widest mt-10'>{languageData.contacts.title}</h2>
+                    <p className='libre-baskerville max-w-2xl text-md lg:text-xl text-center tracking-widest leading-normal lg:leading-10 font-medium my-10'>
+                        {languageData.contacts.description}
+                    </p>
+                    {successMessage &&
+                        <SuccessNotification message={successMessage} onClose={() => setSuccessMessage("")}/>}
+                    {errorMessage && <ErrorNotification message={errorMessage} onClose={() => setErrorMessage("")}/>}
+                    <div className='w-full flex flex-col items-center gap-10 my-20'>
+                        <div className='w-full lg:w-2/3 flex flex-col m-4'>
+                            <span className='w-1/4 h-[1px] bg-black'/>
+                            <form onSubmit={handleSubmit}
+                                  className='flex flex-col gap-8 lg:gap-16 p-10 border border-y-transparent border-x-black'>
+                                <div className='hidden'>
+                                    <input type="text" id="middle_name_cnt" name="middle_name_cnt"
+                                           style={{display: 'none'}}/>
+                                </div>
 
-                            <div>
-                                <input
-                                    className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                    placeholder={languageData.utils.form.email}
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={(e) => handleChange("email", e.target.value)}
-                                />
-                                {errors.email &&
-                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.email}</p>}
-                            </div>
+                                <div>
+                                    <input
+                                        type="text"
+                                        className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                        placeholder={languageData.utils.form.name}
+                                        value={formData.name}
+                                        onChange={(e) => handleChange("name", e.target.value)}
+                                    />
+                                    {errors.name &&
+                                        <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.name}</p>}
+                                </div>
 
-                            <div>
-                                <input
-                                    className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
-                                    placeholder={languageData.utils.form.phone}
-                                    type="tel"
-                                    value={formData.phone}
-                                    onChange={(e) => handleChange("phone", e.target.value)}
-                                />
-                                {errors.phone &&
-                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.phone}</p>}
-                            </div>
+                                <div>
+                                    <input
+                                        className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                        placeholder={languageData.utils.form.email}
+                                        type="email"
+                                        value={formData.email}
+                                        onChange={(e) => handleChange("email", e.target.value)}
+                                    />
+                                    {errors.email &&
+                                        <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.email}</p>}
+                                </div>
 
-                            <div>
+                                <div>
+                                    <input
+                                        className='w-full text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
+                                        placeholder={languageData.utils.form.phone}
+                                        type="tel"
+                                        value={formData.phone}
+                                        onChange={(e) => handleChange("phone", e.target.value)}
+                                    />
+                                    {errors.phone &&
+                                        <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.phone}</p>}
+                                </div>
+
+                                <div>
                                 <textarea
                                     id="contact-message"
                                     className='w-full h-32 min-h-20 text-center border-t-0 border-l-0 border-r-0 border-gray-300 focus:outline-none focus:border-b-black focus:ring-0 placeholder:text-black placeholder:text-center placeholder:tracking-widest placeholder:text-lg'
@@ -158,54 +168,55 @@ const Contacts = () => {
                                     value={formData.comment}
                                     onChange={(e) => handleChange("comment", e.target.value)}
                                 />
-                                {errors.comment &&
-                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.comment}</p>}
-                            </div>
-
-                            <div>
-                                <div className='flex gap-4 items-center justify-center'>
-                                    <input
-                                        type="checkbox"
-                                        checked={formData.privacy}
-                                        className='w-6 h-6 hover:cursor-pointer'
-                                        onChange={(e) => handleChange("privacy", e.target.checked)}
-                                    />
-                                    <div className='my-auto'>
-                                        {languageData.utils.form.privacy1}
-                                        <a
-                                            href=""
-                                            onClick={openModal}
-                                            className='underline'
-                                        >
-                                            {languageData.utils.form.privacy2}
-                                        </a>
-                                        <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)} />
-                                        {languageData.utils.form.privacy3}
-                                    </div>
+                                    {errors.comment &&
+                                        <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.comment}</p>}
                                 </div>
-                                {errors.privacy &&
-                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.privacy}</p>}
-                            </div>
 
-                            <div className='self-center'>
-                                <ReCAPTCHA
-                                    sitekey="6LdGCJspAAAAAJ5uwkOWb3ADEsq4as6eFMpv8jgj"
-                                    onChange={(value) => handleChange("recaptcha", value)}
-                                />
-                                {errors.recaptcha &&
-                                    <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.recaptcha}</p>}
-                            </div>
+                                <div>
+                                    <div className='flex gap-4 items-center justify-center'>
+                                        <input
+                                            type="checkbox"
+                                            checked={formData.privacy}
+                                            className='w-6 h-6 hover:cursor-pointer'
+                                            onChange={(e) => handleChange("privacy", e.target.checked)}
+                                        />
+                                        <div className='my-auto'>
+                                            {languageData.utils.form.privacy1}
+                                            <a
+                                                href=""
+                                                onClick={openModal}
+                                                className='underline'
+                                            >
+                                                {languageData.utils.form.privacy2}
+                                            </a>
+                                            <PrivacyModal isOpen={isModalOpen} onClose={() => setModalOpen(false)}/>
+                                            {languageData.utils.form.privacy3}
+                                        </div>
+                                    </div>
+                                    {errors.privacy &&
+                                        <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.privacy}</p>}
+                                </div>
 
-                            <button type='submit'
-                                    className='w-full sm:w-1/2 mx-auto font-normal border p-2 hover:cursor-pointer'>
-                                {languageData.utils.form.submit}
-                            </button>
-                        </form>
-                        <span className='w-1/4 h-[1px] bg-black self-end'/>
+                                <div className='self-center'>
+                                    <ReCAPTCHA
+                                        sitekey="6LdGCJspAAAAAJ5uwkOWb3ADEsq4as6eFMpv8jgj"
+                                        onChange={(value) => handleChange("recaptcha", value)}
+                                    />
+                                    {errors.recaptcha &&
+                                        <p className="text-red-500 mt-2 mb-0 justify-self-center">{errors.recaptcha}</p>}
+                                </div>
+
+                                <button type='submit'
+                                        className='w-full sm:w-1/2 mx-auto font-normal border p-2 hover:cursor-pointer'>
+                                    {languageData.utils.form.submit}
+                                </button>
+                            </form>
+                            <span className='w-1/4 h-[1px] bg-black self-end'/>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

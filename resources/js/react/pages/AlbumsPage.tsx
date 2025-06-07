@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import {getAlbumsByType} from "../services/getAlbumsByType";
 import LoadingIndicator from "../components/indicator_loading/LoadingIndicator";
+import {Helmet} from "react-helmet";
+import {LanguageContext} from "../language_context/LanguageProvider";
 
 function AlbumsPage() {
+    const {languageData} = useContext(LanguageContext);
     const [albums, setAlbums] = useState<Album[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -29,18 +32,27 @@ function AlbumsPage() {
     }, []);
 
     return (
-        <div className='w-full lg:w-3/4 mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {!loading ? (
-                albums.map((album, index) => (
-                    <AlbumItem key={index} slug={album.slug} title={album.title} location={album.location}
-                               cover={album.cover}/>
-                ))
-            ) : (
-                <div className='w-full mx-auto col-span-3 flex justify-center'>
-                    <LoadingIndicator/>
-                </div>
-            )}
-        </div>
+        <>
+            <Helmet>
+                <title>{languageData.meta.photos.title}</title>
+                <meta name="description"
+                      content={languageData.meta.photos.description}/>
+                <meta name="keywords" content={languageData.meta.photos.keywords}/>
+            </Helmet>
+
+            <div className='w-full lg:w-3/4 mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {!loading ? (
+                    albums.map((album, index) => (
+                        <AlbumItem key={index} slug={album.slug} title={album.title} location={album.location}
+                                   cover={album.cover}/>
+                    ))
+                ) : (
+                    <div className='w-full mx-auto col-span-3 flex justify-center'>
+                        <LoadingIndicator/>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }
 

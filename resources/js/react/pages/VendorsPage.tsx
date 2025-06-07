@@ -1,9 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {getAlbumsByType} from "../services/getAlbumsByType";
 import axios from "axios";
 import LoadingIndicator from "../components/indicator_loading/LoadingIndicator";
+import {LanguageContext} from "../language_context/LanguageProvider";
+import {Helmet} from "react-helmet";
 
 const VendorsPage = () => {
+    const {languageData} = useContext(LanguageContext);
     const [vendors, setVendors] = useState<Album[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -29,18 +32,27 @@ const VendorsPage = () => {
     }, []);
 
     return (
-        <div className='w-full lg:w-3/4 mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-            {!loading ? (
-                vendors.map((vendor, index) => (
-                    <VendorItem key={index} slug={vendor.slug} title={vendor.title} location={vendor.location}
-                                  cover={vendor.cover}/>
-                ))
-            ) : (
-                <div className='w-full mx-auto col-span-3 flex justify-center'>
-                    <LoadingIndicator/>
-                </div>
-            )}
-        </div>
+        <>
+            <Helmet>
+                <title>{languageData.meta.vendors.title}</title>
+                <meta name="description"
+                      content={languageData.meta.vendors.description}/>
+                <meta name="keywords" content={languageData.meta.vendors.keywords}/>
+            </Helmet>
+
+            <div className='w-full lg:w-3/4 mx-auto p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                {!loading ? (
+                    vendors.map((vendor, index) => (
+                        <VendorItem key={index} slug={vendor.slug} title={vendor.title} location={vendor.location}
+                                    cover={vendor.cover}/>
+                    ))
+                ) : (
+                    <div className='w-full mx-auto col-span-3 flex justify-center'>
+                        <LoadingIndicator/>
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 

@@ -17,7 +17,7 @@ import VendorPage from "./pages/VendorPage";
 import AboutUs from "./pages/AboutUs";
 import WorkWithUs from "./pages/WorkWithUs";
 import Contacts from "./pages/Contacts";
-import OtherServicesSection from "./components/OtherServicesSection";
+import Extra from "./pages/Extra";
 
 function App() {
     return (
@@ -34,7 +34,7 @@ function App() {
                         <Route path="/locations/:slug" element={<LocationPage/>}/>
                         <Route path="/vendors" element={<VendorsPage/>}/>
                         <Route path="/vendors/:slug" element={<VendorPage/>}/>
-                        <Route path="/extra" element={<OtherServicesSection/>}/>
+                        <Route path="/extra" element={<Extra/>}/>
                         <Route path="/about-us" element={<AboutUs/>}/>
                         <Route path="/work-with-us" element={<WorkWithUs/>}/>
                         <Route path="/contacts" element={<Contacts/>}/>

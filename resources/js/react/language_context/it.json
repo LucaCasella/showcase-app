@@ -167,5 +167,47 @@
     "requestNotify": {
         "success": "Messaggio inviato con successo!",
         "error": "Errore durante l'invio."
+    },
+    "meta": {
+        "photos": {
+            "title": "Album - Anastasia Kabakova",
+            "description": "Lasciati ispirare da una vasta raccolta delle storie a cui abbiamo avuto l'onore di partecipare.",
+            "keywords": "album, matrimoni, eventi, foto"
+        },
+        "videos": {
+            "title": "Video - Anastasia Kabakova",
+            "description": "Una galleria di video montati da noi per raccogliere tutte le emozioni vissute nel vostro giorno più speciale.",
+            "keywords": "video, matrimoni, eventi, drone"
+        },
+        "locations": {
+            "title": "Locations - Anastasia Kabakova",
+            "description": "Scopri le migliori location per matrimoni a Imola e dintorni: ville storiche, giardini romantici e scenari unici.",
+            "keywords": "locations, matrimoni, eventi, luoghi"
+        },
+        "vendors":{
+            "title": "Fornitori - Anastasia Kabakova",
+            "description": "I migliori fornitori con cui lavoriamo",
+            "keywords": "fornitori, matrimoni, eventi"
+        },
+        "extra": {
+            "title": "Altri Servizi - Anastasia Kabakova",
+            "description": "Dal servizio prematrimoniale alla video proiezione. Una breve descrizione degli altri servizi che mettiamo a vostra disposizione.",
+            "keywords": "servizi, prematrimoniale, postmatrimoniale, wedding planner, video proiezione, mirror selfie"
+        },
+        "aboutUs": {
+            "title": "Chi Siamo - Anastasia Kabakova",
+            "description": "Con noi si inizia un percorso, dove ogni pacchetto viene cucito su misura del cliente, attenzione e cura delle richieste ed esigenze di esso sono capisaldi del nostro modo di lavorare.",
+            "keywords": "chi siamo, noi, team, essenza, innovazione, ricerca, sviluppo"
+        },
+        "workWithUs": {
+            "title": "Lavora con Noi - Anastasia Kabakova",
+            "description": "Sempre alla ricerca di talenti appasionati e motivati. Entra a far parte del nostro team.",
+            "keywords": "lavora con noi, entra nel team"
+        },
+        "contacts": {
+            "title": "Contatti - Anastasia Kabakova",
+            "description": "Contattaci per un preventivo gratuito e su misura per te.",
+            "keywords": "contatti, preventivo, aiuto"
+        }
     }
 }

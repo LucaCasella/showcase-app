@@ -9,9 +9,11 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideoController;
-use App\Http\Controllers\WorkWithUsController;
 use App\Models\Album;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +28,11 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
-
-// ADMIN ROUTES
+//    ADMIN ROUTES
 
 Route::get('/admin-login', function () {
     return view('welcome');
 })->name('login-admin');
-
 
 Route::get('/backoffice', [BackOfficeController::class, 'index'])->middleware(['auth' , 'verified'])->name('backoffice');
 
@@ -78,12 +78,77 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/collaboration/{collaboration_id}', [BackOfficeController::class, 'destroy'])->name('destroy-collaboration');
 
-    //ROUTE THAT RUN MIGRATIONS & SEEDER UNDER AUTH MIDDLEWARE
+//    ROUTE THAT RUN MIGRATIONS & SEEDER UNDER AUTH MIDDLEWARE
     Route::get('/migrations', function (){
         return "Migrazioni e seeding completati con successo!";
     })->middleware('run-migrations');
 
 //    Route::get('/adm-info', [AdminInfoController::class, 'index'])->name('adm-info')
+});
+
+// SITEMAPS ROUTES
+Route::get('/sitemap.xml', function () {
+    $sitemap = Sitemap::create();
+
+    // Add here static pages
+    $sitemap->add(Url::create('/')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/albums')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(0.8));
+
+    $sitemap->add(Url::create('/videos')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/locations')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/vendors')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/extra')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/about-us')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/work-with-us')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    $sitemap->add(Url::create('/contacts')
+        ->setLastModificationDate(now())
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(1.0));
+
+    // Add here dynamic contents
+    Album::all()->each(function ($album) use ($sitemap) {
+        // Converti la stringa in Carbon/DateTime
+        $lastModified = $album->updated_at ? Carbon::parse($album->updated_at) : now();
+
+        $sitemap->add(Url::create("/albums/{$album->slug}")
+            ->setLastModificationDate($lastModified)
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+            ->setPriority(0.7));
+    });
+
+    // Save the sitemaps
+    $sitemap->writeToFile(public_path('sitemap.xml'));
 });
 
 // ROUTE THAT SHOW LOGS

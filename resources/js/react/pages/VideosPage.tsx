@@ -4,6 +4,7 @@ import {LanguageContext} from "../language_context/LanguageProvider";
 import axiosInstance, {tokenSPAVerify} from "../api/axios";
 import {apiUrl} from "../constant/api-url";
 import splitTextBySentences from "../helpers/helpers";
+import {Helmet} from "react-helmet";
 
 function VideosPage() {
     const {languageData} = useContext(LanguageContext);
@@ -76,6 +77,13 @@ function VideosPage() {
 
     return (
         <>
+            <Helmet>
+                <title>{languageData.meta.videos.title}</title>
+                <meta name="description"
+                      content={languageData.meta.videos.description}/>
+                <meta name="keywords" content={languageData.meta.videos.keywords}/>
+            </Helmet>
+
             <div className="libre-baskerville max-w-7xl mx-auto text-center leading-8 px-4 py-10">
                 {splitTextBySentences(languageData.videos.description)}
             </div>
