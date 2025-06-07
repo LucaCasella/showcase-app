@@ -167,5 +167,47 @@
     "requestNotify": {
         "success": "Message sent successfully!",
         "error": "Error during sending"
+    },
+    "meta": {
+        "photos": {
+            "title": "Albums - Anastasia Kabakova",
+            "description": "Get inspired by a wide collection of the stories we had the honor to capture.",
+            "keywords": "albums, weddings, events, photos"
+        },
+        "videos": {
+            "title": "Videos - Anastasia Kabakova",
+            "description": "A gallery of videos we edited to preserve the emotions of your most special day.",
+            "keywords": "videos, weddings, events, drones"
+        },
+        "locations": {
+            "title": "Locations - Anastasia Kabakova",
+            "description": "Discover the best wedding venues in and around Imola: historic villas, romantic gardens and unique settings.",
+            "keywords": "locations, weddings, events"
+        },
+        "vendors":{
+            "title": "Vendors - Anastasia Kabakova",
+            "description": "The best vendors we collaborate with.",
+            "keywords": "vendors, weddings, events"
+        },
+        "extra": {
+            "title": "Other Services - Anastasia Kabakova",
+            "description": "From pre-wedding shoots to video projections. A brief overview of our additional services.",
+            "keywords": "services, premarital, postmarital, wedding planner, video projection, mirror selfie"
+        },
+        "aboutUs": {
+            "title": "About Us - Anastasia Kabakova",
+            "description": "We create tailor-made packages, with great care for every client's needs and expectations — this is the essence of our work.",
+            "keywords": "about us, team, essence, innovation, research, development"
+        },
+        "workWithUs": {
+            "title": "Work With Us - Anastasia Kabakova",
+            "description": "Always looking for passionate and motivated talents. Join our team.",
+            "keywords": "work with us, join the team"
+        },
+        "contacts": {
+            "title": "Contacts - Anastasia Kabakova",
+            "description": "Get in touch or request a quote.",
+            "keywords": "contacts, quote, help"
+        }
     }
 }
